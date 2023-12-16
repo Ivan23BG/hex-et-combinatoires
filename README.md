@@ -27,6 +27,8 @@ la lisibilité et l'évolution facile du code dans le temps
 
 ## Liens utiles
 
-Lien github: https://github.com/Ivan23BG/hex-et-combinatoires.git \n
-Lien discord: https://discord.gg/69Cqp2s4 \n
+Lien github: https://github.com/Ivan23BG/hex-et-combinatoires.git
+
+Lien discord: https://discord.gg/69Cqp2s4
+
 Lien hex: https://fr.wikipedia.org/wiki/Hex
