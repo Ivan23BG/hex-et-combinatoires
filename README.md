@@ -1,19 +1,19 @@
 # hex-et-combinatoires
 
-Ce repertoire contient le projet de programmation 30: Hex-Ta(c)tique
+Ce repertoire contient le projet de programmation 30 : Hex-Ta(c)tique
 
 ## Choix des langages
 
 Ce projet sera codé en Python principalement pour le code fonctionnel du module Hex et la partie combinatoire.
-La partie Web sera codée en Python mais pourra changer pour du JS ou autre selon les besoins.
+La partie Web sera codée en Python, mais pourra changer pour du JS ou autre selon les besoins.
 
 ## Modules
 
 Le projet sera divisé en plusieurs modules :
-  - board: le plateau de jeu sur lequel les donnees vont etre modifiees
-  - game logic: pour la logique du jeu et les regles pour l'implementation
+  - board: le plateau de jeu sur lequel les donnees vont être modifiées
+  - game logic : pour la logique du jeu et les règles pour l'implémentation
   - ui: l'interface graphique offerte à l'utilisateur pour interagir avec ce jeu
-  - d'autres modules pourront etre rajoutés par la suite
+  - d'autres modules pourront être rajoutés par la suite
 
 
 ## Choix de conception
@@ -21,14 +21,24 @@ Le projet sera divisé en plusieurs modules :
 Le projet sera codé en utilisant les principes de la programmation orientée objet pour assurer la modularité
 et la lisibilité du code.
 L'objet principal sera le plateau de jeu, qui contiendra les données et les méthodes pour les manipuler.
-Un `hexboard` sera créé pour chaque partie, et les données seront modifiées en fonction des actions des joueurs.
+Un objet `hexboard` sera créé pour chaque partie, et les données seront modifiées en fonction des actions des joueurs.
 Il contiendra les données du plateau de jeu, les méthodes pour les manipuler, et les méthodes pour vérifier si un joueur
 a gagné.
 
 ## Tests
 
-De nombreux tests seront mis en place a l'aide d'outils vu au courant du semestre 5 pour assurer la performance 
+De nombreux tests seront mis en place à l'aide d'outils vu au courant du semestre 5 pour assurer la performance 
 et le bon fonctionnement du projet
+
+
+## Comment lancer le projet
+
+Pour lancer le projet, il suffit de suivre les instructions suivantes :
+  - Installer python 3.8 ou plus
+  - Installer les dépendances avec la commande `pip install -r requirements.txt`
+  - Lancer le serveur avec la commande `python app.py`
+  - Ouvrir un navigateur et aller à l'adresse `http://localhost:5000/`
+
 
 ## Documentation
 

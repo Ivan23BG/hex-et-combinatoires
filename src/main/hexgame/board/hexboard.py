@@ -33,7 +33,7 @@ class HexBoard:
 
     def place_piece(self, player, position):
         """
-        Place a piece on the board.
+        place a piece on the board.
         
         Args:
             player (int): The player value (1 or 2).
@@ -58,7 +58,7 @@ class HexBoard:
 
     def is_valid_position(self, row, col):
         """
-        Check if the position is within the bounds of the board.
+        check if the position is within the bounds of the board.
 
         Args:
             row (int): The row index.
@@ -100,7 +100,7 @@ class HexBoard:
 
     def check_winner_player(self, player, position, visited=None):
         """
-        Check if the player has won.
+        check if the player has won.
 
         Args:
             player (int): The player value (1 or 2).

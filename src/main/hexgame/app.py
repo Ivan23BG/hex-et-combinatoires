@@ -1,6 +1,6 @@
 # app.py
 # import flask
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request
 
 # import the HexBoard class from hexboard.py
 from board.hexboard import HexBoard
@@ -11,6 +11,7 @@ app = Flask(__name__)
 game_board = None
 current_player = 1
 size = 0
+
 
 @app.route('/')
 def index():
