@@ -32,3 +32,5 @@ Lien github: https://github.com/Ivan23BG/hex-et-combinatoires.git
 Lien discord: https://discord.gg/69Cqp2s4
 
 Lien hex: https://fr.wikipedia.org/wiki/Hex
+
+Lien drive: https://drive.google.com/drive/folders/19xrowJzPldTjy6qT1XCUEM4UbI7ud9vA
