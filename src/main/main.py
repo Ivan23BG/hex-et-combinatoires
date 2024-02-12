@@ -1,5 +1,5 @@
 # main.py
-
+#vous etes sur la branche de timothée
 # import the HexBoard class from hexboard.py
 from hexgame.board.hexboard import HexBoard
 
