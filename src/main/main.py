@@ -1,20 +1,46 @@
 # main.py
-from src.main.hexgame.board.hexboard import HexBoard
+from hexgame.board.hexboard import HexBoard
 
-
-# Example 1
-size = 3
+# ask player for board size
+size = int(input("Enter the size of the board: "))
 game_board = HexBoard(size)
-game_board.place_piece(1, (2, 0))
-game_board.place_piece(2, (0, 1))
-game_board.place_piece(1, (0, 2))
-game_board.place_piece(2, (1, 1))
-game_board.place_piece(1, (1, 2))
-game_board.place_piece(2, (2, 2))
-game_board.place_piece(1, (2, 1))
 game_board.display_board()
-winner = game_board.check_winner()
-if winner:
-    print("Player", winner, "won!")
-else:
-    print("No one has won yet")
+# start the game
+while True:
+    # player 1
+    print("Player 1's turn")
+    row = int(input("Enter the row: "))
+    col = int(input("Enter the column: "))
+
+    # decrease row and col by 1 to match the index
+    row -= 1
+    col -= 1
+
+    # place the piece on the board
+    game_board.place_piece(1, (row, col))
+    game_board.display_board()
+
+    # check if player 1 won
+    winner = game_board.check_winner()
+    if winner:
+        print("Player", winner, "won!")
+        break
+
+    # player 2
+    print("Player 2's turn")
+    row = int(input("Enter the row: "))
+    col = int(input("Enter the column: "))
+
+    # decrease row and col by 1 to match the index
+    row -= 1
+    col -= 1
+
+    # place the piece on the board
+    game_board.place_piece(2, (row, col))
+    game_board.display_board()
+
+    # check if player 2 won
+    winner = game_board.check_winner()
+    if winner:
+        print("Player", winner, "won!")
+        break
