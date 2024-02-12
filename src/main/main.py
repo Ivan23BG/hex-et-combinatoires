@@ -1,4 +1,6 @@
 # main.py
+
+# import the HexBoard class from hexboard.py through relative path
 from hexgame.board.hexboard import HexBoard
 
 # ask player for board size

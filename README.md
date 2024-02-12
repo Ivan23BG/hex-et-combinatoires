@@ -15,6 +15,16 @@ Le projet sera divisé en plusieurs modules :
   - ui: l'interface graphique offerte à l'utilisateur pour interagir avec ce jeu
   - d'autres modules pourront etre rajoutés par la suite
 
+
+## Choix de conception
+
+Le projet sera codé en utilisant les principes de la programmation orientée objet pour assurer la modularité
+et la lisibilité du code.
+L'objet principal sera le plateau de jeu, qui contiendra les données et les méthodes pour les manipuler.
+Un `hexboard` sera créé pour chaque partie, et les données seront modifiées en fonction des actions des joueurs.
+Il contiendra les données du plateau de jeu, les méthodes pour les manipuler, et les méthodes pour vérifier si un joueur
+a gagné.
+
 ## Tests
 
 De nombreux tests seront mis en place a l'aide d'outils vu au courant du semestre 5 pour assurer la performance 
