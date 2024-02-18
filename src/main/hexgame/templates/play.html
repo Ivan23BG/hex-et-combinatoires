@@ -2,11 +2,47 @@
 <html lang="en">
 <head>
     <title>Hex Game</title>
+    <style>
+        html {
+  padding: 1em;
+  background:#333;
+}
+  body{
+  background:gray;
+  padding:6px 0 7px;
+}
+[data-flex] {
+  display: flex;
+}
+[data-flex] .container:before {
+  content: "";
+  float: left;
+  height: 100%;
+  width: 50px;
+  shape-outside: url(data:image/svg+xml;charset=utf-8,%3Csvg%20width%3D%2250%22%20%20style%3D%22background%3Aradial-gradient%28circle%20at%20%2024%25%2025%25%2C%20black%2020%25%2C%20transparent%2020%25%29%200%200%20%2F%2050px%2089px%3B%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Asvg%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3C%2Fsvg%3E);
+}
+.hex {
+  background:linear-gradient(to bottom left, rgba(0,0,0,0.2),transparent,rgba(255,255,255,0.3))
+    ;
+  filter:drop-shadow(-1px -1px 1px black);
+  background-color: tomato;
+  width: 50px;
+  height: 57.5px;
+  clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);
+  margin: -6px 0px -7px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+[data-flex] .container:hover:before {
+  background: url(data:image/svg+xml;charset=utf-8,%3Csvg%20width%3D%2250%22%20%20style%3D%22background%3Aradial-gradient%28circle%20at%20%2024%25%2025%25%2C%20white%2020%25%2C%20transparent%2025.5%25%29%200%200%20%2F%2051px%2089px%3B%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Asvg%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3C%2Fsvg%3E);
+}
+    </style>
 </head>
 <body>
     <h1>Hex Game</h1>
     <h2>Board Size: {{ size }}</h2>
-    <h3>original size 9x9<h3>
+    <h3>original size 9x9</h3>
     <form action="/place_piece" method="post">
         <input type="hidden" name="size" value="{{ size }}">
         <label for="row">Enter the row:</label>
@@ -15,5 +51,13 @@
         <input type="number" id="col" name="col" required>
         <input type="submit" value="Place Piece">
     </form>
+        <div data-flex>
+        <div class="container" id="myGrid">
+            {% for i in range(size) %}
+                {% for j in range(size) %}
+                    <div class="hex" id="hex{{ i }}{{ j }}"></div>
+                {% endfor %}
+            {% endfor %}
+        </div>
 </body>
 </html>
