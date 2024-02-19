@@ -4,23 +4,22 @@ html {
     padding: 1em;
     background:#333;
   }
-    body{
+body{
     background:gray;
     padding:6px 0 7px;
   }
-  [data-flex] {
+[data-flex] {
     display: flex;
   }
-  [data-flex] .container:before {
+[data-flex] .container:before {
     content: "";
     float: left;
     height: 100%;
     width: 50px;
     shape-outside: url(data:image/svg+xml;charset=utf-8,%3Csvg%20width%3D%2250%22%20%20style%3D%22background%3Aradial-gradient%28circle%20at%20%2024%25%2025%25%2C%20black%2020%25%2C%20transparent%2020%25%29%200%200%20%2F%2050px%2089px%3B%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Asvg%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3C%2Fsvg%3E);
   }
-  .hex {
-    background:linear-gradient(to bottom left, rgba(0,0,0,0.2),transparent,rgba(255,255,255,0.3))
-      ;
+.hex {
+    background:linear-gradient(to bottom left, rgba(0,0,0,0.2),transparent,rgba(255,255,255,0.3));
     filter:drop-shadow(-1px -1px 1px black);
     background-color: tomato;
     width: 50px;
@@ -31,6 +30,6 @@ html {
     vertical-align: top;
   }
 
-  [data-flex] .container:hover:before {
+[data-flex] .container:hover:before {
     background: url(data:image/svg+xml;charset=utf-8,%3Csvg%20width%3D%2250%22%20%20style%3D%22background%3Aradial-gradient%28circle%20at%20%2024%25%2025%25%2C%20white%2020%25%2C%20transparent%2025.5%25%29%200%200%20%2F%2051px%2089px%3B%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Asvg%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3C%2Fsvg%3E);
   }  
