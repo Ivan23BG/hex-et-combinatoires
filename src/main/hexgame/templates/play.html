@@ -14,8 +14,7 @@
       [data-flex] {
         display: flex;
       }
-    
-      
+
       .hex {
         background: linear-gradient(to bottom left, rgba(0, 0, 0, 0.2), transparent, rgba(255, 255, 255, 0.3));
         filter: drop-shadow(-1px -1px 1px black);
@@ -33,11 +32,20 @@
     .cal {
         vertical-align: top;
         align-items: left;
-        margin: 0px -5px;
-        width: 34px;
+        margin: -6px;
+        width: 35px;
         height: 40px;
-        background-color: grey;
+        background-color: transparent;
         display: inline-block;
+    }
+    #myGrid {
+        margin: 0px 0px 20px 0px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #myRow {
+        
     }
 
       
@@ -46,16 +54,6 @@
   <body>
     <h1>Hex Game</h1>
     <h2>Board Size: {{ size }}</h2>
-    <form action="/place_piece" method="post">
-      <input type="hidden" name="size" value="{{ size }}" />
-      <label for="row">Enter the row:</label>
-      <input type="number" id="row" name="row" required />
-      <label for="col">Enter the column:</label>
-      <input type="number" id="col" name="col" required />
-      <input type="submit" value="Place Piece" />
-    </form>
-
-
     <div data-flex id="myGrid">
         {% for i in range(size) %}
         <div class="container" id="myRow">
@@ -63,7 +61,7 @@
             <div class="cal"></div>
             {% endfor %}
           {% for j in range(size) %}
-            <div class="hex" id="hex{{ i }}{{ j }}"></div>
+            <div class="hex" id="hex{{ i }}-{{ j }}"></div>
           {% endfor %}
         {% endfor %}
       </div>
