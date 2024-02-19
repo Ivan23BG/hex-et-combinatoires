@@ -1,28 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <title>Hex Game</title>
-    <link rel="stylesheet" href="styleplay.css">
-</head>
-<body>
+    <style>
+      html {
+        padding: 1em;
+        background: #333;
+      }
+      body {
+        background: gray;
+        padding: 6px 0 7px;
+      }
+      [data-flex] {
+        display: flex;
+      }
+    
+      
+      .hex {
+        background: linear-gradient(to bottom left, rgba(0, 0, 0, 0.2), transparent, rgba(255, 255, 255, 0.3));
+        filter: drop-shadow(-1px -1px 1px black);
+        background-color: blue;
+        width: 50px;
+        height: 57.5px;
+        clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);
+        margin: -6px 0px -6px 0px;
+        display: inline-block;
+        vertical-align: top;
+      }
+      .hex:hover {
+        background-color : tomato;
+      }
+    .cal {
+        vertical-align: top;
+        align-items: left;
+        margin: 0px -5px;
+        width: 34px;
+        height: 40px;
+        background-color: grey;
+        display: inline-block;
+    }
+
+      
+    </style>
+  </head>
+  <body>
     <h1>Hex Game</h1>
     <h2>Board Size: {{ size }}</h2>
     <form action="/place_piece" method="post">
-        <input type="hidden" name="size" value="{{ size }}">
-        <label for="row">Enter the row:</label>
-        <input type="number" id="row" name="row" required>
-        <label for="col">Enter the column:</label>
-        <input type="number" id="col" name="col" required>
-        <input type="submit" value="Place Piece">
+      <input type="hidden" name="size" value="{{ size }}" />
+      <label for="row">Enter the row:</label>
+      <input type="number" id="row" name="row" required />
+      <label for="col">Enter the column:</label>
+      <input type="number" id="col" name="col" required />
+      <input type="submit" value="Place Piece" />
     </form>
-        <div data-flex>
-        <div class="container" id="myGrid">
-            {% for i in range(size) %}
-                {% for j in range(size) %}
-                    <div class="hex" id="hex{{ i }}{{ j }}"></div>
-                {% endfor %}
+
+
+    <div data-flex id="myGrid">
+        {% for i in range(size) %}
+        <div class="container" id="myRow">
+            {% for k in range(i) %}
+            <div class="cal"></div>
             {% endfor %}
-        </div>
+          {% for j in range(size) %}
+            <div class="hex" id="hex{{ i }}{{ j }}"></div>
+          {% endfor %}
+        {% endfor %}
+      </div>
     </div>
-</body>
+
+    <script>
+        var cells = document.querySelectorAll('.hex');
+        cells.forEach(hex => {
+            hex.onclick = function() {
+                var hexid = this.id;
+                alert("Cellule " + hexid + " a été cliquée !");
+            };
+        });
+    </script>
+
+  </body>
 </html>
