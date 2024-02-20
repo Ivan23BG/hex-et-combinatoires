@@ -173,4 +173,99 @@ class HexBoard:
                     board_string += "*" + separator
             board_string += "\n"
         board_string += offset + horizontal_line
-        print(board_string)
+        print(board_string)       
+
+    def make_move(self, player, position):
+        """
+        Make a move on the board by placing a piece and checking for a winner.
+        """
+        self.place_piece(player, position)
+        self.display_board()
+        return self.check_winner()
+    
+    def get_possible_moves(self):
+        """
+        Get all the possible moves on the board.
+        """
+        moves = []
+        for row in range(self.size):
+            for col in range(self.size):
+                if self.board[row][col] == 0:
+                    moves.append((row, col))
+        return moves
+    
+    def undo_move(self, position):
+        """
+        Undo a move on the board by removing the piece from the given position.
+        """
+        row, col = position
+        self.board[row][col] = 0 
+
+    def evaluate_board(self):
+        """
+        Evaluate the current state of the board.
+
+        Returns:
+            int: The evaluation score.
+        """
+        # Define the evaluation scores for each player
+        player_1_score = 0
+        player_2_score = 0
+
+        # Evaluate the board for player 1
+        for i in range(self.size):
+            for j in range(self.size):
+                if self.board[i][j] == 1:
+                    player_1_score += 1
+
+        # Evaluate the board for player 2
+        for i in range(self.size):
+            for j in range(self.size):
+                if self.board[i][j] == 2:
+                    player_2_score += 1
+
+        # Calculate the difference in scores
+        score_difference = player_1_score - player_2_score
+
+        return score_difference
+    
+    def minimax(self, depth, player, alpha, beta):
+        """
+        Minimax algorithm with alpha-beta pruning.
+
+        Args:
+            depth (int): The depth of the search tree.
+            player (int): The player value (1 or 2).
+            alpha (int): The alpha value for pruning.
+            beta (int): The beta value for pruning.
+
+        Returns:
+            int: The best score for the current player.
+        """
+        if depth == 0 or self.check_winner() is not None:
+            return self.evaluate_board()
+
+        if player == 1:
+            best_score = float('-inf')
+            possible_moves = self.get_possible_moves()
+            for move in possible_moves:
+                self.place_piece(player, move)
+                score = self.minimax(depth - 1, 2, alpha, beta)
+                self.undo_move(move)
+                best_score = max(best_score, score)
+                alpha = max(alpha, best_score)
+                if beta <= alpha:
+                    break
+            return best_score
+        else:
+            best_score = float('inf')
+            possible_moves = self.get_possible_moves()
+            for move in possible_moves:
+                self.place_piece(player, move)
+                score = self.minimax(depth - 1, 1, alpha, beta)
+                self.undo_move(move)
+                best_score = min(best_score, score)
+                beta = min(beta, best_score)
+                if beta <= alpha:
+                    break
+            return best_score
