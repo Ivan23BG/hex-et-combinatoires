@@ -3,18 +3,18 @@
   <head>
     <title>Hex Game</title>
     <style>
+      body {
+        /* background-image: url("static/images/tabletop.jpg"); */
+        padding: 6px 0 7px;
+      }
       html {
         padding: 1em;
         /* background: #333; */
       }
-      body {
-        background-image: url("static/tabletop.jpg");
-        padding: 6px 0 7px;
-      }
       [data-flex] {
         display: flex;
       }
-
+      
       .hex {
         background: linear-gradient(to bottom left, rgba(0, 0, 0, 0.2), transparent, rgba(255, 255, 255, 0.3));
         filter: drop-shadow(-1px -1px 1px black);
@@ -29,7 +29,7 @@
       .hex:hover {
         background-color : tomato;
       }
-    .cal {
+      .cal {
         vertical-align: top;
         align-items: left;
         margin: -6px;
@@ -37,18 +37,16 @@
         height: 40px;
         background-color: transparent;
         display: inline-block;
-    }
-    #myGrid {
-        margin: 0px 0px 20px 0px;
+      }
+      #myGrid {
+        clip-path: polygon(0% 22%, 65% 22%, 100% 78%, 35% 78% );
+        width: {{(size+size)*45}}px;
+        height : {{(size+size)*45}}px;
+        background-color: burlywood;
         display: flex;
         justify-content: center;
         align-items: center;
-    }
-    #myRow {
-        
-    }
-
-      
+      }
     </style>
   </head>
   <body>
