@@ -1,6 +1,5 @@
 # app.py
 # import flask
-#trouver comment importer des images
 from flask import Flask, render_template, request
 
 # import the HexBoard class from hexboard.py
