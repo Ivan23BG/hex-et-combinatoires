@@ -1,4 +1,4 @@
-# hex-et-combinatoires
+# Hex-et-combinatoires
 
 Ce repertoire contient le projet de programmation 30 : Hex-Ta(c)tique
 
@@ -36,6 +36,7 @@ et le bon fonctionnement du projet
 Pour lancer le projet, il suffit de suivre les instructions suivantes :
   - Installer python 3.8 ou plus
   - Installer les dépendances avec la commande `pip install -r requirements.txt`
+  - Naviguer au bon endroit (`src/main/hexgame`)
   - Lancer le serveur avec la commande `python app.py`
   - Ouvrir un navigateur et aller à l'adresse `http://localhost:5000/`
 
@@ -54,3 +55,5 @@ Lien discord: https://discord.gg/69Cqp2s4
 Lien hex: https://fr.wikipedia.org/wiki/Hex
 
 Lien drive: https://drive.google.com/drive/folders/19xrowJzPldTjy6qT1XCUEM4UbI7ud9vA
+
+Lien TODO list : https://hex-game.atlassian.net/jira/core/projects/HEC/board
