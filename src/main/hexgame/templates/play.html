@@ -7,10 +7,12 @@
         /* background-image: url("static/images/tabletop.jpg"); */
         padding: 6px 0 7px;
       }
+
       html {
         padding: 1em;
         /* background: #333; */
       }
+
       [data-flex] {
         display: flex;
       }
@@ -18,7 +20,7 @@
       .hex {
         background: linear-gradient(to bottom left, rgba(0, 0, 0, 0.2), transparent, rgba(255, 255, 255, 0.3));
         filter: drop-shadow(-1px -1px 1px black);
-        background-color: blue;
+        background-color: #8B4513;
         width: 50px;
         height: 57.5px;
         clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);
@@ -26,9 +28,15 @@
         display: inline-block;
         vertical-align: top;
       }
-      .hex:hover {
-        background-color : tomato;
+
+      .hex-player1-hover:hover {
+        background-color: #4682B4;
       }
+
+      .hex-player2-hover:hover {
+        background-color: #FF4500;
+      }
+
       .cal {
         vertical-align: top;
         align-items: left;
@@ -38,41 +46,135 @@
         background-color: transparent;
         display: inline-block;
       }
+
       #myGrid {
-        clip-path: polygon(0% 22%, 65% 22%, 100% 78%, 35% 78% );
-        width: {{(size+size)*45}}px;
-        height : {{(size+size)*45}}px;
+        clip-path: polygon(0% 22%, 67% 22%, 100% 78%, 33% 78% );
+        width: {{ size_px }}px;
+        height : {{ size_px }}px;
         background-color: burlywood;
         display: flex;
         justify-content: center;
         align-items: center;
       }
+
     </style>
   </head>
   <body>
     <h1>Hex Game</h1>
     <h2>Board Size: {{ size }}</h2>
     <div data-flex id="myGrid">
-        {% for i in range(size) %}
-        <div class="container" id="myRow">
-            {% for k in range(i) %}
-            <div class="cal"></div>
-            {% endfor %}
-          {% for j in range(size) %}
-            <div class="hex" id="hex{{ i }}-{{ j }}"></div>
-          {% endfor %}
+      {% for i in range(size) %}
+      <div class="container" id="myRow">
+        {% for k in range(i) %}
+          <div class="cal"></div>
         {% endfor %}
+        {% for j in range(size) %}
+          <div class="hex" id="hex{{ i }}-{{ j }}"></div>
+        {% endfor %}
+      {% endfor %}
       </div>
     </div>
 
     <script>
-        var cells = document.querySelectorAll('.hex');
-        cells.forEach(hex => {
-            hex.onclick = function() {
-                var hexid = this.id;
-                alert("Cellule " + hexid + " a été cliquée !");
-            };
+      var current_player = {{ current_player }};
+var game_over = false;
+
+window.onload = function() {
+    var game_history = [];
+    var cells = document.querySelectorAll('.hex');
+    cells.forEach(hex => {
+        hex.onclick = function() {
+          // Save the current game state before making a move
+          game_history.push(Array.from(cells).map(cell => cell.style.backgroundColor));
+
+            if (game_over) {
+                return;
+            }
+
+            var hexid = this.id;
+            // Add initial hover class
+            if (current_player === 1) {
+              hex.classList.add('hex-player1-hover');
+            } else {
+              hex.classList.add('hex-player2-hover');
+            }
+            alert("Cellule " + hexid + " a été cliquée !");
+            toggle_colour(this);
+
+            // Make a POST request to /place_piece
+            fetch('/place_piece', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    'hexid': hexid,
+                    'current_player': current_player
+                }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    alert(data.error);
+                } else if (data.winner) {
+                    game_over = true;
+                    alert("Player " + current_player + " has won!");
+                    reset_board();
+                } else {
+                    console.log('Success:', data);
+                    current_player = current_player === 1 ? 2 : 1;
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+          };
         });
+
+        function toggle_colour(hex) {
+          if (current_player === 1) {
+            hex.style.backgroundColor = '#4682B4';
+            hex.classList.remove('hex-player2-hover');
+            hex.classList.add('hex-player1-hover');
+          } else {
+            hex.style.backgroundColor = '#FF4500';
+            hex.classList.remove('hex-player1-hover');
+            hex.classList.add('hex-player2-hover');
+          }
+        }
+
+        function reset_board() {
+          cells.forEach(hex => {
+            hex.style.backgroundColor = '#8B4513';
+            hex.classList.remove('hex-player1-hover');
+            hex.classList.remove('hex-player2-hover');
+          });
+          game_over = false;
+          current_player = 1; // or whoever is supposed to start
+
+          // Make a POST request to /reset
+          fetch('/reset', {
+            method: 'POST',
+          })
+          .then(response => response.json())
+          .then(data => {
+            console.log('Success:', data);
+          })
+          .catch((error) => {
+            console.error('Error:', error);
+          });
+        }
+        function undo_move() {
+          if (game_history.length > 0) {
+              var last_game_state = game_history.pop();
+              cells.forEach((cell, index) => {
+                  cell.style.backgroundColor = last_game_state[index];
+              });
+          }
+        }
+
+        
+      }
     </script>
 
   </body>
