@@ -14,6 +14,7 @@
     <form id="game-size-form" action="/play" method="post" style="display: none;">
       <input type="hidden" name="size" value="{{ size }}">
     </form>
+    
     <div id="game-container">
       <div id="hex-grid">
         {% for i in range(size) %}
@@ -45,18 +46,8 @@
       </div>
     </div>
 
-    <script src="{{ url_for('static', filename='../static/js') }}"></script>
+    <script src="{{ url_for('static', filename='../static/js/game.js') }}"></script>
 
-    <script>
-      window.onload = function() {
-        var current_player = {{ current_player }};
-        var game_over = false;
-        var reset_button = document.getElementById('reset_button');
-        reset_button.addEventListener('click', reset_board);
-        var undo_button = document.getElementById('undo_button');
-        undo_button.addEventListener('click', undo_move);
-      };
-    </script>
     
   </body>
 </html>

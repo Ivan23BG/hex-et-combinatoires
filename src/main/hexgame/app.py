@@ -13,7 +13,7 @@ app = Flask(__name__)
 game_board = None
 current_player = 1
 size = 5
-size_px = (size+size)*45
+size_px = size
 
 
 @app.route('/')
@@ -25,7 +25,7 @@ def index():
 @app.route('/load_game', methods=['POST'])
 def init_board():
     global game_board, current_player, size_px, size
-    size_px = (size+size)*45 # update the size_px used in the play.html
+    size_px = size # update the size_px used in the play.html
     game_board = HexBoard(size) # Create a new game board
     print("Game board initialized")
     game_board.display_board()
@@ -40,7 +40,7 @@ def reload_board():
     global game_board, current_player, size_px, size
     data = request.get_json()
     size = data['size']
-    size_px = (size+size)*45 # update the size_px used in the play.html
+    size_px = size # update the size_px used in the play.html
     game_board = HexBoard(size) # Create a new game board
     print("Game board reinitialized")
     game_board.display_board()

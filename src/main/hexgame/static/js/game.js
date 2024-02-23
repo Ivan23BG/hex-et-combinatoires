@@ -1,6 +1,13 @@
 window.onload = function() {
+    var current_player = 1;
+    var game_over = false;
+
+    var reset_button = document.getElementById('reset_button');
+    var undo_button = document.getElementById('undo_button');
+
     var game_history = []; // Store the game state before each move
     var cells = document.querySelectorAll('.hex'); // Get all hex cells
+
     cells.forEach(hex => {
         // Add initial hover class
         hex.classList.add('hex-player1-hover');
@@ -124,5 +131,8 @@ window.onload = function() {
                 cell.style.backgroundColor = last_game_state[index];
             });
         }
-    }
+    } // end of undo_move
+
+    reset_button.addEventListener('click', reset_board);
+    undo_button.addEventListener('click', undo_move);
 }
