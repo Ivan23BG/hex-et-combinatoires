@@ -1,0 +1,65 @@
+body {
+    /* background-image: url("static/images/tabletop.jpg"); */
+    padding: 2px 0 3px;
+}
+
+html {
+    padding: 1em;
+    /* background: #333; */
+}
+
+[data-flex] {
+    display: flex;
+}
+
+.hex {
+    background: linear-gradient(to bottom left, rgba(0, 0, 0, 0.2), transparent, rgba(255, 255, 255, 0.3));
+    filter: drop-shadow(-1px -1px 1px black);
+    background-color: #8B4513;
+    width: 50px;
+    height: 57.5px;
+    clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);
+    margin: -6px 0px -6px 0px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.hex-player1-hover:hover {
+    background-color: #4682B4;
+}
+
+.hex-player2-hover:hover {
+    background-color: #FF4500;
+}
+
+.cal {
+    vertical-align: top;
+    align-items: left;
+    margin: -6px;
+    width: 35px;
+    height: 40px;
+    background-color: transparent;
+    display: inline-block;
+}
+
+#game-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+#hex-grid {
+    z-index: 1;
+    flex-grow: 1;
+    width: {{ size_px }}px;
+    height : {{ size_px }}px;
+    background-color: burlywood;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#side-panel {
+    z-index: 2;
+    width: 200px; /* Adjust as needed */
+    margin-left: 20px;
+}
