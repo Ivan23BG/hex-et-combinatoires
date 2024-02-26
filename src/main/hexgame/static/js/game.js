@@ -1,12 +1,12 @@
 window.onload = function() {
-    var current_player = 1;
-    var game_over = false;
+    let current_player = 1; // Player 1 starts the game
+    let game_over = false;
 
-    var reset_button = document.getElementById('reset_button');
-    var undo_button = document.getElementById('undo_button');
+    const reset_button = document.getElementById('reset_button');
+    const undo_button = document.getElementById('undo_button');
 
-    var game_history = []; // Store the game state before each move
-    var cells = document.querySelectorAll('.hex'); // Get all hex cells
+    const game_history = []; // Store the game state before each move
+    const cells = document.querySelectorAll('.hex'); // Get all hex cells
 
     cells.forEach(hex => {
         // Add initial hover class
@@ -17,8 +17,8 @@ window.onload = function() {
             // Save the current game state before making a move
             game_history.push(Array.from(cells).map(cell => cell.style.backgroundColor));
 
-            var hexid = this.id;
-            // alert("Cellule " + hexid + " a été cliquée !");
+            const hexid = this.id;
+            // alert("Cellule " + hexid + " choisie !");
 
             // Make a POST request to /place_piece
             fetch('/place_piece', {
@@ -127,7 +127,7 @@ window.onload = function() {
     // Function to undo the last move
     window.undo_move = function() {
         if (game_history.length > 0) {
-            var last_game_state = game_history.pop();
+            const last_game_state = game_history.pop();
             cells.forEach((cell, index) => {
                 cell.style.backgroundColor = last_game_state[index];
             });
