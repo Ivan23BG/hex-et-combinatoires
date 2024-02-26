@@ -44,10 +44,11 @@ html {
 
 #game-container {
     display: flex;
-    justify-content: space-between;
+    border: 1px solid red;
 }
 
 #hex-grid {
+    border: 1px solid black;
     flex-grow: 1;
     background-color: burlywood;
     display: flex;
@@ -56,6 +57,7 @@ html {
 }
 
 #side-panel {
+    flex-grow: 1;
     width: 200px; /* Adjust as needed */
     margin-left: 20px;
 }

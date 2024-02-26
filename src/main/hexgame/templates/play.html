@@ -10,7 +10,7 @@
     <h1>Hex Game</h1>
     <h2>Board Size: {{ size }}</h2>
     <h2>Current Player: <span id="current-player">1</span></h2>
-    
+
     <div id="game-container" style="height: {{ size_px }}px;">
       <div id="hex-grid">
         {% for i in range(size) %}
@@ -21,7 +21,9 @@
           {% for j in range(size) %}
             <div class="hex" id="hex{{ i }}-{{ j }}"></div>
           {% endfor %}
+
         {% endfor %}
+        </div>
       </div>
       <div id="side-panel">
         <button id="undo_button">Undo Move</button>
@@ -43,7 +45,5 @@
     </div>
 
     <script src="{{ url_for('static', filename='../static/js/game.js') }}"></script>
-
-    
   </body>
 </html>
