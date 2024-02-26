@@ -1,6 +1,6 @@
 # app.py
 # import flask
-#trouver comment importer des images
+# trouver comment importer des images
 from flask import Flask, render_template, request
 
 # import the HexBoard class from hexboard.py
@@ -25,12 +25,11 @@ def index():
 @app.route('/load_game', methods=['POST'])
 def init_board():
     global game_board, current_player, size_px, size
-    size_px = size # update the size_px used in the play.html
-    game_board = HexBoard(size) # Create a new game board
-    print("Game board initialized")
-    game_board.display_board()
+    size = int(request.form['size'])
+    size_px = size  # update the size_px used in the play.html
+    game_board = HexBoard(size)  # Create a new game board
+    game_board.display_board()  # Display the game board in the console
     current_player = 1  # Set player 1 as the starting player
-    print("Current player: ", current_player)
     return render_template('play.html', size=size, size_px=size_px, current_player=current_player)
 
 
@@ -40,14 +39,13 @@ def reload_board():
     global game_board, current_player, size_px, size
     data = request.get_json()
     size = data['size']
-    size_px = size # update the size_px used in the play.html
-    game_board = HexBoard(size) # Create a new game board
+    size_px = size  # update the size_px used in the play.html
+    game_board = HexBoard(size)  # Create a new game board
     print("Game board reinitialized")
     game_board.display_board()
     current_player = 1  # Set player 1 as the starting player
     print("Current player: ", current_player)
     return jsonify({'size': size, 'size_px': size_px, 'current_player': current_player})
-
 
 
 # handle the place piece request
@@ -57,7 +55,7 @@ def place_piece():
     data = request.get_json()
     hexid = data['hexid']
     current_player = data['current_player']
-    
+
     # Remove the "hex" prefix and split into row and column
     row, col = map(int, hexid[3:].split('-'))
 
