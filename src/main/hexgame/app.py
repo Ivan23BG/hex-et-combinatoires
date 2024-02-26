@@ -26,7 +26,7 @@ def index():
 def init_board():
     global game_board, current_player, size_px, size
     size = int(request.form['size'])
-    size_px = size  # update the size_px used in the play.html
+    size_px = 120 + (44 * size)  # update the size_px used in the play.html
     game_board = HexBoard(size)  # Create a new game board
     game_board.display_board()  # Display the game board in the console
     current_player = 1  # Set player 1 as the starting player

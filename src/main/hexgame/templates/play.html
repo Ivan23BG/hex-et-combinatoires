@@ -11,7 +11,7 @@
     <h2>Board Size: {{ size }}</h2>
     <h2>Current Player: <span id="current-player">1</span></h2>
     
-    <div id="game-container">
+    <div id="game-container" style="height: {{ size_px }}px;">
       <div id="hex-grid">
         {% for i in range(size) %}
         <div class="container" id="myRow">

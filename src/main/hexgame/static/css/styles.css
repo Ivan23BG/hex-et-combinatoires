@@ -49,7 +49,6 @@ html {
 
 #hex-grid {
     flex-grow: 1;
-    height : 330px;
     background-color: burlywood;
     display: flex;
     justify-content: center;
