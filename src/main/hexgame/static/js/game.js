@@ -97,7 +97,7 @@ window.onload = function() {
         // reset cells to initial state
         cells.forEach(hex => {
             // reset the colour of all hex cells
-            hex.style.backgroundColor = '#8B4513';
+            hex.style.backgroundColor = '#B0BFB1';
             // reset the hover class for all hex cells
             hex.classList.add('hex-player1-hover');
             hex.classList.remove('hex-player2-hover');
