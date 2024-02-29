@@ -1,3 +1,5 @@
+
+from collections import deque
 # HexGame/board/hex_board.py
 class InvalidPositionError(Exception):
     pass
@@ -111,41 +113,40 @@ class HexBoard:
             bool: True if the player has won, False otherwise.
         """
         if visited is None:
-            visited = []
+            visited = set()
         row, col = position
-        visited.append(position)
-        if col == self.size - 1 and player == 1:  # we're on the right side
-            print("Winning path:", visited)
-            return True
-        if row == self.size - 1 and player == 2:  # we're on the bottom side
-            print("Winning path:", visited)
-            return True
-
-        if row > 0:
-            if (row - 1, col) not in visited:
-                if self.board[row - 1][col] == player:
-                    return self.check_winner_player(player, (row - 1, col), visited)  # top left
-        if row > 0 and col < self.size - 1:
-            if (row - 1, col + 1) not in visited:
-                if self.board[row - 1][col + 1] == player:
-                    return self.check_winner_player(player, (row - 1, col + 1), visited)  # top right
-        if row < self.size - 1 and col > 0:
-            if (row + 1, col - 1) not in visited:
-                if self.board[row + 1][col - 1] == player:
-                    return self.check_winner_player(player, (row + 1, col - 1), visited)  # bottom left
-        if row < self.size - 1:
-            if (row + 1, col) not in visited:
-                if self.board[row + 1][col] == player:
-                    return self.check_winner_player(player, (row + 1, col), visited)  # bottom right
-        if col < self.size - 1:
-            if (row, col + 1) not in visited:
-                if self.board[row][col + 1] == player:
-                    return self.check_winner_player(player, (row, col + 1), visited)  # right
-        if col > 0:
-            if (row, col - 1) not in visited:
-                if self.board[row][col - 1] == player:
-                    return self.check_winner_player(player, (row, col - 1), visited)  # left
-        return False
+        #visited.append(position)
+        queue = deque()
+        if player == 1:
+            for r in range(len(self.board[0])):
+                if self.board[r][0] == player:
+                    queue.append((r,0))
+                    visited.add((r,0))
+            while queue:
+                r, c = queue.popleft()
+                if c == len(self.board) - 1:
+                    print(visited)
+                    return True
+                for x, y in ((r-1,c), (r,c-1), (r+1,c), (r,c+1), (r-1,c+1), (r+1,c-1)):
+                    if 0 <= x < len(self.board) and 0 <= y < len(self.board[0]) and self.board[x][y] == player and (x,y) not in visited:
+                        queue.append((x,y))
+                        visited.add((x,y))
+            return False
+        else:
+            for c in range(len(self.board[0])):
+                if self.board[0][c] == player:
+                    queue.append((0,c))
+                    visited.add((0,c))
+            while queue:
+                r, c = queue.popleft()
+                if r == len(self.board) - 1:
+                    print(visited)
+                    return True
+                for x, y in ((r-1,c), (r,c-1), (r+1,c), (r,c+1), (r-1,c+1), (r+1,c-1)):
+                    if 0 <= x < len(self.board) and 0 <= y < len(self.board[0]) and self.board[x][y] == player and (x,y) not in visited:
+                        queue.append((x,y))
+                        visited.add((x,y))
+            return False
 
     def display_board(self):
         """
