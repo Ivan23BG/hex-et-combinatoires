@@ -7,10 +7,12 @@
 
 
   <body>
-    <h1>Hex Game</h1>
-    <h2>Board Size: {{ size }}</h2>
-    <h2>Current Player: <span id="current-player">1</span></h2>
-
+    <div class="text">
+      <h1>Hex Game</h1>
+      <h2>Board Size: {{ size }}</h2>
+      <h2>Current Player: <span id="current-player">1</span></h2>
+      <h5>rouge de haut en bas bleu sur les cotés</h5>
+    </div>
     <div id="game-container" style="height: {{ size_px }}px;">
       <div id="hex-grid">
         {% for i in range(size) %}
@@ -25,23 +27,23 @@
         {% endfor %}
         </div>
       </div>
-      <div id="side-panel">
-        <button id="undo_button">Undo Move</button>
-        <br>
-        <button id="reset_button">Reset Board</button>
-        <br>
-        <table id="move-history">
-          <thead>
-            <tr>
-              <th>Move</th>
-              <th>Player 1</th>
-              <th>Player 2</th>
-            </tr>
-          </thead>
-          <tbody>
-          </tbody>
-        </table>
-      </div>
+    </div>
+    <div id="side-panel" class="text">
+      <button id="undo_button">Undo Move</button>
+      <br>
+      <button id="reset_button">Reset Board</button>
+      <br>
+      <table id="move-history">
+        <thead>
+          <tr>
+            <th>Move</th>
+            <th>Player 1</th>
+            <th>Player 2</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
     </div>
 
     <script src="../static/js/game.js"></script>

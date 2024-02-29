@@ -82,12 +82,12 @@ window.onload = function() {
     function toggle_colour(hex) {
         if (current_player === 1) {
             // change the colour of the hex cell
-            hex.style.backgroundColor = '#4682B4';
+            hex.style.backgroundColor = '#29335C';
             // remove the hover class for player 1
             hex.classList.remove('hex-player1-hover');
         } else {
             // change the colour of the hex cell
-            hex.style.backgroundColor = '#FF4500';
+            hex.style.backgroundColor = '#A51613';
             // remove the hover class for player 2
             hex.classList.remove('hex-player2-hover');
         }

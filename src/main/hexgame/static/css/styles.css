@@ -1,20 +1,28 @@
 body {
     /* background-image: url("static/images/tabletop.jpg"); */
     padding: 2px 0 3px;
+    color: #DDE0BD;
 }
 
 html {
     padding: 1em;
-    /* background: #333; */
+    /*background-color: #090806;*/
+    background-color: #01161E;
 }
 
 [data-flex] {
     display: flex;
 }
 
+.text{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+}
+
 .hex {
+    padding: 0px;
     filter: drop-shadow(-1px -1px 1px black);
-    background: #8B4513 linear-gradient(to bottom left, rgba(0, 0, 0, 0.2), transparent, rgba(255, 255, 255, 0.3));
+    background: #B0BFB1 linear-gradient(to bottom left, rgba(0, 0, 0, 0.2), transparent, rgba(255, 255, 255, 0.3));
     width: 50px;
     height: 58px;
     clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);
@@ -24,11 +32,11 @@ html {
 }
 
 .hex-player1-hover:hover {
-    background-color: #4682B4;
+    background-color: #344792;
 }
 
 .hex-player2-hover:hover {
-    background-color: #FF4500;
+    background-color: #BA3533;
 }
 
 .cal {
@@ -41,13 +49,12 @@ html {
 
 #game-container {
     display: flex;
-    border: 1px solid red;
+
 }
 
 #hex-grid {
-    border: 1px solid black;
     flex-grow: 1;
-    background-color: burlywood;
+    background-color: transparent;
     display: flex;
     justify-content: center;
     align-items: center;
