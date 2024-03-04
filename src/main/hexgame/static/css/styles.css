@@ -1,0 +1,70 @@
+body {
+    /* background-image: url("static/images/tabletop.jpg"); */
+    padding: 2px 0 3px;
+    color: #DDE0BD;
+    user-select: none;
+}
+
+html {
+    padding: 1em;
+    /*background-color: #090806;*/
+    background-color: #01161E;
+}
+
+
+
+[data-flex] {
+    display: flex;
+}
+
+.text{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+}
+
+.hex {
+    padding: 0px;
+    filter: drop-shadow(-1px -1px 1px black);
+    background: #B0BFB1 linear-gradient(to bottom left, rgba(0, 0, 0, 0.2), transparent, rgba(255, 255, 255, 0.3));
+    width: 50px;
+    height: 58px;
+    clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);
+    margin: -6px 0 -6px 0;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.hex-player1-hover:hover {
+    background-color: #344792;
+}
+
+.hex-player2-hover:hover {
+    background-color: #BA3533;
+}
+
+.cal {
+    margin: -6px;
+    width: 35px;
+    height: 40px;
+    background-color: transparent;
+    display: inline-block;
+}
+
+#game-container {
+    display: flex;
+
+}
+
+#hex-grid {
+    flex-grow: 1;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#side-panel {
+    flex-grow: 1;
+    width: 200px; /* Adjust as needed */
+    margin-left: 20px;
+}
