@@ -1,5 +1,6 @@
 
 from collections import deque
+import heapq
 # HexGame/board/hex_board.py
 class InvalidPositionError(Exception):
     pass
@@ -148,6 +149,49 @@ class HexBoard:
                         visited.add((x,y))
             return False
 
+    def dijkstra(self,player):
+        end = set()
+        starts = []
+        
+        if player == 1: # mise en place des listes de fin et de debut
+            for i in range(self.size):
+                set.add((i,self.size))
+                starts.append((i,0))
+        else :
+            for i in range(self.size):
+                set.add((self.size,i))
+                starts.append((0,i))
+        
+        rows = self.size
+        cols = self.size
+        directions = [(0, 1), (0, -1), (1, 0), (-1, 0),(1, 1),(-1, -1)] # les 6 directions possibles 
+        
+        for start in starts:
+            queue = [(0, start)]
+            visited = set()
+        
+            while queue:
+                distance, node, path = heapq.heappop(queue)
+                if node in end:
+                    return path
+                
+                if node in visited:
+                    continue
+                
+                visited.add(node)
+                
+                for direction in directions:
+                    row, col = node[0] + direction[0], node[1] + direction[1]
+                    if 0 <= row < rows and 0 <= col < cols and self.board[row][col] == player:
+                        new_distance = distance + 1
+                        new_path = path + [(row, col)]
+                        heapq.heappush(queue, (new_distance, (row, col), new_path))
+    
+        return [] # No path found
+    
+    
+    
+    
     def display_board(self):
         """
         Display the board.

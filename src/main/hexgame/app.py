@@ -55,6 +55,7 @@ def place_piece():
     data = request.get_json()
     hexid = data['hexid']
     current_player = data['current_player']
+    
 
     # Remove the "hex" prefix and split into row and column
     row, col = map(int, hexid[3:].split('-'))
@@ -69,6 +70,8 @@ def place_piece():
             # check if the current player won
             winner = game_board.check_winner()
             if winner:
+                short_path = game_board.dijkstra(current_player)
+                print("chemin le plus court :" ,short_path)
                 return jsonify({'winner': current_player, 'game_over': True, 'current_player': current_player})
     except Exception as e:
         # Handle the exception here
