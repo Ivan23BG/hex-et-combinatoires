@@ -2,6 +2,7 @@ body {
     /* background-image: url("static/images/tabletop.jpg"); */
     padding: 2px 0 3px;
     color: #DDE0BD;
+    user-select: none;
 }
 
 html {
@@ -9,6 +10,8 @@ html {
     /*background-color: #090806;*/
     background-color: #01161E;
 }
+
+
 
 [data-flex] {
     display: flex;
