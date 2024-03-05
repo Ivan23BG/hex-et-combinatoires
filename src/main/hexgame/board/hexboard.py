@@ -149,55 +149,84 @@ class HexBoard:
                         visited.add((x,y))
             return False
 
-    def dijkstra(self,player):
-        end = set()
-        starts = []
-        
-        if player == 1: # mise en place des listes de fin et de debut
-            for i in range(self.size):
-                set.add((i,self.size))
-                starts.append((i,0))
-        else :
-            for i in range(self.size):
-                set.add((self.size,i))
-                starts.append((0,i))
-        
-        rows = self.size
-        cols = self.size
-        directions = [(0, 1), (0, -1), (1, 0), (-1, 0),(1, 1),(-1, -1)] # les 6 directions possibles 
-        
-        for start in starts:
-            queue = [(0, start)]
-            visited = set()
-        
-            while queue:
-                distance, node, path = heapq.heappop(queue)
-                if node in end:
-                    return path
-                
-                if node in visited:
+
+
+    def dijkstra(self, player):
+            if player == 1:
+                for k in range(self.size-1):
+                    if self.board[k][0] == player:
+                        start = (k,0)
+                    if self.board[k][self.size-1] == player:
+                        end = (k,self.size-1)
+            else :
+                for k in range(self.size-1):
+                    if self.board[0][k] == player:
+                        start = (0,k)
+                    if self.board[self.size-1][k] == player:
+                        end = (self.size-1,k)
+
+
+            rows, cols = self.size, self.size
+            visited = [[False] * cols for _ in range(rows)]
+            distance = [[float('inf')] * cols for _ in range(rows)]
+            previous = [[None] * cols for _ in range(rows)]
+
+            distance[start[0]][start[1]] = 0
+            heap = [(0, start)]
+
+            while heap:
+                current_dist, current_node = heapq.heappop(heap)
+
+                if visited[current_node[0]][current_node[1]]:
                     continue
-                
-                visited.add(node)
-                
-                for direction in directions:
-                    row, col = node[0] + direction[0], node[1] + direction[1]
-                    if 0 <= row < rows and 0 <= col < cols and self.board[row][col] == player:
-                        new_distance = distance + 1
-                        new_path = path + [(row, col)]
-                        heapq.heappush(queue, (new_distance, (row, col), new_path))
+
+                visited[current_node[0]][current_node[1]] = True
+
+                neighbors = self.get_neighbors(current_node, rows, cols)
+                for neighbor in neighbors:
+                    print("current : neighbour",current_node,neighbor)
+                    print("visited",visited[neighbor[0]][neighbor[1]],self.board[neighbor[0]][neighbor[1]])
+                    if not visited[neighbor[0]][neighbor[1]] and self.board[neighbor[0]][neighbor[1]] == player:
+                        new_dist = distance[current_node[0]][current_node[1]] + 1
+                        if new_dist < distance[neighbor[0]][neighbor[1]]:
+                            distance[neighbor[0]][neighbor[1]] = new_dist
+                            previous[neighbor[0]][neighbor[1]] = current_node
+                            heapq.heappush(heap, (new_dist, neighbor))
+                            #print("current",current_node)
+                            print("touché")
+
+            path = self.reconstruct_path(start, end, previous)
+            return path
+
+    def get_neighbors(self, node, rows, cols):
+        neighbors = []
+        directions = [(-1, 0), (1, 0), (0, -1), (0, 1),(1,-1),(-1,1)]
+        for dir in directions:
+            neighbor_row, neighbor_col = node[0] + dir[0], node[1] + dir[1]
+            if 0 <= neighbor_row < rows and 0 <= neighbor_col < cols:
+                neighbors.append((neighbor_row, neighbor_col))
+        print("n",neighbors)        
+        return neighbors
     
-        return [] # No path found
-    
-    
-    
-    
+
+    def reconstruct_path(self, start, end, previous):
+        path = []
+        current_node = end
+
+        while current_node:
+            path.append(current_node)
+            current_node = previous[current_node[0]][current_node[1]]
+
+        return path[::-1]
+
+
+
+
     def display_board(self):
         """
         Display the board.
         """
         # add an offset to the board to make it look like a hexagon
-
         board_string = ""
         separator = " | "
         symbol_1 = "X"

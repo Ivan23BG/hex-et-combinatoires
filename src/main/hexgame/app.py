@@ -64,13 +64,14 @@ def place_piece():
     try:
         if game_board is not None:
             game_board.place_piece(current_player, (row, col))
+            temp = current_player
             current_player = 1 if current_player == 2 else 2
             game_board.display_board()
             print("Current player: ", current_player)
             # check if the current player won
             winner = game_board.check_winner()
             if winner:
-                short_path = game_board.dijkstra(current_player)
+                short_path = game_board.dijkstra(temp)
                 print("chemin le plus court :" ,short_path)
                 return jsonify({'winner': current_player, 'game_over': True, 'current_player': current_player})
     except Exception as e:
