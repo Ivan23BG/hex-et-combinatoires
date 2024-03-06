@@ -217,6 +217,7 @@ class HexBoard:
 
     def shortest_path(self,player):
         path = []
+        start = (0,0)
         if player == 1:
             for k in range(self.size-1):
                 if self.board[k][0] == player:
@@ -224,7 +225,7 @@ class HexBoard:
                     if path == []:
                         path = self.dijkstra(player,start)
                 else :
-                    if len(path) >= self.dijkstra(player,start):
+                    if len(path) >= len(self.dijkstra(player,start)):
                         path = self.dijkstra(player,start)
                         
         if player == 2:
@@ -234,7 +235,7 @@ class HexBoard:
                     if path == []:
                         path = self.dijkstra(player,start)
                     else :
-                        if len(path) >= self.dijkstra(player,start):
+                        if len(path) >= len(self.dijkstra(player,start)):
                             path = self.dijkstra(player,start)
         return path
 
