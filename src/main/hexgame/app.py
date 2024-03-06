@@ -71,7 +71,7 @@ def place_piece():
             # check if the current player won
             winner = game_board.check_winner()
             if winner:
-                short_path = game_board.dijkstra(temp)
+                short_path = game_board.shortest_path(temp)
                 print("chemin le plus court :" ,short_path)
                 return jsonify({'winner': current_player, 'game_over': True, 'current_player': current_player})
     except Exception as e:

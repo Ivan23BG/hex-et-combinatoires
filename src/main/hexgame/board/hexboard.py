@@ -149,19 +149,15 @@ class HexBoard:
                         visited.add((x,y))
             return False
 
+    
 
-
-    def dijkstra(self, player):
+    def dijkstra(self, player, start):
             if player == 1:
                 for k in range(self.size-1):
-                    if self.board[k][0] == player:
-                        start = (k,0)
                     if self.board[k][self.size-1] == player:
                         end = (k,self.size-1)
             else :
                 for k in range(self.size-1):
-                    if self.board[0][k] == player:
-                        start = (0,k)
                     if self.board[self.size-1][k] == player:
                         end = (self.size-1,k)
 
@@ -184,8 +180,8 @@ class HexBoard:
 
                 neighbors = self.get_neighbors(current_node, rows, cols)
                 for neighbor in neighbors:
-                    print("current : neighbour",current_node,neighbor)
-                    print("visited",visited[neighbor[0]][neighbor[1]],self.board[neighbor[0]][neighbor[1]])
+                    #print("current : neighbour",current_node,neighbor)
+                    #print("visited",visited[neighbor[0]][neighbor[1]],self.board[neighbor[0]][neighbor[1]])
                     if not visited[neighbor[0]][neighbor[1]] and self.board[neighbor[0]][neighbor[1]] == player:
                         new_dist = distance[current_node[0]][current_node[1]] + 1
                         if new_dist < distance[neighbor[0]][neighbor[1]]:
@@ -193,12 +189,12 @@ class HexBoard:
                             previous[neighbor[0]][neighbor[1]] = current_node
                             heapq.heappush(heap, (new_dist, neighbor))
                             #print("current",current_node)
-                            print("touché")
+                            #print("touché")
 
             path = self.reconstruct_path(start, end, previous)
             return path
 
-    def get_neighbors(self, node, rows, cols):
+    def get_neighbors(self, node, rows, cols): #renvoie les 6 voisins du node
         neighbors = []
         directions = [(-1, 0), (1, 0), (0, -1), (0, 1),(1,-1),(-1,1)]
         for dir in directions:
@@ -219,8 +215,28 @@ class HexBoard:
 
         return path[::-1]
 
-
-
+    def shortest_path(self,player):
+        path = []
+        if player == 1:
+            for k in range(self.size-1):
+                if self.board[k][0] == player:
+                    start = (k,0)
+                    if path == []:
+                        path = self.dijkstra(player,start)
+                else :
+                    if len(path) >= self.dijkstra(player,start):
+                        path = self.dijkstra(player,start)
+                        
+        if player == 2:
+            for k in range(self.size-1):
+                if self.board[0][k] == player:
+                    start = (0,k)
+                    if path == []:
+                        path = self.dijkstra(player,start)
+                    else :
+                        if len(path) >= self.dijkstra(player,start):
+                            path = self.dijkstra(player,start)
+        return path
 
     def display_board(self):
         """
