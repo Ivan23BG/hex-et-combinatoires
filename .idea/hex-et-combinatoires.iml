@@ -6,7 +6,7 @@
       <excludeFolder url="file://$MODULE_DIR$/venv" />
       <excludeFolder url="file://$MODULE_DIR$/.idea/copilot" />
     </content>
-    <orderEntry type="jdk" jdkName="Python 3.10 (hex-et-combinatoires)" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Python 3.12 (hex-et-combinatoires)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>
