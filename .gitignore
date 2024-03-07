@@ -2,4 +2,5 @@
 *.cpython-*.pyc
 *.pyc
 .idea/
+*/.idea/
 *.iml
