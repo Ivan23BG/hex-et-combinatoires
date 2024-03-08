@@ -1,7 +1,7 @@
 html{
-    background-color: #01161E;
+    background-color: #716969;
     font-family: Arial, Helvetica, sans-serif;
-    color : #B0BFB1;
+    color : #0F0F0F;
 }
 
 body {
@@ -15,13 +15,13 @@ body {
 
 .header {
     width: 100%;
-    background-image: url("http://webmadewell.com/wp-content/uploads/2018/01/img-bg-sample-parallax-header.jpg");
+    background-image: url("https://images.unsplash.com/photo-1560003987-4282dfd342a9?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
 }
 
-.header::before {
+/*.header::before {
     content: "";
     top: 0;
     right: 0;
@@ -29,23 +29,24 @@ body {
     left: 0;
     background-color: MidnightBlue;
     opacity: 0.3;
-}
+}*/
+
 .header-section {
     position: relative;
     padding: 15% 0 10%;
     max-width: 640px;
     margin-left: auto;
     margin-right: auto;
-    color: white;
+    color: #0F0F0F;
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
     font-family: "Montserrat", sans-serif;
 }
 
 
 .container{
-    position: relative;
+    position: absolute;
+    top: 0;
     display: inline-block;
-    border: black 1px solid;
 }
 
 
@@ -60,7 +61,7 @@ body {
     top : 0%;
     text-align: center;
     transform: translate(-10%, 0%);
-    background-color: #B0BFB1;
+    background-color: #C0C5C1;
     border-radius: 10px;
     transition: transform .1s;
 }
@@ -74,7 +75,7 @@ body {
     transform: translate(-50%, -50%);
     width: 70%;
     height: 78%;
-    background-color: #344792;
+    background-color: #FE7F2D ;
     color: #fff;
     font-size: 20px;
     line-height: 80px;

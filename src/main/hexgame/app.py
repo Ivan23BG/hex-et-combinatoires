@@ -20,7 +20,7 @@ size_px = size
 def index():
     return render_template('index.html')
 
-@app.route('/home_hex', methods=['POST'])
+@app.route('/home_hex')
 def home_hex():
     return render_template('home_hex.html')
 
