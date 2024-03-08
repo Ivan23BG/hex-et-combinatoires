@@ -200,8 +200,7 @@ class HexBoard:
         for dir in directions:
             neighbor_row, neighbor_col = node[0] + dir[0], node[1] + dir[1]
             if 0 <= neighbor_row < rows and 0 <= neighbor_col < cols:
-                neighbors.append((neighbor_row, neighbor_col))
-        print("n",neighbors)        
+                neighbors.append((neighbor_row, neighbor_col))      
         return neighbors
     
 
@@ -213,6 +212,8 @@ class HexBoard:
             path.append(current_node)
             current_node = previous[current_node[0]][current_node[1]]
 
+        if len(path[::-1]) == 1:
+            return []
         return path[::-1]
 
     def shortest_path(self,player):
@@ -220,8 +221,10 @@ class HexBoard:
         start = (0,0)
         if player == 1:
             for k in range(self.size-1):
+                print("k",self.board[k][0],player)
                 if self.board[k][0] == player:
                     start = (k,0)
+                    print("path",self.dijkstra(player,start))
                     if path == []:
                         path = self.dijkstra(player,start)
                 else :
@@ -232,11 +235,15 @@ class HexBoard:
             for k in range(self.size-1):
                 if self.board[0][k] == player:
                     start = (0,k)
+                    print("path",self.dijkstra(player,start))
                     if path == []:
                         path = self.dijkstra(player,start)
                     else :
                         if len(path) >= len(self.dijkstra(player,start)):
                             path = self.dijkstra(player,start)
+        if path == []:
+            return "error"
+        
         return path
 
     def display_board(self):
