@@ -1,15 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
     <title>Jeux combinatoires</title>
     <link rel="stylesheet" href="../static/css/home_hex_style.css">
 </head>
 <body>
-    <h1>Jeux combinatoires</h1>
+
+    <div class="clickable" onclick="handleClick(5, 1)" id="div1">Size 5</div>
+    <div class="clickable" onclick="handleClick(9, 2)" id="div2">Size 9</div>
+    <div class="clickable" onclick="handleClick(11, 3)" id="div3">Size 11</div>
+    <div class="clickable" onclick="handleClick(13, 4)" id="div4">Size 13</div>
+    <div class="clickable" onclick="handleClick(15, 5)" id="div5">Size 15</div>
+
     <form action="/load_game" method="post">
-        <label for="size">Enter the size of the board for hex:</label>
-        <input type="number" id="size" name="size" min="2" max="50" value="5" required>
-        <input type="submit" value="Start Game">
+        <input type="hidden" id="size_input" name="size" value="">
+        <button type="button" onclick="submitForm()">Load Game</button>
     </form>
+
+    <script src="../static/js/home_hex.js"></script>
 </body>
 </html>

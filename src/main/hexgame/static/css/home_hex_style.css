@@ -1,0 +1,12 @@
+.clickable {
+    cursor: pointer;
+    border: 1px solid #000;
+    margin: 5px;
+    padding: 10px;
+    text-align: center;
+}
+
+.selected {
+    background-color: blue;
+    color: white;
+}
