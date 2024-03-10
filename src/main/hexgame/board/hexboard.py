@@ -202,7 +202,7 @@ class HexBoard:
                 else :
                     if len(path) > len(self.reconstruct_path(start, end, previous)):
                         path = self.reconstruct_path(start, end, previous)
-                        print("start", start,"end",end,"len",len(path))
+                        #print("start", start,"end",end,"len",len(path))
             return path
 
     def get_neighbors(self, node, rows, cols): #renvoie les 6 voisins du node
@@ -231,19 +231,19 @@ class HexBoard:
         path = []
         start = (0,0)
         if player == 1:
-            for k in range(self.size-1):
-                #print("k",self.board[k][0],player)
+            for k in range(self.size):
+                #print("k",k)
                 if self.board[k][0] == player:
                     start = (k,0)
-                    #print("path",self.dijkstra(player,start))
+                    #print("path",self.dijkstra(player,start),"start",start)
                     if path == []:
                         path = self.dijkstra(player,start)
                 else :
                     if len(path) >= len(self.dijkstra(player,start)):
                         path = self.dijkstra(player,start)
-                        
+
         if player == 2:
-            for k in range(self.size-1):
+            for k in range(self.size):
                 if self.board[0][k] == player:
                     start = (0,k)
                     #print("path",self.dijkstra(player,start))
