@@ -23,7 +23,10 @@ function selectDiv(divNumber) {
 }
 
 function submitForm() {
-    document.getElementById("size_input").value = size;
+    // Update the value of the hidden input field with the current size
+    document.querySelector("input[name='size']").value = size;
+
+    // Submit the form
     document.forms[0].submit();
 }
 

@@ -19,9 +19,8 @@
     <div class="container">
         <div class="button_out">
             <form action="/load_game" method="post">
-                <label for="size">Enter the size of the board for hex:</label>
-                <input type="number" id="size" name="size" min="2" max="50" value="11" required>
-                <input type="submit" value="Start Game">
+                <input type="hidden" name="size" id="size_input">
+                <input type="submit" value="start game">
             </form>
         </div>
         <div class="button_out"></div>
