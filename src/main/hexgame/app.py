@@ -20,6 +20,9 @@ size_px = size
 def index():
     return render_template('index.html')
 
+@app.route('/home_hex')
+def home_hex():
+    return render_template('home_hex.html')
 
 # handle the load game request
 @app.route('/load_game', methods=['POST'])
