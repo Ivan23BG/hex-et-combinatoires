@@ -24,8 +24,9 @@ def index():
 def home_hex():
     return render_template('home_hex.html')
 
+
 # handle the load game request
-@app.route('/load_game', methods=['POST'])
+@app.route('/load_game', methods=['GET','POST'])
 def init_board():
     global game_board, current_player, size_px, size
     size = int(request.form['size'])
