@@ -1,5 +1,5 @@
 var size = 11; // Valeur initiale de la variable 'size'
-var selectedDiv = null;
+var selectedDiv = div3;
 
 function changeSize(newSize) {
     size = newSize;
@@ -25,4 +25,8 @@ function selectDiv(divNumber) {
 function submitForm() {
     document.getElementById("size_input").value = size;
     document.forms[0].submit();
+}
+
+function back() {
+    window.location.href = '/';
 }

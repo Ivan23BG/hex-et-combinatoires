@@ -137,3 +137,7 @@ window.onload = function() {
     reset_button.addEventListener('click', reset_board);
     undo_button.addEventListener('click', undo_move);
 }
+
+function back() {
+    window.location.href = '/';
+}

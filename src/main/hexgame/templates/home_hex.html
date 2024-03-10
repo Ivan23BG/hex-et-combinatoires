@@ -6,13 +6,16 @@
     <link rel="stylesheet" href="../static/css/home_hex_style.css">
 </head>
 <body>
-
-    <div class="clickable" onclick="handleClick(5, 1)" id="div1">Size 5</div>
-    <div class="clickable" onclick="handleClick(9, 2)" id="div2">Size 9</div>
-    <div class="clickable" onclick="handleClick(11, 3)" id="div3">Size 11</div>
-    <div class="clickable" onclick="handleClick(13, 4)" id="div4">Size 13</div>
-    <div class="clickable" onclick="handleClick(15, 5)" id="div5">Size 15</div>
-
+    <div class = "back_button" onclick="back()">Home</div>
+    <div class = "header">
+        <div class = "text">choisir la taille du plateau</div>
+        <div class="clickable" onclick="handleClick(5, 1)" id="div1">5</div>
+        <div class="clickable" onclick="handleClick(9, 2)" id="div2">9</div>
+        <div class="clickable selected" onclick="handleClick(11, 3)" id="div3">11</div>
+        <div class="clickable" onclick="handleClick(13, 4)" id="div4">13</div>
+        <div class="clickable" onclick="handleClick(15, 5)" id="div5">15</div>
+        <div class="clickable" onclick="handleClick(17, 6)" id="div6">17</div>
+    </div>
     <form action="/load_game" method="post">
         <input type="hidden" id="size_input" name="size" value="">
         <button type="button" onclick="submitForm()">Load Game</button>
