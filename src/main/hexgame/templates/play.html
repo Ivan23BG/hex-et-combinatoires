@@ -8,10 +8,10 @@
 
   <body>
     <div class="text">
-      <h1>Hex Game</h1>
-      <h2>Board Size: {{ size }}</h2>
-      <h2>Current Player: <span id="current-player">1</span></h2>
-      <h5>rouge de haut en bas bleu sur les cotés</h5>
+      <h1><center>Hex Game</center></h1>
+      <h3>Board Size: {{ size }}</h2>
+      <h3 id="current-player-title">Current Player: <span id="current-player">1</span></h2>
+      <h5 id="rules">rouge de haut en bas bleu sur les cotés</h5>
     </div>
     <div id="game-container" style="height: {{ size_px }}px;">
       <div id="hex-grid">
@@ -35,17 +35,7 @@
         <input type="submit" value="clear board">
     </form>
       <br>
-      <table id="move-history">
-        <thead>
-          <tr>
-            <th>Move</th>
-            <th>Player 1</th>
-            <th>Player 2</th>
-          </tr>
-        </thead>
-        <tbody>
-        </tbody>
-      </table>
+      
     </div>
 
     <script src="../static/js/game.js"></script>
