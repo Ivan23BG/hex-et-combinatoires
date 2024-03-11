@@ -76,7 +76,9 @@ def place_piece():
             if winner:
                 short_path = game_board.shortest_path(temp)
                 print("chemin le plus court :" ,short_path)
-                return jsonify({'winner': current_player, 'game_over': True, 'current_player': current_player})
+                hexid = [f"hex{i[0]}-{i[1]}" for i in short_path]
+                print("hexid:\n",hexid)
+                return jsonify({'winner': current_player, 'game_over': True, 'current_player': current_player,'hexid':hexid})
     except Exception as e:
         # Handle the exception here
         error_message = str(e)  # Get the error message
