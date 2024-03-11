@@ -154,11 +154,11 @@ class HexBoard:
     def dijkstra(self, player, start):
             ends = []
             if player == 1:
-                for k in range(self.size-1):
+                for k in range(self.size):
                     if self.board[k][self.size-1] == player:
                         ends.append((k,self.size-1))
             else :
-                for k in range(self.size-1):
+                for k in range(self.size):
                     if self.board[self.size-1][k] == player:
                         ends.append((self.size-1,k))
             #print("ends",ends)
