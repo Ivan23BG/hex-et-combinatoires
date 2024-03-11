@@ -22,18 +22,9 @@ function selectDiv(divNumber) {
     selectedDiv.classList.add('selected');
 }
 
-function submit() {
-    var finalsize = size;
-    fetch('/load_game', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            'size': finalsize,
-        }),
-    })
-    .then(response => response.json())
+function submitForm() {
+    document.getElementById("size_input").value = size;
+    document.forms[0].submit();
 }
 
 
