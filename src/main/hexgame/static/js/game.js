@@ -69,8 +69,7 @@ window.onload = function() {
                         data.hexid.forEach(hexID =>{
                             hex = document.getElementById(hexID);
                             hex.style.backgroundColor = 'yellow';
-                        });
-                        alert('game over')
+                        });                       
                         return;
                     }
                     current_player = data.current_player; // Set current_player to the one in data.current_player
