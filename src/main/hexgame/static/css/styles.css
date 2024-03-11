@@ -68,3 +68,27 @@ html {
     width: 200px; /* Adjust as needed */
     margin-left: 20px;
 }
+
+
+.back_button{
+    cursor: pointer;
+    display: inline-block;
+    width: 100px;
+    height: 40px;
+    margin: 10px;
+    padding: 0;
+    left : 10%;
+    top : 0%;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 40px;
+    transform: translate(-10%, 0%);
+    background-color: #0892A5;
+    border-radius: 10px;  
+    transition: transform .1s;
+}
+
+.back_button:hover{
+    background-color: #08636F;
+    transform: scale(1.1) translate(-10%, 0%);
+}
