@@ -37,7 +37,7 @@ body{
 }
 
 .selected {
-    background-color: #33673B;
+    background-color: #FE9920;
     color: white;
 }
 
@@ -92,15 +92,39 @@ body{
     align-items: center;
 }
 
-.button_out{
-    display: inline-block;
-    position: relative;
+.start_game1v1{
+    user-select: none;
+    font-size: 20px;
+    color : #FE9920;
+    background-image : url(../images/hex.jpg);
+    display: flex;
+    direction: column;
     vertical-align: middle;
     width: 100px;
     height: 100px;
     margin: 10px;
     left : 10%;
     top : 0%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transform: translate(-10%, 0%);
+    /*background-color: #C0C5C1;*/
+    border-radius: 10px;
+    transition: transform .1s;
+}
+
+.button_out{
+    display: flex;
+    direction: column;
+    vertical-align: middle;
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+    left : 10%;
+    top : 0%;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     transform: translate(-10%, 0%);
     background-color: #C0C5C1;
@@ -112,8 +136,19 @@ body{
     transform: scale(1.1) translate(-10%, 0%);
 }
 
+.start_game1v1:hover {
+    transform: scale(1.1) translate(-10%, 0%);
+}
+
 .btn{
     background-color: blue;
     height: 50px;
     width: 50px;
+}
+
+.start_game{
+    background-image : url(../images/hex.jpg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

@@ -17,12 +17,10 @@
         <div class="clickable" onclick="handleClick(17, 6)" id="div6">17</div>
     </div>
     <div class="container">
-        <div class="button_out" >
-            <form action="/load_game" method="post">
-                <input type="hidden" id="size_input" name="size" value="">
-                <button type="button" onclick="submitForm()">Load Game</button>
-            </form>
-        </div>
+        <form action="/load_game" method="post">
+            <input type="hidden" id="size_input" name="size" value="">
+            <div class="start_game1v1" type="button" onclick="submitForm()">Player vs Player</div>
+        </form>
         <div class="button_out"></div>
         <div class="button_out"></div>
     </div>
