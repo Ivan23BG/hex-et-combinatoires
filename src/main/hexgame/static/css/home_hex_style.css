@@ -111,3 +111,9 @@ body{
 .button_out:hover {
     transform: scale(1.1) translate(-10%, 0%);
 }
+
+.btn{
+    background-color: blue;
+    height: 50px;
+    width: 50px;
+}

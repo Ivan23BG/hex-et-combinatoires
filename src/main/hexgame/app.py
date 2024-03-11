@@ -26,15 +26,17 @@ def home_hex():
 
 
 # handle the load game request
-@app.route('/load_game', methods=['GET','POST'])
+@app.route('/load_game', methods=['POST'])
 def init_board():
     global game_board, current_player, size_px, size
-    size = int(request.form['size'])
+    data = request.get_json()
+    size = data['size']
     size_px = 120 + (44 * size)  # update the size_px used in the play.html
     game_board = HexBoard(size)  # Create a new game board
     game_board.display_board()  # Display the game board in the console
     current_player = 1  # Set player 1 as the starting player
     return render_template('play.html', size=size, size_px=size_px, current_player=current_player)
+
 
 
 # handle the reload game request

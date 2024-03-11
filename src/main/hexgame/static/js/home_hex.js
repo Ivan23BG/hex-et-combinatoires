@@ -22,13 +22,20 @@ function selectDiv(divNumber) {
     selectedDiv.classList.add('selected');
 }
 
-function submitForm() {
-    // Update the value of the hidden input field with the current size
-    document.querySelector("input[name='size']").value = size;
-
-    // Submit the form
-    document.forms[0].submit();
+function submit() {
+    var finalsize = size;
+    fetch('/load_game', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            'size': finalsize,
+        }),
+    })
+    .then(response => response.json())
 }
+
 
 function back() {
     window.location.href = '/';

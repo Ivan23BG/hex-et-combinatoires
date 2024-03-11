@@ -8,6 +8,9 @@ window.onload = function() {
     const game_history = []; // Store the game state before each move
     const cells = document.querySelectorAll('.hex'); // Get all hex cells
 
+    
+
+
     cells.forEach(hex => {
         // Add initial hover class
         hex.classList.add('hex-player1-hover');
