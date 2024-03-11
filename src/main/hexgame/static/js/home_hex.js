@@ -1,5 +1,5 @@
 var size = 11; // Valeur initiale de la variable 'size'
-var selectedDiv = div3;
+var selectedDiv = div4;
 
 function changeSize(newSize) {
     size = newSize;
