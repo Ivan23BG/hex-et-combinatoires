@@ -73,7 +73,6 @@ window.onload = function() {
                         return;
                     }
                     current_player = data.current_player; // Set current_player to the one in data.current_player
-                    document.getElementById('current-player').innerHTML = current_player;
                 }
             })
             .catch((error) => {
