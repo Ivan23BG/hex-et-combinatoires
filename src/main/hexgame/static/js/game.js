@@ -61,29 +61,15 @@ window.onload = function() {
                             hex.classList.remove('hex-player2-hover');
                         }
                     });
-                    
-                    function sleep(ms) {
-                        return new Promise(resolve => setTimeout(resolve, ms));
-                    }
 
                     if (game_over) {
                         data.hexid.forEach(hexID =>{
                             hex = document.getElementById(hexID);
                             hex.style.backgroundColor = 'yellow';                                   
                         });
-                        if (current_player==1){
-                            document.getElementById('current-player-title').innerHTML = "Gagnant: Bleu";   
-                        }
-                        else{
-                            document.getElementById('current-player-title').innerHTML = "Gagnant: Rouge";
-                        }
-                        
-                        document.getElementById('rules').style.visibility = "hidden";
                         return;
                     }
-                    
                     current_player = data.current_player; // Set current_player to the one in data.current_player
-                    document.getElementById('current-player').innerHTML = current_player;
                 }
             })
             .catch((error) => {
