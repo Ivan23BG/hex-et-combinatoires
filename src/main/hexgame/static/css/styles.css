@@ -93,3 +93,16 @@ html {
     background-color: #08636F;
     transform: scale(1.1) translate(-10%, 0%);
 }
+
+.titre{
+    margin: auto;
+    display: flex;
+}
+
+.hexgame{
+    margin: auto;
+    width: 50%;
+    /*border: 3px solid green;*/
+    padding: 10px;
+    transform: translate(0%, -10%);
+}
