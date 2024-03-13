@@ -69,7 +69,7 @@ window.onload = function() {
                         let k = 0;
                         let intervalId = setInterval(() => {
                             let hex = document.getElementById(data.hexid[k]);
-                            hex.style.backgroundColor = 'yellow';
+                            hex.style.backgroundColor = '#FFD700';
                             k++;
                             if (k === data.hexid.length) {
                                 clearInterval(intervalId);
