@@ -1,0 +1,149 @@
+html {
+    padding: 1em;
+    font-family: Arial, Helvetica, sans-serif;
+    /*background-color: #090806;*/
+    background-color: #01161E;
+}
+body{
+    margin-left: 0%;
+    margin-right: 0%;
+    padding-left: 0%;
+    padding-right: 0%;
+}
+
+.clickable {
+    user-select: none;
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    width: 100px;
+    height: 40px;
+    margin: 10px;
+    left : 10%;
+    top : 0%;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 40px;
+    transform: translate(-10%, 0%);
+    background-color: #9A6D38;
+    border-radius: 10px;  
+    transition: transform .1s;
+}
+
+.clickable:hover{
+    background-color: #C18036;
+    transform: scale(1.1) translate(-10%, 0%);
+}
+
+.selected {
+    background-color: #FE9920;
+    color: white;
+}
+
+.header{
+    position: relative;
+    height: 70px;
+    width: 100%;
+    margin-left: 0%;
+    margin-right: 0%;
+    padding-left: 0%;
+    padding-right: 0%;
+    background-color: #C0C5C1;
+}
+
+.back_button{
+    cursor: pointer;
+    display: inline-block;
+    width: 100px;
+    height: 40px;
+    margin: 10px;
+    padding: 0;
+    left : 10%;
+    top : 0%;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 40px;
+    transform: translate(-10%, 0%);
+    background-color: #0892A5;
+    border-radius: 10px;  
+    transition: transform .1s;
+}
+
+.back_button:hover{
+    background-color: #08636F;
+    transform: scale(1.1) translate(-10%, 0%);
+}
+
+.text{
+    display: inline-block;
+    margin: 10px;
+    width: 150px;
+    height: 40px;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+}
+
+.start_game1v1{
+    user-select: none;
+    font-size: 20px;
+    color : #FE9920;
+    background-image : url(../images/hex.jpg);
+    display: flex;
+    direction: column;
+    vertical-align: middle;
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+    left : 10%;
+    top : 10%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transform: translate(-10%, 0%);
+    /*background-color: #C0C5C1;*/
+    border-radius: 10px;
+    transition: transform .1s;
+}
+
+.button_out{
+    display: flex;
+    direction: column;
+    vertical-align: middle;
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+    left : 10%;
+    top : 0%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transform: translate(-10%, 0%);
+    background-color: #C0C5C1;
+    border-radius: 10px;
+    transition: transform .1s;
+}
+
+.button_out:hover {
+    transform: scale(1.1) translate(-10%, 0%);
+}
+
+.start_game1v1:hover {
+    transform: scale(1.1) translate(-10%, 0%);
+}
+
+.btn{
+    background-color: blue;
+    height: 50px;
+    width: 50px;
+}
+
+.start_game{
+    background-image : url(../images/hex.jpg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
