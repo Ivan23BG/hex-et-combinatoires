@@ -66,10 +66,20 @@ window.onload = function() {
                     });
 
                     if (game_over) {
-                        data.hexid.forEach(hexID =>{
-                            hex = document.getElementById(hexID);
+                        // data.hexid.forEach(hexID =>{
+                        //     setTimeout(() => {
+                        //         let hex = document.getElementById(hexID);
+                        //         hex.style.backgroundColor = 'yellow';
+                        //     }, 100);
+                        //     hex = document.getElementById(hexID);
+                        //     hex.style.backgroundColor = 'yellow';
+                        // });   
+                        let k = 0;
+                        setInterval(() => {
+                            let hex = document.getElementById(data.hexid[k]);
                             hex.style.backgroundColor = 'yellow';
-                        });                       
+                            k++;
+                        }, 100);
                         return;
                     }
                     current_player = data.current_player; // Set current_player to the one in data.current_player
