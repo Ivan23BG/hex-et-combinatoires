@@ -65,20 +65,15 @@ window.onload = function() {
                         }
                     });
 
-                    if (game_over) {
-                        // data.hexid.forEach(hexID =>{
-                        //     setTimeout(() => {
-                        //         let hex = document.getElementById(hexID);
-                        //         hex.style.backgroundColor = 'yellow';
-                        //     }, 100);
-                        //     hex = document.getElementById(hexID);
-                        //     hex.style.backgroundColor = 'yellow';
-                        // });   
+                    if (game_over) {  
                         let k = 0;
-                        setInterval(() => {
+                        let intervalId = setInterval(() => {
                             let hex = document.getElementById(data.hexid[k]);
                             hex.style.backgroundColor = 'yellow';
                             k++;
+                            if (k === data.hexid.length) {
+                                clearInterval(intervalId);
+                            }
                         }, 100);
                         return;
                     }
