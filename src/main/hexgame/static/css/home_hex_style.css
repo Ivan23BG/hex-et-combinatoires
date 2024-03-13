@@ -16,7 +16,6 @@ body{
     cursor: pointer;
     display: inline-block;
     position: relative;
-    vertical-align: middle;
     width: 100px;
     height: 40px;
     margin: 10px;
