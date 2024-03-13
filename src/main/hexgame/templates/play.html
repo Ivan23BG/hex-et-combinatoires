@@ -7,14 +7,18 @@
 
 
   <body>
-    <div class = "back_button" onclick="back()">Home</div>
+    <div style='display: inline-block;'>
+      <div class = "back_button" onclick="back()">Home</div>
     <div class = "back_button" onclick="home()">Hex</div>
-    <div class="text">
-      <h1>Hex Game</h1>
-      <h2>Board Size: {{ size }}</h2>
-      <h2>Current Player: <span id="current-player">1</span></h2>
-      <h5>rouge de haut en bas bleu sur les cotés</h5>
+      <div class="text">
+        <h1><center>Hex Game</center></h1>
+        <hr>
+        <br>
+        <br>
+      </div>
     </div>
+    
+    
     <div id="game-container" style="height: {{ size_px }}px;">
       <div id="hex-grid">
         {% for i in range(size) %}
@@ -36,18 +40,6 @@
         <input type="hidden" name="size" value="{{ size }}">
         <input type="submit" value="clear board">
     </form>
-      <br>
-      <table id="move-history">
-        <thead>
-          <tr>
-            <th>Move</th>
-            <th>Player 1</th>
-            <th>Player 2</th>
-          </tr>
-        </thead>
-        <tbody>
-        </tbody>
-      </table>
     </div>
 
     <script src="../static/js/game.js"></script>
