@@ -2,14 +2,11 @@ window.onload = function() {
     let current_player = 1; // Player 1 starts the game
     let game_over = false;
 
-    const reset_button = document.getElementById('reset_button');
-    const undo_button = document.getElementById('undo_button');
+    const reset_button = document.getElementById('reset-form');
+    const undo_button = document.getElementById('undo-form');
 
-    const game_history = []; // Store the game state before each move
+    const game_history = []; // stack to store game history
     const cells = document.querySelectorAll('.hex'); // Get all hex cells
-
-    
-
 
     cells.forEach(hex => {
         // Add initial hover class
@@ -17,13 +14,13 @@ window.onload = function() {
 
         // Add click event listener to each hex cell
         hex.onclick = function() {
-            // Save the current game state before making a move
-            game_history.push(Array.from(cells).map(cell => cell.style.backgroundColor));
-
             const hexid = this.id;
-            // alert("Cellule " + hexid + " choisie !");
 
             // Make a POST request to /place_piece
+            if (game_over) {
+                // stop game immediately if game is over
+                return;
+            }
             fetch('/place_piece', {
                     method: 'POST',
                     headers: {
@@ -40,31 +37,23 @@ window.onload = function() {
                     // handle error
                     alert(data.error);
                 } else {
-                    // handle successful move
-                    console.log('Success:', data);
-                    // toggle the colour of the hex cell
-                    toggle_colour(this);
-
-                    // check if the game is over
-                    if (data.game_over) {
+                    // handle game over
+                    if (data.game_over === true) {
+                        // set game to over
                         game_over = true;
                     }
 
+                    // add move to stack
+                    game_history.push(hexid);
+
+                    // toggle the colour of the hex cell
+                    toggle_colour(this);
                     // toggle the hover class for the next player
                     cells.forEach(hex => {
-                        if (current_player === 1) {
-                            hex.classList.add('hex-player2-hover');
-                            hex.classList.remove('hex-player1-hover');
-                        } else {
-                            hex.classList.add('hex-player1-hover');
-                            hex.classList.remove('hex-player2-hover');
-                        }
-                        if (game_over) {
-                            hex.classList.remove('hex-player1-hover');
-                            hex.classList.remove('hex-player2-hover');
-                        }
+                        toggle_hover(hex)
                     });
 
+                    // display winning path
                     if (game_over) {  
                         let k = 0;
                         let intervalId = setInterval(() => {
@@ -81,7 +70,7 @@ window.onload = function() {
                 }
             })
             .catch((error) => {
-                    alert('Unknown error: ' + error); //
+                    alert('Unknown error, should never happen, if you get this please warn your supervisor' + error);
             })
 
         }; // end of hex.onclick
@@ -96,9 +85,21 @@ window.onload = function() {
             // remove the hover class for player 1
             hex.classList.remove('hex-player1-hover');
         } else {
-            // change the colour of the hex cell
             hex.style.backgroundColor = '#A51613';
-            // remove the hover class for player 2
+            hex.classList.remove('hex-player2-hover');
+        }
+    }
+
+    function toggle_hover(hex) {
+        if (current_player === 1) {
+            hex.classList.add('hex-player2-hover');
+            hex.classList.remove('hex-player1-hover');
+        } else {
+            hex.classList.add('hex-player1-hover');
+            hex.classList.remove('hex-player2-hover');
+        }
+        if (game_over) {
+            hex.classList.remove('hex-player1-hover');
             hex.classList.remove('hex-player2-hover');
         }
     }
@@ -115,37 +116,31 @@ window.onload = function() {
         game_over = false;
         current_player = 1;
 
-        // Make a POST request to /load_game
-        fetch('/reload_game', {
-            method: 'POST',
-            headers: {
-                    'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                    'size': size,
-            }),
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log('Reloaded game:', data);
-        })
-        .catch((error) => {
-            console.error('Error:', error);
-        });
+        
     } // end of reset_board
 
     // Function to undo the last move
     window.undo_move = function() {
+        // pop last element in stack and set it to default colour
         if (game_history.length > 0) {
-            const last_game_state = game_history.pop();
-            cells.forEach((cell, index) => {
-                cell.style.backgroundColor = last_game_state[index];
+            const lastMove = game_history.pop();
+            const hex = document.getElementById(lastMove);
+            hex.style.backgroundColor = '#B0BFB1';
+
+            // toggle the hover class for each hexagon
+            cells.forEach(cell => {
+                if (cell !== hex) {
+                    toggle_hover(cell);
+                } else {
+                    cell.classList.add('hex-player1-hover');
+                    cell.classList.add('hex-player2-hover');
+                }
             });
+
+            // toggle the current player
+            current_player = current_player === 1 ? 2 : 1;
         }
     } // end of undo_move
-
-    reset_button.addEventListener('click', reset_board);
-    undo_button.addEventListener('click', undo_move);
 }
 
 function back() {
