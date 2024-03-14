@@ -149,8 +149,6 @@ class HexBoard:
                         visited.add((x,y))
             return False
 
-    
-
     def dijkstra(self, player, start):
             ends = []
             if player == 1:
@@ -213,7 +211,6 @@ class HexBoard:
             if 0 <= neighbor_row < rows and 0 <= neighbor_col < cols:
                 neighbors.append((neighbor_row, neighbor_col))      
         return neighbors
-    
 
     def reconstruct_path(self, start, end, previous):
         path = []
