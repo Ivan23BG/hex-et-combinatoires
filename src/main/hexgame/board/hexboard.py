@@ -189,10 +189,11 @@ class HexBoard:
         path = []
         for end in ends:
             if path == []:
-                path = self.reconstruct_path(start, end, previous)
+                path = self.reconstruct_path( end, previous)
             else:
-                if len(path) > len(self.reconstruct_path(start, end, previous)):
-                    path = self.reconstruct_path(start, end, previous)
+                temp = self.reconstruct_path( end, previous)
+                if len(path) > len(temp) and len(temp) != 0:
+                    path = temp
         return path
 
     def get_neighbors(self, node, rows, cols):
@@ -204,7 +205,7 @@ class HexBoard:
                 neighbors.append((neighbor_row, neighbor_col))
         return neighbors
 
-    def reconstruct_path(self, start, end, previous):
+    def reconstruct_path(self, end, previous):
         path = []
         current_node = end
         while current_node:
@@ -219,13 +220,17 @@ class HexBoard:
         start = (0, 0)
         if player == 1:
             for k in range(self.size):
+                print("k",k)
                 if self.board[k][0] == player:
                     start = (k, 0)
+                    temp = self.dijkstra(player, start)
                     if path == []:
-                        path = self.dijkstra(player, start)
+                        path = temp
+                        print("1er cas",start,path)
                     else:
-                        if len(path) >= len(self.dijkstra(player, start)):
+                        if len(path) > len(temp) and len(temp) != 0:
                             path = self.dijkstra(player, start)
+                            print("2eme cas",start,path)
 
         if player == 2:
             for k in range(self.size):
