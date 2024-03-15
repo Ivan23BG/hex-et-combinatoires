@@ -229,18 +229,19 @@ class HexBoard:
                         #print("1er cas",start,path)
                     else:
                         if len(path) > len(temp) and len(temp) != 0:
-                            path = self.dijkstra(player, start)
+                            path = temp
                             #print("2eme cas",start,path)
 
         if player == 2:
             for k in range(self.size):
                 if self.board[0][k] == player:
                     start = (0, k)
+                    temp = self.dijkstra(player, start)
                     if path == []:
-                        path = self.dijkstra(player, start)
+                        path = temp
                     else:
-                        if len(path) >= len(self.dijkstra(player, start)):
-                            path = self.dijkstra(player, start)
+                        if len(path) >= len(temp) and len(temp) != 0:
+                            path = temp
 
         if path == []:
             return "error"
