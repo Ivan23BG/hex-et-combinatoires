@@ -150,105 +150,94 @@ class HexBoard:
             return False
 
     def dijkstra(self, player, start):
-            ends = []
-            if player == 1:
-                for k in range(self.size):
-                    if self.board[k][self.size-1] == player:
-                        ends.append((k,self.size-1))
-            else :
-                for k in range(self.size):
-                    if self.board[self.size-1][k] == player:
-                        ends.append((self.size-1,k))
-            #print("ends",ends)
+        ends = []
+        # Recherche des extrémités en fonction du joueur
+        if player == 1:
+            for k in range(self.size):
+                if self.board[k][self.size-1] == player:
+                    ends.append((k, self.size-1))
+        else:
+            for k in range(self.size):
+                if self.board[self.size-1][k] == player:
+                    ends.append((self.size-1, k))
 
-            rows, cols = self.size, self.size
-            visited = [[False] * cols for _ in range(rows)]
-            distance = [[float('inf')] * cols for _ in range(rows)]
-            previous = [[None] * cols for _ in range(rows)]
+        rows, cols = self.size, self.size
+        visited = [[False] * cols for _ in range(rows)]
+        distance = [[float('inf')] * cols for _ in range(rows)]
+        previous = [[None] * cols for _ in range(rows)]
 
-            distance[start[0]][start[1]] = 0
-            heap = [(0, start)]
+        distance[start[0]][start[1]] = 0
+        heap = [(0, start)]
 
-            while heap:
-                current_dist, current_node = heapq.heappop(heap)
+        while heap:
+            current_dist, current_node = heapq.heappop(heap)
 
-                if visited[current_node[0]][current_node[1]]:
-                    continue
+            if visited[current_node[0]][current_node[1]]:
+                continue
 
-                visited[current_node[0]][current_node[1]] = True
+            visited[current_node[0]][current_node[1]] = True
 
-                neighbors = self.get_neighbors(current_node, rows, cols)
-                for neighbor in neighbors:
-                    #print("current : neighbour",current_node,neighbor)
-                    #print("visited",visited[neighbor[0]][neighbor[1]],self.board[neighbor[0]][neighbor[1]])
-                    if not visited[neighbor[0]][neighbor[1]] and self.board[neighbor[0]][neighbor[1]] == player:
-                        new_dist = distance[current_node[0]][current_node[1]] + 1
-                        if new_dist < distance[neighbor[0]][neighbor[1]]:
-                            distance[neighbor[0]][neighbor[1]] = new_dist
-                            previous[neighbor[0]][neighbor[1]] = current_node
-                            heapq.heappush(heap, (new_dist, neighbor))
-                            #print("current",current_node)
-                            #print("touché")
-            path = []
-            for end in ends :
-                #print("end", end)
-                if path == []:
+            neighbors = self.get_neighbors(current_node, rows, cols)
+            for neighbor in neighbors:
+                if not visited[neighbor[0]][neighbor[1]] and self.board[neighbor[0]][neighbor[1]] == player:
+                    new_dist = distance[current_node[0]][current_node[1]] + 1
+                    if new_dist < distance[neighbor[0]][neighbor[1]]:
+                        distance[neighbor[0]][neighbor[1]] = new_dist
+                        previous[neighbor[0]][neighbor[1]] = current_node
+                        heapq.heappush(heap, (new_dist, neighbor))
+
+        path = []
+        for end in ends:
+            if path == []:
+                path = self.reconstruct_path(start, end, previous)
+            else:
+                if len(path) > len(self.reconstruct_path(start, end, previous)):
                     path = self.reconstruct_path(start, end, previous)
-                
-                if len(self.reconstruct_path(start, end, previous)) == 1 :
-                    continue
-                else :
-                    if len(path) > len(self.reconstruct_path(start, end, previous)):
-                        path = self.reconstruct_path(start, end, previous)
-                        #print("start", start,"end",end,"len",len(path))
-            return path
+        return path
 
-    def get_neighbors(self, node, rows, cols): #renvoie les 6 voisins du node
+    def get_neighbors(self, node, rows, cols):
         neighbors = []
-        directions = [(-1, 0), (1, 0), (0, -1), (0, 1),(1,-1),(-1,1)]
+        directions = [(-1, 0), (1, 0), (0, -1), (0, 1), (1, -1), (-1, 1)]
         for dir in directions:
             neighbor_row, neighbor_col = node[0] + dir[0], node[1] + dir[1]
             if 0 <= neighbor_row < rows and 0 <= neighbor_col < cols:
-                neighbors.append((neighbor_row, neighbor_col))      
+                neighbors.append((neighbor_row, neighbor_col))
         return neighbors
 
     def reconstruct_path(self, start, end, previous):
         path = []
         current_node = end
-
         while current_node:
             path.append(current_node)
             current_node = previous[current_node[0]][current_node[1]]
-
         if len(path[::-1]) == 1:
             return []
         return path[::-1]
 
-    def shortest_path(self,player):
+    def shortest_path(self, player):
         path = []
-        start = (0,0)
+        start = (0, 0)
+        # Recherche du chemin le plus court pour le joueur 1
         if player == 1:
             for k in range(self.size):
-                #print("k",k)
                 if self.board[k][0] == player:
-                    start = (k,0)
-                    #print("path",self.dijkstra(player,start),"start",start)
+                    start = (k, 0)
                     if path == []:
-                        path = self.dijkstra(player,start)
-                else :
-                    if len(path) >= len(self.dijkstra(player,start)):
-                        path = self.dijkstra(player,start)
+                        path = self.dijkstra(player, start)
+                    else:
+                        if len(path) >= len(self.dijkstra(player, start)):
+                            path = self.dijkstra(player, start)
 
+        # Recherche du chemin le plus court pour le joueur 2
         if player == 2:
             for k in range(self.size):
                 if self.board[0][k] == player:
-                    start = (0,k)
-                    #print("path",self.dijkstra(player,start))
+                    start = (0, k)
                     if path == []:
-                        path = self.dijkstra(player,start)
-                    else :
-                        if len(path) >= len(self.dijkstra(player,start)):
-                            path = self.dijkstra(player,start)
+                        path = self.dijkstra(player, start)
+                    else:
+                        if len(path) >= len(self.dijkstra(player, start)):
+                            path = self.dijkstra(player, start)
 
         if path == []:
             return "error"
