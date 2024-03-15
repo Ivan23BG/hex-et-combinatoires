@@ -126,7 +126,7 @@ class HexBoard:
             while queue:
                 r, c = queue.popleft()
                 if c == len(self.board) - 1:
-                    print(visited)
+                    #print(visited)
                     return True
                 for x, y in ((r-1,c), (r,c-1), (r+1,c), (r,c+1), (r-1,c+1), (r+1,c-1)):
                     if 0 <= x < len(self.board) and 0 <= y < len(self.board[0]) and self.board[x][y] == player and (x,y) not in visited:
@@ -141,7 +141,7 @@ class HexBoard:
             while queue:
                 r, c = queue.popleft()
                 if r == len(self.board) - 1:
-                    print(visited)
+                    #print(visited)
                     return True
                 for x, y in ((r-1,c), (r,c-1), (r+1,c), (r,c+1), (r-1,c+1), (r+1,c-1)):
                     if 0 <= x < len(self.board) and 0 <= y < len(self.board[0]) and self.board[x][y] == player and (x,y) not in visited:
@@ -220,17 +220,17 @@ class HexBoard:
         start = (0, 0)
         if player == 1:
             for k in range(self.size):
-                print("k",k)
+                #print("k",k)
                 if self.board[k][0] == player:
                     start = (k, 0)
                     temp = self.dijkstra(player, start)
                     if path == []:
                         path = temp
-                        print("1er cas",start,path)
+                        #print("1er cas",start,path)
                     else:
                         if len(path) > len(temp) and len(temp) != 0:
                             path = self.dijkstra(player, start)
-                            print("2eme cas",start,path)
+                            #print("2eme cas",start,path)
 
         if player == 2:
             for k in range(self.size):
