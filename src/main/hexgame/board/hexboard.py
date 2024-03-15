@@ -151,15 +151,14 @@ class HexBoard:
 
     def dijkstra(self, player, start):
         ends = []
-        # Recherche des extrémités en fonction du joueur
         if player == 1:
             for k in range(self.size):
                 if self.board[k][self.size-1] == player:
-                    ends.append((k, self.size-1))
+                    ends.append((k,self.size-1))
         else:
             for k in range(self.size):
                 if self.board[self.size-1][k] == player:
-                    ends.append((self.size-1, k))
+                    ends.append((self.size-1,k))
 
         rows, cols = self.size, self.size
         visited = [[False] * cols for _ in range(rows)]
@@ -179,12 +178,13 @@ class HexBoard:
 
             neighbors = self.get_neighbors(current_node, rows, cols)
             for neighbor in neighbors:
-                if not visited[neighbor[0]][neighbor[1]] and self.board[neighbor[0]][neighbor[1]] == player:
-                    new_dist = distance[current_node[0]][current_node[1]] + 1
-                    if new_dist < distance[neighbor[0]][neighbor[1]]:
-                        distance[neighbor[0]][neighbor[1]] = new_dist
-                        previous[neighbor[0]][neighbor[1]] = current_node
-                        heapq.heappush(heap, (new_dist, neighbor))
+                if 0 <= neighbor[0] < rows and 0 <= neighbor[1] < cols:  # Vérifier les limites du plateau
+                    if not visited[neighbor[0]][neighbor[1]] and self.board[neighbor[0]][neighbor[1]] == player:
+                        new_dist = distance[current_node[0]][current_node[1]] + 1
+                        if new_dist < distance[neighbor[0]][neighbor[1]]:
+                            distance[neighbor[0]][neighbor[1]] = new_dist
+                            previous[neighbor[0]][neighbor[1]] = current_node
+                            heapq.heappush(heap, (new_dist, neighbor))
 
         path = []
         for end in ends:
@@ -217,7 +217,6 @@ class HexBoard:
     def shortest_path(self, player):
         path = []
         start = (0, 0)
-        # Recherche du chemin le plus court pour le joueur 1
         if player == 1:
             for k in range(self.size):
                 if self.board[k][0] == player:
@@ -228,7 +227,6 @@ class HexBoard:
                         if len(path) >= len(self.dijkstra(player, start)):
                             path = self.dijkstra(player, start)
 
-        # Recherche du chemin le plus court pour le joueur 2
         if player == 2:
             for k in range(self.size):
                 if self.board[0][k] == player:
