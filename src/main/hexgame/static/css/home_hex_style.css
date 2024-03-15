@@ -4,7 +4,8 @@ html {
     /*background-color: #090806;*/
     background-color: #01161E;
 }
-body{
+
+body {
     margin-left: 0%;
     margin-right: 0%;
     padding-left: 0%;
@@ -19,18 +20,18 @@ body{
     width: 100px;
     height: 40px;
     margin: 10px;
-    left : 10%;
-    top : 0%;
+    left: 10%;
+    top: 0%;
     text-align: center;
     vertical-align: middle;
     line-height: 40px;
     transform: translate(-10%, 0%);
     background-color: #9A6D38;
-    border-radius: 10px;  
+    border-radius: 10px;
     transition: transform .1s;
 }
 
-.clickable:hover{
+.clickable:hover {
     background-color: #C18036;
     transform: scale(1.1) translate(-10%, 0%);
 }
@@ -40,7 +41,7 @@ body{
     color: white;
 }
 
-.header{
+.header {
     position: relative;
     height: 70px;
     width: 100%;
@@ -51,54 +52,54 @@ body{
     background-color: #C0C5C1;
 }
 
-.back_button{
+.back_button {
     cursor: pointer;
     display: inline-block;
     width: 100px;
     height: 40px;
     margin: 10px;
     padding: 0;
-    left : 10%;
-    top : 0%;
+    left: 10%;
+    top: 0%;
     text-align: center;
     vertical-align: middle;
     line-height: 40px;
     transform: translate(-10%, 0%);
     background-color: #0892A5;
-    border-radius: 10px;  
+    border-radius: 10px;
     transition: transform .1s;
 }
 
-.back_button:hover{
+.back_button:hover {
     background-color: #08636F;
     transform: scale(1.1) translate(-10%, 0%);
 }
 
-.text{
+.text {
     display: inline-block;
     margin: 10px;
     width: 150px;
     height: 40px;
 }
 
-.container{
+.container {
     display: flex;
     flex-direction: column;
 }
 
-.start_game1v1{
+.start_game1v1 {
     user-select: none;
     font-size: 20px;
-    color : #FE9920;
-    background-image : url(../images/hex.jpg);
+    color: #FE9920;
+    background-image: url(../images/hex.jpg);
     display: flex;
     direction: column;
     vertical-align: middle;
     width: 100px;
     height: 100px;
     margin: 10px;
-    left : 10%;
-    top : 10%;
+    left: 10%;
+    top: 10%;
     align-items: center;
     justify-content: center;
     text-align: center;
@@ -108,15 +109,15 @@ body{
     transition: transform .1s;
 }
 
-.button_out{
+.button_out {
     display: flex;
     direction: column;
     vertical-align: middle;
     width: 100px;
     height: 100px;
     margin: 10px;
-    left : 10%;
-    top : 0%;
+    left: 10%;
+    top: 0%;
     align-items: center;
     justify-content: center;
     text-align: center;
@@ -134,14 +135,14 @@ body{
     transform: scale(1.1) translate(-10%, 0%);
 }
 
-.btn{
+.btn {
     background-color: blue;
     height: 50px;
     width: 50px;
 }
 
-.start_game{
-    background-image : url(../images/hex.jpg);
+.start_game {
+    background-image: url(../images/hex.jpg);
     display: flex;
     align-items: center;
     justify-content: center;
