@@ -269,6 +269,32 @@ class HexBoard:
                 if beta <= alpha:
                     break
             return best_score
+        
+    def get_best_move(self, depth, player):
+        """
+        Get the best move for the given player using the minimax algorithm.
+
+        Args:
+            depth (int): The depth of the search tree.
+            player (int): The player value (1 or 2).
+
+        Returns:
+            tuple: The best move (row, col).
+        """
+        best_score = float('-inf') if player == 1 else float('inf')
+        best_move = None
+        possible_moves = self.get_possible_moves()
+        for move in possible_moves:
+            self.place_piece(player, move)
+            score = self.minimax(depth - 1, 3 - player, float('-inf'), float('inf'))
+            self.undo_move(move)
+            if player == 1 and score > best_score:
+                best_score = score
+                best_move = move
+            elif player == 2 and score < best_score:
+                best_score = score
+                best_move = move
+        return best_move
     
     def get_played_moves(self):
         """

@@ -64,7 +64,7 @@ elif mode == "2":
 
             # decrease row and col by 1 to match the index
             row -= 1
-            col -= 1
+            col -= 1 
 
             # place the piece on the board
             game_board.place_piece(1, (row, col))
@@ -79,7 +79,7 @@ elif mode == "2":
             # PC's turn
             print("PC's turn")
             # make a move using minimax algorithm
-            move = game_board.minimax()
+            move = get_best_move(game_board, 3, 2)
             game_board.place_piece(2, move)
             game_board.display_board()
 
