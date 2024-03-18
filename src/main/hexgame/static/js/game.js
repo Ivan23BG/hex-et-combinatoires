@@ -1,6 +1,7 @@
 window.onload = function () {
     let current_player = 1; // Player 1 starts the game
     let game_over = false;
+    let current_color = "";
 
     const reset_button = document.getElementById('reset-form');
     const undo_button = document.getElementById('undo-form');
@@ -36,9 +37,32 @@ window.onload = function () {
                     if (data.error) {
                         // handle error
                         // alert(data.error);
-                        let temp = hex.style.backgroundColor
-                        hex.style.backgroundColor = '#171219';
-                        setTimeout(() => hex.style.backgroundColor = temp, 500)
+                        if (hex.style.backgroundColor != 'rgb(23, 18, 25)'){
+                            current_color = hex.style.backgroundColor
+                            console.log(current_color)
+                        }
+                        //else {alert(hex.style.backgroundColor);}
+                        let blac = 'rgb(23, 18, 25)'
+                        let list = []
+                        
+                        cells.forEach(hexes => {
+                            if (hexes.style.backgroundColor === current_color || hexes.style.backgroundColor === 'rgb(23, 18, 25)') {
+                                //alert(hexes.style.backgroundColor);
+                                list.push(hexes);
+                                hexes.style.backgroundColor = blac;
+                                
+                            }
+                        })
+                        setTimeout(() => {
+                            list.forEach(hexes => {
+                                    hexes.style.backgroundColor = current_color;
+                                
+                            })
+                        }, 500);
+                        
+                        
+                        //hex.style.backgroundColor = '#171219';
+                        //setTimeout(() => hex.style.backgroundColor = temp, 500)
                     } else {
                         // handle game over
                         if (data.game_over === true) {
