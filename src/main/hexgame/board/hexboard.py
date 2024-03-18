@@ -269,3 +269,17 @@ class HexBoard:
                 if beta <= alpha:
                     break
             return best_score
+    
+    def get_played_moves(self):
+        """
+        Get all the moves that have been played in the game.
+
+        Returns:
+            list: The list of played moves in the order they were played.
+        """
+        played_moves = []
+        for row in range(self.size):
+            for col in range(self.size):
+                if self.board[row][col] != 0:
+                    played_moves.append((row, col))
+        return played_moves
