@@ -31,15 +31,37 @@ body {
     transition: transform .1s;
 }
 
+.selected {
+    user-select: none;
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    width: 100px;
+    height: 40px;
+    margin: 10px;
+    left: 10%;
+    top: 0%;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 40px;
+    transform: translate(-10%, 0%);
+    background-color: #FE9920;
+    border-radius: 10px;
+    transition: transform .1s;
+}
+
+
 .clickable:hover {
     background-color: #C18036;
     transform: scale(1.1) translate(-10%, 0%);
 }
 
-.selected {
+.selected:hover {
     background-color: #FE9920;
-    color: white;
+    transform: scale(1.1) translate(-10%, 0%);
 }
+
+
 
 .header {
     position: relative;
