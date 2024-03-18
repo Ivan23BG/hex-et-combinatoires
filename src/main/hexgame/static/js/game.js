@@ -35,7 +35,10 @@ window.onload = function () {
                 .then(data => {
                     if (data.error) {
                         // handle error
-                        alert(data.error);
+                        // alert(data.error);
+                        let temp = hex.style.backgroundColor
+                        hex.style.backgroundColor = '#171219';
+                        setTimeout(() => hex.style.backgroundColor = temp, 500)
                     } else {
                         // handle game over
                         if (data.game_over === true) {
