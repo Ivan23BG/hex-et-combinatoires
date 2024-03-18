@@ -36,16 +36,25 @@ window.onload = function () {
                 .then(data => {
                     if (data.error) {
                         // handle error
-                        // alert(data.error);
-                        if (hex.style.backgroundColor != 'rgb(23, 18, 25)'){
+                        
+                        if (hex.style.backgroundColor != 'rgb(87, 94, 121)' || hex.style.backgroundColor != 'rgb(87, 94, 121)'){
                             current_color = hex.style.backgroundColor
                             console.log(current_color)
                         }
-                        //else {alert(hex.style.backgroundColor);}
-                        let blac = 'rgb(23, 18, 25)'
+
+                        let blac = 'rgb(255, 255, 255)'; // valeur de base
+
+                        if (current_color == 'rgb(41, 51, 92)'){
+                            blac = 'rgb(87, 94, 121)'
+                        }
+                        if (current_color == 'rgb(165, 22, 19)'){
+                            blac = 'rgb(163, 72, 70)'
+                        }
+
+
                         let list = []
                         
-                        cells.forEach(hexes => {
+                        cells.forEach(hexes => { // mettre les hex en grisé
                             if (hexes.style.backgroundColor === current_color || hexes.style.backgroundColor === 'rgb(23, 18, 25)') {
                                 //alert(hexes.style.backgroundColor);
                                 list.push(hexes);
@@ -53,16 +62,15 @@ window.onload = function () {
                                 
                             }
                         })
-                        setTimeout(() => {
+                        setTimeout(() => { // enlevé le griser
                             list.forEach(hexes => {
                                     hexes.style.backgroundColor = current_color;
                                 
                             })
-                        }, 500);
+                        }, 500);//une demi seconde
                         
                         
-                        //hex.style.backgroundColor = '#171219';
-                        //setTimeout(() => hex.style.backgroundColor = temp, 500)
+                        
                     } else {
                         // handle game over
                         if (data.game_over === true) {
