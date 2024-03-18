@@ -273,3 +273,7 @@ class HexBoard:
             board_string += "\n"
         board_string += offset + horizontal_line
         print(board_string)
+
+
+    def undo_move(self,row,col):
+        self.board[row][col] = 0
