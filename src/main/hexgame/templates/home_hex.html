@@ -4,7 +4,7 @@
 <head>
 
     <title>Jeux combinatoires</title>
-    <link rel="stylesheet" href="../static/css/home_hex_style.css">
+    <link rel="stylesheet" href="../static/css/home_hex_styles.css">
 </head>
 
 <body>
@@ -20,7 +20,7 @@
         <div class="clickable" onclick="handleClick(17, 7)" id="div7">17</div>
     </div>
     <div class="container">
-        <form action="/load_game" method="post">
+        <form action="/game_hex" method="post">
             <input type="hidden" id="size_input" name="size" value="">
             <div class="start_game1v1" type="button" onclick="submitForm()">Player vs Player</div>
         </form>
