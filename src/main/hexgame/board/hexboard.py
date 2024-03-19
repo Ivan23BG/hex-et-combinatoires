@@ -356,6 +356,24 @@ class HexBoard:
         score_difference = player_1_score - player_2_score
         return score_difference
     
+    def evaluate_proxi_edge(self, player):
+        """
+        Une fonction d'évaluation qui prend en compte la proximité des pieces par rapport aux bords du plateau.
+        """
+        player_1_score = 0
+        player_2_score = 0
+
+        for i in range(self.size):
+            for j in range(self.size):
+                if self.board[i][j] == 1:
+                    player_1_score += (self.size - j)
+                elif self.board[i][j] == 2:
+                    player_2_score += (self.size - i)
+
+        score_difference = player_1_score - player_2_score
+
+        return score_difference if player == 1 else -score_difference
+        
 
     def minimax(self, depth, player, alpha, beta):
         """
@@ -371,7 +389,7 @@ class HexBoard:
             int: The best score for the current player.
         """
         if depth == 0 or self.check_winner() is not None:
-            return self.evaluate_voisins()
+            return self.evaluate_proxi_edge(player)
 
         if player == 1:
             best_score = float('-inf')
