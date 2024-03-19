@@ -408,3 +408,7 @@ class HexBoard:
                 if self.board[row][col] != 0:
                     played_moves.append((row, col))
         return played_moves
+    
+    
+    def undo_move(self,row,col):
+        self.board[row][col] = 0

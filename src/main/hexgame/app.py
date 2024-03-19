@@ -65,6 +65,34 @@ def place_piece():
 
     return jsonify({'result': 'Success', 'current_player': current_player})
 
+@app.route('/undo_move', methods=['POST']) # Place a piece on the board
+def undo_move():
+    global game_board, current_player
+    
+    data = request.get_json()
+    hexid = data['hexid']
+    current_player = data['current_player']
+    
+    
+    # Remove the "hex" prefix and split into row and column
+    row, col = map(int, hexid[3:].split('-'))
+
+    # change the current player
+    try:
+        if game_board is not None:
+            game_board.undo_move(row,col)
+            game_board.display_board()
+            current_player = 1 if current_player == 2 else 2
+
+
+    except Exception as e:
+        # Handle the exception here
+        error_message = str(e)  # Get the error message
+        return jsonify({'error': error_message}), 400
+
+    return jsonify({'result': 'Success', 'current_player': current_player})
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)

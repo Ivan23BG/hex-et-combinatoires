@@ -123,7 +123,19 @@ window.onload = function () {
     window.undo_move = function () {
         // pop last element in stack and set it to default colour
         if (game_history.length > 0) {
+
             const lastMove = game_history.pop();
+            fetch('/undo_move', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    'hexid': lastMove,
+                    'current_player': current_player
+                }),
+            })
+
             const hex = document.getElementById(lastMove);
             hex.style.backgroundColor = '#B0BFB1';
 
@@ -136,6 +148,18 @@ window.onload = function () {
                     cell.classList.add('hex-player2-hover');
                 }
             });
+
+            if (game_over) {
+                let k = 0;
+                let intervalId = setInterval(() => {
+                    cells.forEach(cell =>{
+                        if (cell.backgroundColor === '#FFD700')
+                        toggle_colour(cell);
+                    })
+                    clearInterval(intervalId);
+                }, 100);
+                game_over = false;
+            }
 
             // toggle the current player
             current_player = current_player === 1 ? 2 : 1;
