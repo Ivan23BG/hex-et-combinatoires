@@ -24,7 +24,11 @@
             <input type="hidden" id="size_input" name="size" value="">
             <div class="start_game1v1" type="button" onclick="submitForm()">Player vs Player</div>
         </form>
-        <div class="button_out"></div>
+        <form action="/game_hex" method="post">
+            <input type="hidden" id="size_input" name="size" value="">
+            <div class="start_game1v1" type="button" onclick="submitForm()">Player vs IA
+            </div>
+        </form>
         <div class="button_out"></div>
     </div>
     <script src="../static/js/home_hex.js"></script>
