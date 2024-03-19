@@ -1,6 +1,7 @@
 window.onload = function () {
     let current_player = 1; // Player 1 starts the game
     let game_over = false;
+    let current_color = "";
 
     const reset_button = document.getElementById('reset-form');
     const undo_button = document.getElementById('undo-form');
@@ -35,7 +36,41 @@ window.onload = function () {
                 .then(data => {
                     if (data.error) {
                         // handle error
-                        alert(data.error);
+                        
+                        if (hex.style.backgroundColor != 'rgb(87, 94, 121)' || hex.style.backgroundColor != 'rgb(87, 94, 121)'){
+                            current_color = hex.style.backgroundColor
+                            console.log(current_color)
+                        }
+
+                        let blac = 'rgb(255, 255, 255)'; // valeur de base
+
+                        if (current_color == 'rgb(41, 51, 92)'){
+                            blac = 'rgb(87, 94, 121)'
+                        }
+                        if (current_color == 'rgb(165, 22, 19)'){
+                            blac = 'rgb(163, 72, 70)'
+                        }
+
+
+                        let list = []
+                        
+                        cells.forEach(hexes => { // mettre les hex en grisé
+                            if (hexes.style.backgroundColor === current_color || hexes.style.backgroundColor === 'rgb(23, 18, 25)') {
+                                //alert(hexes.style.backgroundColor);
+                                list.push(hexes);
+                                hexes.style.backgroundColor = blac;
+                                
+                            }
+                        })
+                        setTimeout(() => { // enlevé le griser
+                            list.forEach(hexes => {
+                                    hexes.style.backgroundColor = current_color;
+                                
+                            })
+                        }, 500);//une demi seconde
+                        
+                        
+                        
                     } else {
                         // handle game over
                         if (data.game_over === true) {

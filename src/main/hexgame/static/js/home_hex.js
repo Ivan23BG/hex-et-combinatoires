@@ -16,9 +16,11 @@ function selectDiv(divNumber) {
     if (selectedDiv !== null) {
         // Désélectionner la div précédemment sélectionnée
         selectedDiv.classList.remove('selected');
+        selectedDiv.classList.add('clickable');
     }
     // Sélectionner la nouvelle div
     selectedDiv = document.getElementById('div' + divNumber);
+    selectedDiv.classList.remove('clickable');
     selectedDiv.classList.add('selected');
 }
 
