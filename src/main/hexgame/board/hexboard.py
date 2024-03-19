@@ -328,6 +328,35 @@ class HexBoard:
 
         return score_difference
     
+    def evaluate_voisins(self):
+
+        """
+        Elle prend en compte la connectivité des pieces:
+            - si une piece est connectée à une autre piece de la meme couleur, on augmente le score
+            - on fait la difference des scores des deux joueurs
+        """
+
+        # Initialize scores
+        player_1_score = 0
+        player_2_score = 0
+        # Evaluate the board for both players
+        for i in range(self.size):
+            for j in range(self.size):
+                voisins = self.get_neighbors((i,j), self.size, self.size)
+                if self.board[i][j] == 1: 
+                    for v in voisins:
+                        if self.board[v[0]][v[1]] == 1:
+                            player_1_score += 1
+                elif self.board[i][j] == 2:
+                    for v in voisins:
+                        if self.board[v[0]][v[1]] == 2:
+                            player_2_score += 1
+
+        # Calculate the difference in scores
+        score_difference = player_1_score - player_2_score
+        return score_difference
+    
+
     def minimax(self, depth, player, alpha, beta):
         """
         Minimax algorithm with alpha-beta pruning.
@@ -342,7 +371,7 @@ class HexBoard:
             int: The best score for the current player.
         """
         if depth == 0 or self.check_winner() is not None:
-            return self.evaluate_board()
+            return self.evaluate_voisins()
 
         if player == 1:
             best_score = float('-inf')
@@ -410,5 +439,3 @@ class HexBoard:
         return played_moves
     
     
-    def undo_move(self,row,col):
-        self.board[row][col] = 0

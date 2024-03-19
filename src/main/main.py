@@ -1,5 +1,5 @@
 # main.py
-#vous etes sur la branche de timothée
+#vous etes sur la branche de Ibrahim (Creation de plusieurs function d'evaluatoin et de les tester)
 # import the HexBoard class from hexboard.py
 from hexgame.board.hexboard import HexBoard
 
@@ -80,7 +80,7 @@ elif mode == "2":
             print("PC's turn")
 
             # make a move using minimax algorithm and get_best_move method
-            move = game_board.get_best_move(3,2)    
+            move = game_board.get_best_move(2,2)    
             game_board.place_piece(2, move)
             game_board.display_board()
 
