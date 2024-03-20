@@ -373,6 +373,38 @@ class HexBoard:
         score_difference = player_1_score - player_2_score
 
         return score_difference if player == 1 else -score_difference
+    
+    def evaluate(self, player):
+        """
+        J'essai de mettre en consideration les 2 arguments precedents
+        """
+        player_1_score = 0
+        player_2_score = 0
+
+        # Evaluate the board for both players
+        for i in range(self.size):
+            for j in range(self.size):
+                voisins = self.get_neighbors((i,j), self.size, self.size)
+                if self.board[i][j] == 1: 
+                    # Increase score based on the number of neighboring pieces for player 1
+                    for v in voisins:
+                        if self.board[v[0]][v[1]] == 1:
+                            player_1_score += 1
+                    # Increase score based on proximity to the right edge for player 1
+                    player_1_score += (self.size - j)
+                elif self.board[i][j] == 2:
+                    # Increase score based on the number of neighboring pieces for player 2
+                    for v in voisins:
+                        if self.board[v[0]][v[1]] == 2:
+                            player_2_score += 1
+                    # Increase score based on proximity to the bottom edge for player 2
+                    player_2_score += (self.size - i)
+
+        # Calculate the difference in scores
+        score_difference = player_1_score - player_2_score
+
+        # Return the score difference from the perspective of the current player
+        return score_difference if player == 1 else -score_difference
         
 
     def minimax(self, depth, player, alpha, beta):
@@ -389,7 +421,7 @@ class HexBoard:
             int: The best score for the current player.
         """
         if depth == 0 or self.check_winner() is not None:
-            return self.evaluate_proxi_edge(player)
+            return self.evaluate(player)
 
         if player == 1:
             best_score = float('-inf')
