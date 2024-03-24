@@ -21,6 +21,14 @@ def index():
 def home_hex():
     return render_template('home_hex.html')
 
+@app.route('/home_awale') # Hex options page
+def home_awale():
+    return render_template('home_awale.html')
+
+@app.route('/game_awale') # Hex options page
+def game_awale():
+    return render_template('game_awale.html')
+
 
 @app.route('/game_hex', methods=['POST']) # Hex play page
 def game_hex():

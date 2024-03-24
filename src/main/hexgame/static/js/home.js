@@ -19,3 +19,7 @@ $(window).resize(function () {
 function redirectToHex() {
     window.location.href = '/home_hex';
 }
+
+function redirectToAwale() {
+    window.location.href = '/home_awale';
+}
