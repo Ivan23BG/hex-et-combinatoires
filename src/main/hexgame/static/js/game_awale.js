@@ -5,3 +5,4 @@ function back() {
 function home() {
     window.location.href = '/home_awale'
 }
+

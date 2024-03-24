@@ -16,25 +16,23 @@ html {
     padding: 20px;
 }
 
-
 .pit {
     border: 5px solid #863339;
     border-radius: 50%;
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
     font-size: 20px;
     cursor: pointer;
-    /* margin-right: 50px; */
     width: 200px;
     height: 200px;
-    border: 1px solid #e4d4bc;
     background-color: #cc945b;
     border-radius: 70%;
-    /* display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center; */
+}
+
+.P1{
+    border: 3px solid #344792;
+}
+
+.P2{
+    border: 3px solid #BA3533;
 }
 
 .pit:hover {
