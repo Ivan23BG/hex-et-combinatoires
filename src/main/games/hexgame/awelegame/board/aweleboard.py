@@ -5,7 +5,7 @@ class InvalidPositionError(Exception):
 
 class AweleBoard:
     def __init__(self):
-        self.board = [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]
+        self.board = [4, 4, 4, 4, 4, 4, 4, 4, 4, 1, 4, 4]
         self.score_1=0
         self.score_2=0
 
@@ -38,7 +38,7 @@ class AweleBoard:
             self.board[index] += 1
 
         # Check if the last piece landed in a valid pit and can be captured
-        self.check_last_piece((move + seeds) % 12, player)  
+        self.check_last_piece((move - (seeds + 1)) % 12, player)  
 
         # Check if the game is over
         if self.game_over():
@@ -48,15 +48,18 @@ class AweleBoard:
         # If the game is not over, return None
         return None
     
-    def check_last_piece(self, move, player):
-        last_piece = self.board[move]
-        if last_piece == 2 or last_piece == 3:
-            if player == 1 and 6<= move <= 11: 
-                self.score_1 += last_piece
-                self.board[move] = 0
-            elif player == 2 and 0 <= move <= 5:
-                self.score_2 += last_piece
-                self.board[move] = 0
+    def check_last_piece(self, last_piece, player):
+        print("last_piece",last_piece)
+        print("player",player)
+        last_value = self.board[last_piece]
+        print("last_value",last_value)
+        if last_value == 2 or last_value == 3:
+            if player == 1 and 6<= last_piece <= 11: 
+                self.score_1 += last_value
+                self.board[last_piece] = 0
+            elif player == 2 and 0 <= last_piece <= 5:
+                self.score_2 += last_value
+                self.board[last_piece] = 0
             
 
     def game_over(self):
