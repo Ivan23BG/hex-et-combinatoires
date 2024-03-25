@@ -74,6 +74,8 @@ window.onload = function () {
                     }, 500);
                 } else {
                     let iamove = data.iamove
+                    var iahex = document.getElementById(iamove);
+                    iahex.style.backgroundColor = "red";
                     //let iahex = hex.getElementById(iamove);
                     console.log(iamove);
                     // add move to stack
