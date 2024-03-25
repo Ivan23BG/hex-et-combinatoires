@@ -2,6 +2,7 @@
 # Imports
 from flask import Flask, render_template, request
 from board.hexboard import HexBoard
+#from awelegame.board.aweleboard import AweleBoard
 from flask import jsonify
 
 
