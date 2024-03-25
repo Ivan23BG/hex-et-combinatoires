@@ -11,6 +11,27 @@ body {
     padding-left: 0%;
     padding-right: 0%;
 }
+.start_game1v1 {
+    user-select: none;
+    font-size: 20px;
+    color: #FE9920;
+    /*background-image: url(../images/hex.jpg);*/
+    display: flex;
+    direction: column;
+    vertical-align: middle;
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+    left: 10%;
+    top: 10%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transform: translate(-10%, 0%);
+    /*background-color: #C0C5C1;*/
+    border-radius: 10px;
+    transition: transform .1s;
+}
 
 .back_button {
     cursor: pointer;

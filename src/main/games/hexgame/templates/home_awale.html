@@ -10,7 +10,9 @@
 <body>
     <div class="back_button" onclick="back()">Home</div>
     <div class="container">
-        <div class="button_out 1v1" onclick="start1v1()">1v1</div>
+        <form action="/game_awale" method="post">
+            <div class="start_game1v1" type="button" onclick="submitForm()">Player vs Player</div>
+        </form>
         <div class="button_out"></div>
         <div class="button_out"></div>
     </div>

@@ -2,7 +2,7 @@
 # Imports
 from flask import Flask, render_template, request
 from board.hexboard import HexBoard
-#from awelegame.board.aweleboard import AweleBoard
+from awelegame.board.aweleboard import AweleBoard
 from flask import jsonify
 
 
@@ -25,11 +25,6 @@ def home_hex():
 @app.route('/home_awale') # Hex options page
 def home_awale():
     return render_template('home_awale.html')
-
-@app.route('/game_awale') # Hex options page
-def game_awale():
-    return render_template('game_awale.html')
-
 
 @app.route('/game_hex', methods=['POST']) # Hex play page
 def game_hex():
@@ -102,6 +97,39 @@ def undo_move():
     return jsonify({'result': 'Success', 'current_player': current_player})
 
 
+@app.route('/game_awale', methods=['POST']) # Hex play page
+def game_awale():
+    global game_board, current_player
+    game_board = AweleBoard()  # Create a new game board
+    game_board.display_board()  # Display the game board in the console
+    current_player = 1  # Set player 1 as the starting player
+    return render_template('game_awale.html',current_player=current_player)
+
+@app.route('/awale_place_piece', methods=['POST']) # Place a piece on the board
+def awale_place_piece():
+    global game_board, current_player
+    
+    data = request.get_json()
+    pitid = data['pitid']
+    current_player = data['current_player']
+    id = map(int, pitid)
+    
+    try:
+        if game_board is not None:
+            game_board.place_piece(id, current_player) # Try to place the piece
+            game_board.display_board() # Display the game board in the console
+            
+            winner = game_board.check_winner()
+            if winner == 1 or winner == 2:
+                return jsonify({'winner': current_player, 'game_over': True, 'current_player': current_player,'pitid':pitid})
+            current_player = 1 if current_player == 2 else 2
+
+    except Exception as e:
+        # Handle the exception here
+        error_message = str(e)  # Get the error message
+        return jsonify({'error': error_message}), 400
+    
+    return jsonify({'result': 'Success', 'current_player': current_player})
 
 if __name__ == '__main__':
     app.run(debug=True)
