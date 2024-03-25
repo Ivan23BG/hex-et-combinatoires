@@ -410,5 +410,5 @@ class HexBoard:
         return played_moves
     
     
-    def undo_move(self,row,col):
-        self.board[row][col] = 0
+    #def undo_move(self,row,col):
+    #    self.board[row][col] = 0

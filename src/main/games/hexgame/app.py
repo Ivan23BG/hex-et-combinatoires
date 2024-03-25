@@ -115,10 +115,13 @@ def hex_place_piece_ia():
             
             #IA's turn
             # make a move using minimax algorithm and get_best_move method
+            current_player = 2
+            print('2')
             move = game_board.get_best_move(3,2)    
             game_board.place_piece(2, move)
-            print('2')
             game_board.display_board()
+            
+            iamove = "hex" + str(move[0]) + "-" + str(move[1])
 
             # check if PC won
             winner = game_board.check_winner()
@@ -135,7 +138,7 @@ def hex_place_piece_ia():
         error_message = str(e)  # Get the error message
         return jsonify({'error': error_message}), 400
 
-    return jsonify({'result': 'Success', 'current_player': current_player})
+    return jsonify({'result': 'Success','iamove': iamove, 'current_player': current_player})
 
 
 

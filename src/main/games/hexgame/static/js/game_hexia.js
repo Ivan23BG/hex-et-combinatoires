@@ -57,7 +57,8 @@ window.onload = function () {
             .then(response => response.json())
             .then(data => {
                 if (data.error) {
-                    alert(data.error.message);
+                    let error = data.error
+                    alert(error);
                     // briefly change the colour of the hex cell to indicate an invalid move
                     const original_colour = this.style.backgroundColor;
                     this.style.backgroundColor = '#FF0000';
@@ -72,6 +73,9 @@ window.onload = function () {
                         this.removeAttribute('disabled');
                     }, 500);
                 } else {
+                    let iamove = data.iamove
+                    //let iahex = hex.getElementById(iamove);
+                    console.log(iamove);
                     // add move to stack
                     game_history.push(hexid);
 
