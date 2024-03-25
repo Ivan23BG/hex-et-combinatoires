@@ -9,7 +9,7 @@ html {
     display: flex;
     justify-content: space-between;
     /* align-items: center; */
-    width: 1500px;
+    width: 1000px;
     margin-bottom: 0.6px;
     background-color:#875234;
     border-radius: 20px;
@@ -21,8 +21,8 @@ html {
     border-radius: 50%;
     font-size: 20px;
     cursor: pointer;
-    width: 200px;
-    height: 200px;
+    width: 160px;
+    height: 160px;
     background-color: #cc945b;
     border-radius: 70%;
 }
