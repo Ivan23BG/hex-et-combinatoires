@@ -374,9 +374,9 @@ class HexBoard:
 
         return score_difference if player == 1 else -score_difference
     
-    def evaluate(self, player):
+    def evaluate_1(self, player):
         """
-        J'essai de mettre en consideration les 2 arguments precedents
+        J'essaide mettre en consideration les 2 arguments precedents
         """
         player_1_score = 0
         player_2_score = 0
@@ -406,6 +406,21 @@ class HexBoard:
         # Return the score difference from the perspective of the current player
         return score_difference if player == 1 else -score_difference
         
+    def evaluate_2(self, player):
+        """
+        Evaluate the board position for the given player.
+        """
+        player_score = 0
+        opponent_score = 0
+
+        # Calculate scores based on connected chains and distance to board edges
+        for chain in self.find_chains(player):
+            player_score += len(chain) ** 2  # Weighted by chain length
+        for chain in self.find_chains(3 - player):  # Opponent's chains
+            opponent_score += len(chain) ** 2
+
+        # Return the score difference from the perspective of the current player
+        return player_score - opponent_score
 
     def minimax(self, depth, player, alpha, beta):
         """
@@ -421,7 +436,7 @@ class HexBoard:
             int: The best score for the current player.
         """
         if depth == 0 or self.check_winner() is not None:
-            return self.evaluate(player)
+            return self.evaluate_2(player)
 
         if player == 1:
             best_score = float('-inf')
@@ -488,4 +503,46 @@ class HexBoard:
                     played_moves.append((row, col))
         return played_moves
     
-    
+    def find_chains(self, player):
+        """
+        Find all the chains of the current player on the board.
+
+        Args:
+            player (int): The player value (1 or 2).
+
+        Returns:
+            list: The list of chains, where each chain is a list of positions.
+        """
+        chains = []
+        visited = set()
+        for row in range(self.size):
+            for col in range(self.size):
+                position = (row, col)
+                if self.board[row][col] == player and position not in visited:
+                    chain = self.dfs(position, player, visited)
+                    chains.append(chain)
+        return chains
+
+    def dfs(self, position, player, visited):
+        """
+        Depth-first search to find a chain of the current player.
+
+        Args:
+            position (tuple): The starting position.
+            player (int): The player value (1 or 2).
+            visited (set): The set of visited positions.
+
+        Returns:
+            list: The chain of positions.
+        """
+        chain = []
+        stack = [position]
+        while stack:
+            current_position = stack.pop()
+            chain.append(current_position)
+            visited.add(current_position)
+            neighbors = self.get_neighbors((current_position[0], current_position[1]), self.size, self.size)
+            for neighbor in neighbors:
+                if self.board[neighbor[0]][neighbor[1]] == player and neighbor not in visited:
+                    stack.append(neighbor)
+        return chain 
