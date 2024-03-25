@@ -11,14 +11,14 @@ window.onload = function () {
     let game_over = false;
 
     const game_history = []; // stack to store game history
-    const pits = document.querySelectorAll('.hex'); // Get all pits
+    const pits = document.querySelectorAll('.pit'); // Get all pits
 
     pits.forEach(pit => {
-        
+
 
         pit.onclick = function () {
             const pitid = this.id;
-        
+            console.log(pitid);
             if (this.getAttribute('disabled')) {
                 return;
             }
@@ -42,10 +42,22 @@ window.onload = function () {
                     'current_player': current_player
                 }),
             })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        alert(data.error);
+                    }
+                    else {
+                        if (data.game_over === true) {
+                            // set game to over
+                            game_over = true;
+                        }
+
+                    }
+                })
+
 
         }
-    })
-
-
-
+    }
+    )
 }

@@ -112,11 +112,11 @@ def awale_place_piece():
     data = request.get_json()
     pitid = data['pitid']
     current_player = data['current_player']
-    id = map(int, pitid)
+    id = int(pitid)
     
     try:
         if game_board is not None:
-            game_board.place_piece(id, current_player) # Try to place the piece
+            game_board.make_move(id, current_player) # Try to place the piece
             game_board.display_board() # Display the game board in the console
             
             winner = game_board.check_winner()
