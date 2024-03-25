@@ -11,8 +11,8 @@ class AweleBoard:
 
     def display_board(self):
         print("\nPlayer 2 Score:", self.score_2, "\n")
-        print(self.board[11:5:-1])
         print(self.board[0:6])
+        print(self.board[11:5:-1])
         print("\nPlayer 1 Score:", self.score_1, "\n")
 
     def valid_move(self, move, player):
@@ -34,7 +34,7 @@ class AweleBoard:
 
         # Distribute the seeds
         for i in range(1, seeds + 1):
-            index = (move + i) % 12  
+            index = (move - i) % 12  
             self.board[index] += 1
 
         # Check if the last piece landed in a valid pit and can be captured

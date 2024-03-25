@@ -18,7 +18,7 @@ window.onload = function () {
 
         pit.onclick = function () {
             const pitid = this.id;
-            console.log(pitid);
+            console.log(current_player);
             if (this.getAttribute('disabled')) {
                 return;
             }
@@ -52,6 +52,7 @@ window.onload = function () {
                             // set game to over
                             game_over = true;
                         }
+                        current_player = data.current_player;
 
                     }
                 })
