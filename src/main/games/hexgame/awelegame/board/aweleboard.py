@@ -5,7 +5,7 @@ class InvalidPositionError(Exception):
 
 class AweleBoard:
     def __init__(self):
-        self.board = [4, 4, 4, 4, 4, 4, 4, 4, 4, 1, 4, 4]
+        self.board = [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]
         self.score_1=0
         self.score_2=0
 
@@ -21,6 +21,11 @@ class AweleBoard:
         else:
             return 6 <= move <= 11 and self.board[move] > 0
 
+
+    def get_board(self):
+        return self.board
+        
+    
     def make_move(self, move, player):
         # Check if the move is valid
         if not self.valid_move(move, player):

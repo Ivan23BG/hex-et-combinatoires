@@ -118,7 +118,8 @@ def awale_place_piece():
         if game_board is not None:
             game_board.make_move(id, current_player) # Try to place the piece
             game_board.display_board() # Display the game board in the console
-            
+            values = game_board.get_board()
+            #print("values",values)
             winner = game_board.check_winner()
             if winner == 1 or winner == 2:
                 return jsonify({'winner': current_player, 'game_over': True, 'current_player': current_player,'pitid':pitid})
@@ -129,7 +130,7 @@ def awale_place_piece():
         error_message = str(e)  # Get the error message
         return jsonify({'error': error_message}), 400
     
-    return jsonify({'result': 'Success', 'current_player': current_player})
+    return jsonify({'result': 'Success', 'current_player': current_player,'values':values})
 
 if __name__ == '__main__':
     app.run(debug=True)

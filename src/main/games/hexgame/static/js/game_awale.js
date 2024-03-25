@@ -48,12 +48,13 @@ window.onload = function () {
                         alert(data.error);
                     }
                     else {
+                        let values = data.values;
+                        console.log(values);
                         if (data.game_over === true) {
                             // set game to over
                             game_over = true;
                         }
                         current_player = data.current_player;
-
                     }
                 })
 
