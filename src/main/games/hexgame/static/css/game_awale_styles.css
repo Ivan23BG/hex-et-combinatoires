@@ -70,3 +70,12 @@ html {
     background-color: #08636F;
     transform: scale(1.1) translate(-10%, 0%);
 }
+
+.circle {
+    width: 20px;
+    height: 20px;
+    background-color: blue;
+    border-radius: 50%;
+    margin: 5px;
+    display: inline-block;
+}
