@@ -1,3 +1,10 @@
+* {
+    padding: 0;
+    margin: 0;
+    vertical-align: text-top;
+}
+
+
 html {
     padding: 1em;
     /*background-color: #090806;*/
@@ -17,6 +24,10 @@ html {
 }
 
 .pit {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
     border: 5px solid #863339;
     border-radius: 50%;
     font-size: 20px;
@@ -74,8 +85,7 @@ html {
 .circle {
     width: 20px;
     height: 20px;
-    background-color: blue;
+    background-color: #36151E;
     border-radius: 50%;
-    margin: 5px;
-    display: inline-block;
+    margin: 2px;
 }

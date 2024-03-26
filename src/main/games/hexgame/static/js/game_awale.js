@@ -22,7 +22,7 @@ function createCircles(pitId, n) {
 function displayCircles() {
     for (var i = 0; i < values.length; i++) {
         var pitId = (i);
-        
+
         // Vider le contenu du conteneur
         var pit = document.getElementById(pitId);
         pit.innerHTML = '';
