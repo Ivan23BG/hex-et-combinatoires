@@ -410,17 +410,36 @@ class HexBoard:
         """
         Evaluate the board position for the given player.
         """
-        player_score = 0
-        opponent_score = 0
+        player_1_score = 0
+        player_2_score = 0
 
         # Calculate scores based on connected chains and distance to board edges
         for chain in self.find_chains(player):
-            player_score += len(chain) ** 2  # Weighted by chain length
+            player_1_score += len(chain) ** 2  # Weighted by chain length
         for chain in self.find_chains(3 - player):  # Opponent's chains
-            opponent_score += len(chain) ** 2
-
+            player_2_score+= len(chain) ** 2
+        
+        #Calcule des scores basé sur la proximité des pieces par rapport aux bords du plateau
+        for i in range(self.size):
+            for j in range(self.size):
+                voisins = self.get_neighbors((i,j), self.size, self.size)
+                if self.board[i][j] == 1: 
+                    # Increase score based on the number of neighboring pieces for player 1
+                    for v in voisins:
+                        if self.board[v[0]][v[1]] == 1:
+                            player_1_score += 1
+                    # Increase score based on proximity to the right edge for player 1
+                    player_1_score += (self.size - i)
+                elif self.board[i][j] == 2:
+                    # Increase score based on the number of neighboring pieces for player 2
+                    for v in voisins:
+                        if self.board[v[0]][v[1]] == 2:
+                            player_2_score += 1
+                    # Increase score based on proximity to the bottom edge for player 2
+                    player_2_score += (self.size - j)
+        
         # Return the score difference from the perspective of the current player
-        return player_score - opponent_score
+        return player_1_score - player_2_score if player == 1 else player_2_score - player_1_score
 
     def minimax(self, depth, player, alpha, beta):
         """
