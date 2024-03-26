@@ -45,66 +45,66 @@ window.onload = function () {
                     'current_player': current_player
                 }),
             })
-            .then(response => response.json())
-            .then(data => {
-                if (data.error) {
-                    // briefly change the colour of the hex cell to indicate an invalid move
-                    const original_colour = this.style.backgroundColor;
-                    this.style.backgroundColor = '#FF0000';
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        // briefly change the colour of the hex cell to indicate an invalid move
+                        const original_colour = this.style.backgroundColor;
+                        this.style.backgroundColor = '#FF0000';
 
-                    // disable the click event on the hex cell
-                    this.setAttribute('disabled', true);
+                        // disable the click event on the hex cell
+                        this.setAttribute('disabled', true);
 
-                    setTimeout(() => {
-                        this.style.backgroundColor = original_colour;
+                        setTimeout(() => {
+                            this.style.backgroundColor = original_colour;
 
-                        // re-enable the click event on the hex cell
-                        this.removeAttribute('disabled');
-                    }, 500);
-                } else {
-                    // add move to stack
-                    game_history.push(hexid);
+                            // re-enable the click event on the hex cell
+                            this.removeAttribute('disabled');
+                        }, 500);
+                    } else {
+                        // add move to stack
+                        game_history.push(hexid);
 
-                    // check if the game is over
-                    if (data.game_over === true) {
-                        // set game to over
-                        game_over = true;
-                    }
+                        // check if the game is over
+                        if (data.game_over === true) {
+                            // set game to over
+                            game_over = true;
+                        }
 
-                    // toggle the colour of the hex cell
-                    toggle_colour(this);
+                        // toggle the colour of the hex cell
+                        toggle_colour(this);
 
-                    // toggle the current player
-                    current_player = current_player === 1 ? 2 : 1;
+                        // toggle the current player
+                        current_player = current_player === 1 ? 2 : 1;
 
-                    // toggle the hover class for all blank hex cells
-                    cells.forEach(cell => {
-                        toggle_hover(cell, current_player);
-                    });
-
-                    // display winning path
-                    if (game_over) {
-                        let k = 0;
-                        let intervalId = setInterval(() => {
-                            let hex = document.getElementById(data.hexid[k]);
-                            hex.style.backgroundColor = '#FFD700';
-                            k++;
-                            if (k === data.hexid.length) {
-                                clearInterval(intervalId);
-                            }
-                        }, 100);
+                        // toggle the hover class for all blank hex cells
                         cells.forEach(cell => {
-                            cell.classList.remove('hex-player1-hover');
-                            cell.classList.remove('hex-player2-hover');
-                            cell.setAttribute('disabled', true);
+                            toggle_hover(cell, current_player);
                         });
-                        return;
+
+                        // display winning path
+                        if (game_over) {
+                            let k = 0;
+                            let intervalId = setInterval(() => {
+                                let hex = document.getElementById(data.hexid[k]);
+                                hex.style.backgroundColor = '#FFD700';
+                                k++;
+                                if (k === data.hexid.length) {
+                                    clearInterval(intervalId);
+                                }
+                            }, 100);
+                            cells.forEach(cell => {
+                                cell.classList.remove('hex-player1-hover');
+                                cell.classList.remove('hex-player2-hover');
+                                cell.setAttribute('disabled', true);
+                            });
+                            return;
+                        }
                     }
-                }
-            })
-            .catch((error) => {
-                alert('Unknown error, should never happen, if you get this please warn your supervisor' + error);
-            })
+                })
+                .catch((error) => {
+                    alert('Unknown error, should never happen, if you get this please warn your supervisor' + error);
+                })
         }; // end of hex.onclick
     }); // end of cells.forEach
 
@@ -188,7 +188,7 @@ window.onload = function () {
 
             // toggle the current player
             current_player = current_player === 1 ? 2 : 1;
-            
+
             // toggle the hover class for each hexagon
             cells.forEach(cell => {
                 // remove the disabled attribute from the hex cell

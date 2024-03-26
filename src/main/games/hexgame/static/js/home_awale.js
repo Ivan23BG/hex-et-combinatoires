@@ -10,3 +10,5 @@ function start1v1() {
 function submitForm() {
     document.forms[0].submit();
 }
+
+//oui
