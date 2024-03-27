@@ -6,6 +6,9 @@ window.onload = function () {
     const game_history = []; // stack to store game history
     const cells = document.querySelectorAll('.hex'); // Get all hex cells
 
+    border(cells)
+
+
     cells.forEach(hex => {
         // Add initial hover class
         hex.classList.add('hex-player1-hover');
@@ -237,4 +240,13 @@ function back() {
 
 function home() {
     window.location.href = '/home_hex'
+}
+
+function border(cells){
+    var border = cells.querySelectorAll('[id$="-0"]')
+    border.forEach(hex =>{
+        var circle = document.createElement('div');
+        circle.classList.add('circle');
+        hex.appendChild(circle)
+    })
 }

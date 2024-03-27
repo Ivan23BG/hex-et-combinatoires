@@ -23,6 +23,9 @@ html {
 }
 
 .hex {
+    /*display: flex;
+    align-items: center;
+    justify-content: center;*/
     padding: 0px;
     filter: drop-shadow(-1px -1px 1px black);
     background: #B0BFB1 linear-gradient(to bottom left, rgba(0, 0, 0, 0.2), transparent, rgba(255, 255, 255, 0.3));
@@ -106,4 +109,15 @@ html {
     /*border: 3px solid green;*/
     padding: 10px;
     transform: translate(0%, -10%);
+}
+
+.circle{
+    position: absolute;
+    top: 45%;
+    left: 40%;
+    width: 10px;
+    height: 10px;
+    background-color: #BA3533;
+    border-radius: 50%;
+    /*opacity: .5;*/
 }
