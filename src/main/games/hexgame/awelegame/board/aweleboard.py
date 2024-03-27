@@ -11,8 +11,10 @@ class AweleBoard:
 
     def display_board(self):
         print("\nPlayer 2 Score:", self.score_2, "\n")
+        print(" 0  1  2  3  4  5")
         print(self.board[0:6])
         print(self.board[11:5:-1])
+        print("11  10  9  8  7  6")
         print("\nPlayer 1 Score:", self.score_1, "\n")
 
     def valid_move(self, move, player):
@@ -43,7 +45,7 @@ class AweleBoard:
             self.board[index] += 1
 
         # Check if the last piece landed in a valid pit and can be captured
-        self.check_last_piece((move - (seeds + 1)) % 12, player)  
+        self.check_last_piece((move - (seeds)) % 12, player)  
 
         # Check if the game is over
         if self.game_over():
@@ -62,20 +64,29 @@ class AweleBoard:
             if player == 1 and 6<= last_piece <= 11: 
                 self.score_1 += last_value
                 self.board[last_piece] = 0
+                #print("points player 1", self.score_1)
             elif player == 2 and 0 <= last_piece <= 5:
                 self.score_2 += last_value
                 self.board[last_piece] = 0
+                #print("points player 2", self.score_2)
             
 
     def game_over(self):
-        return sum(self.board[0:5]) == 0 or sum(self.board[6:12]) == 0
+        return 0;
+        #return sum(self.board[0:5]) == 0 or sum(self.board[6:12]) == 0
 
-    def check_winner(self):
-        player1_score = self.score_1
-        player2_score = self.score_2
-        if player1_score > player2_score:
-            return 1
-        elif player2_score > player1_score:
-            return 2
-        else:
-            return None
+
+    def check_winner(self,player):
+        if player == 1:
+            if self.board[0:6] == [0,0,0,0,0,0]:
+                self.score_2  = 48
+                return 2
+        if player == 2:
+            if self.board[5:11] == [0,0,0,0,0,0]:
+                self.score_1  = 48
+                return 1
+        if sum(self.board) <= 3:
+            if self.score_1 > self.score_2:
+                return 1
+            if self.score_2 > self.score_1:
+                return 2

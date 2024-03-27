@@ -39,7 +39,7 @@ window.onload = function () {
     let current_player = 1; // Player 1 starts the game
     let game_over = false;
     displayCircles();
-    const game_history = []; // stack to store game history
+    //const game_history = []; // stack to store game history
     const pits = document.querySelectorAll('.pit'); // Get all pits
 
     pits.forEach(pit => {
