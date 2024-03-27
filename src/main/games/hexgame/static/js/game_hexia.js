@@ -77,12 +77,15 @@ window.onload = function () {
                         // set game to over
                         game_over = true;
                     }
-
+                    
+                    //Place piece if player 1 doesn't win
                     if (!(game_over)){
                         let iamove = data.iamove;
                         var iahex = document.getElementById(iamove);
                         current_player=2;
+                        game_history.push(iamove);
                         toggle_colour(iahex);
+
                     }
 
                     //check if IA won
