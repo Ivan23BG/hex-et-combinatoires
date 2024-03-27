@@ -98,11 +98,10 @@ def hex_place_piece_ia():
     # Remove the "hex" prefix and split into row and column
     row, col = map(int, hexid[3:].split('-'))
 
-    # change the current player
+    
     try:
         if game_board is not None:
             game_board.place_piece(1, (row, col)) # Try to place the piece
-            print('1')
             game_board.display_board() # Display the game board in the console
             
             # check if the current player won
@@ -116,7 +115,6 @@ def hex_place_piece_ia():
             #IA's turn
             # make a move using minimax algorithm and get_best_move method
             current_player = 2
-            print('2')
             move = game_board.get_best_move(3,2)    
             game_board.place_piece(2, move)
             game_board.display_board()

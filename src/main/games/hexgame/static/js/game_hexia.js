@@ -20,10 +20,6 @@ window.onload = function () {
 
         // Add click event listener to each hex cell
         hex.onclick = function () {
-            // print all properties of the all hex cells
-            cells.forEach(cell => {
-                console.log(cell);
-            });
 
             if (this.getAttribute('disabled')) {
                 return;
@@ -73,24 +69,19 @@ window.onload = function () {
                         this.removeAttribute('disabled');
                     }, 500);
                 } else {
-                    let iamove = data.iamove
-                    var iahex = document.getElementById(iamove);
-                    iahex.style.backgroundColor = "#A51613";
-                    //let iahex = hex.getElementById(iamove);
-                    console.log(iamove);
-                    // add move to stack
                     game_history.push(hexid);
-
+                    toggle_colour(this);
                     // check if the game is over
                     if (data.game_over === true) {
                         // set game to over
                         game_over = true;
                     }
-
-                    // toggle the colour of the hex cell
-                    toggle_colour(this);
-
-                    // toggle the current player
+                    if (not(game_over)){
+                        let iamove = data.iamove;
+                        var iahex = document.getElementById(iamove);
+                        current_player=2;
+                        toggle_colour(iahex);
+                    }
                     
 
                     // toggle the hover class for all blank hex cells

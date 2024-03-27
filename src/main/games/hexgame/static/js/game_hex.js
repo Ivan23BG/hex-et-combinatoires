@@ -11,10 +11,6 @@ window.onload = function () {
 
         // Add click event listener to each hex cell
         hex.onclick = function () {
-            // print all properties of the all hex cells
-            cells.forEach(cell => {
-                console.log(cell);
-            });
 
             if (this.getAttribute('disabled')) {
                 return;
