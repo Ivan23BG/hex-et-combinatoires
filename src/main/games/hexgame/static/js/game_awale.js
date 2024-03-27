@@ -1,4 +1,7 @@
 let values = [4,4,4,4,4,4,4,4,4,4,4,4]
+let score_1 = 0
+let score_2 = 0
+
 
 function back() {
     window.location.href = '/';
@@ -29,6 +32,15 @@ function displayCircles() {
 
         createCircles(pitId, values[i]);
     }
+}
+
+function displayscores() {
+    var dis = document.getElementById("score1")
+    dis.innerHTML = '';
+    dis.innerHTML = 'player 1 score:' + score_1
+    var dis2 = document.getElementById("score2")
+    dis2.innerHTML = '';
+    dis2.innerHTML = 'player 2 score:' + score_2
 }
 
 
@@ -79,7 +91,9 @@ window.onload = function () {
                     else {
                         values = []
                         values = data.values;
-                        
+                        score_1 = data.score_1
+                        score_2 = data.score_2
+                        displayscores()
                         console.log(values);
                         if (data.game_over === true) {
                             // set game to over
