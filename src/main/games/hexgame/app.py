@@ -110,7 +110,7 @@ def hex_place_piece_ia():
                 short_path = game_board.shortest_path(current_player)
                 print(f"Shortest path for player {current_player}: {short_path}")
                 hexid = [f"hex{i[0]}-{i[1]}" for i in short_path]
-                return jsonify({'winner': current_player, 'game_over': True, 'current_player': current_player,'hexid':hexid})
+                return jsonify({'winner': current_player, 'game_over_player': True, 'current_player': current_player,'hexid':hexid})
             
             #IA's turn
             # make a move using minimax algorithm and get_best_move method
@@ -127,7 +127,7 @@ def hex_place_piece_ia():
                 short_path = game_board.shortest_path(current_player)
                 print(f"Shortest path for player {current_player}: {short_path}")
                 hexid = [f"hex{i[0]}-{i[1]}" for i in short_path]
-                return jsonify({'winner': current_player, 'game_over': True, 'current_player': current_player,'hexid':hexid})
+                return jsonify({'winner': current_player, 'game_over_IA': True, 'current_player': current_player,'hexid':hexid})
                 
             current_player = 1
             

@@ -73,16 +73,22 @@ window.onload = function () {
                     toggle_colour(this);
 
                     // check if player 1 won
-                    if (data.game_over === true) {
+                    if (data.game_over_player === true) {
                         // set game to over
                         game_over = true;
                     }
 
-                    if (not(game_over)){
+                    if (!(game_over)){
                         let iamove = data.iamove;
                         var iahex = document.getElementById(iamove);
                         current_player=2;
                         toggle_colour(iahex);
+                    }
+
+                    //check if IA won
+                    if (data.game_over_IA === true){
+                        // set game to over
+                        game_over = true;
                     }
                     
                     current_player = 1;
