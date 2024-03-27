@@ -85,7 +85,6 @@ window.onload = function () {
                         current_player=2;
                         game_history.push(iamove);
                         toggle_colour(iahex);
-
                     }
 
                     //check if IA won
