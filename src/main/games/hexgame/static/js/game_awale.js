@@ -13,11 +13,11 @@ function home() {
 
 
 function createCircles(pitId, n) {
-    var pit = document.getElementById(pitId);
+    var cont = document.getElementById(pitId);
     for (var i = 0; i < n; i++) {
         var circle = document.createElement("div");
         circle.classList.add("circle");
-        pit.appendChild(circle);
+        cont.appendChild(circle);
     }
 }
 
@@ -25,22 +25,27 @@ function createCircles(pitId, n) {
 function displayCircles() {
     for (var i = 0; i < values.length; i++) {
         var pitId = (i);
-
         // Vider le contenu du conteneur
-        var pit = document.getElementById(pitId);
-        pit.innerHTML = '';
-
-        createCircles(pitId, values[i]);
+        var cont = document.getElementById("c"+pitId);
+        cont.innerHTML = '';
+        createCircles("c"+pitId, values[i]);
     }
 }
 
 function displayscores() {
+    var rhole = document.getElementById("redhole")
     var dis = document.getElementById("score1")
     dis.innerHTML = '';
-    dis.innerHTML = 'player 1 score:' + score_1
+    rhole.innerHTML = '';
+    dis.innerHTML = 'player 1 score:' + score_1;
+    createCircles("redhole", score_1);//ajouter les cercles dans les compteurs
+
+    var bhole = document.getElementById("bluehole")
     var dis2 = document.getElementById("score2")
     dis2.innerHTML = '';
-    dis2.innerHTML = 'player 2 score:' + score_2
+    bhole.innerHTML = '';
+    dis2.innerHTML = 'player 2 score:' + score_2;
+    createCircles("bluehole", score_2);//ajouter les cercles dans les compteurs
 }
 
 

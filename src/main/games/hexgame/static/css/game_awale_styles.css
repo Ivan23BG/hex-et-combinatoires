@@ -19,7 +19,7 @@ html {
     width: 1000px;
     margin-bottom: 0.6px;
     background-color:#875234;
-    border-radius: 20px;
+    /*border-radius: 20px;*/
     padding: 20px;
 }
 
@@ -38,11 +38,20 @@ html {
     border-radius: 70%;
 }
 
-.P1{
-    border: 3px solid #344792;
+.cont{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 70px;
 }
 
 .P2{
+    border: 3px solid #344792;
+}
+
+.P1{
     border: 3px solid #BA3533;
 }
 
@@ -56,7 +65,6 @@ html {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    
 }
 
 .back_button {
@@ -100,9 +108,57 @@ html {
 }
 
 #score1 {
-    background-color: #344792;
+    background-color: #BA3533;
 }
 
 #score2 {
-    background-color: #BA3533;
+    background-color: #344792;
+}
+
+#redpannel{
+    border-radius: 20px 0px 0px 20px;
+}
+
+#bluepannel{
+    border-radius: 0px 20px 20px 0px;
+}
+
+#bluehole{
+    border: 3px solid #344792;
+}
+
+#redhole{
+    border: 3px solid #BA3533;
+}
+
+
+.game {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pannel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 413px;
+    width: 200px;
+    background-color: #875234;
+    border-radius: 20px;
+}
+
+.hole {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    /*border: 5px solid #863339;*/
+    border-radius: 60px;
+    font-size: 20px;
+    cursor: pointer;
+    width: 150px;
+    height: 300px;
+    background-color: #cc945b;
 }
