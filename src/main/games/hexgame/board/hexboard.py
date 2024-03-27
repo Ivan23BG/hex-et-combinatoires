@@ -396,6 +396,7 @@ class HexBoard:
                 best_score = score
                 best_move = move
         return best_move""" 
+        # return random move for IA
         if player==2:
             x = random.randint(0,self.size-1)
             y = random.randint(0,self.size-1)

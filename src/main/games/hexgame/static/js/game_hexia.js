@@ -71,11 +71,13 @@ window.onload = function () {
                 } else {
                     game_history.push(hexid);
                     toggle_colour(this);
-                    // check if the game is over
+
+                    // check if player 1 won
                     if (data.game_over === true) {
                         // set game to over
                         game_over = true;
                     }
+
                     if (not(game_over)){
                         let iamove = data.iamove;
                         var iahex = document.getElementById(iamove);
@@ -83,6 +85,7 @@ window.onload = function () {
                         toggle_colour(iahex);
                     }
                     
+                    current_player = 1;
 
                     // toggle the hover class for all blank hex cells
                     cells.forEach(cell => {
