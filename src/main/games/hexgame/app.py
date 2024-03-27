@@ -41,6 +41,16 @@ def game_hex():
     current_player = 1  # Set player 1 as the starting player
     return render_template('game_hex.html', size=size, size_px=size_px, current_player=current_player)
 
+@app.route('/game_hexia', methods=['POST']) # Hex play page
+def game_hexia():
+    global game_board, current_player, size_px, size
+    size = int(request.form['size'])
+    size_px = 120 + (44 * size)  # update the size_px used in the play.html
+    game_board = HexBoard(size)  # Create a new game board
+    game_board.display_board()  # Display the game board in the console
+    current_player = 1  # Set player 1 as the starting player
+    return render_template('game_hexia.html', size=size, size_px=size_px, current_player=current_player)
+
 
 @app.route('/hex_place_piece', methods=['POST']) # Place a piece on the board
 def hex_place_piece():
@@ -73,6 +83,63 @@ def hex_place_piece():
         return jsonify({'error': error_message}), 400
 
     return jsonify({'result': 'Success', 'current_player': current_player})
+
+
+
+
+@app.route('/hex_place_piece_ia', methods=['POST']) # Place a piece on the board
+def hex_place_piece_ia():
+    global game_board, current_player
+    
+    data = request.get_json()
+    hexid = data['hexid']
+    current_player = data['current_player']
+    
+    # Remove the "hex" prefix and split into row and column
+    row, col = map(int, hexid[3:].split('-'))
+
+    
+    try:
+        if game_board is not None:
+            game_board.place_piece(1, (row, col)) # Try to place the piece
+            game_board.display_board() # Display the game board in the console
+            
+            # check if the current player won
+            winner = game_board.check_winner()
+            if winner:
+                short_path = game_board.shortest_path(current_player)
+                print(f"Shortest path for player {current_player}: {short_path}")
+                hexid = [f"hex{i[0]}-{i[1]}" for i in short_path]
+                return jsonify({'winner': current_player, 'game_over_player': True, 'current_player': current_player,'hexid':hexid})
+            
+            #IA's turn
+            # make a move using minimax algorithm and get_best_move method
+            current_player = 2
+            move = game_board.get_best_move(3,2)    
+            game_board.place_piece(2, move)
+            game_board.display_board()
+            
+            iamove = "hex" + str(move[0]) + "-" + str(move[1])
+
+            # check if PC won
+            winner = game_board.check_winner()
+            if winner:
+                short_path = game_board.shortest_path(current_player)
+                print(f"Shortest path for player {current_player}: {short_path}")
+                hexid = [f"hex{i[0]}-{i[1]}" for i in short_path]
+                return jsonify({'winner': current_player, 'game_over_IA': True, 'current_player': current_player,'hexid':hexid,'iamove':iamove})
+                
+            current_player = 1
+            
+    except Exception as e:
+        # Handle the exception here
+        error_message = str(e)  # Get the error message
+        return jsonify({'error': error_message}), 400
+
+    return jsonify({'result': 'Success','iamove': iamove, 'current_player': current_player})
+
+
+
 
 @app.route('/undo_move', methods=['POST']) # Place a piece on the board
 def undo_move():

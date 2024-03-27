@@ -1,7 +1,15 @@
+function back() {
+    window.location.href = '/';
+}
+
+function home() {
+    window.location.href = '/home_hex'
+}
+
+
 window.onload = function () {
     let current_player = 1; // Player 1 starts the game
     let game_over = false;
-    let short_path = [];
 
     const game_history = []; // stack to store game history
     const cells = document.querySelectorAll('.hex'); // Get all hex cells
@@ -32,7 +40,7 @@ window.onload = function () {
             }
 
             // Try to play a piece
-            fetch('/hex_place_piece', {
+            fetch('/hex_place_piece_ia', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -45,6 +53,8 @@ window.onload = function () {
             .then(response => response.json())
             .then(data => {
                 if (data.error) {
+                    let error = data.error
+                    alert(error);
                     // briefly change the colour of the hex cell to indicate an invalid move
                     const original_colour = this.style.backgroundColor;
                     this.style.backgroundColor = '#FF0000';
@@ -59,22 +69,31 @@ window.onload = function () {
                         this.removeAttribute('disabled');
                     }, 500);
                 } else {
-                    // add move to stack
                     game_history.push(hexid);
+                    toggle_colour(this);
 
-                    // check if the game is over
-                    if (data.game_over === true) {
-                        //save shortest_parth
-                        short_path = data.hexid;
+                    // check if player 1 won
+                    if (data.game_over_player === true) {
                         // set game to over
                         game_over = true;
                     }
+                    
+                    //Place piece if player 1 doesn't win
+                    if (!(game_over)){
+                        let iamove = data.iamove;
+                        var iahex = document.getElementById(iamove);
+                        current_player=2;
+                        game_history.push(iamove);
+                        toggle_colour(iahex);
+                    }
 
-                    // toggle the colour of the hex cell
-                    toggle_colour(this);
-
-                    // toggle the current player
-                    current_player = current_player === 1 ? 2 : 1;
+                    //check if IA won
+                    if (data.game_over_IA === true){
+                        // set game to over
+                        game_over = true;
+                    }
+                    
+                    current_player = 1;
 
                     // toggle the hover class for all blank hex cells
                     cells.forEach(cell => {
@@ -182,38 +201,11 @@ window.onload = function () {
             hex.style.backgroundColor = '#B0BFB1';
 
             if (game_over) {
-                console.log(short_path);
-                let index = short_path.indexOf(lastMove);
-                short_path.splice(index, 1);
-                if (current_player===1){
-                    let k=0;
-                    let intervalId = setInterval(() => {
-                        let hex = document.getElementById(short_path[short_path.length-k-1]);
-                        hex.style.backgroundColor = '#A51613';
-                        k++;
-                        if (k === short_path.length) {
-                            clearInterval(intervalId);
-                        }
-                    }, 100);
-                }
-                if (current_player===2){
-                    let k=0;
-                    let intervalId = setInterval(() => {
-                        let hex = document.getElementById(short_path[short_path.length-k-1]);
-                        hex.style.backgroundColor = '#29335C';
-                        k++;
-                        if (k === short_path.length) {
-                            clearInterval(intervalId);
-                        }
-                    }, 100);
-                }
-                
                 game_over = false;
             }
 
             // toggle the current player
             current_player = current_player === 1 ? 2 : 1;
-
             
             // toggle the hover class for each hexagon
             cells.forEach(cell => {
@@ -221,16 +213,9 @@ window.onload = function () {
                 if (cell.getAttribute('disabled')) {
                     cell.removeAttribute('disabled');
                 }
-                toggle_hover(cell,current_player);
+                toggle_hover(cell);
             });
         }
     } // end of undo_move
 }
 
-function back() {
-    window.location.href = '/';
-}
-
-function home() {
-    window.location.href = '/home_hex'
-}
