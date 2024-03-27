@@ -89,3 +89,20 @@ html {
     border-radius: 50%;
     margin: 2px;
 }
+
+.score{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 30px;
+    border-radius: 10px;
+}
+
+#score1 {
+    background-color: #344792;
+}
+
+#score2 {
+    background-color: #BA3533;
+}
