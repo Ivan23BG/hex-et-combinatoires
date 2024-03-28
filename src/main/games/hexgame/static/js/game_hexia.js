@@ -10,6 +10,8 @@ function home() {
 window.onload = function () {
     let current_player = 1; // Player 1 starts the game
     let game_over = false;
+    let short_path = [];
+    let winner = 0;
 
     const game_history = []; // stack to store game history
     const cells = document.querySelectorAll('.hex'); // Get all hex cells
@@ -74,6 +76,10 @@ window.onload = function () {
 
                     // check if player 1 won
                     if (data.game_over_player === true) {
+                        //save the winner
+                        winner = 1;
+                        //save shortest_parth
+                        short_path = data.hexid;
                         // set game to over
                         game_over = true;
                     }
@@ -89,6 +95,10 @@ window.onload = function () {
 
                     //check if IA won
                     if (data.game_over_IA === true){
+                        //save the winner
+                        winner = 2;
+                        //save shortest_parth
+                        short_path = data.hexid;
                         // set game to over
                         game_over = true;
                     }
@@ -201,11 +211,40 @@ window.onload = function () {
             hex.style.backgroundColor = '#B0BFB1';
 
             if (game_over) {
+                console.log(short_path);
+                let index = short_path.indexOf(lastMove);
+                short_path.splice(index, 1);
+                if (winner===2){
+                    let k=0;
+                    let intervalId = setInterval(() => {
+                        let hex = document.getElementById(short_path[short_path.length-k-1]);
+                        hex.style.backgroundColor = '#A51613';
+                        k++;
+                        if (k === short_path.length) {
+                            clearInterval(intervalId);
+                        }
+                    }, 100);
+                    winner = 0;
+                }
+                if (winner===1){
+                    let k=0;
+                    let intervalId = setInterval(() => {
+                        let hex = document.getElementById(short_path[short_path.length-k-1]);
+                        hex.style.backgroundColor = '#29335C';
+                        k++;
+                        if (k === short_path.length) {
+                            clearInterval(intervalId);
+                        }
+                    }, 100);
+                    winner = 0;
+                }
+                
                 game_over = false;
             }
 
             // toggle the current player
             current_player = current_player === 1 ? 2 : 1;
+
             
             // toggle the hover class for each hexagon
             cells.forEach(cell => {
@@ -213,9 +252,14 @@ window.onload = function () {
                 if (cell.getAttribute('disabled')) {
                     cell.removeAttribute('disabled');
                 }
-                toggle_hover(cell);
+                toggle_hover(cell,current_player);
             });
         }
     } // end of undo_move
+
+    window.undo_move2 = function () {
+        undo_move();
+        undo_move();
+    }
 }
 
