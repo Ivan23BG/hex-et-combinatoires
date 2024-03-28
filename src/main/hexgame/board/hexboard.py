@@ -300,6 +300,64 @@ class HexBoard:
         row, col = position
         self.board[row][col] = 0 
 
+    def get_played_moves(self):
+        """
+        Get all the moves that have been played in the game.
+
+        Returns:
+            list: The list of played moves in the order they were played.
+        """
+        played_moves = []
+        for row in range(self.size):
+            for col in range(self.size):
+                if self.board[row][col] != 0:
+                    played_moves.append((row, col))
+        return played_moves
+    
+    def find_chains(self, player):
+        """
+        Find all the chains of the current player on the board.
+
+        Args:
+            player (int): The player value (1 or 2).
+
+        Returns:
+            list: The list of chains, where each chain is a list of positions.
+        """
+        chains = []
+        visited = set()
+        for row in range(self.size):
+            for col in range(self.size):
+                position = (row, col)
+                if self.board[row][col] == player and position not in visited:
+                    chain = self.dfs(position, player, visited)
+                    chains.append(chain)
+        return chains
+
+    def dfs(self, position, player, visited):
+        """
+        Depth-first search to find a chain of the current player.
+
+        Args:
+            position (tuple): The starting position.
+            player (int): The player value (1 or 2).
+            visited (set): The set of visited positions.
+
+        Returns:
+            list: The chain of positions.
+        """
+        chain = []
+        stack = [position]
+        while stack:
+            current_position = stack.pop()
+            chain.append(current_position)
+            visited.add(current_position)
+            neighbors = self.get_neighbors((current_position[0], current_position[1]), self.size, self.size)
+            for neighbor in neighbors:
+                if self.board[neighbor[0]][neighbor[1]] == player and neighbor not in visited:
+                    stack.append(neighbor)
+        return chain 
+
     def evaluate_board(self):
         """
         Evaluate the current state of the board.
@@ -433,194 +491,42 @@ class HexBoard:
         # Return the score difference from the perspective of the current player
         return score_difference if player == 1 else -score_difference
     
-    def minimax_1(self, depth, player, alpha, beta):
-        """
-        Minimax algorithm with alpha-beta pruning.
-
-        Args:
-            depth (int): The depth of the search tree.
-            player (int): The player value (1 or 2).
-            alpha (int): The alpha value for pruning.
-            beta (int): The beta value for pruning.
-
-        Returns:
-            int: The best score for the current player.
-        """
+    def minimax(self, depth, player, alpha, beta):
         if depth == 0 or self.check_winner() is not None:
-            return self.evaluate_2(player)
+            return self.evaluate_2(player), None
 
-        if player == 1:
+        if player == 1:  # Maximizing player
             best_score = float('-inf')
+            best_move = None
             possible_moves = self.get_possible_moves()
             for move in possible_moves:
                 self.place_piece(player, move)
-                score = self.minimax_1(depth - 1, 2, alpha, beta)
+                score, _ = self.minimax(depth - 1, 2, alpha, beta)
                 self.undo_move(move)
-                best_score = max(best_score, score)
+                if score > best_score:
+                    best_score = score
+                    best_move = move
                 alpha = max(alpha, best_score)
                 if beta <= alpha:
-                    break
-            return best_score
-        else:
+                    break  # Alpha-Beta pruning
+            return best_score, best_move
+        
+        else:  # Minimizing player
             best_score = float('inf')
+            best_move = None
             possible_moves = self.get_possible_moves()
             for move in possible_moves:
                 self.place_piece(player, move)
-                score = self.minimax_1(depth - 1, 1, alpha, beta)
+                score, _ = self.minimax(depth - 1, 1, alpha, beta)
                 self.undo_move(move)
-                best_score = min(best_score, score)
+                if score < best_score:
+                    best_score = score
+                    best_move = move
                 beta = min(beta, best_score)
                 if beta <= alpha:
-                    break
-            return best_score
+                    break  # Alpha-Beta pruning
+            return best_score, best_move
         
-    def get_best_move_1(self, depth, player):
-        """
-        Get the best move for the given player using the minimax algorithm.
-
-        Args:
-            depth (int): The depth of the search tree.
-            player (int): The player value (1 or 2).
-
-        Returns:
-            tuple: The best move (row, col).
-        """
-        best_score = float('-inf') if player == 1 else float('inf')
-        best_move = None
-        possible_moves = self.get_possible_moves()
-        for move in possible_moves:
-            self.place_piece(player, move)
-            score = self.minimax_1(depth - 1, 3 - player, float('-inf'), float('inf'))
-            self.undo_move(move)
-            if player == 1 and score > best_score:
-                best_score = score
-                best_move = move
-            elif player == 2 and score < best_score:
-                best_score = score
-                best_move = move
+    def get_best_move(self, depth, player):
+        _ , best_move = self.minimax(depth, player, float('-inf'), float('inf'))
         return best_move
-    
-    def minimax_2(self, depth, player, alpha, beta):
-        """
-        Minimax algorithm with alpha-beta pruning.
-
-        Args:
-            depth (int): The depth of the search tree.
-            player (int): The player value (1 or 2).
-            alpha (int): The alpha value for pruning.
-            beta (int): The beta value for pruning.
-
-        Returns:
-            int: The best score for the current player.
-        """
-        if depth == 0 or self.check_winner() is not None:
-            return self.evaluate_1(player)
-
-        if player == 2:
-            best_score = float('-inf')
-            possible_moves = self.get_possible_moves()
-            for move in possible_moves:
-                self.place_piece(player, move)
-                score = self.minimax_2(depth - 1, 1, alpha, beta)
-                self.undo_move(move)
-                best_score = max(best_score, score)
-                alpha = max(alpha, best_score)
-                if beta <= alpha:
-                    break
-            return best_score
-        else:
-            best_score = float('inf')
-            possible_moves = self.get_possible_moves()
-            for move in possible_moves:
-                self.place_piece(player, move)
-                score = self.minimax_2(depth - 1, 2, alpha, beta)
-                self.undo_move(move)
-                best_score = min(best_score, score)
-                beta = min(beta, best_score)
-                if beta <= alpha:
-                    break
-            return best_score
-        
-    def get_best_move_2(self, depth, player):
-        """
-        Get the best move for the given player using the minimax algorithm.
-
-        Args:
-            depth (int): The depth of the search tree.
-            player (int): The player value (1 or 2).
-
-        Returns:
-            tuple: The best move (row, col).
-        """
-        best_score = float('-inf') if player == 2 else float('inf')
-        best_move = None
-        possible_moves = self.get_possible_moves()
-        for move in possible_moves:
-            self.place_piece(player, move)
-            score = self.minimax_2(depth - 1, 3 - player, float('-inf'), float('inf'))
-            self.undo_move(move)
-            if player == 2 and score > best_score:
-                best_score = score
-                best_move = move
-            elif player == 1 and score < best_score:
-                best_score = score
-                best_move = move
-        return best_move
-
-    def get_played_moves(self):
-        """
-        Get all the moves that have been played in the game.
-
-        Returns:
-            list: The list of played moves in the order they were played.
-        """
-        played_moves = []
-        for row in range(self.size):
-            for col in range(self.size):
-                if self.board[row][col] != 0:
-                    played_moves.append((row, col))
-        return played_moves
-    
-    def find_chains(self, player):
-        """
-        Find all the chains of the current player on the board.
-
-        Args:
-            player (int): The player value (1 or 2).
-
-        Returns:
-            list: The list of chains, where each chain is a list of positions.
-        """
-        chains = []
-        visited = set()
-        for row in range(self.size):
-            for col in range(self.size):
-                position = (row, col)
-                if self.board[row][col] == player and position not in visited:
-                    chain = self.dfs(position, player, visited)
-                    chains.append(chain)
-        return chains
-
-    def dfs(self, position, player, visited):
-        """
-        Depth-first search to find a chain of the current player.
-
-        Args:
-            position (tuple): The starting position.
-            player (int): The player value (1 or 2).
-            visited (set): The set of visited positions.
-
-        Returns:
-            list: The chain of positions.
-        """
-        chain = []
-        stack = [position]
-        while stack:
-            current_position = stack.pop()
-            chain.append(current_position)
-            visited.add(current_position)
-            neighbors = self.get_neighbors((current_position[0], current_position[1]), self.size, self.size)
-            for neighbor in neighbors:
-                if self.board[neighbor[0]][neighbor[1]] == player and neighbor not in visited:
-                    stack.append(neighbor)
-        return chain 
