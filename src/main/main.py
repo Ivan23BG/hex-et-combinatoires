@@ -78,11 +78,18 @@ elif mode == "2":
 
             # PC's turn
             print("PC's turn")
-
+            # give me the evaluate score of each points that i can play
+            """
+            poss_mob=game_board.get_possible_moves()
+            for mov in poss_mob:
+                print("score de chaque move =",(mov,game_board.evaluate_2(2)))
+            """
             # make a move using minimax algorithm and get_best_move method
-            move = game_board.get_best_move_1(3,2)    
+
+            move = game_board.get_best_move_1(3,2)   #
             game_board.place_piece(2, move)
             game_board.display_board()
+            
 
             # check if PC won
             winner = game_board.check_winner()

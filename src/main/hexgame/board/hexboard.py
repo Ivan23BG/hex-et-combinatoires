@@ -407,41 +407,32 @@ class HexBoard:
         return score_difference if player == 1 else -score_difference
         
     def evaluate_2(self, player):
-        """
-        Evaluate the board position for the given player.
-        """
         player_1_score = 0
         player_2_score = 0
 
-        # Calculate scores based on connected chains and distance to board edges
-        for chain in self.find_chains(player):
-            player_1_score += len(chain) ** 2  # Weighted by chain length
-        for chain in self.find_chains(3 - player):  # Opponent's chains
-            player_2_score+= len(chain) ** 2
-        
-        #Calcule des scores basé sur la proximité des pieces par rapport aux bords du plateau
         for i in range(self.size):
             for j in range(self.size):
-                voisins = self.get_neighbors((i,j), self.size, self.size)
-                if self.board[i][j] == 1: 
+                if self.board[i][j] == 1:
                     # Increase score based on the number of neighboring pieces for player 1
+                    voisins = self.get_neighbors((i, j), self.size, self.size)
                     for v in voisins:
                         if self.board[v[0]][v[1]] == 1:
                             player_1_score += 1
-                    # Increase score based on proximity to the right edge for player 1
-                    player_1_score += (self.size - j)
+                    # Increase score based on proximity to the borders for player 1
+                    player_1_score += min(i, j, self.size - i, self.size - j)
                 elif self.board[i][j] == 2:
                     # Increase score based on the number of neighboring pieces for player 2
+                    voisins = self.get_neighbors((i, j), self.size, self.size)
                     for v in voisins:
                         if self.board[v[0]][v[1]] == 2:
                             player_2_score += 1
-                    # Increase score based on proximity to the bottom edge for player 2
-                    player_2_score += (self.size - i)
-        
-        score_difference= (player_1_score - player_2_score )/max(player_1_score,player_2_score)
+                    # Increase score based on proximity to the borders for player 2
+                    player_2_score += min(i, j, self.size - i, self.size - j)
+
+        score_difference = (player_1_score - player_2_score) 
         # Return the score difference from the perspective of the current player
         return score_difference if player == 1 else -score_difference
-
+    
     def minimax_1(self, depth, player, alpha, beta):
         """
         Minimax algorithm with alpha-beta pruning.
@@ -523,7 +514,7 @@ class HexBoard:
             int: The best score for the current player.
         """
         if depth == 0 or self.check_winner() is not None:
-            return self.evaluate_2(player)
+            return self.evaluate_1(player)
 
         if player == 2:
             best_score = float('-inf')
