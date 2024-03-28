@@ -224,6 +224,7 @@ window.onload = function () {
                             clearInterval(intervalId);
                         }
                     }, 100);
+                    winner = 0;
                 }
                 if (winner===1){
                     let k=0;
@@ -235,6 +236,7 @@ window.onload = function () {
                             clearInterval(intervalId);
                         }
                     }, 100);
+                    winner = 0;
                 }
                 
                 game_over = false;
