@@ -401,7 +401,7 @@ class HexBoard:
                     player_2_score += (self.size - i)
 
         # Calculate the difference in scores
-        score_difference = player_1_score - player_2_score
+        score_difference = (player_1_score - player_2_score)/max(player_2_score, player)
 
         # Return the score difference from the perspective of the current player
         return score_difference if player == 1 else -score_difference
@@ -429,19 +429,20 @@ class HexBoard:
                         if self.board[v[0]][v[1]] == 1:
                             player_1_score += 1
                     # Increase score based on proximity to the right edge for player 1
-                    player_1_score += (self.size - i)
+                    player_1_score += (self.size - j)
                 elif self.board[i][j] == 2:
                     # Increase score based on the number of neighboring pieces for player 2
                     for v in voisins:
                         if self.board[v[0]][v[1]] == 2:
                             player_2_score += 1
                     # Increase score based on proximity to the bottom edge for player 2
-                    player_2_score += (self.size - j)
+                    player_2_score += (self.size - i)
         
+        score_difference= (player_1_score - player_2_score )/max(player_1_score,player_2_score)
         # Return the score difference from the perspective of the current player
-        return player_1_score - player_2_score if player == 1 else player_2_score - player_1_score
+        return score_difference if player == 1 else -score_difference
 
-    def minimax(self, depth, player, alpha, beta):
+    def minimax_1(self, depth, player, alpha, beta):
         """
         Minimax algorithm with alpha-beta pruning.
 
@@ -462,7 +463,7 @@ class HexBoard:
             possible_moves = self.get_possible_moves()
             for move in possible_moves:
                 self.place_piece(player, move)
-                score = self.minimax(depth - 1, 2, alpha, beta)
+                score = self.minimax_1(depth - 1, 2, alpha, beta)
                 self.undo_move(move)
                 best_score = max(best_score, score)
                 alpha = max(alpha, best_score)
@@ -474,7 +475,7 @@ class HexBoard:
             possible_moves = self.get_possible_moves()
             for move in possible_moves:
                 self.place_piece(player, move)
-                score = self.minimax(depth - 1, 1, alpha, beta)
+                score = self.minimax_1(depth - 1, 1, alpha, beta)
                 self.undo_move(move)
                 best_score = min(best_score, score)
                 beta = min(beta, best_score)
@@ -482,7 +483,7 @@ class HexBoard:
                     break
             return best_score
         
-    def get_best_move(self, depth, player):
+    def get_best_move_1(self, depth, player):
         """
         Get the best move for the given player using the minimax algorithm.
 
@@ -498,7 +499,7 @@ class HexBoard:
         possible_moves = self.get_possible_moves()
         for move in possible_moves:
             self.place_piece(player, move)
-            score = self.minimax(depth - 1, 3 - player, float('-inf'), float('inf'))
+            score = self.minimax_1(depth - 1, 3 - player, float('-inf'), float('inf'))
             self.undo_move(move)
             if player == 1 and score > best_score:
                 best_score = score
@@ -508,6 +509,73 @@ class HexBoard:
                 best_move = move
         return best_move
     
+    def minimax_2(self, depth, player, alpha, beta):
+        """
+        Minimax algorithm with alpha-beta pruning.
+
+        Args:
+            depth (int): The depth of the search tree.
+            player (int): The player value (1 or 2).
+            alpha (int): The alpha value for pruning.
+            beta (int): The beta value for pruning.
+
+        Returns:
+            int: The best score for the current player.
+        """
+        if depth == 0 or self.check_winner() is not None:
+            return self.evaluate_2(player)
+
+        if player == 2:
+            best_score = float('-inf')
+            possible_moves = self.get_possible_moves()
+            for move in possible_moves:
+                self.place_piece(player, move)
+                score = self.minimax_2(depth - 1, 1, alpha, beta)
+                self.undo_move(move)
+                best_score = max(best_score, score)
+                alpha = max(alpha, best_score)
+                if beta <= alpha:
+                    break
+            return best_score
+        else:
+            best_score = float('inf')
+            possible_moves = self.get_possible_moves()
+            for move in possible_moves:
+                self.place_piece(player, move)
+                score = self.minimax_2(depth - 1, 2, alpha, beta)
+                self.undo_move(move)
+                best_score = min(best_score, score)
+                beta = min(beta, best_score)
+                if beta <= alpha:
+                    break
+            return best_score
+        
+    def get_best_move_2(self, depth, player):
+        """
+        Get the best move for the given player using the minimax algorithm.
+
+        Args:
+            depth (int): The depth of the search tree.
+            player (int): The player value (1 or 2).
+
+        Returns:
+            tuple: The best move (row, col).
+        """
+        best_score = float('-inf') if player == 2 else float('inf')
+        best_move = None
+        possible_moves = self.get_possible_moves()
+        for move in possible_moves:
+            self.place_piece(player, move)
+            score = self.minimax_2(depth - 1, 3 - player, float('-inf'), float('inf'))
+            self.undo_move(move)
+            if player == 2 and score > best_score:
+                best_score = score
+                best_move = move
+            elif player == 1 and score < best_score:
+                best_score = score
+                best_move = move
+        return best_move
+
     def get_played_moves(self):
         """
         Get all the moves that have been played in the game.

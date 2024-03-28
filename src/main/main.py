@@ -80,7 +80,7 @@ elif mode == "2":
             print("PC's turn")
 
             # make a move using minimax algorithm and get_best_move method
-            move = game_board.get_best_move(2,2)    
+            move = game_board.get_best_move_1(3,2)    
             game_board.place_piece(2, move)
             game_board.display_board()
 
