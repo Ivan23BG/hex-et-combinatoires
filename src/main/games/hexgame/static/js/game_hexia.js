@@ -10,6 +10,8 @@ function home() {
 window.onload = function () {
     let current_player = 1; // Player 1 starts the game
     let game_over = false;
+    let short_path = [];
+    let winner = 0;
 
     const game_history = []; // stack to store game history
     const cells = document.querySelectorAll('.hex'); // Get all hex cells
@@ -74,6 +76,10 @@ window.onload = function () {
 
                     // check if player 1 won
                     if (data.game_over_player === true) {
+                        //save the winner
+                        winner = 1;
+                        //save shortest_parth
+                        short_path = data.hexid;
                         // set game to over
                         game_over = true;
                     }
@@ -89,6 +95,10 @@ window.onload = function () {
 
                     //check if IA won
                     if (data.game_over_IA === true){
+                        //save the winner
+                        winner = 2;
+                        //save shortest_parth
+                        short_path = data.hexid;
                         // set game to over
                         game_over = true;
                     }
@@ -204,7 +214,7 @@ window.onload = function () {
                 console.log(short_path);
                 let index = short_path.indexOf(lastMove);
                 short_path.splice(index, 1);
-                if (current_player===1){
+                if (winner===2){
                     let k=0;
                     let intervalId = setInterval(() => {
                         let hex = document.getElementById(short_path[short_path.length-k-1]);
@@ -215,7 +225,7 @@ window.onload = function () {
                         }
                     }, 100);
                 }
-                if (current_player===2){
+                if (winner===1){
                     let k=0;
                     let intervalId = setInterval(() => {
                         let hex = document.getElementById(short_path[short_path.length-k-1]);
