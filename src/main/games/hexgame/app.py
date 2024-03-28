@@ -156,7 +156,7 @@ def undo_move():
     # change the current player
     try:
         if game_board is not None:
-            game_board.undo_move(row,col)
+            game_board.undo_move((row,col))
             game_board.display_board()
             current_player = 1 if current_player == 2 else 2
 
