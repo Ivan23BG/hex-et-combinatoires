@@ -473,19 +473,27 @@ class HexBoard:
                 if self.board[i][j] == 1:
                     # Increase score based on the number of neighboring pieces for player 1
                     voisins = self.get_neighbors((i, j), self.size, self.size)
+                    connected_pieces = 0
                     for v in voisins:
                         if self.board[v[0]][v[1]] == 1:
                             player_1_score += 1
+                            connected_pieces += 1
                     # Increase score based on proximity to the borders for player 1
                     player_1_score += min(i, j, self.size - i, self.size - j)
+                    # Increase score based on the connectivity of the chains for player 1
+                    player_1_score += connected_pieces ** 2  # or some other function of connected_pieces
                 elif self.board[i][j] == 2:
                     # Increase score based on the number of neighboring pieces for player 2
                     voisins = self.get_neighbors((i, j), self.size, self.size)
+                    connected_pieces = 0
                     for v in voisins:
                         if self.board[v[0]][v[1]] == 2:
                             player_2_score += 1
+                            connected_pieces += 1
                     # Increase score based on proximity to the borders for player 2
                     player_2_score += min(i, j, self.size - i, self.size - j)
+                    # Increase score based on the connectivity of the chains for player 2
+                    player_2_score += connected_pieces ** 2  # or some other function of connected_pieces
 
         score_difference = (player_1_score - player_2_score) 
         # Return the score difference from the perspective of the current player
