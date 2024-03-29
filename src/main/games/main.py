@@ -1,5 +1,5 @@
 # main.py
-#vous etes sur la branche de timothée
+#vous etes sur la branche de Ibrahim (Creation de plusieurs function d'evaluatoin et de les tester)
 # import the HexBoard class from hexboard.py
 from hexgame.board.hexboard import HexBoard
 
@@ -55,40 +55,80 @@ if mode == "1":
             break
 
 elif mode == "2":
+        turn= input(print("Choose which player or PC goes first (1 for player, 2 for PC): "))
+        if turn == "1":
         # player vs PC mode
-        while True:
-            # player's turn
-            print("Player's turn")
-            row = int(input("Enter the row: "))
-            col = int(input("Enter the column: "))
+            while True:
+                # player's turn
+                print("Player's turn")
+                row = int(input("Enter the row: "))
+                col = int(input("Enter the column: "))
 
-            # decrease row and col by 1 to match the index
-            row -= 1
-            col -= 1 
+                # decrease row and col by 1 to match the index
+                row -= 1
+                col -= 1 
 
-            # place the piece on the board
-            game_board.place_piece(1, (row, col))
-            game_board.display_board()
+                # place the piece on the board
+                game_board.place_piece(1, (row, col))
+                game_board.display_board()
 
-            # check if player won
-            winner = game_board.check_winner()
-            if winner:
-                print("Player", winner, "won!")
-                break
+                # check if player won
+                winner = game_board.check_winner()
+                if winner:
+                    print("Player", winner, "won!")
+                    break
 
-            # PC's turn
-            print("PC's turn")
+                # PC's turn
+                print("PC's turn")
 
-            # make a move using minimax algorithm and get_best_move method
-            move = game_board.get_best_move(3,2)    
-            game_board.place_piece(2, move)
-            game_board.display_board()
+                #give me the evaluation of the board
+                print(game_board.evaluate_2(2))
+                # make a move using minimax algorithm and get_best_move method
+                move = game_board.get_best_move(3,2)   
+                game_board.place_piece(2, move)
+                game_board.display_board()
 
-            # check if PC won
-            winner = game_board.check_winner()
-            if winner:
-                print("PC", winner, "won!")
-                break
+                # check if PC won
+                winner = game_board.check_winner()
+                if winner:
+                    print("PC", winner, "won!")
+                    break
+        elif turn == "2":
+            while True:
+                # PC's turn
+                print("PC's turn")
+
+                #give me the evaluation of the board
+                print(game_board.evaluate_2(1))
+                # make a move using minimax algorithm and get_best_move method
+                move = game_board.get_best_move(3,1)   
+                game_board.place_piece(1, move)
+                game_board.display_board()
+
+                # check if PC won
+                winner = game_board.check_winner()
+                if winner:
+                    print("PC", winner, "won!")
+                    break
+
+                # player's turn
+                print("Player's turn")
+                row = int(input("Enter the row: "))
+                col = int(input("Enter the column: "))
+
+                # decrease row and col by 1 to match the index
+                row -= 1
+                col -= 1
+
+                # place the piece on the board
+                game_board.place_piece(2, (row, col))
+                game_board.display_board()
+
+                # check if player won
+                winner = game_board.check_winner()
+                if winner:
+                    print("Player", winner, "won!")
+                    break
 
 else:
         print("Invalid game mode. Please choose either 1 or 2.")
