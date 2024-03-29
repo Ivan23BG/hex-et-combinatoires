@@ -1,6 +1,7 @@
 
 from collections import deque
 import heapq
+import random
 # HexGame/board/hex_board.py
 class InvalidPositionError(Exception):
     pass
@@ -380,6 +381,7 @@ class HexBoard:
         Returns:
             tuple: The best move (row, col).
         """
+        """
         best_score = float('-inf') if player == 1 else float('inf')
         best_move = None
         possible_moves = self.get_possible_moves()
@@ -393,7 +395,17 @@ class HexBoard:
             elif player == 2 and score < best_score:
                 best_score = score
                 best_move = move
-        return best_move
+        return best_move""" 
+        # return random move for IA
+        if player==2:
+            pastrouve=True
+            while(pastrouve):
+                x = random.randint(0,self.size-1)
+                y = random.randint(0,self.size-1)
+                if not self.is_position_occupied((x,y)):
+                    pastrouve=False
+                    return (x,y)
+            
     
     def get_played_moves(self):
         """
@@ -410,5 +422,5 @@ class HexBoard:
         return played_moves
     
     
-    def undo_move(self,row,col):
-        self.board[row][col] = 0
+    #def undo_move(self,row,col):
+    #    self.board[row][col] = 0

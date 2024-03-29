@@ -21,13 +21,13 @@
     </div>
     <div class="container">
         <form action="/game_hex" method="post">
-            <input type="hidden" id="size_input" name="size" value="">
-            <div class="start_game1v1" type="button" onclick="submitForm()">Player vs Player</div>
+            <input type="hidden" id="size_input_1" name="size" value="">
+            <div class="start_game1v1" type="button" onclick="submitForm(1)">Player vs Player</div>
         </form>
-        <form action="/game_hex" method="post">
-            <input type="hidden" id="size_input" name="size" value="">
-            <div class="start_game1v1" type="button" onclick="submitForm()">Player vs IA
-            </div>
+        
+        <form action="/game_hexia" method="post">
+            <input type="hidden" id="size_input_2" name="size" value="">
+            <div class="start_gameIA" type="button" onclick="submitForm(2)">Player vs IA</div>
         </form>
         <div class="button_out"></div>
     </div>

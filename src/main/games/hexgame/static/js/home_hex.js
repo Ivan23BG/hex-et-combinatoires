@@ -24,9 +24,14 @@ function selectDiv(divNumber) {
     selectedDiv.classList.add('selected');
 }
 
-function submitForm() {
-    document.getElementById("size_input").value = size;
-    document.forms[0].submit();
+function submitForm(formNumber) {
+    if(formNumber === 1) {
+        document.getElementById('size_input_1').value = size;
+        document.querySelector('form[action="/game_hex"]').submit();
+    } else if(formNumber === 2) {
+        document.getElementById('size_input_2').value = size;
+        document.querySelector('form[action="/game_hexia"]').submit();
+    }
 }
 
 
