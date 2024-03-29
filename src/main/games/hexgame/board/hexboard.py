@@ -329,6 +329,49 @@ class HexBoard:
 
         return score_difference
     
+    def evaluate_3(self, player):
+        # Use the same criteria as evaluate_2
+        player_1_score = 0
+        player_2_score = 0
+
+        for i in range(self.size):
+            for j in range(self.size):
+                if self.board[i][j] == 1:
+                    voisins = self.get_neighbors((i, j), self.size, self.size)
+                    connected_pieces = 0
+                    for v in voisins:
+                        if self.board[v[0]][v[1]] == 1:
+                            player_1_score += 1
+                            connected_pieces += 1
+                    player_1_score += min(i, j, self.size - i, self.size - j)
+                    player_1_score += connected_pieces ** 2
+                elif self.board[i][j] == 2:
+                    voisins = self.get_neighbors((i, j), self.size, self.size)
+                    connected_pieces = 0
+                    for v in voisins:
+                        if self.board[v[0]][v[1]] == 2:
+                            player_2_score += 1
+                            connected_pieces += 1
+                    player_2_score += min(i, j, self.size - i, self.size - j)
+                    player_2_score += connected_pieces ** 2
+
+        # Add points if the shortest path of the opposite player is longer
+        if player == 1:
+            shortest_path_2 = self.shortest_path(2)
+            if shortest_path_2 != "error":
+                player_1_score += len(shortest_path_2)
+            else:
+                player_1_score += 0  # or some other value
+        else:
+            shortest_path_1 = self.shortest_path(1)
+            if shortest_path_1 != "error":
+                player_2_score += len(shortest_path_1)
+            else:
+                player_2_score += 0  # or some other value
+
+        score_difference = (player_1_score - player_2_score)/max(player_2_score, player)
+        return score_difference if player == 1 else -score_difference
+    
     def minimax(self, depth, player, alpha, beta):
         """
         Minimax algorithm with alpha-beta pruning.
@@ -343,69 +386,44 @@ class HexBoard:
             int: The best score for the current player.
         """
         if depth == 0 or self.check_winner() is not None:
-            return self.evaluate_board()
+            return self.evaluate_3(player), None
 
-        if player == 1:
+        if player == 1: #Maximizing player
             best_score = float('-inf')
+            best_move= None
             possible_moves = self.get_possible_moves()
             for move in possible_moves:
                 self.place_piece(player, move)
-                score = self.minimax(depth - 1, 2, alpha, beta)
+                score, _ = self.minimax(depth - 1, 2, alpha, beta)
                 self.undo_move(move)
-                best_score = max(best_score, score)
+                if score > best_score:
+                    best_score = score
+                    best_move = move
                 alpha = max(alpha, best_score)
                 if beta <= alpha:
                     break
-            return best_score
-        else:
+            return best_score, best_move
+        else: #Minimizing player
             best_score = float('inf')
+            best_move = None
             possible_moves = self.get_possible_moves()
             for move in possible_moves:
                 self.place_piece(player, move)
-                score = self.minimax(depth - 1, 1, alpha, beta)
+                score, _ = self.minimax(depth - 1, 1, alpha, beta)
                 self.undo_move(move)
                 best_score = min(best_score, score)
+                if score < best_score:
+                    best_score = score
+                    best_move = move
                 beta = min(beta, best_score)
                 if beta <= alpha:
                     break
-            return best_score
+            return best_score, best_move
         
-    def get_best_move(self, depth, player):
-        """
-        Get the best move for the given player using the minimax algorithm.
-
-        Args:
-            depth (int): The depth of the search tree.
-            player (int): The player value (1 or 2).
-
-        Returns:
-            tuple: The best move (row, col).
-        """
-        """
-        best_score = float('-inf') if player == 1 else float('inf')
-        best_move = None
-        possible_moves = self.get_possible_moves()
-        for move in possible_moves:
-            self.place_piece(player, move)
-            score = self.minimax(depth - 1, 3 - player, float('-inf'), float('inf'))
-            self.undo_move(move)
-            if player == 1 and score > best_score:
-                best_score = score
-                best_move = move
-            elif player == 2 and score < best_score:
-                best_score = score
-                best_move = move
-        return best_move""" 
-        # return random move for IA
-        if player==2:
-            pastrouve=True
-            while(pastrouve):
-                x = random.randint(0,self.size-1)
-                y = random.randint(0,self.size-1)
-                if not self.is_position_occupied((x,y)):
-                    pastrouve=False
-                    return (x,y)
             
+    def get_best_move(self, depth, player):
+        _ , best_move = self.minimax(depth, player, float('-inf'), float('inf'))
+        return best_move
     
     def get_played_moves(self):
         """
