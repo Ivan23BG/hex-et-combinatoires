@@ -146,20 +146,16 @@ class AweleBoard:
         
     def try_capture(self, position, player):
         if player == 1:
-            while position >= 6:
-                if self.board[position] == 2 or self.board[position] == 3:
-                    self.score_1 += self.board[position]
-                    self.board[position] = 0
-                    position = (position + 1) % 12
-            return position
+            while position >= 6 and position < 12 and self.board[position] in [2, 3]:
+                self.score_1 += self.board[position]
+                self.board[position] = 0
+                position = (position + 1) % 12
         else:
-            while position < 6:
-                if self.board[position] == 2 or self.board[position] == 3:
-                    self.score_2 += self.board[position]
-                    self.board[position] = 0
-                    position = (position + 1) % 12
-            return position
-        return position
+            while position >= 0 and position < 6 and self.board[position] in [2, 3]:
+                self.score_2 += self.board[position]
+                self.board[position] = 0
+                position = (position + 1) % 12
+        
     
     def game_over(self):
         # Check if any player has a score of 25 or more
