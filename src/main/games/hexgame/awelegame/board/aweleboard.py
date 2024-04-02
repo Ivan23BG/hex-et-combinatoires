@@ -172,3 +172,6 @@ class AweleBoard:
         if seeds_left < 6:
             return True
         return False
+    
+    def get_scores(self):
+        return[self.score_1,self.score_2]
