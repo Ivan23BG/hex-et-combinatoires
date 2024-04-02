@@ -19,7 +19,7 @@ class AwaleBoard:
         seeds = self.board[origin]
         self.board[origin] = 0
         for i in range(seeds):
-            origin = (origin + 1) % 12
+            origin = (origin - 1) % 12
             self.board[origin] += 1
         return origin
 
@@ -27,14 +27,18 @@ class AwaleBoard:
         """
         Check if the last seed lands in a pit with 2 or 3 seeds.
         """
+        finished_capture = False
         while self.board[origin] in [2, 3] and player == 1 and 6 <= origin <= 11:
             self.score_1 += self.board[origin]
             self.board[origin] = 0
-            origin -= 1
+            origin += 1
+            finished_capture = True
+        if finished_capture:
+            return
         while self.board[origin] in [2, 3] and player == 2 and 0 <= origin <= 5:
             self.score_2 += self.board[origin]
             self.board[origin] = 0
-            origin -= 1
+            origin += 1
 
     def game_over(self):
         """
