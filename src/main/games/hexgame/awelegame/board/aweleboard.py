@@ -175,3 +175,6 @@ class AweleBoard:
     
     def get_scores(self):
         return[self.score_1,self.score_2]
+    
+    def get_board(self):
+        return self.board
