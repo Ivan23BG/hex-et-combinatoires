@@ -1,5 +1,6 @@
 var size = 11; // Valeur initiale de la variable 'size'
 var selectedDiv = div4;
+var player = 1;
 
 function changeSize(newSize) {
     size = newSize;
@@ -29,9 +30,18 @@ function submitForm(formNumber) {
         document.getElementById('size_input_1').value = size;
         document.querySelector('form[action="/game_hex"]').submit();
     } else if(formNumber === 2) {
+        document.getElementById('player').value = player;
         document.getElementById('size_input_2').value = size;
         document.querySelector('form[action="/game_hexia"]').submit();
     }
+}
+
+function player_red(){
+    player = 2;
+}
+
+function player_blue(){
+    player = 1;
 }
 
 
