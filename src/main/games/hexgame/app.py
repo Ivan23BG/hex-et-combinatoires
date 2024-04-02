@@ -183,6 +183,7 @@ def awale_place_piece():
     pitid = data['pitid']
     current_player = data['current_player']
     id = int(pitid)
+    id += 1
     
     try:
         if game_board is not None:
@@ -191,8 +192,7 @@ def awale_place_piece():
             game_board.display_board() # Display the game board in the console
             values = game_board.get_board()
             #print("values",values)
-            winner = game_board.check_winner(current_player)
-            winner = 0
+            winner = game_board.check_winner(current_player) or 0
             if winner == 1 or winner == 2:
                 return jsonify({'winner': current_player, 'game_over': True, 'current_player': current_player,'pitid':pitid})
             current_player = 1 if current_player == 2 else 2
