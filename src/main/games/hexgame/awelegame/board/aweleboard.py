@@ -178,3 +178,18 @@ class AweleBoard:
     
     def get_board(self):
         return self.board
+    
+    def check_winner(self,player):
+        if player == 1:
+            if self.board[0:6] == [0,0,0,0,0,0]:
+                self.score_2  = 48
+                return 2
+        if player == 2:
+            if self.board[5:11] == [0,0,0,0,0,0]:
+                self.score_1  = 48
+                return 1
+        if sum(self.board) <= 3:
+            if self.score_1 > self.score_2:
+                return 1
+            if self.score_2 > self.score_1:
+                return 2
