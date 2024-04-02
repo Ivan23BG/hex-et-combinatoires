@@ -12,6 +12,8 @@ game_board = None
 current_player = 1
 size = 5
 size_px = size
+playeria = 0
+IA = 0
 
 
 @app.route('/') # Home page
@@ -38,9 +40,13 @@ def game_hex():
 
 @app.route('/game_hexia', methods=['POST']) # Hex play page
 def game_hexia():
-    global game_board, current_player, size_px, size
-    player = int(request.form['player'])
-    print(player)
+    global game_board, current_player, size_px, size, player, IA
+    playeria = int(request.form['player'])
+    print(playeria)
+    if (playeria==1):
+        IA = 2
+    if (playeria==2):
+        IA = 1
     size = int(request.form['size'])
     size_px = 120 + (44 * size)  # update the size_px used in the play.html
     game_board = HexBoard(size)  # Create a new game board
@@ -87,11 +93,10 @@ def hex_place_piece():
 
 @app.route('/hex_place_piece_ia', methods=['POST']) # Place a piece on the board
 def hex_place_piece_ia():
-    global game_board, current_player
+    global game_board, playeria
     
     data = request.get_json()
     hexid = data['hexid']
-    current_player = data['current_player']
     
     # Remove the "hex" prefix and split into row and column
     row, col = map(int, hexid[3:].split('-'))
@@ -99,7 +104,7 @@ def hex_place_piece_ia():
     
     try:
         if game_board is not None:
-            game_board.place_piece(1, (row, col)) # Try to place the piece
+            game_board.place_piece(playeria, (row, col)) # Try to place the piece
             
             # check if the current player won
             winner = game_board.check_winner()
@@ -137,8 +142,10 @@ def hex_place_piece_ia():
 
     return jsonify({'result': 'Success','iamove': iamove, 'current_player': current_player})
 
-
-
+@app.route('/player_hexia', methods=['POST']) # Return
+def player_hexia():
+    global playeria
+    return jsonify({'result': 'Success','playeria': playeria})
 
 @app.route('/undo_move', methods=['POST']) # Place a piece on the board
 def undo_move():
