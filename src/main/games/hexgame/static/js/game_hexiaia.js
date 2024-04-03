@@ -26,7 +26,6 @@ window.onload = async function () {
         
         console.log("ça tourne");
         const data = await fetchIAMoveJSON(current_IA);  // Get current_IA's move
-        setTimeout(() => {
         let iamove = data.iamove;
         var iahex = document.getElementById(iamove);
         game_history.push(iamove);
@@ -45,7 +44,7 @@ window.onload = async function () {
             current_IA = current_IA === 1 ? 2 : 1;
         }
 
-        }, 1000); // End SetTimeOut
+        
     } // End of while
 
     // display winning path
