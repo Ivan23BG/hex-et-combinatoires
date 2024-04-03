@@ -641,10 +641,43 @@ class HexBoard:
 
         score_difference = (player_1_score - player_2_score) 
         return score_difference if player == 1 else -score_difference
+    
+    def get_dijkstra_score(self, player):
+        # Initialize the score to infinity
+        score = float('inf')
+
+        # Iterate over all possible start positions
+        for i in range(self.size):
+            for j in range(self.size):
+                start = (i, j)
+                if self.board[i][j] == player:
+                    # Calculate the shortest path from the start position
+                    path = self.dijkstra(player, start)
+                    if path:
+                        # If a path is found, update the score if it's less than the current score
+                        score = min(score, len(path))
+
+        # If the score is still infinity, there is no path to victory
+        if score == float('inf'):
+            return -1  # or any other value indicating no path
+
+        # Return the score
+        return score
+    
+    def eval_dijkstra(self, player):
+        # Get the Dijkstra score for the player
+        player_score = self.get_dijkstra_score(player)
+
+        # Get the Dijkstra score for the opponent
+        opponent = 1 if player == 0 else 0
+        opponent_score = self.get_dijkstra_score(opponent)
+
+        # Return the difference between the player's score and the opponent's score
+        return player_score - opponent_score
 
     def minimax(self, depth, player, alpha, beta):
         if depth == 0 or self.check_winner() is not None:
-            return self.evaluate_hex(player), None
+            return self.eval_dijkstra(player), None
 
         if player == 1:  # Maximizing player
             best_score = float('-inf')
