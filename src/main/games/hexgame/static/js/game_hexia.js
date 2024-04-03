@@ -26,6 +26,7 @@ window.onload = function () {
     .then(response => response.json())
     .then(data => {
         if (data.player===1){
+            console.log(data.player);
             player = 1;
             IA = 2;
         }
@@ -33,9 +34,6 @@ window.onload = function () {
             player = 2;
             IA = 1;
         }
-
-
-
     })
 
     cells.forEach(hex => {
@@ -94,12 +92,12 @@ window.onload = function () {
                     }, 500);
                 } else {
                     game_history.push(hexid);
-                    toggle_colour(this);
+                    toggle_colour(this,player);
 
                     // check if player 1 won
                     if (data.game_over_player === true) {
                         //save the winner
-                        winner = 1;
+                        winner = player;
                         //save shortest_parth
                         short_path = data.hexid;
                         // set game to over
@@ -110,15 +108,14 @@ window.onload = function () {
                     if (!(game_over)){
                         let iamove = data.iamove;
                         var iahex = document.getElementById(iamove);
-                        current_player=2;
                         game_history.push(iamove);
-                        toggle_colour(iahex);
+                        toggle_colour(iahex,IA);
                     }
 
                     //check if IA won
                     if (data.game_over_IA === true){
                         //save the winner
-                        winner = 2;
+                        winner = IA;
                         //save shortest_parth
                         short_path = data.hexid;
                         // set game to over
@@ -160,7 +157,7 @@ window.onload = function () {
 
     // Function to toggle the colour of the hex cell
     // also adds the hover class for the next player
-    function toggle_colour(hex) {
+    function toggle_colour(hex,current_player) {
         // check if the hex is disabled
         if (hex.getAttribute('disabled')) {
             return;
