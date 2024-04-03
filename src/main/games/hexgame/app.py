@@ -17,6 +17,10 @@ size_px = size
 player = 0
 IA = 0
 
+# IA vs IA variables
+IA1 = 1
+IA2 = 2
+current_IA = 1
 
 @app.route('/') # Home page
 def index():
@@ -56,6 +60,16 @@ def game_hexia():
     game_board.display_board()  # Display the game board in the console
     
     return render_template('game_hexia.html', size=size, size_px=size_px)
+
+
+@app.route('/game_hexiaia', methods=['POST']) # Hex play page
+def game_hexiaia():
+    global game_board, size_px, size
+    size = int(request.form['size'])
+    size_px = 120 + (44 * size)  # update the size_px used in the play.html
+    game_board = HexBoard(size)  # Create a new game board
+    game_board.display_board()  # Display the game board in the console
+    return render_template('game_hexiaia.html', size=size, size_px=size_px)
 
 
 @app.route('/hex_place_piece', methods=['POST']) # Place a piece on the board
@@ -142,6 +156,38 @@ def hex_place_piece_ia():
         
 
     return jsonify({'result': 'Success','iamove': iamove})
+
+
+@app.route('/hexiaia_place_piece', methods=['POST']) # Place a unique piece on the board
+def hexiaia_place_piece():
+    global game_board, current_IA
+
+    data = request.get_json()
+    current_IA = data['current_IA']
+
+    try:
+        if game_board is not None:
+
+            move_IA = game_board.get_best_move(3,current_IA)
+            game_board.place_piece(current_IA, move_IA) # Try to place the piece
+            iamove = "hex" + str(move_IA[0]) + "-" + str(move_IA[1])
+            
+            # check if current_IA won
+            winner = game_board.check_winner()
+            if winner:
+                short_path = game_board.shortest_path(current_IA)
+                print(f"Shortest path for player {current_IA}: {short_path}")
+                hexid = [f"hex{i[0]}-{i[1]}" for i in short_path]
+                return jsonify({'winner': current_IA, 'game_over_IA': True,'hexid':hexid,'iamove':iamove})
+            
+    except Exception as e:
+        # Handle the exception here
+        error_message = str(e)  # Get the error message
+        game_board.display_board()
+        return jsonify({'error': error_message}), 400
+        
+
+    return jsonify({'result': 'Success','iamove': iamove,'game_over_IA': False})
 
 @app.route('/players_hexia', methods=['POST']) # Return player's and IA's values
 def players_hexia():
