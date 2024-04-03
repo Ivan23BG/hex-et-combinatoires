@@ -12,64 +12,47 @@ async function fetchPlayersJSON() {
     return data;
 }
 
-window.onload = function () {
+async function fetchFirstMoveJSON() {
+    const response = await fetch('/first_move_IA',{method:'POST',headers:{'Content-Type': 'application/json'}});
+    const data = response.json();
+    return data;
+}
+
+
+window.onload = async function () {
     let player = 0; // Player default value 
     let IA = 0; // IA default value 
 
     let game_over = false;
     let short_path = [];
     let winner = 0;
-    let first = true;
 
     const game_history = []; // stack to store game history
     const cells = document.querySelectorAll('.hex'); // Get all hex cells
     
-    cells.forEach(hex => {
+    // Initialise correct player's and IA's values 
+    const data1 = await fetchPlayersJSON() 
+    player = data1.player;
+    IA = data1.IA;
+    console.log("player",player,"IA",IA);
+    
+    if (player===2){
+        const data2 = await fetchFirstMoveJSON();
+        let iamove = data2.iamove;
+        var iahex = document.getElementById(iamove);
+        game_history.push(iamove);
+        toggle_colour(iahex,IA);
+    }
+        
+    
+    cells.forEach(hex => {    
         // Add correct hover class for each cell
-        if (first){
-             
-            fetchPlayersJSON().then(data => {
-                player = data.player;
-                IA = data.IA;
-                console.log(player,IA);
-            });
-
-            fetch('/players_hexia', { // get IA's and player's values
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                }
-            })
-            .then(response => response.json())
-            .then(data => {
-                
-            })
-        }
-        first = false;
-        console.log("second");
-        console.log("player",player);
         if (player===1){
             hex.classList.add('hex-player1-hover');
-            console.log("oui1");
         }
         if (player===2){
-            hex.classList.add('hex-player2-hover');
-            console.log("oui2");
-
-            fetch('/first_move_IA', { // Get first move when IA is Blue
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                }
-            })
-            .then(response => response.json())
-            .then(data =>{
-                let iamove = data.iamove;
-                var iahex = document.getElementById(iamove);
-                game_history.push(iamove);
-                toggle_colour(iahex,IA);
-            })
-        } // End of first move IA
+            hex.classList.add('hex-player2-hover');            
+        }
         
         // Add click event listener to each hex cell
         hex.onclick = function () {
