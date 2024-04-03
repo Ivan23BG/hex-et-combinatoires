@@ -64,13 +64,12 @@ def game_hexia():
 
 @app.route('/game_hexiaia', methods=['POST']) # Hex play page
 def game_hexiaia():
-    global game_board,IA1, IA2, size_px, size
+    global game_board, size_px, size
     size = int(request.form['size'])
     size_px = 120 + (44 * size)  # update the size_px used in the play.html
     game_board = HexBoard(size)  # Create a new game board
     game_board.display_board()  # Display the game board in the console
-    current_player = 1  # Set player 1 as the starting player
-    return render_template('game_hexiaia.html', size=size, size_px=size_px, current_player=current_player)
+    return render_template('game_hexiaia.html', size=size, size_px=size_px)
 
 
 @app.route('/hex_place_piece', methods=['POST']) # Place a piece on the board
