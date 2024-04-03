@@ -207,7 +207,7 @@ window.onload = async function () {
     // Function to undo the last move
     window.undo_move = function () {
         // pop last element in stack and set it to default colour
-        if (game_history.length >= 2) {
+        if (game_history.length >=2) {
 
             const lastMove = game_history.pop();
             fetch('/undo_move', {
@@ -253,7 +253,22 @@ window.onload = async function () {
                 }
                 game_over = false;
             }
-            
+        }
+        if (player===1 && game_history.length===1){
+            const lastMove = game_history.pop();
+            fetch('/undo_move', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    'hexid': lastMove
+                }),
+            })
+
+            const hex = document.getElementById(lastMove);
+            hex.style.backgroundColor = '#B0BFB1';
+        }    
             // toggle the hover class for each hexagon
             cells.forEach(cell => {
                 // remove the disabled attribute from the hex cell
@@ -266,9 +281,8 @@ window.onload = async function () {
                 else{
                     cell.classList.add('hex-player2-hover');
                 }
-                
             });
-        }
+        
     } // end of undo_move
 
     window.undo_move2 = function () {
@@ -282,7 +296,6 @@ window.onload = async function () {
             undo_move();
             undo_move();
         }
-        
     }
 }
 
