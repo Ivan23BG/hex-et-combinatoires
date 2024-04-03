@@ -179,6 +179,10 @@ body {
     transform: scale(1.1) translate(-10%, 0%);
 }
 
+.start_gameIA:hover {
+    transform: scale(1.1) translate(-10%, 0%);
+}
+
 .btn {
     background-color: blue;
     height: 50px;
