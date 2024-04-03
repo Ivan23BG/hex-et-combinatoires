@@ -20,6 +20,7 @@ IA = 0
 # IA vs IA variables
 IA1 = 1
 IA2 = 2
+current_IA = 1
 
 @app.route('/') # Home page
 def index():
@@ -158,43 +159,27 @@ def hex_place_piece_ia():
     return jsonify({'result': 'Success','iamove': iamove})
 
 
-@app.route('/hexiaia_place_piece', methods=['POST']) # Place a piece on the board
+@app.route('/hexiaia_place_piece', methods=['POST']) # Place a unique piece on the board
 def hexiaia_place_piece():
-    global game_board, IA1, IA2
+    global game_board, current_IA
+
+    data = request.get_json()
+    current_IA = data['current_IA']
 
     try:
         if game_board is not None:
 
-            #IA1's turn
-            # make a move using minimax algorithm and get_best_move method (actualy random move)
-            move_IA1 = game_board.get_best_move(3,IA1)
-            game_board.place_piece(IA1, move_IA1) # Try to place the piece
-            ia1move = "hex" + str(move_IA1[0]) + "-" + str(move_IA1[1])
+            move_IA = game_board.get_best_move(3,current_IA)
+            game_board.place_piece(current_IA, move_IA) # Try to place the piece
+            iamove = "hex" + str(move_IA[0]) + "-" + str(move_IA[1])
             
-            # check if IA1 won
+            # check if current_IA won
             winner = game_board.check_winner()
             if winner:
-                short_path = game_board.shortest_path(IA1)
-                print(f"Shortest path for player {IA1}: {short_path}")
+                short_path = game_board.shortest_path(current_IA)
+                print(f"Shortest path for player {current_IA}: {short_path}")
                 hexid = [f"hex{i[0]}-{i[1]}" for i in short_path]
-                return jsonify({'winner': IA1, 'game_over_IA1': True,'hexid':hexid})
-            
-
-            #IA2's turn
-            # make a move using minimax algorithm and get_best_move method (actualy random move)
-            move = game_board.get_best_move(3,'IA')    
-            game_board.place_piece(IA, move)
-            
-            
-            iamove = "hex" + str(move[0]) + "-" + str(move[1])
-
-            # check if IA won
-            winner = game_board.check_winner()
-            if winner:
-                short_path = game_board.shortest_path(IA)
-                print(f"Shortest path for player {IA}: {short_path}")
-                hexid = [f"hex{i[0]}-{i[1]}" for i in short_path]
-                return jsonify({'winner': IA, 'game_over_IA': True,'hexid':hexid,'iamove':iamove})
+                return jsonify({'winner': current_IA, 'game_over_IA': True,'hexid':hexid,'iamove':iamove})
             
     except Exception as e:
         # Handle the exception here
@@ -203,7 +188,7 @@ def hexiaia_place_piece():
         return jsonify({'error': error_message}), 400
         
 
-    return jsonify({'result': 'Success','iamove': iamove})
+    return jsonify({'result': 'Success','iamove': iamove,'game_over_IA': False})
 
 @app.route('/players_hexia', methods=['POST']) # Return player's and IA's values
 def players_hexia():

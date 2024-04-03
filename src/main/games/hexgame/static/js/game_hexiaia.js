@@ -6,10 +6,13 @@ function home() {
     window.location.href = '/home_hex'
 }
 
+async function fetchIAMoveJSON(current_IA) {
+    const response = await fetch('/hexiaia_place_piece', {method: 'POST',headers: {'Content-Type': 'application/json'},body: JSON.stringify({'current_IA': current_IA})});
+    const data = response.json();
+    return data;
+}
 
 window.onload = async function () {
-    let IA1 = 1; 
-    let IA2 = 2; 
     let current_IA = 1;
 
     let game_over = false;
@@ -17,62 +20,31 @@ window.onload = async function () {
     let winner = 0;
 
     const game_history = []; // stack to store game_history
-        
-        
-        
+    const cells = document.querySelectorAll('.hex'); // Get all hex cells    
+    let k = 1;
+    while(winner===0){
+        console.log("ça tourne");
+        const data = await fetchIAMoveJSON(current_IA);
+        let iamove = data.iamove;
+        var iahex = document.getElementById(iamove);
+        game_history.push(iamove);
+        toggle_colour(iahex,current_IA);
 
-        if (this.getAttribute('disabled')) {
-            return;
+        // check if current_IA won
+        if (data.game_over_IA === true) {
+            //save the winner
+            winner = current_IA;
+            //save shortest_parth
+            short_path = data.hexid;
+            // set game to over
+            game_over = true;
         }
-
-        const hexid = this.id;
-
-        // Check if the game is over
-        if (game_over) {
-            // remove all hovers
-            cells.forEach(cell => {
-                cell.classList.remove('hex-player1-hover');
-                cell.classList.remove('hex-player2-hover');
-                cell.setAttribute('disabled', true);
-            });
-            // stop game immediately if game is over
-            return;
+        else{
+            current_IA = current_IA === 1 ? 2 : 1;
+            k+=1;
         }
-
-        while(winner===0){
-            fetch('/hexiaia_place_piece', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    'current_IA': current_IA
-                }),
-            })
-            .then(response => response.json())
-            .then(data => {
-                let iamove = data.iamove;
-                    var iahex = document.getElementById(iamove);
-                    game_history.push(iamove);
-                    toggle_colour(iahex,IA);
-
-                // check if current_IA won
-                if (data.game_over_IA === true) {
-                    //save the winner
-                    winner = current_IA;
-                    //save shortest_parth
-                    short_path = data.hexid;
-                    // set game to over
-                    game_over = true;
-                }
-                else{
-                    current_IA = current_IA === 1 ? 2 : 1;
-                }
-            })    
-            .catch((error) => {
-                alert('Unknown error, should never happen, if you get this please warn your supervisor' + error);
-            })
-        }
+        k+=1;
+    }
 
     // Function to toggle the colour of the hex cell
     // also adds the hover class for the next player
