@@ -154,7 +154,7 @@ def first_move_IA():
     move = game_board.get_best_move(3,IA)    
     game_board.place_piece(IA, move)
     iamove = "hex" + str(move[0]) + "-" + str(move[1])
-    return jsonify({'result': Success,'hexid':hexid,'iamove':iamove})
+    return jsonify({'result': Success,'iamove':iamove})
 
 @app.route('/undo_move', methods=['POST']) # Undo last move on the board
 def undo_move():

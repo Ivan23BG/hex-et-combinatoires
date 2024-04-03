@@ -6,37 +6,70 @@ function home() {
     window.location.href = '/home_hex'
 }
 
+async function fetchPlayersJSON() {
+    const response = await fetch('/players_hexia',{method:'POST',headers:{'Content-Type': 'application/json'}});
+    const data = response.json();
+    return data;
+}
 
 window.onload = function () {
     let player = 0; // Player default value 
     let IA = 0; // IA default value 
+
     let game_over = false;
     let short_path = [];
     let winner = 0;
-    let winner_color = '';
+    let first = true;
 
     const game_history = []; // stack to store game history
     const cells = document.querySelectorAll('.hex'); // Get all hex cells
-
-    fetch('/players_hexia', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        }
-    })
-    .then(response => response.json())
-    .then(data => {
-        player = data.player;
-        IA = data.IA;
-    })
+    
     cells.forEach(hex => {
-        // Add initial hover class
+        // Add correct hover class for each cell
+        if (first){
+             
+            fetchPlayersJSON().then(data => {
+                player = data.player;
+                IA = data.IA;
+                console.log(player,IA);
+            });
+
+            fetch('/players_hexia', { // get IA's and player's values
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                
+            })
+        }
+        first = false;
+        console.log("second");
+        console.log("player",player);
         if (player===1){
             hex.classList.add('hex-player1-hover');
+            console.log("oui1");
         }
         if (player===2){
             hex.classList.add('hex-player2-hover');
-        }
+            console.log("oui2");
+
+            fetch('/first_move_IA', { // Get first move when IA is Blue
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            })
+            .then(response => response.json())
+            .then(data =>{
+                let iamove = data.iamove;
+                var iahex = document.getElementById(iamove);
+                game_history.push(iamove);
+                toggle_colour(iahex,IA);
+            })
+        } // End of first move IA
         
         // Add click event listener to each hex cell
         hex.onclick = function () {
@@ -237,7 +270,6 @@ window.onload = function () {
                     }, 100);
                     winner = 0;
                 }
-                
                 game_over = false;
             }
             
@@ -247,7 +279,6 @@ window.onload = function () {
                 if (cell.getAttribute('disabled')) {
                     cell.removeAttribute('disabled');
                 }
-                toggle_hover(cell,current_player);
             });
         }
     } // end of undo_move
