@@ -207,7 +207,7 @@ window.onload = async function () {
     // Function to undo the last move
     window.undo_move = function () {
         // pop last element in stack and set it to default colour
-        if (game_history.length > 0) {
+        if (game_history.length >= 2) {
 
             const lastMove = game_history.pop();
             fetch('/undo_move', {
@@ -260,16 +260,26 @@ window.onload = async function () {
                 if (cell.getAttribute('disabled')) {
                     cell.removeAttribute('disabled');
                 }
+                if (player===1){
+                    cell.classList.add('hex-player1-hover');
+                }
+                else{
+                    cell.classList.add('hex-player2-hover');
+                }
+                
             });
         }
     } // end of undo_move
 
     window.undo_move2 = function () {
-        if (player===1){
-            undo_move();
+        if (player===1 && winner===1){
             undo_move();
         }
-        else{
+        else if (player===2 && winner===2){
+            undo_move();
+        }
+        else {
+            undo_move();
             undo_move();
         }
         
