@@ -96,7 +96,7 @@ def hex_place_piece():
 
 @app.route('/hex_place_piece_ia', methods=['POST']) # Place a piece on the board
 def hex_place_piece_ia():
-    global game_board, player
+    global game_board, player, IA 
     
     data = request.get_json()
     hexid = data['hexid']
@@ -112,27 +112,27 @@ def hex_place_piece_ia():
             # check if the current player won
             winner = game_board.check_winner()
             if winner:
-                short_path = game_board.shortest_path(current_player)
-                print(f"Shortest path for player {current_player}: {short_path}")
+                short_path = game_board.shortest_path(player)
+                print(f"Shortest path for player {player}: {short_path}")
                 hexid = [f"hex{i[0]}-{i[1]}" for i in short_path]
-                return jsonify({'winner': current_player, 'game_over_player': True, 'current_player': current_player,'hexid':hexid})
+                return jsonify({'winner': player, 'game_over_player': True,'hexid':hexid})
             
+
             #IA's turn
             # make a move using minimax algorithm and get_best_move method
-            current_player = 2
-            move = game_board.get_best_move(3,2)    
-            game_board.place_piece(2, move)
+            move = game_board.get_best_move(3,'IA')    
+            game_board.place_piece(IA, move)
             
             
             iamove = "hex" + str(move[0]) + "-" + str(move[1])
 
-            # check if PC won
+            # check if IA won
             winner = game_board.check_winner()
             if winner:
-                short_path = game_board.shortest_path(current_player)
-                print(f"Shortest path for player {current_player}: {short_path}")
+                short_path = game_board.shortest_path(IA)
+                print(f"Shortest path for player {IA}: {short_path}")
                 hexid = [f"hex{i[0]}-{i[1]}" for i in short_path]
-                return jsonify({'winner': current_player, 'game_over_IA': True, 'current_player': current_player,'hexid':hexid,'iamove':iamove})
+                return jsonify({'winner': IA, 'game_over_IA': True,'hexid':hexid,'iamove':iamove})
                 
             current_player = 1
             

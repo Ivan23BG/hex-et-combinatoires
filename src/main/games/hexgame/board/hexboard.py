@@ -397,14 +397,14 @@ class HexBoard:
                 best_move = move
         return best_move""" 
         # return random move for IA
-        if player==2:
-            pastrouve=True
-            while(pastrouve):
-                x = random.randint(0,self.size-1)
-                y = random.randint(0,self.size-1)
-                if not self.is_position_occupied((x,y)):
-                    pastrouve=False
-                    return (x,y)
+        # if player==2:
+        pastrouve=True
+        while(pastrouve):
+            x = random.randint(0,self.size-1)
+            y = random.randint(0,self.size-1)
+            if not self.is_position_occupied((x,y)):
+                pastrouve=False
+                return (x,y)
             
     
     def get_played_moves(self):
