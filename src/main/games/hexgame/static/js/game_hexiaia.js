@@ -22,77 +22,62 @@ window.onload = async function () {
     const game_history = []; // stack to store game_history
     const cells = document.querySelectorAll('.hex'); // Get all hex cells    
 
-    while(winner===0){
+    let jeu = setInterval(async () => {  // Boucle du jeu
         
-        console.log("ça tourne");
         const data = await fetchIAMoveJSON(current_IA);  // Get current_IA's move
         let iamove = data.iamove;
         var iahex = document.getElementById(iamove);
+
         game_history.push(iamove);
         toggle_colour(iahex,current_IA);
 
         // check if current_IA won
         if (data.game_over_IA === true) {
-            //save the winner
             winner = current_IA;
-            //save shortest_parth
             short_path = data.hexid;
-            // set game to over
             game_over = true;
-        }
-        else{
-            current_IA = current_IA === 1 ? 2 : 1;
-        }
+            
+            // Stop the game
+            clearInterval(jeu);
 
-        
-    } // End of while
-
-    // display winning path
-    if (game_over) {
-        let k = 0;
-        let intervalId = setInterval(() => {
+            // Display winning path when game is over
+            let k = 0;
+            let intervalId = setInterval(() => {
             let hex = document.getElementById(short_path[k]);
             hex.style.backgroundColor = '#FFD700';
             k++;
             if (k === short_path.length) {
                 clearInterval(intervalId);
             }
-        }, 100);
-        return;
-    }
+            }, 100);
+            return;
+        }
+        else{
+            current_IA = current_IA === 1 ? 2 : 1;
+        }
+    }, 50); // Game speed = 50
+    // End of jeu
     
 
     // Function to toggle the colour of the hex cell
-    // also adds the hover class for the next player
     function toggle_colour(hex,current_player) {
         
         if (current_player === 1) {
             // change the colour of the hex cell
             hex.style.backgroundColor = '#29335C';
-            // remove the hover class for the hex cell
-            hex.classList.remove('hex-player1-hover');
-            hex.classList.remove('hex-player2-hover');
-            // deactive the hex
-            // hex.setAttribute('disabled', true);
         } else {
             // change the colour of the hex cell
             hex.style.backgroundColor = '#A51613';
-            // remove the hover class for the hex cell
-            hex.classList.remove('hex-player1-hover');
-            hex.classList.remove('hex-player2-hover');
-            // deactive the hex
-            // hex.setAttribute('disabled', true);
         }
     }
 
+    // Reset game 
     window.reset_board = function () {
-        // reset cells to initial state
         cells.forEach(hex => {
             // reset the colour of all hex cells
             hex.style.backgroundColor = '#B0BFB1';
         });
         game_over = false;
-
     } // end of reset_board
     
 }
