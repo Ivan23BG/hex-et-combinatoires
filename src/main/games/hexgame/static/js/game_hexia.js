@@ -6,7 +6,7 @@ function home() {
     window.location.href = '/home_hex'
 }
 
-async function fetchPlayersJSON() {
+async function fetchPlayersJSON() { 
     const response = await fetch('/players_hexia',{method:'POST',headers:{'Content-Type': 'application/json'}});
     const data = response.json();
     return data;
@@ -17,7 +17,6 @@ async function fetchFirstMoveJSON() {
     const data = response.json();
     return data;
 }
-
 
 window.onload = async function () {
     let player = 0; // Player default value 
@@ -36,6 +35,7 @@ window.onload = async function () {
     IA = data1.IA;
     console.log("player",player,"IA",IA);
     
+    // If IA is playing Blue, she play first move
     if (player===2){
         const data2 = await fetchFirstMoveJSON();
         let iamove = data2.iamove;
@@ -195,11 +195,9 @@ window.onload = async function () {
             // reset the hover class for all hex cells
             if (player===1){
                 hex.classList.add('hex-player1-hover');
-                hex.classList.remove('hex-player2-hover');
             }
             else{
                 hex.classList.add('hex-player2-hover');
-                hex.classList.remove('hex-player1-hover');
             }
         });
         game_over = false;
@@ -267,8 +265,14 @@ window.onload = async function () {
     } // end of undo_move
 
     window.undo_move2 = function () {
-        undo_move();
-        undo_move();
+        if (player===1){
+            undo_move();
+            undo_move();
+        }
+        else{
+            undo_move();
+        }
+        
     }
 }
 
