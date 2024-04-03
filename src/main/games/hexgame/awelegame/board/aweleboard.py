@@ -74,7 +74,7 @@ class AweleBoard:
                 for i in range(12):
                     self.score_1 += self.board[i]
                     self.board[i] = 0
-            return True
+            return NourrirError("Player can't feed the opponent")
         
         # Sow the seeds
         position = self.sow_seeds(position, player)

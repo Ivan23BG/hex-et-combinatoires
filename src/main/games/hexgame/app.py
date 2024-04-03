@@ -191,8 +191,9 @@ def awale_place_piece():
             game_board.display_board() # Display the game board in the console
             values = game_board.get_board()
             #print("values",values)
-            winner = game_board.check_winner(current_player) or 0
-            if winner == 1 or winner == 2:
+            winner = game_board.game_over()
+            if winner:
+                winner = 2 - (game_board.score_1 > game_board.score_2)
                 return jsonify({'winner': current_player, 'game_over': True, 'current_player': current_player,'pitid':pitid})
             current_player = 1 if current_player == 2 else 2
         except Exception as e:
