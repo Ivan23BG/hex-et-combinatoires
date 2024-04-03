@@ -158,14 +158,14 @@ class AweleBoard:
         while self.board[origin] in [2, 3] and player == 1 and 6 <= origin <= 11:
             self.score_1 += self.board[origin]
             self.board[origin] = 0
-            origin += 1
+            origin = (origin + 1) % 12
             finished_capture = True
         if finished_capture:
             return True
         while self.board[origin] in [2, 3] and player == 2 and 0 <= origin <= 5:
             self.score_2 += self.board[origin]
             self.board[origin] = 0
-            origin += 1
+            origin = (origin + 1) % 12
             finished_capture = True
         return finished_capture
     

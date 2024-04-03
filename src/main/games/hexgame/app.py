@@ -184,8 +184,8 @@ def awale_place_piece():
     current_player = data['current_player']
     id = int(pitid)
     
-    try:
-        if game_board is not None:
+    if game_board is not None:
+        try:
             game_board.make_move(id, current_player) # Try to place the piece
             scores = game_board.get_scores()
             game_board.display_board() # Display the game board in the console
@@ -195,12 +195,10 @@ def awale_place_piece():
             if winner == 1 or winner == 2:
                 return jsonify({'winner': current_player, 'game_over': True, 'current_player': current_player,'pitid':pitid})
             current_player = 1 if current_player == 2 else 2
-
-    except Exception as e:
-        # Handle the exception here
-        error_message = str(e)  # Get the error message
-        return jsonify({'error': error_message}), 400
-    
+        except Exception as e:
+            # Handle the exception here
+            error_message = str(e)  # Get the error message
+            return jsonify({'error': error_message}), 400
     return jsonify({'result': 'Success', 'current_player': current_player,'values':values,'score_1':scores[0],'score_2':scores[1]})
 
 if __name__ == '__main__':
