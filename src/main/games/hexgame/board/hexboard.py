@@ -520,7 +520,7 @@ class HexBoard:
                     connected_pieces = 0
                     for v in voisins:
                         if self.board[v[0]][v[1]] == 1:
-                            player_1_score += 1
+                            player_1_score += 2 
                             connected_pieces += 1
                     player_1_score += min(i, j, self.size - i, self.size - j)
                     player_1_score += connected_pieces ** 2
@@ -529,7 +529,7 @@ class HexBoard:
                     connected_pieces = 0
                     for v in voisins:
                         if self.board[v[0]][v[1]] == 2:
-                            player_2_score += 1
+                            player_2_score += 2
                             connected_pieces += 1
                     player_2_score += min(i, j, self.size - i, self.size - j)
                     player_2_score += connected_pieces ** 2
