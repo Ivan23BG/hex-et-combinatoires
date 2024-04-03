@@ -9,8 +9,9 @@ def play_awele_game():
     while not board.game_over():
         #Le tour du joueur 1
         print("Player 1's turn")
-        move = int(input("Enter your move: "))        
-        if not board.make_move(move, 1):
+        move = int(input("Enter your move: "))
+        winner = board.make_move(move, 1)
+        if not winner:
             board.display_board()
             # show scores
             print("Player 1:", board.score_1)
@@ -24,8 +25,9 @@ def play_awele_game():
         
         #Le tour du joueur 2
         print("Player 2's turn")
-        move = int(input("Enter your move: "))        
-        if not board.make_move(move, 2):
+        move = int(input("Enter your move: "))
+        winner = board.make_move(move, 2)
+        if not winner:
             board.display_board()
             # show scores
             print("Player 1:", board.score_1)
