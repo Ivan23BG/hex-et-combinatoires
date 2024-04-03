@@ -183,7 +183,6 @@ def awale_place_piece():
     pitid = data['pitid']
     current_player = data['current_player']
     id = int(pitid)
-    id += 1
     
     try:
         if game_board is not None:
