@@ -21,10 +21,12 @@ window.onload = async function () {
 
     const game_history = []; // stack to store game_history
     const cells = document.querySelectorAll('.hex'); // Get all hex cells    
-    let k = 1;
+
     while(winner===0){
+        
         console.log("ça tourne");
-        const data = await fetchIAMoveJSON(current_IA);
+        const data = await fetchIAMoveJSON(current_IA);  // Get current_IA's move
+        setTimeout(() => {
         let iamove = data.iamove;
         var iahex = document.getElementById(iamove);
         game_history.push(iamove);
@@ -41,18 +43,30 @@ window.onload = async function () {
         }
         else{
             current_IA = current_IA === 1 ? 2 : 1;
-            k+=1;
         }
-        k+=1;
+
+        }, 1000); // End SetTimeOut
+    } // End of while
+
+    // display winning path
+    if (game_over) {
+        let k = 0;
+        let intervalId = setInterval(() => {
+            let hex = document.getElementById(short_path[k]);
+            hex.style.backgroundColor = '#FFD700';
+            k++;
+            if (k === short_path.length) {
+                clearInterval(intervalId);
+            }
+        }, 100);
+        return;
     }
+    
 
     // Function to toggle the colour of the hex cell
     // also adds the hover class for the next player
     function toggle_colour(hex,current_player) {
-        // check if the hex is disabled
-        if (hex.getAttribute('disabled')) {
-            return;
-        }
+        
         if (current_player === 1) {
             // change the colour of the hex cell
             hex.style.backgroundColor = '#29335C';
