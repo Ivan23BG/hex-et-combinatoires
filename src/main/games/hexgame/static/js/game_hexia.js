@@ -6,20 +6,54 @@ function home() {
     window.location.href = '/home_hex'
 }
 
+async function fetchPlayersJSON() { 
+    const response = await fetch('/players_hexia',{method:'POST',headers:{'Content-Type': 'application/json'}});
+    const data = response.json();
+    return data;
+}
 
-window.onload = function () {
-    let current_player = 1; // Player 1 starts the game
+async function fetchFirstMoveJSON() {
+    const response = await fetch('/first_move_IA',{method:'POST',headers:{'Content-Type': 'application/json'}});
+    const data = response.json();
+    return data;
+}
+
+window.onload = async function () {
+    let player = 0; // Player default value 
+    let IA = 0; // IA default value 
+
     let game_over = false;
     let short_path = [];
     let winner = 0;
 
     const game_history = []; // stack to store game history
     const cells = document.querySelectorAll('.hex'); // Get all hex cells
-
-    cells.forEach(hex => {
-        // Add initial hover class
-        hex.classList.add('hex-player1-hover');
-
+    
+    // Initialise correct player's and IA's values 
+    const data1 = await fetchPlayersJSON() 
+    player = data1.player;
+    IA = data1.IA;
+    console.log("player",player,"IA",IA);
+    
+    // If IA is playing Blue, she play first move
+    if (player===2){
+        const data2 = await fetchFirstMoveJSON();
+        let iamove = data2.iamove;
+        var iahex = document.getElementById(iamove);
+        game_history.push(iamove);
+        toggle_colour(iahex,IA);
+    }
+        
+    
+    cells.forEach(hex => {    
+        // Add correct hover class for each cell
+        if (player===1){
+            hex.classList.add('hex-player1-hover');
+        }
+        if (player===2){
+            hex.classList.add('hex-player2-hover');            
+        }
+        
         // Add click event listener to each hex cell
         hex.onclick = function () {
 
@@ -48,8 +82,7 @@ window.onload = function () {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    'hexid': hexid,
-                    'current_player': current_player
+                    'hexid': hexid
                 }),
             })
             .then(response => response.json())
@@ -72,12 +105,12 @@ window.onload = function () {
                     }, 500);
                 } else {
                     game_history.push(hexid);
-                    toggle_colour(this);
+                    toggle_colour(this,player);
 
                     // check if player 1 won
                     if (data.game_over_player === true) {
                         //save the winner
-                        winner = 1;
+                        winner = player;
                         //save shortest_parth
                         short_path = data.hexid;
                         // set game to over
@@ -88,27 +121,19 @@ window.onload = function () {
                     if (!(game_over)){
                         let iamove = data.iamove;
                         var iahex = document.getElementById(iamove);
-                        current_player=2;
                         game_history.push(iamove);
-                        toggle_colour(iahex);
+                        toggle_colour(iahex,IA);
                     }
 
                     //check if IA won
                     if (data.game_over_IA === true){
                         //save the winner
-                        winner = 2;
+                        winner = IA;
                         //save shortest_parth
                         short_path = data.hexid;
                         // set game to over
                         game_over = true;
                     }
-                    
-                    current_player = 1;
-
-                    // toggle the hover class for all blank hex cells
-                    cells.forEach(cell => {
-                        toggle_hover(cell, current_player);
-                    });
 
                     // display winning path
                     if (game_over) {
@@ -138,7 +163,7 @@ window.onload = function () {
 
     // Function to toggle the colour of the hex cell
     // also adds the hover class for the next player
-    function toggle_colour(hex) {
+    function toggle_colour(hex,current_player) {
         // check if the hex is disabled
         if (hex.getAttribute('disabled')) {
             return;
@@ -162,38 +187,27 @@ window.onload = function () {
         }
     }
 
-    function toggle_hover(hex, current_player) {
-        if (hex.getAttribute('disabled')) {
-            return;
-        }
-        if (current_player === 1) {
-            hex.classList.add('hex-player1-hover');
-            hex.classList.remove('hex-player2-hover');
-        } else {
-            hex.classList.add('hex-player2-hover');
-            hex.classList.remove('hex-player1-hover');
-        }
-    }
-
     window.reset_board = function () {
         // reset cells to initial state
         cells.forEach(hex => {
             // reset the colour of all hex cells
             hex.style.backgroundColor = '#B0BFB1';
             // reset the hover class for all hex cells
-            hex.classList.add('hex-player1-hover');
-            hex.classList.remove('hex-player2-hover');
+            if (player===1){
+                hex.classList.add('hex-player1-hover');
+            }
+            else{
+                hex.classList.add('hex-player2-hover');
+            }
         });
         game_over = false;
-        current_player = 1;
-
 
     } // end of reset_board
 
     // Function to undo the last move
     window.undo_move = function () {
         // pop last element in stack and set it to default colour
-        if (game_history.length > 0) {
+        if (game_history.length >=2) {
 
             const lastMove = game_history.pop();
             fetch('/undo_move', {
@@ -202,8 +216,7 @@ window.onload = function () {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    'hexid': lastMove,
-                    'current_player': current_player
+                    'hexid': lastMove
                 }),
             })
 
@@ -238,28 +251,51 @@ window.onload = function () {
                     }, 100);
                     winner = 0;
                 }
-                
                 game_over = false;
             }
+        }
+        if (player===1 && game_history.length===1){
+            const lastMove = game_history.pop();
+            fetch('/undo_move', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    'hexid': lastMove
+                }),
+            })
 
-            // toggle the current player
-            current_player = current_player === 1 ? 2 : 1;
-
-            
+            const hex = document.getElementById(lastMove);
+            hex.style.backgroundColor = '#B0BFB1';
+        }    
             // toggle the hover class for each hexagon
             cells.forEach(cell => {
                 // remove the disabled attribute from the hex cell
                 if (cell.getAttribute('disabled')) {
                     cell.removeAttribute('disabled');
                 }
-                toggle_hover(cell,current_player);
+                if (player===1){
+                    cell.classList.add('hex-player1-hover');
+                }
+                else{
+                    cell.classList.add('hex-player2-hover');
+                }
             });
-        }
+        
     } // end of undo_move
 
     window.undo_move2 = function () {
-        undo_move();
-        undo_move();
+        if (player===1 && winner===1){
+            undo_move();
+        }
+        else if (player===2 && winner===2){
+            undo_move();
+        }
+        else {
+            undo_move();
+            undo_move();
+        }
     }
 }
 
