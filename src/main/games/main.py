@@ -83,6 +83,9 @@ elif mode == "2":
 
                 #give me the evaluation of the board
                 print(game_board.evaluate_3(2))
+                print(game_board.evaluate_hex(2))
+                print(game_board.evaluate_hex(1))
+
                 # make a move using minimax algorithm and get_best_move method
                 move = game_board.get_best_move(3,2)   
                 game_board.place_piece(2, move)

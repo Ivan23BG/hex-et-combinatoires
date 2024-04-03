@@ -283,14 +283,6 @@ class HexBoard:
         self.display_board()
         return self.check_winner()
     
-    def make_move(self, player, position):
-        """
-        Make a move on the board by placing a piece and checking for a winner.
-        """
-        self.place_piece(player, position)
-        self.display_board()
-        return self.check_winner()
-    
     def get_possible_moves(self):
         """
         Get all the possible moves on the board.
@@ -366,6 +358,53 @@ class HexBoard:
                 if self.board[neighbor[0]][neighbor[1]] == player and neighbor not in visited:
                     stack.append(neighbor)
         return chain 
+    
+    def is_winning_path(self, path, player):
+        # Check if the path is empty
+        if not path:
+            return False
+
+        # Check if the path belongs to the player
+        for i, j in path:
+            if self.board[i][j] != player:
+                return False
+
+        # Check if the path connects the two sides of the board
+        if player == 1:
+            # Player 1 wins by connecting the top and bottom sides
+            cols = [j for i, j in path]
+            return min(cols) == 0 and max(cols) == self.size - 1
+        else:
+            # Player 2 wins by connecting the left and right sides
+            rows = [i for i, j in path]
+            return min(rows) == 0 and max(rows) == self.size - 1
+        
+    def is_potential_winner(self, player, position):
+        """
+        Check if placing a piece at the given position could potentially lead to a win for the player.
+
+        Args:
+            player (int): The player value (1 or 2).
+            position (tuple): The position to check.
+
+        Returns:
+            bool: True if the position could lead to a win, False otherwise.
+        """
+        # Check if the position is already occupied
+        if self.is_position_occupied(position):
+            return False
+
+        # Place a temporary piece at the position
+        row, col = position
+        self.board[row][col] = player
+
+        # Check if the player has won
+        is_winner = self.check_winner_player(player, position)
+
+        # Undo the temporary placement
+        self.board[row][col] = 0
+
+        return is_winner
 
     def evaluate_board(self):
         """
@@ -510,6 +549,8 @@ class HexBoard:
     
     def evaluate_3(self, player):
         # Use the same criteria as evaluate_2
+        # Mon probleme avec cette fonction est que il bloque pas mal l'adversaire 
+        # mais il sait pas gangner.
         player_1_score = 0
         player_2_score = 0
 
@@ -548,12 +589,62 @@ class HexBoard:
             else:
                 player_2_score += 0  # or some other value
 
-        score_difference = (player_1_score - player_2_score)/max(player_2_score, player)
+        score_difference = (player_1_score - player_2_score)/max(player_2_score, player_1_score)
         return score_difference if player == 1 else -score_difference
     
+    def evaluate_hex(self, player):
+        player_1_score = 0
+        player_2_score = 0
+
+        for i in range(self.size):
+            for j in range(self.size):
+                if self.board[i][j] == 1:
+                    voisins = self.get_neighbors((i, j), self.size, self.size)
+                    connected_pieces = 0
+                    for v in voisins:
+                        if self.board[v[0]][v[1]] == 1:
+                            player_1_score += 2 
+                            connected_pieces += 1
+                    player_1_score += min(i, j, self.size - i, self.size - j)
+                    player_1_score += connected_pieces ** 2
+                elif self.board[i][j] == 2:
+                    voisins = self.get_neighbors((i, j), self.size, self.size)
+                    connected_pieces = 0
+                    for v in voisins:
+                        if self.board[v[0]][v[1]] == 2:
+                            player_2_score += 2
+                            connected_pieces += 1
+                    player_2_score += min(i, j, self.size - i, self.size - j)
+                    player_2_score += connected_pieces ** 2
+
+        # Check if there's a potential winning move
+        if player == 1:
+            if self.is_potential_winner(player, (0, 0)):  # Assuming player 1 starts from the top-left corner
+                return 1000  # A high score to prioritize the winning move
+        else:
+            if self.is_potential_winner(player, (0, 0)):  # Assuming player 2 starts from the top-left corner
+                return -1000  # A high negative score to prioritize blocking the opponent's winning move
+
+        # Add points if the shortest path of the opposite player is longer
+        if player == 1:
+            shortest_path_2 = self.shortest_path(2)
+            if shortest_path_2 != "error":
+                player_1_score += len(shortest_path_2)
+            else:
+                player_1_score += 0  # or some other value
+        else:
+            shortest_path_1 = self.shortest_path(1)
+            if shortest_path_1 != "error":
+                player_2_score += len(shortest_path_1)
+            else:
+                player_2_score += 0  # or some other value
+
+        score_difference = (player_1_score - player_2_score) 
+        return score_difference if player == 1 else -score_difference
+
     def minimax(self, depth, player, alpha, beta):
         if depth == 0 or self.check_winner() is not None:
-            return self.evaluate_3(player), None
+            return self.evaluate_hex(player), None
 
         if player == 1:  # Maximizing player
             best_score = float('-inf')
