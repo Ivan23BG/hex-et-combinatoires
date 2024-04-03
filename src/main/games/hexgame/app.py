@@ -148,6 +148,14 @@ def players_hexia():
     global player, IA
     return jsonify({'result': 'Success','player': player,'IA':IA})
 
+@app.route('/first_move_IA',methods=['POST']) #Return IA's first move if player=2
+def first_move_IA():
+    global game_board, IA 
+    move = game_board.get_best_move(3,IA)    
+    game_board.place_piece(IA, move)
+    iamove = "hex" + str(move[0]) + "-" + str(move[1])
+    return jsonify({'result': Success,'hexid':hexid,'iamove':iamove})
+
 @app.route('/undo_move', methods=['POST']) # Undo last move on the board
 def undo_move():
     global game_board
