@@ -152,11 +152,10 @@ def players_hexia():
 
 @app.route('/undo_move', methods=['POST']) # Place a piece on the board
 def undo_move():
-    global game_board, current_player
+    global game_board
     
     data = request.get_json()
     hexid = data['hexid']
-    current_player = data['current_player']
     
     
     # Remove the "hex" prefix and split into row and column
@@ -166,7 +165,6 @@ def undo_move():
     try:
         if game_board is not None:
             game_board.undo_move((row,col))
-            current_player = 1 if current_player == 2 else 2
 
 
     except Exception as e:
@@ -176,7 +174,7 @@ def undo_move():
 
         return jsonify({'error': error_message}), 400
 
-    return jsonify({'result': 'Success', 'current_player': current_player})
+    return jsonify({'result': 'Success'})
 
 
 @app.route('/game_awale', methods=['POST']) # Hex play page
