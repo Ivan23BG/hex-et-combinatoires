@@ -34,6 +34,10 @@ function submitForm(formNumber) {
         document.getElementById('size_input_2').value = size;
         document.querySelector('form[action="/game_hexia"]').submit();
     }
+    else if (formNumber === 3){
+        document.getElementById('size_input_3').value = size;
+        document.querySelector('form[action="/game_hexiaia"]').submit();
+    }
 }
 
 function player_red(){

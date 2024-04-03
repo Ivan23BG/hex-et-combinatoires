@@ -32,7 +32,10 @@
             <input type="hidden" id="player" name="player" value="">
             <div class="start_gameIA" type="button" onclick="submitForm(2)">Player vs IA</div>
         </form>
-        <div class="button_out"></div>
+        <form action="/game_hexiaia" method="post">
+            <input type="hidden" id="size_input_3" name="size" value="">
+            <div class="start_gameIAvsIA" type="button" onclick="submitForm(3)">IA vs IA</div>
+        </form>
     </div>
     <script src="../static/js/home_hex.js"></script>
 </body>
