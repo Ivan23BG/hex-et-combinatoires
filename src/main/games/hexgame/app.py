@@ -119,7 +119,7 @@ def hex_place_piece_ia():
             
 
             #IA's turn
-            # make a move using minimax algorithm and get_best_move method
+            # make a move using minimax algorithm and get_best_move method (actualy random move)
             move = game_board.get_best_move(3,'IA')    
             game_board.place_piece(IA, move)
             
@@ -133,8 +133,6 @@ def hex_place_piece_ia():
                 print(f"Shortest path for player {IA}: {short_path}")
                 hexid = [f"hex{i[0]}-{i[1]}" for i in short_path]
                 return jsonify({'winner': IA, 'game_over_IA': True,'hexid':hexid,'iamove':iamove})
-                
-            current_player = 1
             
     except Exception as e:
         # Handle the exception here
@@ -143,14 +141,14 @@ def hex_place_piece_ia():
         return jsonify({'error': error_message}), 400
         
 
-    return jsonify({'result': 'Success','iamove': iamove, 'current_player': current_player})
+    return jsonify({'result': 'Success','iamove': iamove})
 
-@app.route('/players_hexia', methods=['POST']) # Return player and IA values
+@app.route('/players_hexia', methods=['POST']) # Return player's and IA's values
 def players_hexia():
     global player, IA
     return jsonify({'result': 'Success','player': player,'IA':IA})
 
-@app.route('/undo_move', methods=['POST']) # Place a piece on the board
+@app.route('/undo_move', methods=['POST']) # Undo last move on the board
 def undo_move():
     global game_board
     
