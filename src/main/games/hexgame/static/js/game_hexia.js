@@ -8,7 +8,8 @@ function home() {
 
 
 window.onload = function () {
-    let current_player = 1; // Player 1 starts the game
+    let player = 0; // Player default value 
+    let IA = 0; // IA default value 
     let game_over = false;
     let short_path = [];
     let winner = 0;
@@ -16,7 +17,7 @@ window.onload = function () {
     const game_history = []; // stack to store game history
     const cells = document.querySelectorAll('.hex'); // Get all hex cells
 
-    fetch('/player_hexia', {
+    fetch('/players_hexia', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -24,8 +25,13 @@ window.onload = function () {
     })
     .then(response => response.json())
     .then(data => {
-        if (data.playeria===2){
-            
+        if (data.player===1){
+            player = 1;
+            IA = 2;
+        }
+        else{
+            player = 2;
+            IA = 1;
         }
 
 

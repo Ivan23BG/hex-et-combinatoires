@@ -12,7 +12,9 @@ game_board = None
 current_player = 1
 size = 5
 size_px = size
-playeria = 0
+
+# Player vs IA variables
+player = 0
 IA = 0
 
 
@@ -41,18 +43,19 @@ def game_hex():
 @app.route('/game_hexia', methods=['POST']) # Hex play page
 def game_hexia():
     global game_board, current_player, size_px, size, player, IA
-    playeria = int(request.form['player'])
-    print(playeria)
-    if (playeria==1):
+    player = int(request.form['player'])
+    if (player==1):
         IA = 2
-    if (playeria==2):
+    if (player==2):
         IA = 1
+    print(player)
+    print(IA)   
     size = int(request.form['size'])
     size_px = 120 + (44 * size)  # update the size_px used in the play.html
     game_board = HexBoard(size)  # Create a new game board
     game_board.display_board()  # Display the game board in the console
     
-    return render_template('game_hexia.html', size=size, size_px=size_px, current_player=current_player)
+    return render_template('game_hexia.html', size=size, size_px=size_px)
 
 
 @app.route('/hex_place_piece', methods=['POST']) # Place a piece on the board
@@ -93,7 +96,7 @@ def hex_place_piece():
 
 @app.route('/hex_place_piece_ia', methods=['POST']) # Place a piece on the board
 def hex_place_piece_ia():
-    global game_board, playeria
+    global game_board, player
     
     data = request.get_json()
     hexid = data['hexid']
@@ -104,7 +107,7 @@ def hex_place_piece_ia():
     
     try:
         if game_board is not None:
-            game_board.place_piece(playeria, (row, col)) # Try to place the piece
+            game_board.place_piece(player, (row, col)) # Try to place the piece
             
             # check if the current player won
             winner = game_board.check_winner()
@@ -142,10 +145,10 @@ def hex_place_piece_ia():
 
     return jsonify({'result': 'Success','iamove': iamove, 'current_player': current_player})
 
-@app.route('/player_hexia', methods=['POST']) # Return
-def player_hexia():
-    global playeria
-    return jsonify({'result': 'Success','playeria': playeria})
+@app.route('/players_hexia', methods=['POST']) # Return player and IA values
+def players_hexia():
+    global player, IA
+    return jsonify({'result': 'Success','player': player,'IA':IA})
 
 @app.route('/undo_move', methods=['POST']) # Place a piece on the board
 def undo_move():
