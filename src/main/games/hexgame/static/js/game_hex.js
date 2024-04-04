@@ -115,16 +115,21 @@ window.onload = function () {
             return;
         }
         if (current_player === 1) {
+            let colorelem = document.getElementById("hidden_data_blue");
+            let color = colorelem.getAttribute("value");
+            console.log(color)
             // change the colour of the hex cell
-            hex.style.backgroundColor = '#29335C';
+            hex.style.backgroundColor = color;
             // remove the hover class for the hex cell
             hex.classList.remove('hex-player1-hover');
             hex.classList.remove('hex-player2-hover');
             // deactive the hex
             // hex.setAttribute('disabled', true);
         } else {
+            let colorelem = document.getElementById("hidden_data_red");
+            let color = colorelem.getAttribute("value");
             // change the colour of the hex cell
-            hex.style.backgroundColor = '#A51613';
+            hex.style.backgroundColor = color;
             // remove the hover class for the hex cell
             hex.classList.remove('hex-player1-hover');
             hex.classList.remove('hex-player2-hover');
@@ -233,4 +238,21 @@ function back() {
 
 function home() {
     window.location.href = '/home_hex'
+}
+
+function changerFichiers() {
+    var styleSheet = document.getElementById('stylesheet');
+    var div1 = document.getElementById("hidden_data_red");
+    var div2 = document.getElementById("hidden_data_blue");
+    if (styleSheet.getAttribute('href') === "../static/css/game_hex_styles.css") {
+        //console.log("touché");
+        styleSheet.setAttribute('href', "../static/css/game_hex_marine_skin.css");
+        div1.setAttribute("value", "#136F63");
+        div2.setAttribute("value", "#4CE0D2");
+    } else {
+        styleSheet.setAttribute('href', "../static/css/game_hex_styles.css");
+        div1.setAttribute("value","#A51613");
+        div2.setAttribute("value", "#29335C");
+    }
+
 }
