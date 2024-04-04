@@ -45,6 +45,37 @@
 \end{itemize}
 
 % presentation du probleme et du contexte :
+Dans le cadre de notre projet de programmation de fin de semestre,
+nous avons choisi de travailler sur l'implémentation et l'étude de la résolution de jeux de combinatoire.
+
+Le projet consiste d'abord à créer une version informatique du jeu du hex,
+un jeu de stratégie combinatoire abstrait inventé par Piet Hein et John Nash,
+puis reporter nos efforts sur le jeu de l'Awalé, 
+un jeu de stratégie combinatoire abstrait d'origine africaine.
+
+% motivation de l'interet du probleme :
+Ce projet est motivé par notre intérêt pour la théorie des jeux,
+et par notre désir de comprendre les mécanismes de résolution de jeux de stratégie combinatoire.
+L'étude de ces jeux nous permettra de mieux comprendre les algorithmes de recherche et d'optimisation,
+et de nous familiariser avec les techniques de programmation avancée.
+A RAJOUTER : L'interet de la résolution de jeux de combinatoire par rapport a nos etudes et au monde de l'informatique
+
+% approches possibles pour la résolution du problème :
+Pour résoudre ces jeux, plusieurs approches sont possibles.
+La première chose à prendre en compte est le choix de la représentation du jeu,
+et la manière dont les règles du jeu seront implémentées.
+
+Ensuite, il faudra choisir une méthode de résolution du jeu.
+Pour le jeu du hex, nous avons choisi d'implémenter un algorithme de recherche minimax avec élagage alpha-bêta,
+et pour le jeu de l'Awalé, nous avons choisi d'implémenter un algorithme de recherche Dijkstra.
+
+D'autres approches sont possibles, comme l'implémentation d'un algorithme de Monte Carlo Tree Search,
+ou l'utilisation de réseaux de neurones pour apprendre à jouer au jeu.
+A RAJOUTER : Les différentes approches possibles pour la résolution de jeux de combinatoire
+
+% cahier des charges détaillé :
+Le cahier des charges détaillé est disponible en annexe.
+A RAJOUTER : Le cahier des charges détaillé
 
 
 
@@ -67,6 +98,31 @@ Il se peut que la conception du logiciel (3) et l'analyse algorithmique (4) aien
 \item 	Présenter les principaux algorithmes implémentés. En illustrer le fonctionnement avec des exemples. Attention : il s'agit ici de choisir 1 ou 2 algorithmes intéressants, et non pas de présenter tous les algorithmes implémentés.
 \item 	Évaluer la complexité théorique en temps des algorithmes présentés
 \end{enumerate}
+
+% structure de données :
+Les principales structures de données utilisées dans le cadre du projet sont les suivantes :
+- Pour le jeu du hex, nous avons utilisé une matrice pour représenter le plateau de jeu,
+et des coordonnées pour représenter les positions des pions.
+
+- Pour le jeu de l'Awalé, nous avons utilisé une liste pour représenter les cases du plateau de jeu,
+et des entiers pour représenter le nombre de graines dans chaque case.
+
+% algorithmes implémentés :
+Les principaux algorithmes implémentés dans le cadre du projet sont les suivants :
+- Pour le jeu du hex, nous avons implémenté un algorithme de recherche minimax avec élagage alpha-bêta,
+qui permet de trouver le meilleur coup à jouer à partir d'une position donnée.
+
+- Pour le jeu de l'Awalé, nous avons implémenté un algorithme de recherche Dijkstra,
+plus simple que l'algorithme minimax, 
+mais qui permet de trouver une solution optimale dans un temps plus court,
+et qui est plus adapté à la résolution de ce jeu.
+
+% complexité théorique en temps des algorithmes :
+La complexité théorique en temps de l'algorithme minimax est de O(b^d),
+où b est le facteur de branchement du jeu et d est la profondeur de recherche.
+La complexité théorique en temps de l'algorithme Dijkstra est de O(n^2),
+où n est le nombre de cases du plateau de jeu.
+
 
 \section{Analyse des résultats }
 \emph{2 à 4 pages}
