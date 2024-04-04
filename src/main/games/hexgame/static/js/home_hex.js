@@ -41,10 +41,14 @@ function submitForm(formNumber) {
 }
 
 function player_red(){
+    document.getElementById("button_red").classList.add("selected_2")
+    document.getElementById("button_blue").classList.remove("selected_2")
     player = 2;
 }
 
 function player_blue(){
+    document.getElementById("button_red").classList.remove("selected_2")
+    document.getElementById("button_blue").classList.add("selected_2")
     player = 1;
 }
 
