@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.2.13)  4 APR 2024 14:10
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.2.13)  4 APR 2024 14:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -264,16 +264,16 @@ deleRapportLatex.toc)
 
 
 ]
-Overfull \hbox (3.04338pt too wide) in paragraph at lines 64--65
+Overfull \hbox (3.04338pt too wide) in paragraph at lines 67--68
 []\T1/cmr/m/n/10 Présenter les prin-ci-paux al-go-rithmes im-plé-men-tés. En il
 lus-trer le fonc-tion-ne-ment avec des exemples.
  []
 
 [2]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 95.
+(Font)              <7> on input line 98.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 95.
+(Font)              <5> on input line 98.
  [3]
 (C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\rapport\output\mo
 deleRapportLatex.aux
@@ -301,9 +301,9 @@ ppen/ec/dpi600\ecrm1000.pk> <C:\Users\Ivan\AppData\Local\MiKTeX\fonts/pk/ljfour
 /jknappen/ec/dpi600\ecxc1000.pk> <C:\Users\Ivan\AppData\Local\MiKTeX\fonts/pk/l
 jfour/jknappen/ec/dpi600\ecbx2074.pk>
 Output written on C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\
-rapport\output\modeleRapportLatex.pdf (4 pages, 122210 bytes).
+rapport\output\modeleRapportLatex.pdf (4 pages, 125278 bytes).
 PDF statistics:
- 258 PDF objects out of 1000 (max. 8388607)
+ 267 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
