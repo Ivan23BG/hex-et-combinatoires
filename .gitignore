@@ -4,3 +4,10 @@
 .idea/
 */.idea/
 *.iml
+*/output/
+*/output/*
+*/output/*/*
+*.log
+*.aux
+*.toc
+*.synctex.gz

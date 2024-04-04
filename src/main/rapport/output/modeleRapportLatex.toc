@@ -1,6 +1,0 @@
-\babel@toc {french}{}\relax 
-\contentsline {section}{\numberline {1}Développements Logiciel : Conception, Modélisation, Implémentation}{2}{}%
-\contentsline {section}{\numberline {2}Algorithmes et Structures de Données}{2}{}%
-\contentsline {section}{\numberline {3}Analyse des résultats }{2}{}%
-\contentsline {section}{\numberline {4}Gestion du Projet}{2}{}%
-\contentsline {section}{\numberline {5}Bilan et Conclusions}{3}{}%
