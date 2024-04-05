@@ -11,8 +11,8 @@
 \usepackage{fullpage}  % pour les marges
 \usepackage{graphicx}  % pour inclure des images
 
-%\pagestyle{headings}        % Pour mettre des entêtes avec les titres
-                              % des sections en haut de page
+%\pagestyle{headings}  % Pour mettre des entêtes avec les titres
+						% des sections en haut de page
 
 \usepackage{datetime}  % pour la date
 \newdate{frontpagedate}{12}{05}{2024}  % jour, mois, année
@@ -34,126 +34,151 @@
 \tableofcontents  % Table des matières
 
 \newpage
-\section*{Introduction} % Commencer une section, * permet de ne pas numéroté l'introduction
-\emph{1-2 pages}
-	%Présentation du Sujet (1-2 pages) 
-\begin{itemize}%pour faire une liste à puces
-\item Présenter le problème étudié et le contexte dans lequel le projet se positionne.
-\item Motiver l'intérêt du problème étudié par rapport à votre parcours d'études et au monde de l'informatique.
-\item	Présenter les différentes approches possibles pour la résolution du problème, et en particulier celle choisie.
-\item Donner le cahier des charges détaillé
-\end{itemize}
+\section{Présentation du sujet}
 
-% presentation du probleme et du contexte :
-Dans le cadre de notre projet de programmation de fin de semestre,
-nous avons choisi de travailler sur l'implémentation et l'étude de la résolution de jeux de combinatoire.
 
-Le projet consiste d'abord à créer une version informatique du jeu du hex,
-un jeu de stratégie combinatoire abstrait inventé par Piet Hein et John Nash,
-puis reporter nos efforts sur le jeu de l'Awalé, 
-un jeu de stratégie combinatoire abstrait d'origine africaine.
+% présenter le problème étudié et le contexte dans lequel il se positionne
+Dans le cadre de notre projet de programmation de fin de semestre, nous avons 
+choisi de travailler sur l'implémentation et l'étude de la résolution de jeux 
+de combinatoire.
 
-% motivation de l'interet du probleme :
-Ce projet est motivé par notre intérêt pour la théorie des jeux,
-et par notre désir de comprendre les mécanismes de résolution de jeux de stratégie combinatoire.
-L'étude de ces jeux nous permettra de mieux comprendre les algorithmes de recherche et d'optimisation,
-et de nous familiariser avec les techniques de programmation avancée.
-A RAJOUTER : L'interet de la résolution de jeux de combinatoire par rapport a nos etudes et au monde de l'informatique
+Le projet consiste d'abord à créer une version informatique du jeu du hex, un 
+jeu de stratégie combinatoire abstrait inventé par Piet Hein et John Nash, puis 
+reporter nos efforts sur le jeu de l'Awalé, un jeu de stratégie combinatoire 
+abstrait d'origine africaine.
 
-% approches possibles pour la résolution du problème :
+% motiver l'intérêt du problème étudié par rapport à votre parcours d'études
+% et au monde de l'informatique
+Ce projet est motivé par notre intérêt pour la théorie des jeux, et par notre 
+désir de comprendre les mécanismes de résolution de jeux de stratégie 
+combinatoire.
+L'étude de ces jeux nous permettra de mieux comprendre les algorithmes de 
+recherche et d'optimisation, et de nous familiariser avec les techniques de 
+programmation avancée.
+A RAJOUTER : L'interet de la résolution de jeux de combinatoire par rapport a 
+nos etudes et au monde de l'informatique
+
+% présenter les différentes approches possibles pour la résolution du problème
+% et en particulier celle choisie
 Pour résoudre ces jeux, plusieurs approches sont possibles.
 La première chose à prendre en compte est le choix de la représentation du jeu,
 et la manière dont les règles du jeu seront implémentées.
 
 Ensuite, il faudra choisir une méthode de résolution du jeu.
-Pour le jeu du hex, nous avons choisi d'implémenter un algorithme de recherche minimax avec élagage alpha-bêta,
-et pour le jeu de l'Awalé, nous avons choisi d'implémenter un algorithme de recherche Dijkstra.
+Pour le jeu du hex, nous avons choisi d'implémenter un algorithme de recherche 
+minimax avec élagage alpha-bêta, et pour le jeu de l'Awalé, nous avons choisi 
+d'implémenter un algorithme de recherche Dijkstra.
 
-D'autres approches sont possibles, comme l'implémentation d'un algorithme de Monte Carlo Tree Search,
-ou l'utilisation de réseaux de neurones pour apprendre à jouer au jeu.
-A RAJOUTER : Les différentes approches possibles pour la résolution de jeux de combinatoire
+D'autres approches sont possibles, comme l'implémentation d'un algorithme de 
+Monte Carlo Tree Search, ou l'utilisation de réseaux de neurones pour apprendre 
+à jouer au jeu.
+A RAJOUTER : Les différentes approches possibles pour la résolution de jeux de 
+combinatoire
 
-% cahier des charges détaillé :
+% donner le cahier des charges détaillé :
 Le cahier des charges détaillé est disponible en annexe.
 A RAJOUTER : Le cahier des charges détaillé
 
+\section{Technologies utilisées}
 
+% présenter les langages de programmation et les outils utilisés dans le cadre
+% du projet
+Pour la réalisation de ce projet, nous avons utilisé les langages de programmation suivants :
+\begin{itemize}
+	\item Python pour l'implémentation des algorithmes de résolution des jeux et la logique du jeu,
+	\item HTML, CSS et JavaScript pour l'implémentation de l'interface graphique des jeux,
+	\item UML pour la modélisation des classes et des cas d'utilisation,
+	\item Git pour la gestion du code source et le suivi des versions,
+	\item Visual Studio Code pour l'écriture du code et le débogage,
+	\item GitHub pour l'hébergement du code source et la collaboration,
+	\item LaTeX pour la rédaction du rapport,
+	\item Draw.io pour la création des diagrammes UML.
+\end{itemize}
+
+% justifier le choix et l'intérêt des langages utilisés
 
 \section{Développements Logiciel : Conception, Modélisation, Implémentation} 
-\emph{8 à 15 pages}
 
-Il se peut que la conception du logiciel (3) et l'analyse algorithmique (4) aient un poids différent dans votre projet. Les points décrits ci-dessous seront ainsi plus ou moins développés en fonction du travail réalisé en accord avec l'encadrant. 
-\begin{enumerate}%pour faire une liste numérotée
-\item Présenter les développements logiciel réalisés dans le cadre du projet.
-\item Présenter les principaux modules du logiciel développé dans le cadre du projet. Utiliser le langage UML pour la modélisation : donner le diagramme de cas d'utilisation et le diagramme des classes.
-\item Décrire les fonctionnalités de l'interface graphique implémentée (si votre logiciel dispose d'une interface graphique).
-\item Décrire le format des données en entrée ou encore les conventions utilisées pour les entrées de vos programmes. Décrire les procédures de lecture et validation des entrées.
-\item Statistiques : nombre de modules/composantes/classes/scripts développés. Nombre de lignes de code.
-\end{enumerate}
-
-\section{Algorithmes et Structures de Données}
-\emph{2 à 3 pages}
-\begin{enumerate}%pour faire une liste numérotée
-\item 	Présenter les principales structures de données définies dans le cadre du projet.
-\item 	Présenter les principaux algorithmes implémentés. En illustrer le fonctionnement avec des exemples. Attention : il s'agit ici de choisir 1 ou 2 algorithmes intéressants, et non pas de présenter tous les algorithmes implémentés.
-\item 	Évaluer la complexité théorique en temps des algorithmes présentés
-\end{enumerate}
-
-% structure de données :
-Les principales structures de données utilisées dans le cadre du projet sont les suivantes :
-- Pour le jeu du hex, nous avons utilisé une matrice pour représenter le plateau de jeu,
-et des coordonnées pour représenter les positions des pions.
-
-- Pour le jeu de l'Awalé, nous avons utilisé une liste pour représenter les cases du plateau de jeu,
-et des entiers pour représenter le nombre de graines dans chaque case.
-
-% algorithmes implémentés :
-Les principaux algorithmes implémentés dans le cadre du projet sont les suivants :
-- Pour le jeu du hex, nous avons implémenté un algorithme de recherche minimax avec élagage alpha-bêta,
-qui permet de trouver le meilleur coup à jouer à partir d'une position donnée.
-
-- Pour le jeu de l'Awalé, nous avons implémenté un algorithme de recherche Dijkstra,
-plus simple que l'algorithme minimax, 
-mais qui permet de trouver une solution optimale dans un temps plus court,
-et qui est plus adapté à la résolution de ce jeu.
-
-% complexité théorique en temps des algorithmes :
-La complexité théorique en temps de l'algorithme minimax est de O(b^d),
-où b est le facteur de branchement du jeu et d est la profondeur de recherche.
-La complexité théorique en temps de l'algorithme Dijkstra est de O(n^2),
-où n est le nombre de cases du plateau de jeu.
+% présenter les développements logiciel réalisés dans le cadre du projet
 
 
-\section{Analyse des résultats }
-\emph{2 à 4 pages}
-L'analyse expérimentale sera faites dans cette section.   Elle sera plus ou moins importante dans votre projet comme pour les deux points précédent, cette section devra donc être développée en conséquence.
+% présenter les principaux modules du logiciel développé dans le cadre du projet
+% Utiliser le langage UML pour la modélisation : donner le diagramme de cas
+% d'utilisation et le diagramme des classes
 
-\begin{enumerate}%pour faire une liste numérotée
-\item 	Illustrer les performances ainsi que l'efficacité du logiciel implémenté à l'aide de graphiques.
-\item Analyser (et comparer, si plusieurs) les performances des solutions implémentées.
-\item	Présenter les bancs d'essais (ou les procédures utilisées pour la génération des données) utilisés pour les tests du logiciel.
-\end{enumerate}
+
+% décrire les fonctionnalités de l'inteface graphique implémentée (si votre 
+% logiciel dispose d'une interface graphique)
+
+
+% présenter les principales structures de données définies dans le cadre du
+% projet. Décrire le format des données en entrée ou encore les conventions
+% utilisées pour les entrées de vos programmes. Décrire les procédures de
+% lecture et validation des entrées.
+
+
+% Statistiques : nombre de modules/composantes/classes/scripts développés.
+% Nombre de lignes de code.
+
+\section{Algorithmes et Analyse}
+
+
+% présenter les principaux algorithmes implémentés. En illustrer le
+% fonctionnement avec des exemples. Attention : il s'agit ici de choisir 1 ou 2
+% algorithmes intéressants, et non pas de présenter tous les algorithmes
+% implémentés.
+
+
+% evaluer la complexité théorique en temps des algorithmes présentés.
+
+
+\section{Analyse des résultats}
+
+% illustrer les performances ainsi que l'efficacité du logiciel implémenté
+% a l'aide de graphiques.
+
+
+% analyser (et comparer, si plusieurs) les performances des solutions 
+% implémentées
+
+
+% présenter les bancs d'essais (ou les procédures utilisées pour la génération)
+% des données) utilisés pour les tests du logiciel.
 
 \section{Gestion du Projet}
-\emph{ (1-2 pages)}
-\begin{enumerate}%pour faire une liste numérotée
-\item 	Présenter la gestion du projet et les documents de planification rédigés (par exemple, le diagramme de Gantt).
-\item	Discuter les changements majeurs effectués en cours de projet. 
-\end{enumerate}
+
+% présenter la gestion du projet et les documents de planification éventuellement
+% rédigés (par exemple, le diagramme de Gantt).
+
+
+% discuter les changements majeurs effectués en cours de projet
 
 \section{Bilan et Conclusions}
 
-	Indiquer les fonctionnalités mises en œuvre par rapport au cahier des charges de départ, les points ouvertes.
-	Les perspectives du projet décrivent ce que l’on pourrait ajouter, modifier, réécrire afin d’améliorer le projet. 
-	
-\begin{thebibliography}{9}
-\bibitem{texbook}
-Donald E. Knuth (1986) \emph{The \TeX{} Book}, Addison-Wesley Professional.
+% indiquer les fonctionnalités mise en oeuvre par rapport au cahier des charges
+% de départ, les points ouverts et les perspectives pour le projet.
 
-\bibitem{lamport94}
-Leslie Lamport (1994) \emph{\LaTeX: a document preparation system}, Addison
-Wesley, Massachusetts, 2nd ed.
-\end{thebibliography}
+\section{Bibliographie}
+
+% indiquer les ressources bibliographiques utilisées pour le projet
+
+
+% donner des références exactes des travaux cités dans le texte permettant de
+% trouver les articles ou livres cités en bibliothèque ou sur internet.
+
+\section{Annexes}
+
+% par exemple: fragments de code, manuel d'utilisation du logiciel etc
+
+
+% \begin{thebibliography}{9}
+% \bibitem{texbook}
+% Donald E. Knuth (1986) \emph{The \TeX{} Book}, Addison-Wesley Professional.
+
+% \bibitem{lamport94}
+% Leslie Lamport (1994) \emph{\LaTeX: a document preparation system}, Addison
+% Wesley, Massachusetts, 2nd ed.
+% \end{thebibliography}
 
 
 
