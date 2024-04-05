@@ -641,11 +641,73 @@ class HexBoard:
 
         score_difference = (player_1_score - player_2_score) 
         return score_difference if player == 1 else -score_difference
+    
+    def get_dijkstra_score(self, player, start):
+        ends = []
+        if player == 1:
+            for k in range(self.size):
+                if self.board[k][self.size-1] == player:
+                    ends.append((k,self.size-1))
+        else:
+            for k in range(self.size):
+                if self.board[self.size-1][k] == player:
+                    ends.append((self.size-1,k))
 
+        if not ends:  # Check if ends list is empty
+            return float('inf') if player == 1 else float('-inf')  # Return infinity for player 1, negative infinity for player 2
+
+        rows, cols = self.size, self.size
+        visited = [[False] * cols for _ in range(rows)]
+        distance = [[float('inf')] * cols for _ in range(rows)]
+
+        distance[start[0]][start[1]] = 0
+        heap = [(0, start)]
+
+        while heap:
+            current_dist, current_node = heapq.heappop(heap)
+
+            if visited[current_node[0]][current_node[1]]:
+                continue
+
+            visited[current_node[0]][current_node[1]] = True
+
+            neighbors = self.get_neighbors(current_node, rows, cols)
+            for neighbor in neighbors:
+                if 0 <= neighbor[0] < rows and 0 <= neighbor[1] < cols:  # Check board boundaries
+                    if not visited[neighbor[0]][neighbor[1]] and self.board[neighbor[0]][neighbor[1]] == player:
+                        new_dist = distance[current_node[0]][current_node[1]] + 1
+                        if new_dist < distance[neighbor[0]][neighbor[1]]:
+                            distance[neighbor[0]][neighbor[1]] = new_dist
+                            heapq.heappush(heap, (new_dist, neighbor))
+
+        min_distance = min(distance[end[0]][end[1]] for end in ends)
+        
+        return min_distance if min_distance != float('inf') else 0
+
+
+    def evaluate_4(self, player):
+        """
+        Evaluate the current state of the board based on the minimum number of moves required to connect the two sides of the board.
+        """
+        # Calculate the dijkstra score for the current player
+        start = (0, 0) if player == 1 else (self.size - 1, self.size - 1)
+        dijkstra_score = self.get_dijkstra_score(player, start)
+        
+        # Calculate the dijkstra score for the opponent player
+        opponent = 2 if player == 1 else 1
+        opponent_start = (0, 0) if opponent == 1 else (self.size - 1, self.size - 1)
+        opponent_dijkstra_score = self.get_dijkstra_score(opponent, opponent_start)
+        
+        # Calculate the score difference
+        score_difference = dijkstra_score - opponent_dijkstra_score
+        
+        # Return the score difference from the perspective of the current player
+        return score_difference if player == 1 else -score_difference
+    
 
     def minimax(self, depth, player, alpha, beta):
         if depth == 0 or self.check_winner() is not None:
-            return self.evaluate_hex(player), None
+            return self.evaluate_4(player), None
 
         if player == 1:  # Maximizing player
             best_score = float('-inf')
@@ -680,5 +742,31 @@ class HexBoard:
             return best_score, best_move
         
     def get_best_move(self, depth, player):
-        _ , best_move = self.minimax(depth, player, float('-inf'), float('inf'))
+        best_score = float('-inf')
+        best_move = None
+
+        # iterate over all empty positions on the board
+        for move in self.get_empty_cells():
+            # simulate making the move
+            self.place_piece(player, move)
+            # calculate the score for this move using minimax with alpha-beta pruning
+            score, _ = self.minimax(depth - 1, player, float('-inf'), float('inf'))
+            # undo the move
+            self.undo_move(move)
+            # update the best move if this move has a higher score
+            if score > best_score:
+                best_score = score
+                best_move = move
+
         return best_move
+    
+    def get_empty_cells(self):
+        """
+        Get all the empty cells on the board.
+        """
+        empty_cells = []
+        for i in range(self.size):
+            for j in range(self.size):
+                if self.board[i][j] == 0:
+                    empty_cells.append((i, j))
+        return empty_cells
