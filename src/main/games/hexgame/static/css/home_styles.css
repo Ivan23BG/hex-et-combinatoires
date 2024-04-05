@@ -6,6 +6,7 @@ html {
 
 body {
     margin: 0;
+
 }
 
 .header {
@@ -41,7 +42,8 @@ body {
 
 .container {
     position: absolute;
-    top: 0;
+    top: 0 ;
+    left: 30%;
     display: inline-block;
 }
 
