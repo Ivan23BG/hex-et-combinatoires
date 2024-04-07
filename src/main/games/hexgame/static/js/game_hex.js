@@ -117,7 +117,7 @@ window.onload = function () {
         if (current_player === 1) {
             let colorelem = document.getElementById("hidden_data_blue");
             let color = colorelem.getAttribute("value");
-            console.log(color)
+            //console.log(color)
             // change the colour of the hex cell
             hex.style.backgroundColor = color;
             // remove the hover class for the hex cell
@@ -256,7 +256,7 @@ document.addEventListener("keydown", gestionnairePressionTouche);
 
 function changerFichiers() {
     var Mblue = "rgb(81, 130, 155)";
-    var Mred = "rgb(246, 153, 92)";
+    var Mred = "rgb(248, 124, 41)";
     var blue = "rgb(41, 51, 92)";
     var red = "rgb(165, 22, 19)";
     var styleSheet = document.getElementById('stylesheet');
