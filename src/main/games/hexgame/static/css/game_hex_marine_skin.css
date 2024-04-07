@@ -1,14 +1,14 @@
 body {
     /* background-image: url("static/images/tabletop.jpg"); */
     padding: 2px 0 3px;
-    color: #DDE0BD;
+    color: #394355;
     user-select: none;
 }
 
 html {
     padding: 1em;
     /*background-color: #090806;*/
-    background-color: #01161E;
+    background-color: #EADFB4;
 }
 
 
@@ -25,7 +25,7 @@ html {
 .hex {
     padding: 0px;
     filter: drop-shadow(-1px -1px 1px black);
-    background: #B0BFB1 linear-gradient(to bottom left, rgba(0, 0, 0, 0.2), transparent, rgba(255, 255, 255, 0.3));
+    background: #ADBBC6 linear-gradient(to bottom left, rgba(0, 0, 0, 0.2), transparent, rgba(255, 255, 255, 0.3));
     width: 50px;
     height: 58px;
     clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);
@@ -35,11 +35,11 @@ html {
 }
 
 .hex-player1-hover:hover {
-    background-color: #344792;
+    background-color: #5197BA;
 }
 
 .hex-player2-hover:hover {
-    background-color: #BA3533;
+    background-color: #F6995C;
 }
 
 .cal {
@@ -108,16 +108,10 @@ html {
     transform: translate(0%, -10%);
 }
 
-.stylechange{
-    width: 100px;
-    height: 100px;
-    background-color: blue;
-}
-
 #hidden_data_blue{
-    background-color: #29335C;
+    background-color: rgb(19, 111, 99);
 }
 
 #hidden_data_red{
-    background-color: #A51613;
+    background-color: rgb(76, 224, 210);
 }

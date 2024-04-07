@@ -115,16 +115,21 @@ window.onload = function () {
             return;
         }
         if (current_player === 1) {
+            let colorelem = document.getElementById("hidden_data_blue");
+            let color = colorelem.getAttribute("value");
+            //console.log(color)
             // change the colour of the hex cell
-            hex.style.backgroundColor = '#29335C';
+            hex.style.backgroundColor = color;
             // remove the hover class for the hex cell
             hex.classList.remove('hex-player1-hover');
             hex.classList.remove('hex-player2-hover');
             // deactive the hex
             // hex.setAttribute('disabled', true);
         } else {
+            let colorelem = document.getElementById("hidden_data_red");
+            let color = colorelem.getAttribute("value");
             // change the colour of the hex cell
-            hex.style.backgroundColor = '#A51613';
+            hex.style.backgroundColor = color;
             // remove the hover class for the hex cell
             hex.classList.remove('hex-player1-hover');
             hex.classList.remove('hex-player2-hover');
@@ -233,4 +238,54 @@ function back() {
 
 function home() {
     window.location.href = '/home_hex'
+}
+
+
+function gestionnairePressionTouche(event) {
+    // Vérifier si la touche pressée est la touche "H" (code 72 pour 'H')
+    if (event.keyCode === 72) {
+        changerFichiers();
+    }
+}
+
+// Ajouter un écouteur d'événement pour le pressage de touche
+document.addEventListener("keydown", gestionnairePressionTouche);
+
+
+
+
+function changerFichiers() {
+    var Mblue = "rgb(81, 130, 155)";
+    var Mred = "rgb(248, 124, 41)";
+    var blue = "rgb(41, 51, 92)";
+    var red = "rgb(165, 22, 19)";
+    var styleSheet = document.getElementById('stylesheet');
+    var div1 = document.getElementById("hidden_data_red");
+    var div2 = document.getElementById("hidden_data_blue");
+    if (styleSheet.getAttribute('href') === "../static/css/game_hex_styles.css") {
+        //console.log("touché");
+        styleSheet.setAttribute('href', "../static/css/game_hex_marine_skin.css");
+        div1.setAttribute("value", Mred);
+        div2.setAttribute("value", Mblue);
+        changecolor(blue,Mblue,red,Mred)
+    } else {
+        styleSheet.setAttribute('href', "../static/css/game_hex_styles.css");
+        div1.setAttribute("value",red);
+        div2.setAttribute("value", blue);
+        changecolor(Mblue,blue,Mred,red)
+    }
+
+}
+
+function changecolor(b1,b2,r1,r2){
+    const cells = document.querySelectorAll('.hex');
+    cells.forEach(hex => {
+        console.log(hex.style.backgroundColor);
+        if (hex.style.backgroundColor == b1) {
+            hex.style.backgroundColor = b2;
+        }
+        if (hex.style.backgroundColor == r1) {
+            hex.style.backgroundColor = r2;
+        }
+    })
 }
