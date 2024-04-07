@@ -12,10 +12,13 @@ function home() {
 }
 
 
-function createCircles(pitId, n) {
+function createCircles(pitId, n, type) {
     var cont = document.getElementById(pitId);
     for (var i = 0; i < n; i++) {
         var circle = document.createElement("div");
+        if (type == 2){
+            circle.classList.add("temp");
+        }
         circle.classList.add("circle");
         cont.appendChild(circle);
     }
@@ -28,7 +31,7 @@ function displayCircles() {
         // Vider le contenu du conteneur
         var cont = document.getElementById("c"+pitId);
         cont.innerHTML = '';
-        createCircles("c"+pitId, values[i]);
+        createCircles("c"+pitId, values[i], 1);
     }
 }
 
@@ -122,8 +125,33 @@ window.onload = function () {
 
 function survolPit(element) {
     return function(event) {
-        console.log("Élément survolé : " + element.id);
-        // Vous pouvez ajouter d'autres actions à exécuter ici
+
+    if (event.type === "mouseover"){
+        let position = parseInt(element.id);
+        let valu = values[element.id];
+        //let temp =  values;
+        let current_position = position;
+        let pitId = "c" + current_position;
+        // Vider le contenu du conteneur
+        var cont = document.getElementById(pitId);
+        cont.innerHTML = '';
+        while (valu > 0){
+            current_position = ((current_position - 1) % 12 + 12) % 12;
+            if (current_position == position){
+                current_position = ((current_position - 1) % 12 + 12) % 12;
+            }
+            pitId = "c" + current_position;
+            //console.log(pitId);
+            createCircles(pitId, 1, 2);
+            valu = valu - 1 ;
+        }
+    }
+
+    if (event.type === "mouseout") {
+        console.log(values);
+        displayCircles();
+    }
+
     };
 }
 

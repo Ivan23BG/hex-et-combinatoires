@@ -162,3 +162,8 @@ html {
     height: 300px;
     background-color: #cc945b;
 }
+
+.temp{
+    background-color: #36151E;
+    opacity: 0.5;
+}
