@@ -118,3 +118,20 @@ window.onload = function () {
     }
     )
 }
+
+
+function survolPit(element) {
+    return function(event) {
+        console.log("Élément survolé : " + element.id);
+        // Vous pouvez ajouter d'autres actions à exécuter ici
+    };
+}
+
+// Sélection des éléments à surveiller pour le survol
+var pits = document.querySelectorAll('.pit');
+
+// Ajout des gestionnaires d'événements hover à chaque élément surveillé
+pits.forEach(function(element) {
+    element.addEventListener("mouseover", survolPit(element));
+    element.addEventListener("mouseout", survolPit(element));
+});
