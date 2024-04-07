@@ -37,17 +37,17 @@ function displayCircles() {
 
 function displayscores() {
     var rhole = document.getElementById("redhole")
-    var dis = document.getElementById("score1")
-    dis.innerHTML = '';
+    //var dis = document.getElementById("score1")
+    //dis.innerHTML = '';
     rhole.innerHTML = '';
-    dis.innerHTML = 'player 1 score:' + score_1;
+    //dis.innerHTML = 'player 1 score:' + score_1;
     createCircles("redhole", score_1);//ajouter les cercles dans les compteurs
 
     var bhole = document.getElementById("bluehole")
-    var dis2 = document.getElementById("score2")
-    dis2.innerHTML = '';
+    //var dis2 = document.getElementById("score2")
+    //dis2.innerHTML = '';
     bhole.innerHTML = '';
-    dis2.innerHTML = 'player 2 score:' + score_2;
+    //dis2.innerHTML = 'player 2 score:' + score_2;
     createCircles("bluehole", score_2);//ajouter les cercles dans les compteurs
 }
 
