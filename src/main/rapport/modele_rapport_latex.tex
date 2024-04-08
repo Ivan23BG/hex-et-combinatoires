@@ -1,8 +1,9 @@
 % commandes pour compiler le rapport:
+% dans le terminal, se placer dans le dossier contenant le fichier modele_rapport_latex.tex et compiler deux fois:
 % linux:
-% pdflatex modele_rapport_latex.tex -output-directory=output && mv output/modele_rapport_latex.pdf ./
+% pdflatex modele_rapport_latex.tex -output-directory=output && pdflatex modele_rapport_latex.tex -output-directory=output && mv output/modele_rapport_latex.pdf ./
 % windows:
-% pdflatex modele_rapport_latex.tex -output-directory=output && move -Y output\modele_rapport_latex.pdf .\
+% pdflatex modele_rapport_latex.tex -output-directory=output && pdflatex modele_rapport_latex.tex -output-directory=output && move -Y output\modele_rapport_latex.pdf .\
 %
 \include{./sources/common} % fichier contenant les packages et les commandes personnalisées
 
