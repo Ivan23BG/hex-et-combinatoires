@@ -26,13 +26,16 @@ current_IA = 1
 def index():
     return render_template('home.html')
 
+
 @app.route('/home_hex') # Hex options page
 def home_hex():
     return render_template('home_hex.html')
 
+
 @app.route('/home_awale') # Hex options page
 def home_awale():
     return render_template('home_awale.html')
+
 
 @app.route('/game_hex', methods=['POST']) # Hex play page
 def game_hex():
@@ -43,6 +46,7 @@ def game_hex():
     game_board.display_board()  # Display the game board in the console
     current_player = 1  # Set player 1 as the starting player
     return render_template('game_hex.html', size=size, size_px=size_px, current_player=current_player)
+
 
 @app.route('/game_hexia', methods=['POST']) # Hex play page
 def game_hexia():
@@ -104,8 +108,6 @@ def hex_place_piece():
         return jsonify({'error': error_message}), 400
 
     return jsonify({'result': 'Success', 'current_player': current_player})
-
-
 
 
 @app.route('/hex_place_piece_ia', methods=['POST']) # Place a piece on the board
@@ -189,10 +191,12 @@ def hexiaia_place_piece():
 
     return jsonify({'result': 'Success','iamove': iamove,'game_over_IA': False})
 
+
 @app.route('/players_hexia', methods=['POST']) # Return player's and IA's values
 def players_hexia():
     global player, IA
     return jsonify({'result': 'Success','player': player,'IA':IA})
+
 
 @app.route('/first_move_IA',methods=['POST']) #Return IA's first move if player=2
 def first_move_IA():
@@ -201,6 +205,7 @@ def first_move_IA():
     game_board.place_piece(IA, move)
     iamove = "hex" + str(move[0]) + "-" + str(move[1])
     return jsonify({'result': 'Success','iamove':iamove})
+
 
 @app.route('/undo_move', methods=['POST']) # Undo last move on the board
 def undo_move():
@@ -237,6 +242,7 @@ def game_awale():
     current_player = 1  # Set player 1 as the starting player
     return render_template('game_awale.html',current_player=current_player)
 
+
 @app.route('/awale_place_piece', methods=['POST']) # Place a piece on the board
 def awale_place_piece():
     global game_board, current_player
@@ -263,6 +269,7 @@ def awale_place_piece():
             error_message = str(e)  # Get the error message
             return jsonify({'error': error_message}), 400
     return jsonify({'result': 'Success', 'current_player': current_player,'values':values,'score_1':scores[0],'score_2':scores[1]})
+
 
 if __name__ == '__main__':
     app.run(debug=True)
