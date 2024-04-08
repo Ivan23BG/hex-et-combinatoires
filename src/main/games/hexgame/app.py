@@ -52,10 +52,7 @@ def game_hex():
 def game_hexia():
     global game_board, current_player, size_px, size, player, IA
     player = int(request.form['player'])
-    if (player==1):
-        IA = 2
-    if (player==2):
-        IA = 1
+    IA = 3 - player
     print(player)
     print(IA)   
     size = int(request.form['size'])
@@ -135,7 +132,7 @@ def hex_place_piece_ia():
             
 
             #IA's turn
-            IA = 2 - player
+            IA = 3 - player
             # make a move using minimax algorithm and get_best_move method (actualy random move)
             move = game_board.get_best_move(3,IA)
             game_board.place_piece(IA, move)
