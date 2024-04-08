@@ -301,6 +301,111 @@ class HexBoard:
         row, col = position
         self.board[row][col] = 0 
 
+    def get_played_moves(self):
+        """
+        Get all the moves that have been played in the game.
+
+        Returns:
+            list: The list of played moves in the order they were played.
+        """
+        played_moves = []
+        for row in range(self.size):
+            for col in range(self.size):
+                if self.board[row][col] != 0:
+                    played_moves.append((row, col))
+        return played_moves
+    
+    def find_chains(self, player):
+        """
+        Find all the chains of the current player on the board.
+
+        Args:
+            player (int): The player value (1 or 2).
+
+        Returns:
+            list: The list of chains, where each chain is a list of positions.
+        """
+        chains = []
+        visited = set()
+        for row in range(self.size):
+            for col in range(self.size):
+                position = (row, col)
+                if self.board[row][col] == player and position not in visited:
+                    chain = self.dfs(position, player, visited)
+                    chains.append(chain)
+        return chains
+
+    def dfs(self, position, player, visited):
+        """
+        Depth-first search to find a chain of the current player.
+
+        Args:
+            position (tuple): The starting position.
+            player (int): The player value (1 or 2).
+            visited (set): The set of visited positions.
+
+        Returns:
+            list: The chain of positions.
+        """
+        chain = []
+        stack = [position]
+        while stack:
+            current_position = stack.pop()
+            chain.append(current_position)
+            visited.add(current_position)
+            neighbors = self.get_neighbors((current_position[0], current_position[1]), self.size, self.size)
+            for neighbor in neighbors:
+                if self.board[neighbor[0]][neighbor[1]] == player and neighbor not in visited:
+                    stack.append(neighbor)
+        return chain 
+    
+    def is_winning_path(self, path, player):
+        # Check if the path is empty
+        if not path:
+            return False
+
+        # Check if the path belongs to the player
+        for i, j in path:
+            if self.board[i][j] != player:
+                return False
+
+        # Check if the path connects the two sides of the board
+        if player == 1:
+            # Player 1 wins by connecting the top and bottom sides
+            cols = [j for i, j in path]
+            return min(cols) == 0 and max(cols) == self.size - 1
+        else:
+            # Player 2 wins by connecting the left and right sides
+            rows = [i for i, j in path]
+            return min(rows) == 0 and max(rows) == self.size - 1
+        
+    def is_potential_winner(self, player, position):
+        """
+        Check if placing a piece at the given position could potentially lead to a win for the player.
+
+        Args:
+            player (int): The player value (1 or 2).
+            position (tuple): The position to check.
+
+        Returns:
+            bool: True if the position could lead to a win, False otherwise.
+        """
+        # Check if the position is already occupied
+        if self.is_position_occupied(position):
+            return False
+
+        # Place a temporary piece at the position
+        row, col = position
+        self.board[row][col] = player
+
+        # Check if the player has won
+        is_winner = self.check_winner_player(player, position)
+
+        # Undo the temporary placement
+        self.board[row][col] = 0
+
+        return is_winner
+
     def evaluate_board(self):
         """
         Evaluate the current state of the board.
@@ -329,98 +434,251 @@ class HexBoard:
 
         return score_difference
     
-    def minimax(self, depth, player, alpha, beta):
+    def evaluate_voisins(self):
+
         """
-        Minimax algorithm with alpha-beta pruning.
-
-        Args:
-            depth (int): The depth of the search tree.
-            player (int): The player value (1 or 2).
-            alpha (int): The alpha value for pruning.
-            beta (int): The beta value for pruning.
-
-        Returns:
-            int: The best score for the current player.
+        Elle prend en compte la connectivité des pieces:
+            - si une piece est connectée à une autre piece de la meme couleur, on augmente le score
+            - on fait la difference des scores des deux joueurs
         """
-        if depth == 0 or self.check_winner() is not None:
-            return self.evaluate_board()
 
+        # Initialize scores
+        player_1_score = 0
+        player_2_score = 0
+        # Evaluate the board for both players
+        for i in range(self.size):
+            for j in range(self.size):
+                voisins = self.get_neighbors((i,j), self.size, self.size)
+                if self.board[i][j] == 1: 
+                    for v in voisins:
+                        if self.board[v[0]][v[1]] == 1:
+                            player_1_score += 1
+                elif self.board[i][j] == 2:
+                    for v in voisins:
+                        if self.board[v[0]][v[1]] == 2:
+                            player_2_score += 1
+
+        # Calculate the difference in scores
+        score_difference = player_1_score - player_2_score
+        return score_difference
+    
+    def evaluate_proxi_edge(self, player):
+        """
+        Une fonction d'évaluation qui prend en compte la proximité des pieces par rapport aux bords du plateau.
+        """
+        player_1_score = 0
+        player_2_score = 0
+
+        for i in range(self.size):
+            for j in range(self.size):
+                if self.board[i][j] == 1:
+                    player_1_score += (self.size - j)
+                elif self.board[i][j] == 2:
+                    player_2_score += (self.size - i)
+
+        score_difference = player_1_score - player_2_score
+
+        return score_difference if player == 1 else -score_difference
+    
+    def evaluate_1(self, player):
+        """
+        J'essaide mettre en consideration les 2 arguments precedents
+        """
+        player_1_score = 0
+        player_2_score = 0
+
+        # Evaluate the board for both players
+        for i in range(self.size):
+            for j in range(self.size):
+                voisins = self.get_neighbors((i,j), self.size, self.size)
+                if self.board[i][j] == 1: 
+                    # Increase score based on the number of neighboring pieces for player 1
+                    for v in voisins:
+                        if self.board[v[0]][v[1]] == 1:
+                            player_1_score += 1
+                    # Increase score based on proximity to the right edge for player 1
+                    player_1_score += (self.size - j)
+                elif self.board[i][j] == 2:
+                    # Increase score based on the number of neighboring pieces for player 2
+                    for v in voisins:
+                        if self.board[v[0]][v[1]] == 2:
+                            player_2_score += 1
+                    # Increase score based on proximity to the bottom edge for player 2
+                    player_2_score += (self.size - i)
+
+        # Calculate the difference in scores
+        score_difference = (player_1_score - player_2_score)/max(player_2_score, player)
+
+        # Return the score difference from the perspective of the current player
+        return score_difference if player == 1 else -score_difference
+        
+    def evaluate_2(self, player):
+        player_1_score = 0
+        player_2_score = 0
+
+        for i in range(self.size):
+            for j in range(self.size):
+                if self.board[i][j] == 1:
+                    # Increase score based on the number of neighboring pieces for player 1
+                    voisins = self.get_neighbors((i, j), self.size, self.size)
+                    connected_pieces = 0
+                    for v in voisins:
+                        if self.board[v[0]][v[1]] == 1:
+                            player_1_score += 1
+                            connected_pieces += 1
+                    # Increase score based on proximity to the borders for player 1
+                    player_1_score += min(i, j, self.size - i, self.size - j)
+                    # Increase score based on the connectivity of the chains for player 1
+                    player_1_score += connected_pieces ** 2  # or some other function of connected_pieces
+                elif self.board[i][j] == 2:
+                    # Increase score based on the number of neighboring pieces for player 2
+                    voisins = self.get_neighbors((i, j), self.size, self.size)
+                    connected_pieces = 0
+                    for v in voisins:
+                        if self.board[v[0]][v[1]] == 2:
+                            player_2_score += 1
+                            connected_pieces += 1
+                    # Increase score based on proximity to the borders for player 2
+                    player_2_score += min(i, j, self.size - i, self.size - j)
+                    # Increase score based on the connectivity of the chains for player 2
+                    player_2_score += connected_pieces ** 2  # or some other function of connected_pieces
+
+        score_difference = (player_1_score - player_2_score) 
+        # Return the score difference from the perspective of the current player
+        return score_difference if player == 1 else -score_difference
+    
+    def evaluate_3(self, player):
+        # Use the same criteria as evaluate_2
+        # Mon probleme avec cette fonction est que il bloque pas mal l'adversaire 
+        # mais il sait pas gangner.
+        player_1_score = 0
+        player_2_score = 0
+
+        for i in range(self.size):
+            for j in range(self.size):
+                if self.board[i][j] == 1:
+                    voisins = self.get_neighbors((i, j), self.size, self.size)
+                    connected_pieces = 0
+                    for v in voisins:
+                        if self.board[v[0]][v[1]] == 1:
+                            player_1_score += 2 
+                            connected_pieces += 1
+                    player_1_score += min(i, j, self.size - i, self.size - j)
+                    player_1_score += connected_pieces ** 2
+                elif self.board[i][j] == 2:
+                    voisins = self.get_neighbors((i, j), self.size, self.size)
+                    connected_pieces = 0
+                    for v in voisins:
+                        if self.board[v[0]][v[1]] == 2:
+                            player_2_score += 2
+                            connected_pieces += 1
+                    player_2_score += min(i, j, self.size - i, self.size - j)
+                    player_2_score += connected_pieces ** 2
+
+        # Add points if the shortest path of the opposite player is longer
         if player == 1:
+            shortest_path_2 = self.shortest_path(2)
+            if shortest_path_2 != "error":
+                player_1_score += len(shortest_path_2)
+            else:
+                player_1_score += 0  # or some other value
+        else:
+            shortest_path_1 = self.shortest_path(1)
+            if shortest_path_1 != "error":
+                player_2_score += len(shortest_path_1)
+            else:
+                player_2_score += 0  # or some other value
+
+        score_difference = (player_1_score - player_2_score)/max(player_2_score, player_1_score)
+        return score_difference if player == 1 else -score_difference
+    
+    def evaluate_hex(self, player):
+        player_1_score = 0
+        player_2_score = 0
+
+        for i in range(self.size):
+            for j in range(self.size):
+                if self.board[i][j] == 1:
+                    voisins = self.get_neighbors((i, j), self.size, self.size)
+                    connected_pieces = 0
+                    for v in voisins:
+                        if self.board[v[0]][v[1]] == 1:
+                            player_1_score += 2 
+                            connected_pieces += 1
+                    player_1_score += min(i, j, self.size - i, self.size - j)
+                    player_1_score += connected_pieces ** 2
+                elif self.board[i][j] == 2:
+                    voisins = self.get_neighbors((i, j), self.size, self.size)
+                    connected_pieces = 0
+                    for v in voisins:
+                        if self.board[v[0]][v[1]] == 2:
+                            player_2_score += 2
+                            connected_pieces += 1
+                    player_2_score += min(i, j, self.size - i, self.size - j)
+                    player_2_score += connected_pieces ** 2
+
+        # Check if there's a potential winning move
+        if player == 1:
+            if self.is_potential_winner(player, (0, 0)):  # Assuming player 1 starts from the top-left corner
+                return 1000  # A high score to prioritize the winning move
+        else:
+            if self.is_potential_winner(player, (0, 0)):  # Assuming player 2 starts from the top-left corner
+                return -1000  # A high negative score to prioritize blocking the opponent's winning move
+
+        # Add points if the shortest path of the opposite player is longer
+        if player == 1:
+            shortest_path_2 = self.shortest_path(2)
+            if shortest_path_2 != "error":
+                player_1_score += len(shortest_path_2)
+            else:
+                player_1_score += 0  # or some other value
+        else:
+            shortest_path_1 = self.shortest_path(1)
+            if shortest_path_1 != "error":
+                player_2_score += len(shortest_path_1)
+            else:
+                player_2_score += 0  # or some other value
+
+        score_difference = (player_1_score - player_2_score) 
+        return score_difference if player == 1 else -score_difference
+
+
+    def minimax(self, depth, player, alpha, beta):
+        if depth == 0 or self.check_winner() is not None:
+            return self.evaluate_hex(player), None
+
+        if player == 1:  # Maximizing player
             best_score = float('-inf')
+            best_move = None
             possible_moves = self.get_possible_moves()
             for move in possible_moves:
                 self.place_piece(player, move)
-                score = self.minimax(depth - 1, 2, alpha, beta)
+                score, _ = self.minimax(depth - 1, 2, alpha, beta)
                 self.undo_move(move)
-                best_score = max(best_score, score)
+                if score > best_score:
+                    best_score = score
+                    best_move = move
                 alpha = max(alpha, best_score)
                 if beta <= alpha:
-                    break
-            return best_score
-        else:
+                    break  # Alpha-Beta pruning
+            return best_score, best_move
+        
+        else:  # Minimizing player
             best_score = float('inf')
+            best_move = None
             possible_moves = self.get_possible_moves()
             for move in possible_moves:
                 self.place_piece(player, move)
-                score = self.minimax(depth - 1, 1, alpha, beta)
+                score, _ = self.minimax(depth - 1, 1, alpha, beta)
                 self.undo_move(move)
-                best_score = min(best_score, score)
+                if score < best_score:
+                    best_score = score
+                    best_move = move
                 beta = min(beta, best_score)
                 if beta <= alpha:
-                    break
-            return best_score
+                    break  # Alpha-Beta pruning
+            return best_score, best_move
         
     def get_best_move(self, depth, player):
-        """
-        Get the best move for the given player using the minimax algorithm.
-
-        Args:
-            depth (int): The depth of the search tree.
-            player (int): The player value (1 or 2).
-
-        Returns:
-            tuple: The best move (row, col).
-        """
-        """
-        best_score = float('-inf') if player == 1 else float('inf')
-        best_move = None
-        possible_moves = self.get_possible_moves()
-        for move in possible_moves:
-            self.place_piece(player, move)
-            score = self.minimax(depth - 1, 3 - player, float('-inf'), float('inf'))
-            self.undo_move(move)
-            if player == 1 and score > best_score:
-                best_score = score
-                best_move = move
-            elif player == 2 and score < best_score:
-                best_score = score
-                best_move = move
-        return best_move""" 
-        # return random move for IA
-        # if player==2:
-        pastrouve=True
-        while(pastrouve):
-            x = random.randint(0,self.size-1)
-            y = random.randint(0,self.size-1)
-            if not self.is_position_occupied((x,y)):
-                pastrouve=False
-                return (x,y)
-            
-    
-    def get_played_moves(self):
-        """
-        Get all the moves that have been played in the game.
-
-        Returns:
-            list: The list of played moves in the order they were played.
-        """
-        played_moves = []
-        for row in range(self.size):
-            for col in range(self.size):
-                if self.board[row][col] != 0:
-                    played_moves.append((row, col))
-        return played_moves
-    
-    
-    #def undo_move(self,row,col):
-    #    self.board[row][col] = 0
+        _ , best_move = self.minimax(depth, player, float('-inf'), float('inf'))
+        return best_move
