@@ -1,0 +1,56 @@
+% commandes pour compiler le rapport:
+% linux:
+% pdflatex modele_rapport_latex.tex -output-directory=output && mv output/modele_rapport_latex.pdf ./
+% windows:
+% pdflatex modele_rapport_latex.tex -output-directory=output && move -Y output\modele_rapport_latex.pdf .\
+%
+\include{./sources/common} % fichier contenant les packages et les commandes personnalisées
+
+
+\begin{document}
+
+
+\include{./sources/0_frontpage}  % page de garde
+\newpage
+
+
+\tableofcontents  % Table des matières
+\newpage
+
+
+\include{./sources/1_presentation_sujet}  % Présentation du sujet
+\newpage
+
+
+\include{./sources/2_technologies_utilisees}  % Technologies utilisées
+\newpage
+
+
+\include{./sources/3_developpements_logiciel}  % Développements Logiciel: Conception, Modélisation, Implémentation
+\newpage
+
+
+\include{./sources/4_algorithmes_et_analyse}  % Algorithmes et Analyse
+\newpage
+
+
+\include{./sources/5_analyse_des_resultats}  % Analyse des résultats
+\newpage
+
+
+\include{./sources/6_gestion_du_projet}  % Gestion du projet
+\newpage
+
+
+\include{./sources/7_bilan_et_conclusions}  % Bilan et Conclusions
+\newpage
+
+\include{./sources/8_bibliographie}  % Bibliographie
+\newpage
+
+\include{./sources/9_annexes}  % Annexes
+\newpage
+
+
+\end{document}
+
