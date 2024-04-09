@@ -248,6 +248,60 @@ class HexBoard:
             return "error"
         return path
 
+    def get_winning_path(self, player):
+        return self.shortest_path(player)
+
+    def getWinFactor(self, player):
+        cnt=0
+        winPath = self.get_winning_path(player)
+        for i in range(self.size):
+            for j in range(self.size):
+                if (i,j) in winPath:
+                    cnt+=1
+        return cnt/len(winPath)*100
+    
+    def getPathFactor(self, player):
+        score=0
+        path=[]
+        if (player == 1):
+            for i in range(self.size):
+                for j in range (self.size):
+                    if (self.board[i][j] == 1):
+                        path = self.dijkstra(1, (i,j))
+                        score += 1
+        else:
+            for i in range(self.size):
+                for j in range (self.size):
+                    if (self.board[j][i] == 2):
+                        path = self.dijkstra(2, (j,i))
+                        score += 1
+        return score/(self.size*self.size)*100
+    
+    def getAdjFactor(self, player):
+        score=0
+        if (player == 1):
+            for i in range(self.size):
+                for j in range (self.size):
+                    if (self.board[i][j] == 1):
+                        voisins = self.get_neighbors((i,j), self.size, self.size)
+                        for v in voisins:
+                            if (self.board[v[0]][v[1]] == 1):
+                                score += 1
+        else:
+            for i in range(self.size):
+                for j in range (self.size):
+                    if (self.board[j][i] == 2):
+                        voisins = self.get_neighbors((j,i), self.size, self.size)
+                        for v in voisins:
+                            if (self.board[v[0]][v[1]] == 2):
+                                score += 1
+        return score/(self.size*self.size)*100
+    
+    def getScore(self, player):
+        if self.check_winner() == player:
+            return 1000
+        return max (self.getWinFactor(player), self.getPathFactor(player) ,self.getAdjFactor(player))
+
     def display_board(self):
         """
         Display the board.
@@ -596,6 +650,9 @@ class HexBoard:
         player_1_score = 0
         player_2_score = 0
 
+        if self.check_winner() == player:
+            return 1000
+
         for i in range(self.size):
             for j in range(self.size):
                 if self.board[i][j] == 1:
@@ -643,22 +700,22 @@ class HexBoard:
         return score_difference if player == 1 else -score_difference
     
     def get_dijkstra_score(self, player, start):
+        # Find the ending tiles based on the player
         ends = []
         if player == 1:
             for k in range(self.size):
                 if self.board[k][self.size-1] == player:
-                    ends.append((k,self.size-1))
+                    ends.append((k, self.size-1))
         else:
             for k in range(self.size):
                 if self.board[self.size-1][k] == player:
-                    ends.append((self.size-1,k))
+                    ends.append((self.size-1, k))
 
-        if not ends:  # Check if ends list is empty
-            return float('inf') if player == 1 else float('-inf')  # Return infinity for player 1, negative infinity for player 2
-
+        # Run Dijkstra's algorithm
         rows, cols = self.size, self.size
         visited = [[False] * cols for _ in range(rows)]
         distance = [[float('inf')] * cols for _ in range(rows)]
+        previous = [[None] * cols for _ in range(rows)]
 
         distance[start[0]][start[1]] = 0
         heap = [(0, start)]
@@ -673,41 +730,43 @@ class HexBoard:
 
             neighbors = self.get_neighbors(current_node, rows, cols)
             for neighbor in neighbors:
-                if 0 <= neighbor[0] < rows and 0 <= neighbor[1] < cols:  # Check board boundaries
+                if 0 <= neighbor[0] < rows and 0 <= neighbor[1] < cols:  # Vérifier les limites du plateau
                     if not visited[neighbor[0]][neighbor[1]] and self.board[neighbor[0]][neighbor[1]] == player:
                         new_dist = distance[current_node[0]][current_node[1]] + 1
                         if new_dist < distance[neighbor[0]][neighbor[1]]:
                             distance[neighbor[0]][neighbor[1]] = new_dist
+                            previous[neighbor[0]][neighbor[1]] = current_node
                             heapq.heappush(heap, (new_dist, neighbor))
 
-        min_distance = min(distance[end[0]][end[1]] for end in ends)
-        
-        return min_distance if min_distance != float('inf') else 0
+        # Find the closest ending tile
+        closest_end = None
+        closest_dist = float('inf')
+        for end in ends:
+            if distance[end[0]][end[1]] < closest_dist:
+                closest_end = end
+                closest_dist = distance[end[0]][end[1]]
+
+        # Return the minimum number of moves to win
+        return closest_dist
 
 
-    def evaluate_4(self, player):
-        """
-        Evaluate the current state of the board based on the minimum number of moves required to connect the two sides of the board.
-        """
-        # Calculate the dijkstra score for the current player
-        start = (0, 0) if player == 1 else (self.size - 1, self.size - 1)
-        dijkstra_score = self.get_dijkstra_score(player, start)
-        
-        # Calculate the dijkstra score for the opponent player
-        opponent = 2 if player == 1 else 1
-        opponent_start = (0, 0) if opponent == 1 else (self.size - 1, self.size - 1)
-        opponent_dijkstra_score = self.get_dijkstra_score(opponent, opponent_start)
-        
-        # Calculate the score difference
-        score_difference = dijkstra_score - opponent_dijkstra_score
-        
-        # Return the score difference from the perspective of the current player
-        return score_difference if player == 1 else -score_difference
+    def evaluate(self, player):
+        # Find the starting tile based on the player
+        if player == 1:
+            start = (0, self.size - 1)
+        else:
+            start = (self.size - 1, 0)
+
+        score_player = self.get_dijkstra_score(player, start)
+        score_opponent = self.get_dijkstra_score(3-player, start)
+        return score_opponent - score_player
     
 
+    #give me the minimax algorithm with alfa beta pruning and with the evaluation function
     def minimax(self, depth, player, alpha, beta):
+        #print("zaza")
         if depth == 0 or self.check_winner() is not None:
-            return self.evaluate_4(player), None
+            return self.evaluate_hex(player), None
 
         if player == 1:  # Maximizing player
             best_score = float('-inf')
@@ -742,22 +801,7 @@ class HexBoard:
             return best_score, best_move
         
     def get_best_move(self, depth, player):
-        best_score = float('-inf')
-        best_move = None
-
-        # iterate over all empty positions on the board
-        for move in self.get_empty_cells():
-            # simulate making the move
-            self.place_piece(player, move)
-            # calculate the score for this move using minimax with alpha-beta pruning
-            score, _ = self.minimax(depth - 1, player, float('-inf'), float('inf'))
-            # undo the move
-            self.undo_move(move)
-            # update the best move if this move has a higher score
-            if score > best_score:
-                best_score = score
-                best_move = move
-
+        _ , best_move = self.minimax(depth, player, float('-inf'), float('inf'))
         return best_move
     
     def get_empty_cells(self):
