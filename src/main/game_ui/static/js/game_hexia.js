@@ -32,10 +32,8 @@ window.onload = async function () {
     // Initialise correct player's and IA's values 
     const data1 = await fetchPlayersJSON() 
     player = data1.player;
-    document.getElementById('player').value = player;
-
     IA = data1.IA;
-    //console.log("player",player,"IA",IA);
+    document.getElementById('player').value = player;
     
     // If IA is playing Blue, she play first move
     if (player===2){
@@ -78,13 +76,14 @@ window.onload = async function () {
             }
 
             // Try to play a piece
-            fetch('/hex_place_piece_ia', {
+            fetch('/hex_place_piece', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    'hexid': hexid
+                    'hexid': hexid,
+                    'current_player': player
                 }),
             })
             .then(response => response.json())
@@ -110,27 +109,9 @@ window.onload = async function () {
                     toggle_colour(this,player);
 
                     // check if player 1 won
-                    if (data.game_over_player === true) {
+                    if (data.game_over === true) {
                         //save the winner
                         winner = player;
-                        //save shortest_parth
-                        short_path = data.hexid;
-                        // set game to over
-                        game_over = true;
-                    }
-                    
-                    //Place piece if player 1 doesn't win
-                    if (!(game_over)){
-                        let iamove = data.iamove;
-                        var iahex = document.getElementById(iamove);
-                        game_history.push(iamove);
-                        toggle_colour(iahex,IA);
-                    }
-
-                    //check if IA won
-                    if (data.game_over_IA === true){
-                        //save the winner
-                        winner = IA;
                         //save shortest_parth
                         short_path = data.hexid;
                         // set game to over
@@ -159,9 +140,40 @@ window.onload = async function () {
             })
             .catch((error) => {
                 alert('Unknown error, should never happen, if you get this please warn your supervisor' + error);
-            })
-        }; // end of hex.onclick
-    }); // end of cells.forEach
+            }) //End of fetch player
+
+            //Place piece if player 1 doesn't win
+            if (game_over!=true){
+                const data = await fetchIAMoveJSON(current_IA);  // Get current_IA's move
+                let iamove = data.iamove;
+                var iahex = document.getElementById(iamove);
+
+                game_history.push(iamove);
+                toggle_colour(iahex,current_IA);
+
+                // check if current_IA won
+                if (data.game_over_IA === true) {
+                    winner = current_IA;
+                    short_path = data.hexid;
+                    game_over = true;
+                    stopped=true;
+
+                    // Display winning path when game is over
+                    let k = 0;
+                    let intervalId = setInterval(() => {
+                    let hex = document.getElementById(short_path[k]);
+                    hex.style.backgroundColor = '#FFD700';
+                    k++;
+                    if (k === short_path.length) {
+                        clearInterval(intervalId);
+                    }
+                    }, 100);
+                    return;
+                }
+
+            }; // end of IA's turn 
+        }// End of onclick
+    });// end of cells.forEach
 
     // Function to toggle the colour of the hex cell
     // also adds the hover class for the next player
