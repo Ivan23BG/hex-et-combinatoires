@@ -59,6 +59,9 @@ window.onload = async function () {
         // Add click event listener to each hex cell
         hex.onclick = function () {
 
+            // show spinner
+            document.getElementById('spinner').style.display = 'block';
+
             if (this.getAttribute('disabled')) {
                 return;
             }
@@ -153,13 +156,20 @@ window.onload = async function () {
                             cell.classList.remove('hex-player2-hover');
                             cell.setAttribute('disabled', true);
                         });
+
+                        // hide spinner
+                        document.getElementById('spinner').style.display = 'none';
                         return;
                     }
                 }
+                // hide spinner
+                document.getElementById('spinner').style.display = 'none';
             })
             .catch((error) => {
                 alert('Unknown error, should never happen, if you get this please warn your supervisor' + error);
             })
+
+            
         }; // end of hex.onclick
     }); // end of cells.forEach
 
