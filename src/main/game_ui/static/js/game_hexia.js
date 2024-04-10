@@ -22,6 +22,7 @@ async function fetchFirstMoveJSON() {
 
 // request for IA's move
 async function fetchIAMoveJSON(IA) {
+    console.log("deux");
     const response = await fetch('/hexiaia_place_piece', {method: 'POST',headers: {'Content-Type': 'application/json'},body: JSON.stringify({'current_IA': IA})});
     const data = response.json();
     return data;
@@ -42,7 +43,8 @@ window.onload = async function () {
     let player = 0; // Player default value 
     let IA = 0; // IA default value 
 
-    let recup_error = false;
+    let recup_error = false; // Variable qui empêche que l'IA joue si on clic sur un hex pas bon
+    let playable = true; // Check if player can play or not 
     let game_over = false;
     let short_path = [];
     let winner = 0;
@@ -81,7 +83,8 @@ window.onload = async function () {
             // show spinner
             document.getElementById('spinner').style.display = 'block';
 
-            if (this.getAttribute('disabled')) {
+
+            if (this.getAttribute('disabled') || playable===false) {
                 // hide spinner
                 document.getElementById('spinner').style.display = 'none';
                 return;
@@ -164,7 +167,8 @@ window.onload = async function () {
             
             //Place piece if player doesn't win
             if (game_over!=true && recup_error!=true){
-                const data = await fetchIAMoveJSON(IA);  // Get IA's move                
+                playable=false;
+                const data = await fetchIAMoveJSON(IA);  // Get IA's move            
                 let iamove = data.iamove;
                 console.log(data.iamove);
                 var iahex = document.getElementById(iamove);
@@ -172,7 +176,7 @@ window.onload = async function () {
 
                 game_history.push(iamove);
                 toggle_colour(iahex,IA);
-
+                playable = true;   
                 // check if current_IA won
                 if (data.game_over === true) {
                     winner = IA;

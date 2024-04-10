@@ -119,7 +119,7 @@ def hexiaia_place_piece():
     try:
         if game_board is not None:
 
-            move_IA = game_board.get_best_move(2,current_IA)
+            move_IA = game_board.get_best_move(3,current_IA)
             game_board.place_piece(current_IA, move_IA) # Try to place the piece
             iamove = "hex" + str(move_IA[0]) + "-" + str(move_IA[1])
             
