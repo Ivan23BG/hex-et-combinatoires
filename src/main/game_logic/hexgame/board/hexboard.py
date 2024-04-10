@@ -654,6 +654,13 @@ class HexBoard:
                     return self.get_CC(tab,v)
             return tab
 
+    def aleatoire(self, player):
+        if self.check_winner() == 1 :
+            return 1000
+        if self.check_winner() == 2 :
+            return -1000
+    
+        return random.randint(-100,100)
 
     def naif(self, player):
         player_1_score = 0
@@ -667,9 +674,9 @@ class HexBoard:
         if self.check_winner() == player:
             print("tres bien")
             return 1000
-        if self.check_winner() == 3 - player:
+        if self.check_winner() != player:
             print("pas bon")
-            return -1000
+            return 1000
         
         if player == 1:
             for i in range(self.size):
@@ -718,7 +725,7 @@ class HexBoard:
 
     def minimax(self, depth, player, alpha, beta):
         if depth == 0 or self.check_winner() is not None:
-            return self.naif(player), None
+            return self.aleatoire(player), None
 
         if player == 1:  # Maximizing player
             best_score = float('-inf')
@@ -726,6 +733,7 @@ class HexBoard:
             possible_moves = self.get_possible_moves()
             for move in possible_moves:
                 self.place_piece(player, move)
+                #print(self.check_winner())
                 #print(player ,move, self.minimax(depth - 1, 2, alpha, beta))
                 score, _ = self.minimax(depth - 1, 2, alpha, beta)
                 self.undo_move(move)
@@ -735,7 +743,7 @@ class HexBoard:
                 alpha = max(alpha, best_score)
                 if beta <= alpha:
                     break  # Alpha-Beta pruning
-            #print(best_score,best_move)
+            #print("max",best_score,best_move)
             return best_score, best_move
         
         else:  # Minimizing player
@@ -744,6 +752,7 @@ class HexBoard:
             possible_moves = self.get_possible_moves()
             for move in possible_moves:
                 self.place_piece(player, move)
+                #print(self.check_winner())
                 #print(player ,move, self.minimax(depth - 1, 2, alpha, beta))
                 score, _ = self.minimax(depth - 1, 1, alpha, beta)
                 self.undo_move(move)
@@ -753,6 +762,7 @@ class HexBoard:
                 beta = min(beta, best_score)
                 if beta <= alpha:
                     break  # Alpha-Beta pruning
+            #print("min",best_score,best_move)
             return best_score, best_move
         
     def get_best_move(self, depth, player):
