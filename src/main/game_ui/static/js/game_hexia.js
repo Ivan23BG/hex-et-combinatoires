@@ -77,6 +77,9 @@ window.onload = async function () {
         // Add click event listener to each hex cell
         hex.onclick = async function () {
 
+            // show spinner
+            document.getElementById('spinner').style.display = 'block';
+
             if (this.getAttribute('disabled')) {
                 return;
             }
@@ -127,6 +130,7 @@ window.onload = async function () {
                     game_over = true;
                 }
 
+
                 // display winning path
                 if (game_over) {
                     let k = 0;
@@ -173,6 +177,7 @@ window.onload = async function () {
                     k++;
                     if (k === short_path.length) {
                         clearInterval(intervalId);
+
                     }
                     }, 100);
                     cells.forEach(cell => {
@@ -184,6 +189,8 @@ window.onload = async function () {
                 }
 
             }; // end of IA's turn 
+        // hide spinner
+        document.getElementById('spinner').style.display = 'none';
         }// End of onclick
     });// end of cells.forEach
 
