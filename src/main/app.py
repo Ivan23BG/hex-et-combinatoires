@@ -2,7 +2,7 @@
 # Imports
 from flask import Flask, render_template, request, jsonify
 from game_logic.hexgame.board.hexboard import HexBoard
-from game_logic.awelegame.board.aweleboard import AwaleBoard
+from game_logic.awalegame.board.awaleboard import AwaleBoard
 
 
 # Global variables
@@ -235,7 +235,7 @@ def undo_move():
 @app.route('/game_awale', methods=['POST']) # Hex play page
 def game_awale():
     global game_board, current_player
-    game_board = AweleBoard()  # Create a new game board
+    game_board = AwaleBoard()  # Create a new game board
     game_board.display_board()  # Display the game board in the console
     current_player = 1  # Set player 1 as the starting player
     return render_template('game_awale.html',current_player=current_player)

@@ -1,4 +1,4 @@
-#Implementation du jeu de Awele
+#Implementation du jeu de Awale
 import copy
 
 
