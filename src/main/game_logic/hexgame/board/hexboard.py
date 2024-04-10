@@ -671,12 +671,10 @@ class HexBoard:
         tabj1 = []
         tabj2 = []
         
-        if self.check_winner() == player:
-            print("tres bien")
+        if self.check_winner() == 1 :
             return 1000
-        if self.check_winner() != player:
-            print("pas bon")
-            return 1000
+        if self.check_winner() == 2 :
+            return -1000
         
         if player == 1:
             for i in range(self.size):
@@ -717,15 +715,15 @@ class HexBoard:
                         if CC not in T2:
                             T2.append(CC)
             #print(len(max(T1, key=len)))
-            player_1_score = -len(max(T1, key=len))*(len(tabj1)+1)
-            player_2_score = len(max(T1, key=len))*(len(tabj2)+1)
+            player_1_score = len(max(T1, key=len))*(len(tabj1)+1)
+            player_2_score = -len(max(T1, key=len))*(len(tabj2)+1)
         
         
         return player_1_score + player_2_score;
 
     def minimax(self, depth, player, alpha, beta):
         if depth == 0 or self.check_winner() is not None:
-            return self.aleatoire(player), None
+            return self.naif(player), None
 
         if player == 1:  # Maximizing player
             best_score = float('-inf')
@@ -743,7 +741,9 @@ class HexBoard:
                 alpha = max(alpha, best_score)
                 if beta <= alpha:
                     break  # Alpha-Beta pruning
-            #print("max",best_score,best_move)
+            print("max",best_score,best_move)
+            if best_score == 4 :
+                best_move = (random.randint(0,self.size - 1),random.randint(0,self.size - 1))
             return best_score, best_move
         
         else:  # Minimizing player
