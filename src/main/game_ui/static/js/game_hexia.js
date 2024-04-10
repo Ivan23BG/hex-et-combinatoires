@@ -6,21 +6,34 @@ function home() {
     window.location.href = '/home_hex'
 }
 
+// Request for correct IA's and player's values
 async function fetchPlayersJSON() { 
     const response = await fetch('/players_hexia',{method:'POST',headers:{'Content-Type': 'application/json'}});
     const data = response.json();
     return data;
 }
 
+// Request for IA's first move
 async function fetchFirstMoveJSON() {
     const response = await fetch('/first_move_IA',{method:'POST',headers:{'Content-Type': 'application/json'}});
     const data = response.json();
     return data;
 }
 
+// request for IA's move
 async function fetchIAMoveJSON(IA) {
     const response = await fetch('/hexiaia_place_piece', {method: 'POST',headers: {'Content-Type': 'application/json'},body: JSON.stringify({'current_IA': IA})});
     const data = response.json();
+    return data;
+}
+
+// request for place player's move
+async function fetchPlayerMoveJSON(hexid,player) {
+    const response = await fetch('/hex_place_piece', {method: 'POST',headers: {'Content-Type': 'application/json',},body: JSON.stringify({'hexid': hexid,'current_player': player}),});
+    const data = response.json().catch((error) => {
+        alert('Unknown error, should never happen, if you get this please warn your supervisor' + error);
+    }) //End of fetch player
+;
     return data;
 }
 
@@ -28,6 +41,7 @@ window.onload = async function () {
     let player = 0; // Player default value 
     let IA = 0; // IA default value 
 
+    let recup_error = false;
     let game_over = false;
     let short_path = [];
     let winner = 0;
@@ -80,79 +94,67 @@ window.onload = async function () {
                 // stop game immediately if game is over
                 return;
             }
+            const data = await fetchPlayerMoveJSON(hexid,player); 
+            if (data.error) {
+                let error = data.error
+                recup_error = true;
+                alert(error);
+                // briefly change the colour of the hex cell to indicate an invalid move
+                const original_colour = this.style.backgroundColor;
+                this.style.backgroundColor = '#FF0000';
 
-            // Try to play a piece
-            fetch('/hex_place_piece', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    'hexid': hexid,
-                    'current_player': player
-                }),
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.error) {
-                    let error = data.error
-                    alert(error);
-                    // briefly change the colour of the hex cell to indicate an invalid move
-                    const original_colour = this.style.backgroundColor;
-                    this.style.backgroundColor = '#FF0000';
+                // disable the click event on the hex cell
+                this.setAttribute('disabled', true);
 
-                    // disable the click event on the hex cell
-                    this.setAttribute('disabled', true);
+                setTimeout(() => {
+                    this.style.backgroundColor = original_colour;
 
-                    setTimeout(() => {
-                        this.style.backgroundColor = original_colour;
+                    // re-enable the click event on the hex cell
+                    this.removeAttribute('disabled');
+                }, 500);
+            } else {
+                recup_error = false;
+                game_history.push(hexid);
+                toggle_colour(this,player);
 
-                        // re-enable the click event on the hex cell
-                        this.removeAttribute('disabled');
-                    }, 500);
-                } else {
-                    game_history.push(hexid);
-                    toggle_colour(this,player);
-
-                    // check if player 1 won
-                    if (data.game_over === true) {
-                        //save the winner
-                        winner = player;
-                        //save shortest_parth
-                        short_path = data.hexid;
-                        // set game to over
-                        game_over = true;
-                    }
-
-                    // display winning path
-                    if (game_over) {
-                        let k = 0;
-                        let intervalId = setInterval(() => {
-                            let hex = document.getElementById(data.hexid[k]);
-                            hex.style.backgroundColor = '#FFD700';
-                            k++;
-                            if (k === data.hexid.length) {
-                                clearInterval(intervalId);
-                            }
-                        }, 100);
-                        cells.forEach(cell => {
-                            cell.classList.remove('hex-player1-hover');
-                            cell.classList.remove('hex-player2-hover');
-                            cell.setAttribute('disabled', true);
-                        });
-                        return;
-                    }
+                // check if player 1 won
+                if (data.game_over === true) {
+                    //save the winner
+                    winner = player;
+                    //save shortest_parth
+                    short_path = data.hexid;
+                    // set game to over
+                    game_over = true;
                 }
-            })
-            .catch((error) => {
-                alert('Unknown error, should never happen, if you get this please warn your supervisor' + error);
-            }) //End of fetch player
 
+                // display winning path
+                if (game_over) {
+                    let k = 0;
+                    let intervalId = setInterval(() => {
+                        let hex = document.getElementById(data.hexid[k]);
+                        hex.style.backgroundColor = '#FFD700';
+                        k++;
+                        if (k === data.hexid.length) {
+                            clearInterval(intervalId);
+                        }
+                    }, 100);
+                    cells.forEach(cell => {
+                        cell.classList.remove('hex-player1-hover');
+                        cell.classList.remove('hex-player2-hover');
+                        cell.setAttribute('disabled', true);
+                    });
+                    return;
+                }
+            }
+            
+            
             //Place piece if player doesn't win
-            if (game_over!=true){
-                const data = await fetchIAMoveJSON(IA);  // Get IA's move
+            if (game_over!=true && recup_error!=true){
+                const data = await fetchIAMoveJSON(IA);  // Get IA's move                
                 let iamove = data.iamove;
+                console.log(data.iamove);
                 var iahex = document.getElementById(iamove);
+                console.log(iahex);
 
                 game_history.push(iamove);
                 toggle_colour(iahex,IA);

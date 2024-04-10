@@ -98,6 +98,7 @@ def hex_place_piece():
                 hexid = [f"hex{i[0]}-{i[1]}" for i in short_path]
                 return jsonify({'winner': current_player, 'game_over': True, 'current_player': current_player,'hexid':hexid})
             current_player = 1 if current_player == 2 else 2
+
     except Exception as e:
         # Handle the exception here
         error_message = str(e)  # Get the error message
@@ -170,7 +171,7 @@ def hexiaia_place_piece():
     try:
         if game_board is not None:
 
-            move_IA = game_board.get_best_move(3,current_IA)
+            move_IA = game_board.get_best_move(2,current_IA)
             game_board.place_piece(current_IA, move_IA) # Try to place the piece
             iamove = "hex" + str(move_IA[0]) + "-" + str(move_IA[1])
             
