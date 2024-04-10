@@ -644,32 +644,75 @@ class HexBoard:
 
         return score_difference if player == 1 else -score_difference
 
+
+    def get_CC(self,tab, move):
+            tab.append(move)
+            voisin = self.get_neighbors(move, self.size, self.size)
+            for v in voisin:
+                if self.board[v[0]][v[1]] == self.board[move[0]][move[1]] and v not in tab:
+                    tab.append(v)
+                    return self.get_CC(tab,v)
+            return tab
+
+
     def naif(self, player):
         player_1_score = 0
         player_2_score = 0
-        max_voisins = 0
-        nb_voisins = 0
-        for i in range(self.size):
-            for j in range(self.size):
-                if self.board[i][j] == player:
-                    voisins = self.get_neighbors((i, j), self.size, self.size)
-                    for v in voisins :
-                        if self.board[v[0]][v[1]] == player:
-                            nb_voisins += 1
-                    if nb_voisins >= max_voisins:
-                        max_voisins = nb_voisins
-                    player_1_score = max_voisins * 10 
-    
-                if self.board[i][j] == 3 - player:
-                    voisins = self.get_neighbors((i, j), self.size, self.size)
-                    for v in voisins :
-                        if self.board[v[0]][v[1]] == 3 - player:
-                            nb_voisins += 1
-                    if nb_voisins >= max_voisins:
-                        max_voisins = nb_voisins
-                    player_2_score = -max_voisins * 10 
-        if self.check_winner():
+        CC = []
+        T1 = []
+        T2 = []
+        tabj1 = []
+        tabj2 = []
+        
+        if self.check_winner() == player:
+            print("tres bien")
             return 1000
+        if self.check_winner() == 3 - player:
+            print("pas bon")
+            return -1000
+        
+        if player == 1:
+            for i in range(self.size):
+                for j in range(self.size):
+                    move = (i,j)
+                    if self.board[i][j] == 1:
+                        if j not in tabj1:
+                            tabj1.append(j)
+                        CC = self.get_CC(CC,move)
+                        if CC not in T1:
+                            T1.append(CC)
+                    
+                    if self.board[i][j] == 2:
+                        if i not in tabj2:
+                            tabj1.append(i)
+                        CC = self.get_CC(CC,move)
+                        if CC not in T2:
+                            T2.append(CC)
+            #print(len(max(T1, key=len)))
+            player_1_score = len(max(T1, key=len))*(len(tabj1)+1)  
+            player_2_score = -len(max(T1, key=len))*(len(tabj2)+1)
+            
+        if player == 2:
+            for i in range(self.size):
+                for j in range(self.size):
+                    move = (i,j)
+                    if self.board[i][j] == 1:
+                        if j not in tabj1:
+                            tabj1.append(j)
+                        CC = self.get_CC(CC,move)
+                        if CC not in T1:
+                            T1.append(CC)
+                    
+                    if self.board[i][j] == 2:
+                        if i not in tabj2:
+                            tabj1.append(i)
+                        CC = self.get_CC(CC,move)
+                        if CC not in T2:
+                            T2.append(CC)
+            #print(len(max(T1, key=len)))
+            player_1_score = -len(max(T1, key=len))*(len(tabj1)+1)
+            player_2_score = len(max(T1, key=len))*(len(tabj2)+1)
+        
         
         return player_1_score + player_2_score;
 
