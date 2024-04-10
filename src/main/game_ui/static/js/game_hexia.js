@@ -31,7 +31,8 @@ async function fetchIAMoveJSON(IA) {
 async function fetchPlayerMoveJSON(hexid,player) {
     const response = await fetch('/hex_place_piece', {method: 'POST',headers: {'Content-Type': 'application/json',},body: JSON.stringify({'hexid': hexid,'current_player': player}),});
     const data = response.json().catch((error) => {
-        alert('Unknown error, should never happen, if you get this please warn your supervisor' + error);
+        // log error
+        console.log('Unknown error, should never happen, if you get this please warn your supervisor' + error);
     }) //End of fetch player
 ;
     return data;
@@ -81,6 +82,8 @@ window.onload = async function () {
             document.getElementById('spinner').style.display = 'block';
 
             if (this.getAttribute('disabled')) {
+                // hide spinner
+                document.getElementById('spinner').style.display = 'none';
                 return;
             }
 
@@ -95,13 +98,17 @@ window.onload = async function () {
                     cell.setAttribute('disabled', true);
                 });
                 // stop game immediately if game is over
+
+                // hide spinner
+                document.getElementById('spinner').style.display = 'none';
                 return;
             }
             const data = await fetchPlayerMoveJSON(hexid,player); 
             if (data.error) {
                 let error = data.error
                 recup_error = true;
-                alert(error);
+                // log error
+                console.log(error);
                 // briefly change the colour of the hex cell to indicate an invalid move
                 const original_colour = this.style.backgroundColor;
                 this.style.backgroundColor = '#FF0000';
@@ -147,6 +154,9 @@ window.onload = async function () {
                         cell.classList.remove('hex-player2-hover');
                         cell.setAttribute('disabled', true);
                     });
+                    // hide spinner
+                    document.getElementById('spinner').style.display = 'none';
+
                     return;
                 }
             }
@@ -185,6 +195,8 @@ window.onload = async function () {
                         cell.classList.remove('hex-player2-hover');
                         cell.setAttribute('disabled', true);
                     });
+                    // hide spinner
+                    document.getElementById('spinner').style.display = 'none';
                     return;
                 }
 
