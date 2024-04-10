@@ -12,7 +12,7 @@ La partie Web sera codée en Python, mais pourra changer pour du JS ou autre sel
 Le projet sera divisé en plusieurs modules :
   - board: le plateau de jeu sur lequel les donnees vont être modifiées
   - game logic : pour la logique du jeu et les règles pour l'implémentation
-  - ui: l'interface graphique offerte à l'utilisateur pour interagir avec ce jeu
+  - game ui: l'interface graphique offerte à l'utilisateur pour interagir avec ce jeu
   - d'autres modules pourront être rajoutés par la suite
 
 
@@ -36,7 +36,7 @@ et le bon fonctionnement du projet
 Pour lancer le projet, il suffit de suivre les instructions suivantes :
   - Installer python 3.8 ou plus
   - Installer les dépendances avec la commande `pip install -r requirements.txt`
-  - Naviguer au bon endroit (`src/main/hexgame`)
+  - Naviguer au bon endroit (`src/main`)
   - Lancer le serveur avec la commande `python app.py`
   - Ouvrir un navigateur et aller à l'adresse `http://localhost:5000/`
 
