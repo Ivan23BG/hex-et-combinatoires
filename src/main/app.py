@@ -134,7 +134,7 @@ def hex_place_piece_ia():
             #IA's turn
             IA = 3 - player
             # make a move using minimax algorithm and get_best_move method (actualy random move)
-            move = game_board.get_best_move(3,IA)
+            move = game_board.get_best_move(2,IA)
             game_board.place_piece(IA, move)
             
             
@@ -199,7 +199,7 @@ def players_hexia():
 @app.route('/first_move_IA',methods=['POST']) #Return IA's first move if player=2
 def first_move_IA():
     global game_board, IA 
-    move = game_board.get_best_move(3,IA)    
+    move = game_board.get_best_move(2,IA)    
     game_board.place_piece(IA, move)
     iamove = "hex" + str(move[0]) + "-" + str(move[1])
     return jsonify({'result': 'Success','iamove':iamove})

@@ -96,9 +96,11 @@ class HexBoard:
         for i in range(self.size):
             if self.board[i][0] == 1:  # left side
                 if self.check_winner_player(1, (i, 0)):
+                    #print("touché",1)
                     return 1
             if self.board[0][i] == 2:  # top side
                 if self.check_winner_player(2, (0, i)):
+                    #print("touché",2)
                     return 2
         return None
 
@@ -605,7 +607,7 @@ class HexBoard:
                         if self.board[v[0]][v[1]] == 1:
                             player_1_score += 2 
                             connected_pieces += 1
-                    player_1_score += min(i, j, self.size - i, self.size - j)
+                    #player_1_score += min(i, j, self.size - i, self.size - j)
                     player_1_score += connected_pieces ** 2
                 elif self.board[i][j] == 2:
                     voisins = self.get_neighbors((i, j), self.size, self.size)
@@ -614,16 +616,15 @@ class HexBoard:
                         if self.board[v[0]][v[1]] == 2:
                             player_2_score += 2
                             connected_pieces += 1
-                    player_2_score += min(i, j, self.size - i, self.size - j)
+                    #player_2_score += min(i, j, self.size - i, self.size - j)
                     player_2_score += connected_pieces ** 2
 
         # Check if there's a potential winning move
-        if player == 1:
-            if self.is_potential_winner(player, (0, 0)):  # Assuming player 1 starts from the top-left corner
+        
+            if self.check_winner(): 
+                #print("touché moi")
                 return 1000  # A high score to prioritize the winning move
-        else:
-            if self.is_potential_winner(player, (0, 0)):  # Assuming player 2 starts from the top-left corner
-                return -1000  # A high negative score to prioritize blocking the opponent's winning move
+
 
         # Add points if the shortest path of the opposite player is longer
         if player == 1:
@@ -639,13 +640,42 @@ class HexBoard:
             else:
                 player_2_score += 0  # or some other value
 
-        score_difference = (player_1_score - player_2_score) 
+        score_difference = (player_1_score - player_2_score)
+
         return score_difference if player == 1 else -score_difference
 
+    def naif(self, player):
+        player_1_score = 0
+        player_2_score = 0
+        max_voisins = 0
+        nb_voisins = 0
+        for i in range(self.size):
+            for j in range(self.size):
+                if self.board[i][j] == player:
+                    voisins = self.get_neighbors((i, j), self.size, self.size)
+                    for v in voisins :
+                        if self.board[v[0]][v[1]] == player:
+                            nb_voisins += 1
+                    if nb_voisins >= max_voisins:
+                        max_voisins = nb_voisins
+                    player_1_score = max_voisins * 10 
+    
+                if self.board[i][j] == 3 - player:
+                    voisins = self.get_neighbors((i, j), self.size, self.size)
+                    for v in voisins :
+                        if self.board[v[0]][v[1]] == 3 - player:
+                            nb_voisins += 1
+                    if nb_voisins >= max_voisins:
+                        max_voisins = nb_voisins
+                    player_2_score = -max_voisins * 10 
+        if self.check_winner():
+            return 1000
+        
+        return player_1_score + player_2_score;
 
     def minimax(self, depth, player, alpha, beta):
         if depth == 0 or self.check_winner() is not None:
-            return self.evaluate_hex(player), None
+            return self.naif(player), None
 
         if player == 1:  # Maximizing player
             best_score = float('-inf')
@@ -653,6 +683,7 @@ class HexBoard:
             possible_moves = self.get_possible_moves()
             for move in possible_moves:
                 self.place_piece(player, move)
+                #print(player ,move, self.minimax(depth - 1, 2, alpha, beta))
                 score, _ = self.minimax(depth - 1, 2, alpha, beta)
                 self.undo_move(move)
                 if score > best_score:
@@ -661,6 +692,7 @@ class HexBoard:
                 alpha = max(alpha, best_score)
                 if beta <= alpha:
                     break  # Alpha-Beta pruning
+            #print(best_score,best_move)
             return best_score, best_move
         
         else:  # Minimizing player
@@ -669,6 +701,7 @@ class HexBoard:
             possible_moves = self.get_possible_moves()
             for move in possible_moves:
                 self.place_piece(player, move)
+                #print(player ,move, self.minimax(depth - 1, 2, alpha, beta))
                 score, _ = self.minimax(depth - 1, 1, alpha, beta)
                 self.undo_move(move)
                 if score < best_score:
