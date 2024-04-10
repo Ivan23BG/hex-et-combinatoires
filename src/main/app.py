@@ -109,58 +109,6 @@ def hex_place_piece():
     return jsonify({'result': 'Success', 'current_player': current_player})
 
 
-# @app.route('/hex_place_piece_ia', methods=['POST']) # Place a piece on the board
-# def hex_place_piece_ia():
-#     global game_board, player, IA 
-    
-#     data = request.get_json()
-#     hexid = data['hexid']
-    
-#     # Remove the "hex" prefix and split into row and column
-#     row, col = map(int, hexid[3:].split('-'))
-
-    
-#     try:
-#         if game_board is not None:
-#             game_board.place_piece(player, (row, col)) # Try to place the piece
-            
-#             # check if the current player won
-#             winner = game_board.check_winner()
-#             if winner:
-#                 short_path = game_board.shortest_path(player)
-#                 print(f"Shortest path for player {player}: {short_path}")
-#                 hexid = [f"hex{i[0]}-{i[1]}" for i in short_path]
-#                 return jsonify({'winner': player, 'game_over_player': True,'hexid':hexid})
-            
-
-#             #IA's turn
-#             IA = 3 - player
-#             # make a move using minimax algorithm and get_best_move method (actualy random move)
-#             move = game_board.get_best_move(2,IA)
-#             game_board.place_piece(IA, move)
-            
-            
-#             iamove = "hex" + str(move[0]) + "-" + str(move[1])
-
-#             # check if IA won
-#             winner = game_board.check_winner()
-#             if winner:
-#                 short_path = game_board.shortest_path(IA)
-#                 print(f"Shortest path for player {IA}: {short_path}")
-#                 hexid = [f"hex{i[0]}-{i[1]}" for i in short_path]
-#                 return jsonify({'winner': IA, 'game_over_IA': True,'hexid':hexid,'iamove':iamove})
-            
-#     except Exception as e:
-#         # Handle the exception here
-#         error_message = str(e)  # Get the error message
-#         game_board.display_board()
-#         print("error: ",error_message)
-#         return jsonify({'error': "An error has occured"}), 400
-        
-
-#     return jsonify({'result': 'Success','iamove': iamove})
-
-
 @app.route('/hexiaia_place_piece', methods=['POST']) # Place a unique piece on the board
 def hexiaia_place_piece():
     global game_board, current_IA
