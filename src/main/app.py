@@ -180,7 +180,7 @@ def hexiaia_place_piece():
                 short_path = game_board.shortest_path(current_IA)
                 print(f"Shortest path for player {current_IA}: {short_path}")
                 hexid = [f"hex{i[0]}-{i[1]}" for i in short_path]
-                return jsonify({'winner': current_IA, 'game_over_IA': True,'hexid':hexid,'iamove':iamove})
+                return jsonify({'winner': current_IA, 'game_over': True,'hexid':hexid,'iamove':iamove})
             
     except Exception as e:
         # Handle the exception here
@@ -190,7 +190,7 @@ def hexiaia_place_piece():
         return jsonify({'error': "An error has occured"}), 400
         
 
-    return jsonify({'result': 'Success','iamove': iamove,'game_over_IA': False})
+    return jsonify({'result': 'Success','iamove': iamove,'game_over': False})
 
 
 @app.route('/players_hexia', methods=['POST']) # Return player's and IA's values
