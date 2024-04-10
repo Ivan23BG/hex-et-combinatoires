@@ -18,6 +18,12 @@ async function fetchFirstMoveJSON() {
     return data;
 }
 
+async function fetchIAMoveJSON(IA) {
+    const response = await fetch('/hexiaia_place_piece', {method: 'POST',headers: {'Content-Type': 'application/json'},body: JSON.stringify({'current_IA': IA})});
+    const data = response.json();
+    return data;
+}
+
 window.onload = async function () {
     let player = 0; // Player default value 
     let IA = 0; // IA default value 
@@ -55,7 +61,7 @@ window.onload = async function () {
         }
         
         // Add click event listener to each hex cell
-        hex.onclick = function () {
+        hex.onclick = async function () {
 
             if (this.getAttribute('disabled')) {
                 return;
@@ -142,21 +148,20 @@ window.onload = async function () {
                 alert('Unknown error, should never happen, if you get this please warn your supervisor' + error);
             }) //End of fetch player
 
-            //Place piece if player 1 doesn't win
+            //Place piece if player doesn't win
             if (game_over!=true){
-                const data = await fetchIAMoveJSON(current_IA);  // Get current_IA's move
+                const data = await fetchIAMoveJSON(IA);  // Get IA's move
                 let iamove = data.iamove;
                 var iahex = document.getElementById(iamove);
 
                 game_history.push(iamove);
-                toggle_colour(iahex,current_IA);
+                toggle_colour(iahex,IA);
 
                 // check if current_IA won
-                if (data.game_over_IA === true) {
-                    winner = current_IA;
+                if (data.game_over === true) {
+                    winner = IA;
                     short_path = data.hexid;
                     game_over = true;
-                    stopped=true;
 
                     // Display winning path when game is over
                     let k = 0;
@@ -168,6 +173,11 @@ window.onload = async function () {
                         clearInterval(intervalId);
                     }
                     }, 100);
+                    cells.forEach(cell => {
+                        cell.classList.remove('hex-player1-hover');
+                        cell.classList.remove('hex-player2-hover');
+                        cell.setAttribute('disabled', true);
+                    });
                     return;
                 }
 
