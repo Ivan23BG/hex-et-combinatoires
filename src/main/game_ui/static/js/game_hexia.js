@@ -85,6 +85,8 @@ window.onload = async function () {
 
 
             if (this.getAttribute('disabled') || playable===false) {
+                // hide spinner
+                document.getElementById('spinner').style.display = 'none';
                 return;
             }
 
