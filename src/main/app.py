@@ -134,7 +134,7 @@ def hex_place_piece_ia():
             #IA's turn
             IA = 3 - player
             # make a move using minimax algorithm and get_best_move method (actualy random move)
-            move = game_board.get_best_move(3,IA)
+            move = game_board.get_best_move(2,IA)
             game_board.place_piece(IA, move)
             
             
@@ -168,7 +168,7 @@ def hexiaia_place_piece():
     try:
         if game_board is not None:
 
-            move_IA = game_board.get_best_move(3,current_IA)
+            move_IA = game_board.get_best_move(2,current_IA)
             game_board.place_piece(current_IA, move_IA) # Try to place the piece
             iamove = "hex" + str(move_IA[0]) + "-" + str(move_IA[1])
             
