@@ -85,8 +85,6 @@ window.onload = async function () {
 
 
             if (this.getAttribute('disabled') || playable===false) {
-                // hide spinner
-                document.getElementById('spinner').style.display = 'none';
                 return;
             }
 
@@ -176,6 +174,8 @@ window.onload = async function () {
 
                 game_history.push(iamove);
                 toggle_colour(iahex,IA);
+                // hide spinner
+                document.getElementById('spinner').style.display = 'none';
                 playable = true;   
                 // check if current_IA won
                 if (data.game_over === true) {
