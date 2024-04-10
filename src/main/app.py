@@ -2,7 +2,7 @@
 # Imports
 from flask import Flask, render_template, request, jsonify
 from game_logic.hexgame.board.hexboard import HexBoard
-from game_logic.awelegame.board.aweleboard import AwaleBoard
+from game_logic.awalegame.board.awaleboard import AwaleBoard
 
 
 # Global variables
@@ -102,7 +102,8 @@ def hex_place_piece():
         # Handle the exception here
         error_message = str(e)  # Get the error message
         game_board.display_board() # Display the game board in the console
-        return jsonify({'error': error_message}), 400
+        print("error: ",error_message)
+        return jsonify({'error': "An error has occured"}), 400
 
     return jsonify({'result': 'Success', 'current_player': current_player})
 
@@ -152,7 +153,8 @@ def hex_place_piece_ia():
         # Handle the exception here
         error_message = str(e)  # Get the error message
         game_board.display_board()
-        return jsonify({'error': error_message}), 400
+        print("error: ",error_message)
+        return jsonify({'error': "An error has occured"}), 400
         
 
     return jsonify({'result': 'Success','iamove': iamove})
@@ -168,7 +170,7 @@ def hexiaia_place_piece():
     try:
         if game_board is not None:
 
-            move_IA = game_board.get_best_move(3,current_IA)
+            move_IA = game_board.get_best_move(2,current_IA)
             game_board.place_piece(current_IA, move_IA) # Try to place the piece
             iamove = "hex" + str(move_IA[0]) + "-" + str(move_IA[1])
             
@@ -184,7 +186,8 @@ def hexiaia_place_piece():
         # Handle the exception here
         error_message = str(e)  # Get the error message
         game_board.display_board()
-        return jsonify({'error': error_message}), 400
+        print("error: ",error_message)
+        return jsonify({'error': "An error has occured"}), 400
         
 
     return jsonify({'result': 'Success','iamove': iamove,'game_over_IA': False})
@@ -227,7 +230,8 @@ def undo_move():
         error_message = str(e)  # Get the error message
         game_board.display_board()
 
-        return jsonify({'error': error_message}), 400
+        print("error: ",error_message)
+        return jsonify({'error': "An error has occured"}), 400
 
     return jsonify({'result': 'Success'})
 
@@ -235,7 +239,7 @@ def undo_move():
 @app.route('/game_awale', methods=['POST']) # Hex play page
 def game_awale():
     global game_board, current_player
-    game_board = AweleBoard()  # Create a new game board
+    game_board = AwaleBoard()  # Create a new game board
     game_board.display_board()  # Display the game board in the console
     current_player = 1  # Set player 1 as the starting player
     return render_template('game_awale.html',current_player=current_player)
@@ -265,7 +269,8 @@ def awale_place_piece():
         except Exception as e:
             # Handle the exception here
             error_message = str(e)  # Get the error message
-            return jsonify({'error': error_message}), 400
+            print("error: ",error_message)
+            return jsonify({'error': "An error has occured"}), 400
     return jsonify({'result': 'Success', 'current_player': current_player,'values':values,'score_1':scores[0],'score_2':scores[1]})
 
 

@@ -18,12 +18,12 @@ window.onload = async function () {
     let game_over = false;
     let short_path = [];
     let winner = 0;
+    let stopped = false;
 
     const game_history = []; // stack to store game_history
     const cells = document.querySelectorAll('.hex'); // Get all hex cells    
 
-    let jeu = setInterval(async () => {  // Boucle du jeu
-        
+    while(!stopped){
         const data = await fetchIAMoveJSON(current_IA);  // Get current_IA's move
         let iamove = data.iamove;
         var iahex = document.getElementById(iamove);
@@ -36,9 +36,7 @@ window.onload = async function () {
             winner = current_IA;
             short_path = data.hexid;
             game_over = true;
-            
-            // Stop the game
-            clearInterval(jeu);
+            stopped=true;
 
             // Display winning path when game is over
             let k = 0;
@@ -55,7 +53,9 @@ window.onload = async function () {
         else{
             current_IA = current_IA === 1 ? 2 : 1;
         }
-    }, 50); // Game speed = 50
+    }
+        
+        
     // End of jeu
     
 
@@ -84,6 +84,7 @@ window.onload = async function () {
             hex.style.backgroundColor = '#B0BFB1';
         });
         game_over = false;
+        current_IA = 1;
     } // end of reset_board
     
 }
