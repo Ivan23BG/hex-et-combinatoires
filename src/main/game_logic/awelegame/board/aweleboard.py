@@ -24,7 +24,7 @@ class NourrirError(Exception):
     pass
 
 
-class AweleBoard:
+class AwaleBoard:
     def __init__(self):
         self.board = [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]
         self.score_1=0

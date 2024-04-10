@@ -1,13 +1,12 @@
 # app.py
 # Imports
-from flask import Flask, render_template, request
-from board.hexboard import HexBoard
-from awelegame.board.aweleboard import AweleBoard
-from flask import jsonify
+from flask import Flask, render_template, request, jsonify
+from game_logic.hexgame.board.hexboard import HexBoard
+from game_logic.awelegame.board.aweleboard import AwaleBoard
 
 
 # Global variables
-app = Flask(__name__)
+app = Flask(__name__, template_folder='game_ui/templates', static_folder='game_ui/static')
 game_board = None
 current_player = 1
 size = 5
@@ -21,6 +20,7 @@ IA = 0
 IA1 = 1
 IA2 = 2
 current_IA = 1
+
 
 @app.route('/') # Home page
 def index():
