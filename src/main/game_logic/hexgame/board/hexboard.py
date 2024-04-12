@@ -663,89 +663,120 @@ class HexBoard:
         return random.randint(-100,100)
 
     def naif(self, player):
-        player_1_score = 0
-        player_2_score = 0
-        CC = []
-        T1 = []
-        T2 = []
-        tabj1 = []
-        tabj2 = []
+        if self.check_winner() == 1 : #winning move
+                return 1000
+        if self.check_winner() == 2 : #blocking losing move
+            return -1000
+        voisins1 = []
+        voisins2 = []
+        for i in range(self.size):
+            for j in range(self.size):
+                if self.board[i][j] == 1:
+                    vs = self.get_neighbors((i, j), self.size, self.size)
+                    for v in vs :
+                        if self.board[v[0]][v[1]] != 0:
+                            vs.remove(v)
+                    voisins1.append(vs)
+                if self.board[i][j] == 2:
+                    vs = self.get_neighbors((i, j), self.size, self.size)
+                    for v in vs :
+                        if self.board[v[0]][v[1]] != 0:
+                            vs.remove(v)
+                    voisins2.append(vs)
+        count1 = 0
+        count2 = 0
+        for v1 in voisins1:
+            count1 += voisins1.count(v1)
         
-        if self.check_winner() == 1 :
-            return 100000
-        if self.check_winner() == 2 :
-            return -100000
-        
+        for v2 in voisins2:
+            count2 += voisins1.count(v2)
+        print(voisins1, voisins2)
+        player_1_score = count1
+        player_2_score = count2
         if player == 1:
-            for i in range(self.size):
-                for j in range(self.size):
-                    move = (i,j)
-                    if self.board[i][j] == 1:
-                        if j not in tabj1:
-                            tabj1.append(j)
-                        CC = self.get_CC(CC,move)
-                        if CC not in T1:
-                            T1.append(CC)
-                    
-                    if self.board[i][j] == 2:
-                        if i not in tabj2:
-                            tabj1.append(i)
-                        CC = self.get_CC(CC,move)
-                        if CC not in T2:
-                            T2.append(CC)
-            
-            CCm1 = max(T1, key=len)
-            M1 = max(CCm1, key=lambda x: x[1])
-            m1 = min(CCm1, key=lambda x: x[1])
-            s1 = M1[1] - m1[1]
-            
-            CCm2 = max(T2, key=len)
-            M2 = max(CCm2, key=lambda x: x[0])
-            m2 = min(CCm2, key=lambda x: x[0])
-            s2 = M2[0] - m2[0]
-            
-            #print(len(max(T1, key=len)))
-            player_1_score = len(max(T1, key=len))*s1
-            player_2_score = -len(max(T2, key=len))*s2
-            
+                return -(player_1_score - player_2_score) 
         if player == 2:
-            for i in range(self.size):
-                for j in range(self.size):
-                    move = (i,j)
-                    if self.board[i][j] == 1:
-                        if j not in tabj1:
-                            tabj1.append(j)
-                        CC = self.get_CC(CC,move)
-                        if CC not in T1:
-                            T1.append(CC)
-                    
-                    if self.board[i][j] == 2:
-                        if i not in tabj2:
-                            tabj1.append(i)
-                        CC = self.get_CC(CC,move)
-                        if CC not in T2:
-                            T2.append(CC)
-            #print(len(max(T1, key=len)))
-            
-            CCm1 = max(T1, key=len)
-            M1 = max(CCm1, key=lambda x: x[1])
-            m1 = min(CCm1, key=lambda x: x[1])
-            s1 = M1[1] - m1[1]
-            
-            CCm2 = max(T2, key=len)
-            M2 = max(CCm2, key=lambda x: x[0])
-            m2 = min(CCm2, key=lambda x: x[0])
-            s2 = M2[0] - m2[0]
-            
-            player_1_score = len(max(T1, key=len))*s1
-            player_2_score = -len(max(T1, key=len))*s2
-        
-        
-        return player_1_score + player_2_score;
+                return (player_1_score - player_2_score)
+    
 
+    def find_connected_components(self, player):
+            rows, cols = self.size, self.size
+            directions = [(-1, 0), (1, 0), (0, -1), (0, 1), (-1, 1), (1, -1)]
+
+            def dfs(r, c):
+                stack = [(r, c)]
+                component = []
+                while stack:
+                    cr, cc = stack.pop()
+                    if 0 <= cr < rows and 0 <= cc < cols and not visited[cr][cc] and self.board[cr][cc] == player:
+                        visited[cr][cc] = True
+                        component.append((cr, cc))
+                        for dr, dc in directions:
+                            stack.append((cr + dr, cc + dc))
+                return component
+
+            visited = [[False] * cols for _ in range(rows)]
+            components = []
+
+            for r in range(rows):
+                for c in range(cols):
+                    if self.board[r][c] == player and not visited[r][c]:
+                        components.append(dfs(r, c))
+
+            return components
+
+    def idee(self, player):
+            player_1_score = 0
+            player_2_score = 0
+            
+            if self.check_winner() == 1 : #winning move
+                return 1000
+            if self.check_winner() == 2 : #blocking losing move
+                return -1000
+            
+            
+            
+            components1 = self.find_connected_components(1)
+            #print(components1)
+            cpt = 0
+            for co in components1:
+                M1 = max(co, key=lambda x: x[1])
+                m1 = min(co, key=lambda x: x[1])
+                s1 =  M1[1] - m1[1]
+                cpt = cpt + s1
+                t = []
+                for d in co :
+                    if d[1] not in t:
+                        t.append(d[1])
+                        cpt = cpt+1
+                    if d[1] == M1[1] or d[1] == M1[1] and d[1] != 0 and d[1] != self.size:
+                        cpt = cpt + 1
+            if len(components1) == 1:
+                player_1_score += 10
+            player_1_score = (cpt - len(components1))
+
+            components2 = self.find_connected_components(2)
+            cpt = 0
+            for co in components2:
+                M2 = max(co, key=lambda x: x[0])
+                m2 = min(co, key=lambda x: x[0])
+                s2 =  M2[0] - m2[0]
+                cpt = cpt + s2
+                for d in co :
+                    if d[0] == M2[0] or d[0] == M2[0]:
+                        cpt = cpt + 1
+            if len(components2) == 1:
+                player_2_score += 10
+            player_2_score = (cpt - len(components2))
+            
+            if player == 1:
+                return -(player_1_score - player_2_score) 
+            if player == 2:
+                return (player_1_score - player_2_score)
+        
     def minimax(self, depth, player, alpha, beta):
         if depth == 0 or self.check_winner() is not None:
-            return self.naif(player), None
+            return self.idee(player)*depth, None
 
         if player == 1:  # Maximizing player
             best_score = float('-inf')
@@ -757,15 +788,17 @@ class HexBoard:
                 #print(player ,move, self.minimax(depth - 1, 2, alpha, beta))
                 score, _ = self.minimax(depth - 1, 2, alpha, beta)
                 self.undo_move(move)
-                if score > best_score:
+                if score == 1000 or score == 2000 :
                     best_score = score
                     best_move = move
+                    break
+                if score >= best_score:
+                        best_score = score
+                        best_move = move
                 alpha = max(alpha, best_score)
                 if beta <= alpha:
                     break  # Alpha-Beta pruning
-            #print("max",best_score,best_move)
-            #if best_score == 4 :
-                #best_move = (random.randint(0,self.size - 1),random.randint(0,self.size - 1))
+
             return best_score, best_move
         
         else:  # Minimizing player
@@ -774,13 +807,16 @@ class HexBoard:
             possible_moves = self.get_possible_moves()
             for move in possible_moves:
                 self.place_piece(player, move)
-                #print(self.check_winner())
-                #print(player ,move, self.minimax(depth - 1, 2, alpha, beta))
                 score, _ = self.minimax(depth - 1, 1, alpha, beta)
                 self.undo_move(move)
-                if score < best_score:
+                if score == -1000 or score == -2000:
                     best_score = score
                     best_move = move
+                    break
+                if score >= best_score:
+                        if score == best_score:
+                            best_score = score
+                            best_move = move
                 beta = min(beta, best_score)
                 if beta <= alpha:
                     break  # Alpha-Beta pruning
@@ -788,5 +824,6 @@ class HexBoard:
             return best_score, best_move
         
     def get_best_move(self, depth, player):
-        _ , best_move = self.minimax(depth, player, float('-inf'), float('inf'))
+        a , best_move = self.minimax(depth, player, float('-inf'), float('inf'))
+        print(a, best_move, player)
         return best_move
