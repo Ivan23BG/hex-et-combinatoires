@@ -32,7 +32,7 @@ window.onload = async function () {
         toggle_colour(iahex,current_IA);
 
         // check if current_IA won
-        if (data.game_over_IA === true) {
+        if (data.game_over === true) {
             winner = current_IA;
             short_path = data.hexid;
             game_over = true;
