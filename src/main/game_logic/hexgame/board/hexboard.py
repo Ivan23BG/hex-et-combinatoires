@@ -672,9 +672,9 @@ class HexBoard:
         tabj2 = []
         
         if self.check_winner() == 1 :
-            return 1000
+            return 100000
         if self.check_winner() == 2 :
-            return -1000
+            return -100000
         
         if player == 1:
             for i in range(self.size):
@@ -693,9 +693,20 @@ class HexBoard:
                         CC = self.get_CC(CC,move)
                         if CC not in T2:
                             T2.append(CC)
+            
+            CCm1 = max(T1, key=len)
+            M1 = max(CCm1, key=lambda x: x[1])
+            m1 = min(CCm1, key=lambda x: x[1])
+            s1 = M1[1] - m1[1]
+            
+            CCm2 = max(T2, key=len)
+            M2 = max(CCm2, key=lambda x: x[0])
+            m2 = min(CCm2, key=lambda x: x[0])
+            s2 = M2[0] - m2[0]
+            
             #print(len(max(T1, key=len)))
-            player_1_score = len(max(T1, key=len))*(len(tabj1)+1)  
-            player_2_score = -len(max(T1, key=len))*(len(tabj2)+1)
+            player_1_score = len(max(T1, key=len))*s1
+            player_2_score = -len(max(T2, key=len))*s2
             
         if player == 2:
             for i in range(self.size):
@@ -715,8 +726,19 @@ class HexBoard:
                         if CC not in T2:
                             T2.append(CC)
             #print(len(max(T1, key=len)))
-            player_1_score = len(max(T1, key=len))*(len(tabj1)+1)
-            player_2_score = -len(max(T1, key=len))*(len(tabj2)+1)
+            
+            CCm1 = max(T1, key=len)
+            M1 = max(CCm1, key=lambda x: x[1])
+            m1 = min(CCm1, key=lambda x: x[1])
+            s1 = M1[1] - m1[1]
+            
+            CCm2 = max(T2, key=len)
+            M2 = max(CCm2, key=lambda x: x[0])
+            m2 = min(CCm2, key=lambda x: x[0])
+            s2 = M2[0] - m2[0]
+            
+            player_1_score = len(max(T1, key=len))*s1
+            player_2_score = -len(max(T1, key=len))*s2
         
         
         return player_1_score + player_2_score;
@@ -741,9 +763,9 @@ class HexBoard:
                 alpha = max(alpha, best_score)
                 if beta <= alpha:
                     break  # Alpha-Beta pruning
-            print("max",best_score,best_move)
-            if best_score == 4 :
-                best_move = (random.randint(0,self.size - 1),random.randint(0,self.size - 1))
+            #print("max",best_score,best_move)
+            #if best_score == 4 :
+                #best_move = (random.randint(0,self.size - 1),random.randint(0,self.size - 1))
             return best_score, best_move
         
         else:  # Minimizing player
