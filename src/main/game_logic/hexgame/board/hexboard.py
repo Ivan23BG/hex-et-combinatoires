@@ -408,191 +408,6 @@ class HexBoard:
 
         return is_winner
 
-    def evaluate_board(self):
-        """
-        Evaluate the current state of the board.
-
-        Returns:
-            int: The evaluation score.
-        """
-        # Define the evaluation scores for each player
-        player_1_score = 0
-        player_2_score = 0
-
-        # Evaluate the board for player 1
-        for i in range(self.size):
-            for j in range(self.size):
-                if self.board[i][j] == 1:
-                    player_1_score += 1
-
-        # Evaluate the board for player 2
-        for i in range(self.size):
-            for j in range(self.size):
-                if self.board[i][j] == 2:
-                    player_2_score += 1
-
-        # Calculate the difference in scores
-        score_difference = player_1_score - player_2_score
-
-        return score_difference
-    
-    def evaluate_voisins(self):
-
-        """
-        Elle prend en compte la connectivité des pieces:
-            - si une piece est connectée à une autre piece de la meme couleur, on augmente le score
-            - on fait la difference des scores des deux joueurs
-        """
-
-        # Initialize scores
-        player_1_score = 0
-        player_2_score = 0
-        # Evaluate the board for both players
-        for i in range(self.size):
-            for j in range(self.size):
-                voisins = self.get_neighbors((i,j), self.size, self.size)
-                if self.board[i][j] == 1: 
-                    for v in voisins:
-                        if self.board[v[0]][v[1]] == 1:
-                            player_1_score += 1
-                elif self.board[i][j] == 2:
-                    for v in voisins:
-                        if self.board[v[0]][v[1]] == 2:
-                            player_2_score += 1
-
-        # Calculate the difference in scores
-        score_difference = player_1_score - player_2_score
-        return score_difference
-    
-    def evaluate_proxi_edge(self, player):
-        """
-        Une fonction d'évaluation qui prend en compte la proximité des pieces par rapport aux bords du plateau.
-        """
-        player_1_score = 0
-        player_2_score = 0
-
-        for i in range(self.size):
-            for j in range(self.size):
-                if self.board[i][j] == 1:
-                    player_1_score += (self.size - j)
-                elif self.board[i][j] == 2:
-                    player_2_score += (self.size - i)
-
-        score_difference = player_1_score - player_2_score
-
-        return score_difference if player == 1 else -score_difference
-    
-    def evaluate_1(self, player):
-        """
-        J'essaide mettre en consideration les 2 arguments precedents
-        """
-        player_1_score = 0
-        player_2_score = 0
-
-        # Evaluate the board for both players
-        for i in range(self.size):
-            for j in range(self.size):
-                voisins = self.get_neighbors((i,j), self.size, self.size)
-                if self.board[i][j] == 1: 
-                    # Increase score based on the number of neighboring pieces for player 1
-                    for v in voisins:
-                        if self.board[v[0]][v[1]] == 1:
-                            player_1_score += 1
-                    # Increase score based on proximity to the right edge for player 1
-                    player_1_score += (self.size - j)
-                elif self.board[i][j] == 2:
-                    # Increase score based on the number of neighboring pieces for player 2
-                    for v in voisins:
-                        if self.board[v[0]][v[1]] == 2:
-                            player_2_score += 1
-                    # Increase score based on proximity to the bottom edge for player 2
-                    player_2_score += (self.size - i)
-
-        # Calculate the difference in scores
-        score_difference = (player_1_score - player_2_score)/max(player_2_score, player)
-
-        # Return the score difference from the perspective of the current player
-        return score_difference if player == 1 else -score_difference
-        
-    def evaluate_2(self, player):
-        player_1_score = 0
-        player_2_score = 0
-
-        for i in range(self.size):
-            for j in range(self.size):
-                if self.board[i][j] == 1:
-                    # Increase score based on the number of neighboring pieces for player 1
-                    voisins = self.get_neighbors((i, j), self.size, self.size)
-                    connected_pieces = 0
-                    for v in voisins:
-                        if self.board[v[0]][v[1]] == 1:
-                            player_1_score += 1
-                            connected_pieces += 1
-                    # Increase score based on proximity to the borders for player 1
-                    player_1_score += min(i, j, self.size - i, self.size - j)
-                    # Increase score based on the connectivity of the chains for player 1
-                    player_1_score += connected_pieces ** 2  # or some other function of connected_pieces
-                elif self.board[i][j] == 2:
-                    # Increase score based on the number of neighboring pieces for player 2
-                    voisins = self.get_neighbors((i, j), self.size, self.size)
-                    connected_pieces = 0
-                    for v in voisins:
-                        if self.board[v[0]][v[1]] == 2:
-                            player_2_score += 1
-                            connected_pieces += 1
-                    # Increase score based on proximity to the borders for player 2
-                    player_2_score += min(i, j, self.size - i, self.size - j)
-                    # Increase score based on the connectivity of the chains for player 2
-                    player_2_score += connected_pieces ** 2  # or some other function of connected_pieces
-
-        score_difference = (player_1_score - player_2_score) 
-        # Return the score difference from the perspective of the current player
-        return score_difference if player == 1 else -score_difference
-    
-    def evaluate_3(self, player):
-        # Use the same criteria as evaluate_2
-        # Mon probleme avec cette fonction est que il bloque pas mal l'adversaire 
-        # mais il sait pas gangner.
-        player_1_score = 0
-        player_2_score = 0
-
-        for i in range(self.size):
-            for j in range(self.size):
-                if self.board[i][j] == 1:
-                    voisins = self.get_neighbors((i, j), self.size, self.size)
-                    connected_pieces = 0
-                    for v in voisins:
-                        if self.board[v[0]][v[1]] == 1:
-                            player_1_score += 2 
-                            connected_pieces += 1
-                    player_1_score += min(i, j, self.size - i, self.size - j)
-                    player_1_score += connected_pieces ** 2
-                elif self.board[i][j] == 2:
-                    voisins = self.get_neighbors((i, j), self.size, self.size)
-                    connected_pieces = 0
-                    for v in voisins:
-                        if self.board[v[0]][v[1]] == 2:
-                            player_2_score += 2
-                            connected_pieces += 1
-                    player_2_score += min(i, j, self.size - i, self.size - j)
-                    player_2_score += connected_pieces ** 2
-
-        # Add points if the shortest path of the opposite player is longer
-        if player == 1:
-            shortest_path_2 = self.shortest_path(2)
-            if shortest_path_2 != "error":
-                player_1_score += len(shortest_path_2)
-            else:
-                player_1_score += 0  # or some other value
-        else:
-            shortest_path_1 = self.shortest_path(1)
-            if shortest_path_1 != "error":
-                player_2_score += len(shortest_path_1)
-            else:
-                player_2_score += 0  # or some other value
-
-        score_difference = (player_1_score - player_2_score)/max(player_2_score, player_1_score)
-        return score_difference if player == 1 else -score_difference
     
     def evaluate_hex(self, player):
         player_1_score = 0
@@ -735,48 +550,53 @@ class HexBoard:
                 return -1000
             
             
-            
-            components1 = self.find_connected_components(1)
-            #print(components1)
-            cpt = 0
-            for co in components1:
-                M1 = max(co, key=lambda x: x[1])
-                m1 = min(co, key=lambda x: x[1])
-                s1 =  M1[1] - m1[1]
-                cpt = cpt + s1
-                t = []
-                for d in co :
-                    if d[1] not in t:
-                        t.append(d[1])
-                        cpt = cpt+1
-                    if d[1] == M1[1] or d[1] == M1[1] and d[1] != 0 and d[1] != self.size:
-                        cpt = cpt + 1
-            if len(components1) == 1:
-                player_1_score += 10
-            player_1_score = (cpt - len(components1))
-
-            components2 = self.find_connected_components(2)
-            cpt = 0
-            for co in components2:
-                M2 = max(co, key=lambda x: x[0])
-                m2 = min(co, key=lambda x: x[0])
-                s2 =  M2[0] - m2[0]
-                cpt = cpt + s2
-                for d in co :
-                    if d[0] == M2[0] or d[0] == M2[0]:
-                        cpt = cpt + 1
-            if len(components2) == 1:
-                player_2_score += 10
-            player_2_score = (cpt - len(components2))
-            
             if player == 1:
-                return -(player_1_score - player_2_score) 
+                components1 = self.find_connected_components(1)
+                #print(components1)
+                if len(components1) == 1:
+                        if len(components1[0]) == 1:
+                            return random.randint(0,10)
+                        player_1_score += 10
+                cpt = 0
+                for co in components1:
+                    M1 = max(co, key=lambda x: x[1])
+                    m1 = min(co, key=lambda x: x[1])
+                    s1 =  M1[1] - m1[1]
+                    cpt = cpt + s1*5
+                    t = []
+                    for d in co :
+                        if d[1] not in t:
+                            t.append(d[1])
+                            cpt = cpt+1
+                        if d[1] == M1[1] or d[1] == M1[1] and d[1] != 0 and d[1] != self.size:
+                            cpt = cpt + 1
+                player_1_score += (cpt)
+                return (player_1_score) 
+                
+
             if player == 2:
-                return (player_1_score - player_2_score)
+                components2 = self.find_connected_components(2)
+                if len(components2) == 1:
+                    if len(components2[0]) == 1:
+                            a = random.randint(0,10)
+                            player_2_score += a
+                    player_2_score += 10
+                cpt = 0
+                for co in components2:
+                    M2 = max(co, key=lambda x: x[0])
+                    m2 = min(co, key=lambda x: x[0])
+                    s2 =  M2[0] - m2[0]
+                    cpt = cpt + s2*5
+                    for d in co :
+                        if d[0] == M2[0] or d[0] == M2[0]:
+                            cpt = cpt + 1
+                player_2_score += (cpt)
+                return (-player_2_score)
+
         
     def minimax(self, depth, player, alpha, beta):
         if depth == 0 or self.check_winner() is not None:
-            return self.idee(player)*depth, None
+            return self.idee(player)*depth*depth, None
 
         if player == 1:  # Maximizing player
             best_score = float('-inf')
@@ -788,11 +608,7 @@ class HexBoard:
                 #print(player ,move, self.minimax(depth - 1, 2, alpha, beta))
                 score, _ = self.minimax(depth - 1, 2, alpha, beta)
                 self.undo_move(move)
-                if score == 1000 or score == 2000 :
-                    best_score = score
-                    best_move = move
-                    break
-                if score >= best_score:
+                if score > best_score:
                         best_score = score
                         best_move = move
                 alpha = max(alpha, best_score)
@@ -809,14 +625,9 @@ class HexBoard:
                 self.place_piece(player, move)
                 score, _ = self.minimax(depth - 1, 1, alpha, beta)
                 self.undo_move(move)
-                if score == -1000 or score == -2000:
+                if score < best_score:
                     best_score = score
                     best_move = move
-                    break
-                if score >= best_score:
-                        if score == best_score:
-                            best_score = score
-                            best_move = move
                 beta = min(beta, best_score)
                 if beta <= alpha:
                     break  # Alpha-Beta pruning
@@ -825,5 +636,5 @@ class HexBoard:
         
     def get_best_move(self, depth, player):
         a , best_move = self.minimax(depth, player, float('-inf'), float('inf'))
-        print(a, best_move, player)
+        #print(a, best_move, player)
         return best_move

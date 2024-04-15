@@ -83,7 +83,6 @@ def hex_place_piece():
     
     # Remove the "hex" prefix and split into row and column
     row, col = map(int, hexid[3:].split('-'))
-
     # change the current player
     try:
         if game_board is not None:
@@ -104,7 +103,9 @@ def hex_place_piece():
         error_message = str(e)  # Get the error message
         game_board.display_board() # Display the game board in the console
         return jsonify({'error': error_message}), 400
-
+    #if current_player == 1:
+    #    print("j1",game_board.idee(1))
+    #    print("j2",game_board.idee(2))
     return jsonify({'result': 'Success', 'current_player': current_player})
 
 
@@ -136,7 +137,9 @@ def hexiaia_place_piece():
         game_board.display_board()
         return jsonify({'error': error_message}), 400
         
-
+    if current_player == 1:
+        print("j1",game_board.idee(1), move_IA)
+        #print("j2",game_board.idee(2),move_IA)
     return jsonify({'result': 'Success','iamove': iamove,'game_over': False})
 
 
@@ -149,7 +152,7 @@ def players_hexia():
 @app.route('/first_move_IA',methods=['POST']) #Return IA's first move if player=2
 def first_move_IA():
     global game_board, IA 
-    move = game_board.get_best_move(3,IA)    
+    move = game_board.get_best_move(2,IA)
     game_board.place_piece(IA, move)
     iamove = "hex" + str(move[0]) + "-" + str(move[1])
     return jsonify({'result': 'Success','iamove':iamove})
