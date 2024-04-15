@@ -686,8 +686,8 @@ class HexBoard:
     def random_move(self):
         Trouve = False
         while(not Trouve):
-            x = random.randint(0,self.size)
-            y = random.randint(0,self.size)
+            x = random.randint(0,self.size-1)
+            y = random.randint(0,self.size-1)
             if not(self.is_position_occupied((x,y))):
                 Trouve = True
                 return (x,y)
