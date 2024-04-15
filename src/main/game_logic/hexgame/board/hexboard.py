@@ -682,3 +682,12 @@ class HexBoard:
     def get_best_move(self, depth, player):
         _ , best_move = self.minimax(depth, player, float('-inf'), float('inf'))
         return best_move
+
+    def random_move(self):
+        Trouve = False
+        while(not Trouve):
+            x = random.randint(0,self.size-1)
+            y = random.randint(0,self.size-1)
+            if not(self.is_position_occupied((x,y))):
+                Trouve = True
+                return (x,y)
