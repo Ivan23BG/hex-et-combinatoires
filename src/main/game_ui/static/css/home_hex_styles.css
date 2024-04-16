@@ -165,6 +165,8 @@ body {
     border-radius: 10px;
     transition: transform .1s;
     margin-top: -15.5%;
+    font-size: 130%;
+    font-weight: 800;
 }
 
 .left_shift {
@@ -192,6 +194,8 @@ body {
     /*background-color: #C0C5C1;*/
     border-radius: 10px;
     transition: transform .1s;
+    font-size: 130%;
+    font-weight: 800;
 }
 
 .start_gameIAvsIA{
@@ -215,6 +219,8 @@ body {
     border-radius: 10px;
     transition: transform .1s;
     margin-top: -15.5%;
+    font-size: 130%;
+    font-weight: 800;
 }
 
 .button_out {
