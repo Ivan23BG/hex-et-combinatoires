@@ -119,7 +119,7 @@ def hexiaia_place_piece():
     try:
         if game_board is not None:
 
-            move_IA = game_board.get_best_move(2,current_IA)
+            move_IA = game_board.get_best_move(4,current_IA)
             game_board.place_piece(current_IA, move_IA) # Try to place the piece
             iamove = "hex" + str(move_IA[0]) + "-" + str(move_IA[1])
             
@@ -152,7 +152,7 @@ def players_hexia():
 @app.route('/first_move_IA',methods=['POST']) #Return IA's first move if player=2
 def first_move_IA():
     global game_board, IA 
-    move = game_board.get_best_move(2,IA)
+    move = game_board.get_best_move(4,IA)
     game_board.place_piece(IA, move)
     iamove = "hex" + str(move[0]) + "-" + str(move[1])
     return jsonify({'result': 'Success','iamove':iamove})
