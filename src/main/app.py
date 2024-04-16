@@ -11,6 +11,7 @@ game_board = None
 current_player = 1
 size = 5
 size_px = size
+depth = 4
 
 # Player vs IA variables
 player = 0
@@ -119,7 +120,7 @@ def hexiaia_place_piece():
     try:
         if game_board is not None:
 
-            move_IA = game_board.get_best_move(2,current_IA)
+            move_IA = game_board.get_best_move(depth,current_IA)
             game_board.place_piece(current_IA, move_IA) # Try to place the piece
             iamove = "hex" + str(move_IA[0]) + "-" + str(move_IA[1])
             
@@ -152,7 +153,7 @@ def players_hexia():
 @app.route('/first_move_IA',methods=['POST']) #Return IA's first move if player=2
 def first_move_IA():
     global game_board, IA 
-    move = game_board.get_best_move(4,IA)
+    move = game_board.get_best_move(depth,IA)
     game_board.place_piece(IA, move)
     iamove = "hex" + str(move[0]) + "-" + str(move[1])
     return jsonify({'result': 'Success','iamove':iamove})
@@ -198,7 +199,7 @@ def undo_move():
 @app.route('/game_awale', methods=['POST']) # Hex play page
 def game_awale():
     global game_board, current_player
-    game_board = AweleBoard()  # Create a new game board
+    game_board = AwaleBoard()  # Create a new game board
     game_board.display_board()  # Display the game board in the console
     current_player = 1  # Set player 1 as the starting player
     return render_template('game_awale.html',current_player=current_player)

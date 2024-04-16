@@ -540,7 +540,7 @@ class HexBoard:
 
             return components
 
-    def idee(self, player):
+    def eval(self, player):
             center = (self.size//2,self.size//2)
             cv = self.get_neighbors(center,self.size,self.size)
             cv.append(center)
@@ -601,7 +601,7 @@ class HexBoard:
         
     def minimax(self, depth, player, alpha, beta):
         if depth == 0 or self.check_winner() is not None:
-            return self.idee(player)*((depth+1)*(depth+1)), None
+            return self.eval(player)*((depth+1)*(depth+1)), None
 
         if player == 1:  # Maximizing player
             best_score = float('-inf')
