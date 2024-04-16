@@ -31,7 +31,7 @@ body {
     position: relative;
     width: 100px;
     height: 40px;
-    margin: 10px;
+    margin: 0.5%;
     left: 17%;
     top: 0%;
     text-align: center;
@@ -70,7 +70,7 @@ body {
     position: relative;
     width: 100px;
     height: 40px;
-    margin: 10px;
+    margin: 0.5%;
     left: 17%;
     top: 0%;
     text-align: center;
@@ -160,7 +160,7 @@ body {
     /*background-color: #C0C5C1;*/
     border-radius: 10px;
     transition: transform .1s;
-    margin-top: -30px;
+    margin-top: -15.5%;
 }
 
 .left_shift {
@@ -210,7 +210,7 @@ body {
     /*background-color: #C0C5C1;*/
     border-radius: 10px;
     transition: transform .1s;
-    margin-top: -30px;
+    margin-top: -15.5%;
 }
 
 .button_out {
@@ -292,7 +292,7 @@ body {
 }
 
 .chooseplayer_blue{
-    margin-left: -10px;
+    margin-left: -5%;
 }   
 
 .color_button:hover {
