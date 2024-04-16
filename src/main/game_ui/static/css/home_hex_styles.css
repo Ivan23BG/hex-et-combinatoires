@@ -32,7 +32,7 @@ body {
     width: 100px;
     height: 40px;
     margin: 10px;
-    left: 10%;
+    left: 17%;
     top: 0%;
     text-align: center;
     vertical-align: middle;
@@ -71,7 +71,7 @@ body {
     width: 100px;
     height: 40px;
     margin: 10px;
-    left: 10%;
+    left: 17%;
     top: 0%;
     text-align: center;
     vertical-align: middle;
@@ -101,9 +101,6 @@ body {
     background-color: #4CE0D2;
     transform: scale(1.1) translate(-10%, 0%);
 }
-
-
-
 
 
 .back_button {
