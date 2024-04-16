@@ -12,6 +12,18 @@ body {
     padding-right: 0%;
 }
 
+.header {
+    position: relative;
+    height: 70px;
+    width: 100%;
+    margin-left: 0%;
+    margin-right: 0%;
+    padding-left: 0%;
+    padding-right: 0%;
+    background-color: #136F63;
+    border-radius: 10px;
+}
+
 .clickable {
     user-select: none;
     cursor: pointer;
@@ -30,6 +42,26 @@ body {
     border-radius: 10px;
     transition: transform .1s;
 }
+
+.clickable2 {
+    user-select: none;
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    width: 100px;
+    height: 40px;
+    margin: 10px;
+    left: 0%;
+    top: 0%;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 40px;
+    transform: translate(-10%, 0%);
+    background-color: #22AAA1;
+    border-radius: 10px;
+    transition: transform .1s;
+}
+
 
 .selected {
     user-select: none;
@@ -50,8 +82,17 @@ body {
     transition: transform .1s;
 }
 
+.centre{
+    align-items: center;
+}
+
 
 .clickable:hover {
+    background-color: #4CE0D2;
+    transform: scale(1.1) translate(-10%, 0%);
+}
+
+.clickable2:hover {
     background-color: #4CE0D2;
     transform: scale(1.1) translate(-10%, 0%);
 }
@@ -63,17 +104,7 @@ body {
 
 
 
-.header {
-    position: relative;
-    height: 70px;
-    width: 100%;
-    margin-left: 0%;
-    margin-right: 0%;
-    padding-left: 0%;
-    padding-right: 0%;
-    background-color: #136F63;
-    border-radius: 10px;
-}
+
 
 .back_button {
     cursor: pointer;
