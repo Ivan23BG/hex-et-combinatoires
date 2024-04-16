@@ -12,16 +12,36 @@ async function fetchIAMoveJSON(current_IA) {
     return data;
 }
 
+async function fetchRandomMoveJSON(current_IA) {
+    const response = await fetch('/hexiaia_random', {method: 'POST',headers: {'Content-Type': 'application/json'},body: JSON.stringify({'current_IA': current_IA})});
+    const data = response.json();
+    return data;
+}
+
 window.onload = async function () {
     let current_IA = 1;
 
     let game_over = false;
     let short_path = [];
     let winner = 0;
-    let stopped = false;
+    let stopped = false; // While condition
 
     const game_history = []; // stack to store game_history
     const cells = document.querySelectorAll('.hex'); // Get all hex cells    
+    
+    const data1 = await fetchRandomMoveJSON(1);  // Get current_IA's move
+            let iamove = data1.iamove;
+            var iahex = document.getElementById(iamove);
+
+            game_history.push(iamove);
+            toggle_colour(iahex,1);
+
+            const data2 = await fetchRandomMoveJSON(2);  // Get current_IA's move
+            iamove = data2.iamove;
+            iahex = document.getElementById(iamove);
+
+            game_history.push(iamove);
+            toggle_colour(iahex,2);
 
     while(!stopped){
         const data = await fetchIAMoveJSON(current_IA);  // Get current_IA's move
