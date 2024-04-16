@@ -1,6 +1,6 @@
 #Implementation du jeu de Awale
 import copy
-
+import random
 
 class InvalidPositionError(Exception):
     pass
@@ -188,17 +188,79 @@ class AwaleBoard:
     def get_board(self):
         return self.board
     
-    def check_winner(self,player):
-        if player == 1:
-            if self.board[0:6] == [0,0,0,0,0,0]:
-                self.score_2  = 48
-                return 2
-        if player == 2:
-            if self.board[5:11] == [0,0,0,0,0,0]:
-                self.score_1  = 48
-                return 1
+    def check_winner(self):
+        
+        if self.board[0:6] == [0,0,0,0,0,0]:
+            self.score_2  = 48
+            return 2
+    
+        if self.board[5:11] == [0,0,0,0,0,0]:
+            self.score_1  = 48
+            return 1
+        
         if sum(self.board) <= 3:
             if self.score_1 > self.score_2:
                 return 1
             if self.score_2 > self.score_1:
                 return 2
+    
+    def get_possible_moves(self,player):
+        res = []
+        if player == 1:
+            for i in range(0, 5):
+                if self.board[i] != 0 :
+                    res.append(i)
+        if player == 2:
+            for i in range(6,11):
+                if self.board[i] != 0 :
+                    res.append(i)
+        return res
+    
+    def randomsaufpoints(self,player):
+        if player == 1 :
+            return random.randint(0,100)
+        else :
+            return random.randint(-100,0)
+    
+    def minimax(self, depth, player, alpha, beta):
+        if depth == 0 or self.check_winner() is not None:
+            return self.randomsaufpoints(player)*((depth+1)*(depth+1)), None
+
+        if player == 1:  # Maximizing player
+            best_score = float('-inf')
+            best_move = None
+            possible_moves = self.get_possible_moves(player)
+            for move in possible_moves:
+                game_copy = copy.deepcopy(self) #copy pour undo move
+                self.make_move(move, player)
+                score, _ = self.minimax(depth - 1, 2, alpha, beta)
+                self = game_copy #undo move
+                if score > best_score:
+                        best_score = score
+                        best_move = move
+                alpha = max(alpha, best_score)
+                if beta <= alpha:
+                    break  # Alpha-Beta pruning
+            return best_score, best_move
+        
+        else:  # Minimizing player
+            best_score = float('inf')
+            best_move = None
+            possible_moves = self.get_possible_moves(player)
+            for move in possible_moves:
+                game_copy = copy.deepcopy(self) #copy pour undo move
+                self.make_move( move, player)
+                score, _ = self.minimax(depth - 1, 1, alpha, beta)
+                self = game_copy #undo move
+                if score < best_score:
+                    best_score = score
+                    best_move = move
+                beta = min(beta, best_score)
+                if beta <= alpha:
+                    break  # Alpha-Beta pruning
+            return best_score, best_move
+        
+    def get_best_move(self, depth, player):
+        a , best_move = self.minimax(depth, player, float('-inf'), float('inf'))
+        print(a, best_move, player)
+        return best_move
