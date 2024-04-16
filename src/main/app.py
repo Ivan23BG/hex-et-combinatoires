@@ -119,7 +119,7 @@ def hexiaia_place_piece():
     try:
         if game_board is not None:
 
-            move_IA = game_board.get_best_move(3,current_IA)
+            move_IA = game_board.get_best_move(2,current_IA)
             game_board.place_piece(current_IA, move_IA) # Try to place the piece
             iamove = "hex" + str(move_IA[0]) + "-" + str(move_IA[1])
             
@@ -137,8 +137,8 @@ def hexiaia_place_piece():
         game_board.display_board()
         return jsonify({'error': error_message}), 400
         
-    if current_player == 1:
-        print("j1",game_board.idee(1), move_IA)
+    #if current_player == 1:
+        #print("j1",game_board.idee(1), move_IA)
         #print("j2",game_board.idee(2),move_IA)
     return jsonify({'result': 'Success','iamove': iamove,'game_over': False})
 

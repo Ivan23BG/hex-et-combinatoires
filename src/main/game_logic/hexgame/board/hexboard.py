@@ -1,4 +1,4 @@
-
+from math import *
 from collections import deque
 import heapq
 import random
@@ -541,6 +541,8 @@ class HexBoard:
             return components
 
     def idee(self, player):
+            center = (self.size//2,self.size//2)
+            cv = self.get_neighbors(center,self.size,self.size)
             player_1_score = 0
             player_2_score = 0
             
@@ -555,10 +557,15 @@ class HexBoard:
                 #print(components1)
                 if len(components1) == 1:
                         if len(components1[0]) == 1:
-                            return random.randint(0,10)
-                        player_1_score += 10
+                            print(components1[0])
+
                 cpt = 0
                 for co in components1:
+                    #if center in co:
+                    #    cpt += 20
+                    for c in co:
+                        if c in cv:
+                            cpt += 2
                     M1 = max(co, key=lambda x: x[1])
                     m1 = min(co, key=lambda x: x[1])
                     s1 =  M1[1] - m1[1]
@@ -576,13 +583,13 @@ class HexBoard:
 
             if player == 2:
                 components2 = self.find_connected_components(2)
-                if len(components2) == 1:
-                    if len(components2[0]) == 1:
-                            a = random.randint(0,10)
-                            player_2_score += a
-                    player_2_score += 10
                 cpt = 0
                 for co in components2:
+                    #if center in co:
+                    #    cpt += 20
+                    for c in co:
+                        if c in cv:
+                            cpt += 2
                     M2 = max(co, key=lambda x: x[0])
                     m2 = min(co, key=lambda x: x[0])
                     s2 =  M2[0] - m2[0]
@@ -596,7 +603,7 @@ class HexBoard:
         
     def minimax(self, depth, player, alpha, beta):
         if depth == 0 or self.check_winner() is not None:
-            return self.idee(player)*depth*depth, None
+            return self.idee(player)*((depth+1)*(depth+1)), None
 
         if player == 1:  # Maximizing player
             best_score = float('-inf')
@@ -611,6 +618,7 @@ class HexBoard:
                 if score > best_score:
                         best_score = score
                         best_move = move
+                        #print(best_score, best_move)
                 alpha = max(alpha, best_score)
                 if beta <= alpha:
                     break  # Alpha-Beta pruning
@@ -636,5 +644,5 @@ class HexBoard:
         
     def get_best_move(self, depth, player):
         a , best_move = self.minimax(depth, player, float('-inf'), float('inf'))
-        #print(a, best_move, player)
+        print(a, best_move, player)
         return best_move
