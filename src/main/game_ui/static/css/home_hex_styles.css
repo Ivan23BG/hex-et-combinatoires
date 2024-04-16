@@ -32,6 +32,7 @@ body {
     width: 100px;
     height: 40px;
     margin: 0.5%;
+    margin-top: 0.9%;
     left: 17%;
     top: 0%;
     text-align: center;
@@ -41,6 +42,7 @@ body {
     background-color: #22AAA1;
     border-radius: 10px;
     transition: transform .1s;
+    font-size: 110%;
 }
 
 .clickable2 {
@@ -60,6 +62,7 @@ body {
     background-color: #22AAA1;
     border-radius: 10px;
     transition: transform .1s;
+    font-size: 110%;
 }
 
 
@@ -71,6 +74,7 @@ body {
     width: 100px;
     height: 40px;
     margin: 0.5%;
+    margin-top: 0.9%;
     left: 17%;
     top: 0%;
     text-align: center;
@@ -143,7 +147,7 @@ body {
 .start_game1v1 {
     user-select: none;
     font-size: 20px;
-    color: #FE9920;
+    color: #fe9a20;
     background-image: url(../images/hex.jpg);
     display: flex;
     direction: column;
