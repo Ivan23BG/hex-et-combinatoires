@@ -82,11 +82,6 @@ body {
     transition: transform .1s;
 }
 
-.centre{
-    align-items: center;
-}
-
-
 .clickable:hover {
     background-color: #4CE0D2;
     transform: scale(1.1) translate(-10%, 0%);
@@ -131,6 +126,10 @@ body {
     margin: 10px;
     width: 150px;
     height: 40px;
+    text-align: center;
+    white-space: nowrap;
+    color: black;
+    font-size: 19px;
 }
 
 .container {
