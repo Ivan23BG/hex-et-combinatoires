@@ -107,7 +107,10 @@ body {
 
 .container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 75vh;
 }
 
 .start_game1v1 {
@@ -200,11 +203,11 @@ body {
 
 .start_game1v1:hover {
     transform: scale(1.1) translate(-10%, 0%);
-}
+} 
 
 .start_gameIA:hover {
     transform: scale(1.1) translate(-10%, 0%);
-}
+} 
 
 .start_gameIAvsIA:hover {
     transform: scale(1.1) translate(-10%, 0%);
@@ -261,4 +264,19 @@ body {
 
 .selected_2:hover{
     background-color: #4CE0D2;
+}  
+
+#choose_color {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+#button_blue {
+    margin-right: 5px;
+}
+
+#container{
+    justify-content: center;
+    flex-direction: column;
 }
