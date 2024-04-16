@@ -148,8 +148,8 @@ body {
     display: flex;
     direction: column;
     vertical-align: middle;
-    width: 100px;
-    height: 100px;
+    width: 180px;
+    height: 180px;
     margin: 10px;
     left: 10%;
     top: 10%;
@@ -160,6 +160,12 @@ body {
     /*background-color: #C0C5C1;*/
     border-radius: 10px;
     transition: transform .1s;
+    margin-top: -30px;
+}
+
+.left_shift {
+    /* Décalage vers la gauche */
+    margin-left: 0px; /* Ajustez cette valeur selon vos besoins */
 }
 
 .start_gameIA{
@@ -170,8 +176,8 @@ body {
     display: flex;
     direction: column;
     vertical-align: middle;
-    width: 100px;
-    height: 100px;
+    width: 180px;
+    height: 180px;
     margin: 10px;
     left: 10%;
     top: 10%;
@@ -192,8 +198,8 @@ body {
     display: flex;
     direction: column;
     vertical-align: middle;
-    width: 100px;
-    height: 100px;
+    width: 180px;
+    height: 180px;
     margin: 10px;
     left: 10%;
     top: 10%;
@@ -204,6 +210,7 @@ body {
     /*background-color: #C0C5C1;*/
     border-radius: 10px;
     transition: transform .1s;
+    margin-top: -30px;
 }
 
 .button_out {
@@ -253,9 +260,14 @@ body {
     justify-content: center;
 }
 
+.ia_container {
+    display: flex;
+    flex-direction: column;
+}
+
 #ia_container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 }
 
 #choose_color {
@@ -270,7 +282,7 @@ body {
     cursor: pointer;
     width: 80px;
     height: 40px;
-    margin: 10px;
+    margin: 0 10px;
     padding: 0;
     line-height: 40px;
     transform: translate(-10%, 0%);
@@ -278,6 +290,10 @@ body {
     border-radius: 10px;
     transition: transform .1s;
 }
+
+.chooseplayer_blue{
+    margin-left: -10px;
+}   
 
 .color_button:hover {
     background-color: #4CE0D2;
@@ -296,7 +312,7 @@ body {
 #choose_color {
     display: flex;
     justify-content: center;
-    flex-direction: column;
+    flex-direction: row;
     text-align: center;
 }
 #button_blue {
