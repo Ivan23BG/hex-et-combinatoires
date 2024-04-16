@@ -543,6 +543,7 @@ class HexBoard:
     def idee(self, player):
             center = (self.size//2,self.size//2)
             cv = self.get_neighbors(center,self.size,self.size)
+            cv.append(center)
             player_1_score = 0
             player_2_score = 0
             
@@ -561,23 +562,22 @@ class HexBoard:
 
                 cpt = 0
                 for co in components1:
-                    #if center in co:
-                    #    cpt += 20
-                    for c in co:
-                        if c in cv:
-                            cpt += 2
+
                     M1 = max(co, key=lambda x: x[1])
                     m1 = min(co, key=lambda x: x[1])
                     s1 =  M1[1] - m1[1]
                     cpt = cpt + s1*5
                     t = []
                     for d in co :
+                        if d in cv:
+                            cpt += 2
                         if d[1] not in t:
                             t.append(d[1])
                             cpt = cpt+1
                         if d[1] == M1[1] or d[1] == M1[1] and d[1] != 0 and d[1] != self.size:
                             cpt = cpt + 1
                 player_1_score += (cpt)
+                player_1_score = player_1_score//len(components1)
                 return (player_1_score) 
                 
 
@@ -585,19 +585,17 @@ class HexBoard:
                 components2 = self.find_connected_components(2)
                 cpt = 0
                 for co in components2:
-                    #if center in co:
-                    #    cpt += 20
-                    for c in co:
-                        if c in cv:
-                            cpt += 2
                     M2 = max(co, key=lambda x: x[0])
                     m2 = min(co, key=lambda x: x[0])
                     s2 =  M2[0] - m2[0]
                     cpt = cpt + s2*5
                     for d in co :
+                        if d in cv:
+                            cpt += 2
                         if d[0] == M2[0] or d[0] == M2[0]:
                             cpt = cpt + 1
                 player_2_score += (cpt)
+                player_2_score = player_2_score//len(components2)
                 return (-player_2_score)
 
         
