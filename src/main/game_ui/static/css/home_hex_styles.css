@@ -2,7 +2,7 @@ html {
     padding: 1em;
     font-family: Arial, Helvetica, sans-serif;
     /*background-color: #090806;*/
-    background-color: #041B15;
+    background-color: #01161E;
 }
 
 body {
@@ -20,7 +20,7 @@ body {
     margin-right: 0%;
     padding-left: 0%;
     padding-right: 0%;
-    background-color: #136F63;
+    background-color: #177fb0;
     border-radius: 10px;
 }
 
@@ -39,7 +39,7 @@ body {
     vertical-align: middle;
     line-height: 40px;
     transform: translate(-10%, 0%);
-    background-color: #22AAA1;
+    background-color: #0892A5;
     border-radius: 10px;
     transition: transform .1s;
     font-size: 110%;
@@ -64,6 +64,7 @@ body {
     transition: transform .1s;
     font-size: 110%;
 }
+
 
 
 .selected {
@@ -109,13 +110,13 @@ body {
     height: 40px;
     margin: 10px;
     padding: 0;
-    left: 10%;
+    left: 0%;
     top: 0%;
     text-align: center;
     vertical-align: middle;
     line-height: 40px;
     transform: translate(-10%, 0%);
-    background-color: #84CAE7;
+    background-color: #0892A5;
     border-radius: 10px;
     transition: transform .1s;
 }
@@ -132,8 +133,15 @@ body {
     height: 40px;
     text-align: center;
     white-space: nowrap;
-    color: black;
+    color: #DDE0BD;
     font-size: 19px;
+    font-weight: 700;
+}
+
+.textHome{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    color: #DDE0BD;
 }
 
 .container {
