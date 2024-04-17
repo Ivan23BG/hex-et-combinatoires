@@ -162,8 +162,8 @@ body {
     direction: column;
     vertical-align: middle;
     width: 500px;
-    height: 180px;
-    margin: 50px;
+    height: 170px;
+    margin: 40px;
     left: 10%;
     top: 10%;
     align-items: center;
@@ -173,14 +173,8 @@ body {
     /*background-color: #C0C5C1;*/
     border-radius: 10px;
     transition: transform .1s;
-    
     font-size: 130%;
     font-weight: 800;
-}
-
-.left_shift {
-    /* Décalage vers la gauche */
-    margin-left: 0px; /* Ajustez cette valeur selon vos besoins */
 }
 
 .start_gameIA{
@@ -192,8 +186,8 @@ body {
     direction: column;
     vertical-align: middle;
     width: 500px;
-    height: 180px;
-    margin: 0px;
+    height: 190px;
+    margin: 40px;
     left: 10%;
     top: 10%;
     align-items: center;
@@ -216,8 +210,8 @@ body {
     direction: column;
     vertical-align: middle;
     width: 500px;
-    height: 180px;
-    margin: 50px;
+    height: 170px;
+    margin: 40px;
     left: 10%;
     top: 10%;
     align-items: center;
