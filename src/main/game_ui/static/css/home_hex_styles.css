@@ -1,6 +1,5 @@
 html {
     padding: 1em;
-    font-family: Arial, Helvetica, sans-serif;
     /*background-color: #090806;*/
     background-color: #01161E;
 }
@@ -137,10 +136,10 @@ body {
     color: #DDE0BD;
     font-size: 19px;
     font-weight: 700;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .textHome{
-    font-family: Arial, Helvetica, sans-serif;
     font-size: 15px;
     color: #DDE0BD;
 }
@@ -176,6 +175,7 @@ body {
     margin-top: -15.5%;
     font-size: 130%;
     font-weight: 800;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .left_shift {
@@ -205,6 +205,7 @@ body {
     transition: transform .1s;
     font-size: 130%;
     font-weight: 800;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .start_gameIAvsIA{
@@ -230,6 +231,7 @@ body {
     margin-top: -15.5%;
     font-size: 130%;
     font-weight: 800;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .button_out {
