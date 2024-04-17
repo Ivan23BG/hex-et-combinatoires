@@ -684,8 +684,10 @@ class HexBoard:
         player_1_score = 0
         player_2_score = 0
 
-        if self.check_winner() == player:
+        if self.check_winner() == 1:
             return 1000
+        if self.check_winner() == 2:
+            return -1000
 
         for i in range(self.size):
             for j in range(self.size):
@@ -718,26 +720,18 @@ class HexBoard:
 
         # Add points if the shortest path of the opposite player is longer
         if player == 1:
-            shortest_path_2 = self.shortest_path(2)
-            if shortest_path_2 != "error":
-                player_1_score += len(shortest_path_2)
-            else:
-                player_1_score += 0  # or some other value
+            player_1_score += self.get_dijkstra_score(1)  # or some other value
         else:
-            shortest_path_1 = self.shortest_path(1)
-            if shortest_path_1 != "error":
-                player_2_score += len(shortest_path_1)
-            else:
-                player_2_score += 0  # or some other value
+            player_2_score += self.get_dijkstra_score(2) # or some other value
 
         score_difference = (player_1_score - player_2_score) 
-        return score_difference if player == 1 else -score_difference
+        return player_1_score if player == 1 else player_2_score
     
-    #give me the minimax algorithm with alfa beta pruning and with the evaluation function
+
     def minimax(self, depth, player, alpha, beta):
         #print("zaza")
         if depth == 0 or self.check_winner() is not None:
-            return self.evaluate(player), None
+            return self.evaluate_hex(player), None
 
         if player == 1:  # Maximizing player
             best_score = float('-inf')
