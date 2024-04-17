@@ -10,7 +10,6 @@ body {
     padding-right: 0%;
 }
 
-
 .container {
     display: flex;
     flex-direction: column;
@@ -50,14 +49,16 @@ body {
 }
 
 
-.back_button {
+.home{
+    user-select: none;
     cursor: pointer;
     display: inline-block;
+    position: relative;
     width: 100px;
     height: 40px;
     margin: 10px;
     padding: 0;
-    left: 10%;
+    left: 0%;
     top: 0%;
     text-align: center;
     vertical-align: middle;
@@ -66,16 +67,15 @@ body {
     background-color: #0892A5;
     border-radius: 10px;
     transition: transform .1s;
+    font-size: 110%;
+    font-size: 16px;
+    color: #F2E5D7;
+
 }
 
-
-.back_button:hover {
+.home:hover {
     background-color: #08636F;
     transform: scale(1.1) translate(-10%, 0%);
-}
-
-.textHome{
-    color: #DDE0BD;
 }
 
 
@@ -181,5 +181,5 @@ body {
     transform: translate(0%, -10%);
     font-family: Arial, Helvetica, sans-serif;
     font-size: 15px;
-    color: #DDE0BD;
+    color: #F2E5D7;
 }
