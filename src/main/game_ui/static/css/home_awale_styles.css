@@ -84,7 +84,7 @@ body {
 .start_game1v1 {
     user-select: none;
     font-size: 20px;
-    color: #fe9a20;
+    color: #f3f396;
     background-image: url(../images/awale.jpg);
     display: flex;
     direction: column;
@@ -113,7 +113,7 @@ body {
 .start_gameIA{
     user-select: none;
     font-size: 20px;
-    color: #FE9920;
+    color: #f3f396;
     background-image: url(../images/awale.jpg);
     display: flex;
     direction: column;
@@ -142,7 +142,7 @@ body {
 .start_gameIAvsIA{
     user-select: none;
     font-size: 20px;
-    color: #1c1001;
+    color: #f3f396;
     background-image: url(../images/awale.jpg);
     display: flex;
     direction: column;
