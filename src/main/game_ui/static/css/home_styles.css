@@ -6,7 +6,6 @@ html {
 
 body {
     margin: 0;
-
 }
 
 .header {
@@ -39,14 +38,12 @@ body {
     font-family: "Montserrat", sans-serif;
 }
 
-
 .container {
     position: absolute;
     top: 0 ;
     left: 30%;
     display: inline-block;
 }
-
 
 .button_out {
     display: inline-block;
@@ -62,6 +59,10 @@ body {
     background-color: #d6d6d6;
     border-radius: 10px;
     transition: transform .1s;
+}
+
+.button_out:hover {
+    transform: scale(1.1) translate(-10%, 0%);
 }
 
 #hexgame-button {
@@ -85,6 +86,12 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
+    font-weight: 775;
+}
+
+#hexgame-button:hover {
+    background-color: #BA3533;
+    transform: scale(1.1) translate(-45%, -45%);
 }
 
 #awale-button {
@@ -95,10 +102,9 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 260px;
-    height: 100px;
-    background-image: url(../images/awale3.jpg);
-    background-size: cover;
-    background-position: center;
+    height: 75px;
+    background-image: url(../images/awale.jpg);
+    background-size: contain;
     color: #FE9920;
     font-size: 20px;
     line-height: 80px;
@@ -110,20 +116,12 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
-}
-
-#hexgame-button:hover {
-    background-color: #BA3533;
-    transform: scale(1.1) translate(-45%, -45%);
-
+    border-radius: 10px;
+    font-weight: 775;
 }
 
 #awale-button:hover {
     background-color: #BA3533;
     transform: scale(1.1) translate(-45%, -45%);
 
-}
-
-.button_out:hover {
-    transform: scale(1.1) translate(-10%, 0%);
 }

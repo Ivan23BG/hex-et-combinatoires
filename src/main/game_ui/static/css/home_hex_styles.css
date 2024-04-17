@@ -1,7 +1,5 @@
 html {
     padding: 1em;
-    font-family: Arial, Helvetica, sans-serif;
-    /*background-color: #090806;*/
     background-color: #01161E;
 }
 
@@ -10,6 +8,48 @@ body {
     margin-right: 0%;
     padding-left: 0%;
     padding-right: 0%;
+}
+
+.haut {
+    margin: auto;
+    display: flex;
+}
+
+.home{
+    user-select: none;
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    width: 100px;
+    height: 40px;
+    margin: 10px;
+    padding: 0;
+    left: 0%;
+    top: 0%;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 40px;
+    transform: translate(-10%, 0%);
+    background-color: #0892A5;
+    border-radius: 10px;
+    transition: transform .1s;
+    font-size: 110%;
+    font-size: 16px;
+    color: #DDE0BD;
+
+}
+
+.home:hover {
+    background-color: #08636F;
+    transform: scale(1.1) translate(-10%, 0%);
+}
+
+.titre {
+    margin-top: -0.5%;
+    margin-left: 40%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    color: #DDE0BD;
 }
 
 .header {
@@ -23,6 +63,20 @@ body {
     background-color: #0892A5;
     border-radius: 10px;
 }
+
+.taille_plateau {
+    display: inline-block;
+    margin: 10px;
+    width: 150px;
+    height: 40px;
+    text-align: center;
+    white-space: nowrap;
+    color: #DDE0BD;
+    font-size: 19px;
+    font-weight: 700;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 
 .clickable {
     user-select: none;
@@ -46,27 +100,10 @@ body {
     font-weight: 575;
 }
 
-.clickable2 {
-    user-select: none;
-    cursor: pointer;
-    display: inline-block;
-    position: relative;
-    width: 100px;
-    height: 40px;
-    margin: 10px;
-    left: 0%;
-    top: 0%;
-    text-align: center;
-    vertical-align: middle;
-    line-height: 40px;
-    transform: translate(-10%, 0%);
-    background-color: #22AAA1;
-    border-radius: 10px;
-    transition: transform .1s;
-    font-size: 110%;
+.clickable:hover {
+    background-color: #4CE0D2;
+    transform: scale(1.1) translate(-10%, 0%);
 }
-
-
 
 .selected {
     user-select: none;
@@ -86,63 +123,13 @@ body {
     background-color: #4CE0D2;
     border-radius: 10px;
     transition: transform .1s;
-}
-
-.clickable:hover {
-    background-color: #4CE0D2;
-    transform: scale(1.1) translate(-10%, 0%);
-}
-
-.clickable2:hover {
-    background-color: #4CE0D2;
-    transform: scale(1.1) translate(-10%, 0%);
+    font-size: 110%;
+    font-weight: 575;
 }
 
 .selected:hover {
     background-color: #4CE0D2;
     transform: scale(1.1) translate(-10%, 0%);
-}
-
-
-.back_button {
-    cursor: pointer;
-    display: inline-block;
-    width: 100px;
-    height: 40px;
-    margin: 10px;
-    padding: 0;
-    left: 0%;
-    top: 0%;
-    text-align: center;
-    vertical-align: middle;
-    line-height: 40px;
-    transform: translate(-10%, 0%);
-    background-color: #0892A5;
-    border-radius: 10px;
-    transition: transform .1s;
-}
-
-.back_button:hover {
-    background-color: #08636F;
-    transform: scale(1.1) translate(-10%, 0%);
-}
-
-.text {
-    display: inline-block;
-    margin: 10px;
-    width: 150px;
-    height: 40px;
-    text-align: center;
-    white-space: nowrap;
-    color: #DDE0BD;
-    font-size: 19px;
-    font-weight: 700;
-}
-
-.textHome{
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 15px;
-    color: #DDE0BD;
 }
 
 .container {
@@ -170,18 +157,18 @@ body {
     justify-content: center;
     text-align: center;
     transform: translate(-10%, 0%);
-    /*background-color: #C0C5C1;*/
     border-radius: 10px;
     transition: transform .1s;
     margin-top: -15.5%;
-    font-size: 130%;
+    font-size: 130%;    
     font-weight: 800;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 0px;
 }
 
-.left_shift {
-    /* Décalage vers la gauche */
-    margin-left: 0px; /* Ajustez cette valeur selon vos besoins */
-}
+.start_game1v1:hover {
+    transform: scale(1.1) translate(-10%, 0%);
+} 
 
 .start_gameIA{
     user-select: none;
@@ -200,12 +187,16 @@ body {
     justify-content: center;
     text-align: center;
     transform: translate(-10%, 0%);
-    /*background-color: #C0C5C1;*/
     border-radius: 10px;
     transition: transform .1s;
     font-size: 130%;
     font-weight: 800;
+    font-family: Arial, Helvetica, sans-serif;
 }
+
+.start_gameIA:hover {
+    transform: scale(1.1) translate(-10%, 0%);
+} 
 
 .start_gameIAvsIA{
     user-select: none;
@@ -224,59 +215,16 @@ body {
     justify-content: center;
     text-align: center;
     transform: translate(-10%, 0%);
-    /*background-color: #C0C5C1;*/
     border-radius: 10px;
     transition: transform .1s;
     margin-top: -15.5%;
     font-size: 130%;
     font-weight: 800;
+    font-family: Arial, Helvetica, sans-serif;
 }
-
-.button_out {
-    display: flex;
-    direction: column;
-    vertical-align: middle;
-    width: 100px;
-    height: 100px;
-    margin: 10px;
-    left: 10%;
-    top: 0%;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    transform: translate(-10%, 0%);
-    background-color: #C0C5C1;
-    border-radius: 10px;
-    transition: transform .1s;
-}
-
-.button_out:hover {
-    transform: scale(1.1) translate(-10%, 0%);
-}
-
-.start_game1v1:hover {
-    transform: scale(1.1) translate(-10%, 0%);
-} 
-
-.start_gameIA:hover {
-    transform: scale(1.1) translate(-10%, 0%);
-} 
 
 .start_gameIAvsIA:hover {
     transform: scale(1.1) translate(-10%, 0%);
-}
-
-.btn {
-    background-color: blue;
-    height: 50px;
-    width: 50px;
-}
-
-.start_game {
-    background-image: url(../images/hex.jpg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .ia_container {
@@ -312,15 +260,14 @@ body {
     font-weight: 575;
 }
 
-.chooseplayer_blue{
-    margin-left: -5%;
-}   
-
 .color_button:hover {
     background-color: #4CE0D2;
     transform: scale(1.1) translate(-10%, 0%);
 }
 
+.chooseplayer_blue{
+    margin-left: -5%;
+}   
 
 .selected_2{
     background-color: #4CE0D2;
@@ -336,6 +283,7 @@ body {
     flex-direction: row;
     text-align: center;
 }
+
 #button_blue {
     margin-right: 5px;
 }

@@ -1,7 +1,5 @@
 html {
     padding: 1em;
-    font-family: Arial, Helvetica, sans-serif;
-    /*background-color: #090806;*/
     background-color: #01161E;
 }
 
@@ -11,36 +9,56 @@ body {
     padding-left: 0%;
     padding-right: 0%;
 }
-.start_game1v1 {
-    user-select: none;
-    font-size: 20px;
-    color: #FE9920;
-    /*background-image: url(../images/hex.jpg);*/
+
+.container {
     display: flex;
-    direction: column;
-    vertical-align: middle;
-    width: 100px;
-    height: 100px;
-    margin: 10px;
-    left: 10%;
-    top: 10%;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    text-align: center;
-    transform: translate(-10%, 0%);
-    /*background-color: #C0C5C1;*/
-    border-radius: 10px;
-    transition: transform .1s;
+    height: 85vh;
+    margin-left: 5%;
+    margin-top: -4%;
 }
 
-.back_button {
+.clickable {
+    user-select: none;
     cursor: pointer;
     display: inline-block;
+    position: relative;
+    width: 100px;
+    height: 40px;
+    margin: 0.5%;
+    margin-top: 0.9%;
+    left: 17%;
+    top: 0%;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 40px;
+    transform: translate(-10%, 0%);
+    background-color: #22AAA1;
+    border-radius: 10px;
+    transition: transform .1s;
+    font-size: 110%;
+    font-weight: 575;
+}
+
+
+.clickable:hover {
+    background-color: #4CE0D2;
+    transform: scale(1.1) translate(-10%, 0%);
+}
+
+
+.home{
+    user-select: none;
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
     width: 100px;
     height: 40px;
     margin: 10px;
     padding: 0;
-    left: 10%;
+    left: 0%;
     top: 0%;
     text-align: center;
     vertical-align: middle;
@@ -49,31 +67,119 @@ body {
     background-color: #0892A5;
     border-radius: 10px;
     transition: transform .1s;
+    font-size: 110%;
+    font-size: 16px;
+    color: #F2E5D7;
+
 }
 
-.back_button:hover {
+.home:hover {
     background-color: #08636F;
     transform: scale(1.1) translate(-10%, 0%);
 }
 
-.button_out {
+
+.start_game1v1 {
+    user-select: none;
+    font-size: 20px;
+    color: #f3f396;
+    background-image: url(../images/awale.jpg);
     display: flex;
     direction: column;
     vertical-align: middle;
-    width: 100px;
-    height: 100px;
-    margin: 10px;
+    background-size: contain;
+    width: 500px;
+    height: 140px;
+    margin: 40px;
     left: 10%;
-    top: 0%;
+    top: 10%;
     align-items: center;
     justify-content: center;
     text-align: center;
-    transform: translate(-10%, 0%);
-    background-color: #C0C5C1;
+    transform: scale(1.1) translate(-10%, 0%);
+    /*background-color: #C0C5C1;*/
     border-radius: 10px;
     transition: transform .1s;
+    font-size: 130%;
+    font-weight: 800;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-.button_out:hover {
+.start_game1v1:hover {
+    transform: scale(1.2) translate(-10%, 0%);
+} 
+
+.start_gameIA{
+    user-select: none;
+    font-size: 20px;
+    color: #f3f396;
+    background-image: url(../images/awale.jpg);
+    display: flex;
+    direction: column;
+    vertical-align: middle;
+    background-size: contain;
+    width: 500px;
+    height: 140px;
+    margin: 40px;
+    left: 10%;
+    top: 10%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
     transform: scale(1.1) translate(-10%, 0%);
+    /*background-color: #C0C5C1;*/
+    border-radius: 10px;
+    transition: transform .1s;
+    font-size: 130%;
+    font-weight: 800;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.start_gameIA:hover {
+    transform: scale(1.2) translate(-10%, 0%);
+} 
+
+.start_gameIAvsIA{
+    user-select: none;
+    font-size: 20px;
+    color: #f3f396;
+    background-image: url(../images/awale.jpg);
+    display: flex;
+    direction: column;
+    vertical-align: middle;
+    background-size: contain;
+    width: 500px;
+    height: 140px;
+    margin: 40px;
+    left: 10%;
+    top: 10%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transform: scale(1.1) translate(-10%, 0%);
+    /*background-color: #C0C5C1;*/
+    border-radius: 10px;
+    transition: transform .1s;
+    font-size: 130%;
+    font-weight: 800;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.start_gameIAvsIA:hover {
+    transform: scale(1.2) translate(-10%, 0%);
+}
+
+#container{
+    justify-content: center;
+    flex-direction: column;
+}
+
+.titre {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+    transform: translate(0%, -10%);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    color: #F2E5D7;
 }
