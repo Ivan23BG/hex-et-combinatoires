@@ -96,7 +96,7 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
-    transform: translate(-10%, 0%);
+    transform: scale(1.1) translate(-10%, 0%);
     /*background-color: #C0C5C1;*/
     border-radius: 10px;
     transition: transform .1s;
@@ -106,7 +106,7 @@ body {
 }
 
 .start_game1v1:hover {
-    transform: scale(1.1) translate(-10%, 0%);
+    transform: scale(1.2) translate(-10%, 0%);
 } 
 
 .start_gameIA{
@@ -126,7 +126,7 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
-    transform: translate(-10%, 0%);
+    transform: scale(1.1) translate(-10%, 0%);
     /*background-color: #C0C5C1;*/
     border-radius: 10px;
     transition: transform .1s;
@@ -136,7 +136,7 @@ body {
 }
 
 .start_gameIA:hover {
-    transform: scale(1.1) translate(-10%, 0%);
+    transform: scale(1.2) translate(-10%, 0%);
 } 
 
 .start_gameIAvsIA{
@@ -156,7 +156,7 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
-    transform: translate(-10%, 0%);
+    transform: scale(1.1) translate(-10%, 0%);
     /*background-color: #C0C5C1;*/
     border-radius: 10px;
     transition: transform .1s;
@@ -166,7 +166,7 @@ body {
 }
 
 .start_gameIAvsIA:hover {
-    transform: scale(1.1) translate(-10%, 0%);
+    transform: scale(1.2) translate(-10%, 0%);
 }
 
 #container{

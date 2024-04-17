@@ -102,10 +102,9 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 260px;
-    height: 100px;
-    background-image: url(../images/awale3.jpg);
-    background-size: cover;
-    background-position: center;
+    height: 75px;
+    background-image: url(../images/awale.jpg);
+    background-size: contain;
     color: #FE9920;
     font-size: 20px;
     line-height: 80px;
