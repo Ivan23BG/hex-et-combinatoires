@@ -2,7 +2,7 @@ html {
     padding: 1em;
     font-family: Arial, Helvetica, sans-serif;
     /*background-color: #090806;*/
-    background-color: #041B15;
+    background-color: #01161E;
 }
 
 body {
@@ -12,6 +12,18 @@ body {
     padding-right: 0%;
 }
 
+.header {
+    position: relative;
+    height: 70px;
+    width: 100%;
+    margin-left: 0%;
+    margin-right: 0%;
+    padding-left: 0%;
+    padding-right: 0%;
+    background-color: #0892A5;
+    border-radius: 10px;
+}
+
 .clickable {
     user-select: none;
     cursor: pointer;
@@ -19,8 +31,9 @@ body {
     position: relative;
     width: 100px;
     height: 40px;
-    margin: 10px;
-    left: 10%;
+    margin: 0.5%;
+    margin-top: 0.9%;
+    left: 17%;
     top: 0%;
     text-align: center;
     vertical-align: middle;
@@ -29,7 +42,31 @@ body {
     background-color: #22AAA1;
     border-radius: 10px;
     transition: transform .1s;
+    font-size: 110%;
+    font-weight: 575;
 }
+
+.clickable2 {
+    user-select: none;
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    width: 100px;
+    height: 40px;
+    margin: 10px;
+    left: 0%;
+    top: 0%;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 40px;
+    transform: translate(-10%, 0%);
+    background-color: #22AAA1;
+    border-radius: 10px;
+    transition: transform .1s;
+    font-size: 110%;
+}
+
+
 
 .selected {
     user-select: none;
@@ -38,8 +75,9 @@ body {
     position: relative;
     width: 100px;
     height: 40px;
-    margin: 10px;
-    left: 10%;
+    margin: 0.5%;
+    margin-top: 0.9%;
+    left: 17%;
     top: 0%;
     text-align: center;
     vertical-align: middle;
@@ -50,8 +88,12 @@ body {
     transition: transform .1s;
 }
 
-
 .clickable:hover {
+    background-color: #4CE0D2;
+    transform: scale(1.1) translate(-10%, 0%);
+}
+
+.clickable2:hover {
     background-color: #4CE0D2;
     transform: scale(1.1) translate(-10%, 0%);
 }
@@ -62,19 +104,6 @@ body {
 }
 
 
-
-.header {
-    position: relative;
-    height: 70px;
-    width: 100%;
-    margin-left: 0%;
-    margin-right: 0%;
-    padding-left: 0%;
-    padding-right: 0%;
-    background-color: #136F63;
-    border-radius: 10px;
-}
-
 .back_button {
     cursor: pointer;
     display: inline-block;
@@ -82,13 +111,13 @@ body {
     height: 40px;
     margin: 10px;
     padding: 0;
-    left: 10%;
+    left: 0%;
     top: 0%;
     text-align: center;
     vertical-align: middle;
     line-height: 40px;
     transform: translate(-10%, 0%);
-    background-color: #84CAE7;
+    background-color: #0892A5;
     border-radius: 10px;
     transition: transform .1s;
 }
@@ -103,23 +132,37 @@ body {
     margin: 10px;
     width: 150px;
     height: 40px;
+    text-align: center;
+    white-space: nowrap;
+    color: #DDE0BD;
+    font-size: 19px;
+    font-weight: 700;
+}
+
+.textHome{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    color: #DDE0BD;
 }
 
 .container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 75vh;
 }
 
 .start_game1v1 {
     user-select: none;
     font-size: 20px;
-    color: #FE9920;
-    background-image: url(../images/hex.jpg);
+    color: #fe9a20;
+    background-image: url(../images/hext.jpg);
     display: flex;
     direction: column;
     vertical-align: middle;
-    width: 100px;
-    height: 100px;
+    width: 180px;
+    height: 180px;
     margin: 10px;
     left: 10%;
     top: 10%;
@@ -130,18 +173,26 @@ body {
     /*background-color: #C0C5C1;*/
     border-radius: 10px;
     transition: transform .1s;
+    margin-top: -15.5%;
+    font-size: 130%;
+    font-weight: 800;
+}
+
+.left_shift {
+    /* Décalage vers la gauche */
+    margin-left: 0px; /* Ajustez cette valeur selon vos besoins */
 }
 
 .start_gameIA{
     user-select: none;
     font-size: 20px;
     color: #FE9920;
-    background-image: url(../images/hex.jpg);
+    background-image: url(../images/hext.jpg);
     display: flex;
     direction: column;
     vertical-align: middle;
-    width: 100px;
-    height: 100px;
+    width: 180px;
+    height: 180px;
     margin: 10px;
     left: 10%;
     top: 10%;
@@ -152,18 +203,20 @@ body {
     /*background-color: #C0C5C1;*/
     border-radius: 10px;
     transition: transform .1s;
+    font-size: 130%;
+    font-weight: 800;
 }
 
 .start_gameIAvsIA{
     user-select: none;
     font-size: 20px;
     color: #FE9920;
-    background-image: url(../images/hex.jpg);
+    background-image: url(../images/hext.jpg);
     display: flex;
     direction: column;
     vertical-align: middle;
-    width: 100px;
-    height: 100px;
+    width: 180px;
+    height: 180px;
     margin: 10px;
     left: 10%;
     top: 10%;
@@ -174,6 +227,9 @@ body {
     /*background-color: #C0C5C1;*/
     border-radius: 10px;
     transition: transform .1s;
+    margin-top: -15.5%;
+    font-size: 130%;
+    font-weight: 800;
 }
 
 .button_out {
@@ -200,11 +256,11 @@ body {
 
 .start_game1v1:hover {
     transform: scale(1.1) translate(-10%, 0%);
-}
+} 
 
 .start_gameIA:hover {
     transform: scale(1.1) translate(-10%, 0%);
-}
+} 
 
 .start_gameIAvsIA:hover {
     transform: scale(1.1) translate(-10%, 0%);
@@ -223,9 +279,14 @@ body {
     justify-content: center;
 }
 
+.ia_container {
+    display: flex;
+    flex-direction: column;
+}
+
 #ia_container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 }
 
 #choose_color {
@@ -240,14 +301,20 @@ body {
     cursor: pointer;
     width: 80px;
     height: 40px;
-    margin: 10px;
+    margin: 0 10px;
     padding: 0;
     line-height: 40px;
     transform: translate(-10%, 0%);
     background-color: #22AAA1;
     border-radius: 10px;
     transition: transform .1s;
+    font-size: 95%;
+    font-weight: 575;
 }
+
+.chooseplayer_blue{
+    margin-left: -5%;
+}   
 
 .color_button:hover {
     background-color: #4CE0D2;
@@ -261,4 +328,19 @@ body {
 
 .selected_2:hover{
     background-color: #4CE0D2;
+}  
+
+#choose_color {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    text-align: center;
+}
+#button_blue {
+    margin-right: 5px;
+}
+
+#container{
+    justify-content: center;
+    flex-direction: column;
 }

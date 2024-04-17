@@ -6,9 +6,9 @@
   </head>
 
   <body>
-    <div class="back_button" onclick="back()">Home</div>
+    <div class="clickable2 back_button" onclick="back()"><div class = "textHome">Home</div></div>
     <div class="header">
-      <div class="text">Taille du plateau souhaitée</div>
+      <div class="text">Taille du plateau</div>
       <div class="clickable" onclick="handleClick(5, 1)" id="div1">5</div>
       <div class="clickable" onclick="handleClick(7, 2)" id="div2">7</div>
       <div class="clickable" onclick="handleClick(9, 3)" id="div3">9</div>
@@ -20,26 +20,25 @@
     <div class="container">
       <form action="/game_hex" method="post">
         <input type="hidden" id="size_input_1" name="size" value="" />
-        <div class="start_game1v1" type="button" onclick="submitForm(1)">Player vs Player</div>
+        <div class="start_game1v1 left_shift" type="button" onclick="submitForm(1)">Player vs Player</div>
       </form>
+      
       <div id="ia_container">
       <form action="/game_hexia" method="post">
         <input type="hidden" id="size_input_2" name="size" value="" />
         <input type="hidden" id="player" name="player" value="" />
         <div class="start_gameIA" type="button" onclick="submitForm(2)">Player vs IA</div>
       </form>
-      <div id="choose_color">
-        <div class="chooseplayer_blue color_button selected_2" id="button_blue" onclick="player_blue()">blue</div>
-        <div class="chooseplayer_red color_button" id="button_red" onclick="player_red()">red</div>
-    </div>
-    </div>
+          <div id="choose_color">
+          <div class="chooseplayer_blue color_button selected_2" id="button_blue" onclick="player_blue()">Blue</div>
+          <div class="chooseplayer_red color_button" id="button_red" onclick="player_red()">Red</div>
+          </div>
+      </div>
 
-        <form action="/game_hexiaia" method="post">
-          <input type="hidden" id="size_input_3" name="size" value="" />
-          <div class="start_gameIAvsIA" type="button" onclick="submitForm(3)">IA vs IA</div>
-        </form>
-
-        
+      <form action="/game_hexiaia" method="post">
+        <input type="hidden" id="size_input_3" name="size" value="" />
+        <div class="start_gameIAvsIA" type="button" onclick="submitForm(3)">IA vs IA</div>
+      </form>   
     </div>
     <script src="../static/js/home_hex.js"></script>
   </body>
