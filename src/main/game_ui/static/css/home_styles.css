@@ -6,7 +6,6 @@ html {
 
 body {
     margin: 0;
-
 }
 
 .header {
@@ -39,14 +38,12 @@ body {
     font-family: "Montserrat", sans-serif;
 }
 
-
 .container {
     position: absolute;
     top: 0 ;
     left: 30%;
     display: inline-block;
 }
-
 
 .button_out {
     display: inline-block;
@@ -62,6 +59,10 @@ body {
     background-color: #d6d6d6;
     border-radius: 10px;
     transition: transform .1s;
+}
+
+.button_out:hover {
+    transform: scale(1.1) translate(-10%, 0%);
 }
 
 #hexgame-button {
@@ -86,6 +87,11 @@ body {
     justify-content: center;
     text-align: center;
     font-weight: 775;
+}
+
+#hexgame-button:hover {
+    background-color: #BA3533;
+    transform: scale(1.1) translate(-45%, -45%);
 }
 
 #awale-button {
@@ -115,18 +121,8 @@ body {
     font-weight: 775;
 }
 
-#hexgame-button:hover {
-    background-color: #BA3533;
-    transform: scale(1.1) translate(-45%, -45%);
-
-}
-
 #awale-button:hover {
     background-color: #BA3533;
     transform: scale(1.1) translate(-45%, -45%);
 
-}
-
-.button_out:hover {
-    transform: scale(1.1) translate(-10%, 0%);
 }
