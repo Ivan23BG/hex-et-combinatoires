@@ -8,13 +8,14 @@
 </head>
 
 <body>
-    <div class="back_button" onclick="back()">Home</div>
+    <div class="back_button textHome" onclick="back()">Home</div>
+
     <div class="container">
         <form action="/game_awale" method="post">
             <div class="start_game1v1" type="button" onclick="submitForm()">Player vs Player</div>
         </form>
-        <div class="button_out"></div>
-        <div class="button_out"></div>
+        <div class="start_gameIA" type="button" onclick="submitForm()">Player vs IA</div>
+        <div class="start_gameIAvsIA" type="button" onclick="submitForm()">IA vs IA</div>
     </div>
     <script src="../static/js/home_awale.js"></script>
 </body>
