@@ -17,9 +17,16 @@ html {
     display: flex;
 }
 
-.text {
+.header {
+    margin: auto;
+    display: flex;
+}
+
+.titre {
+    margin-left: 30%;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 15px;
+    height: 15vh;
 }
 
 .hex {
@@ -95,11 +102,6 @@ html {
     transform: scale(1.1) translate(-10%, 0%);
 }
 
-.titre {
-    margin: auto;
-    display: flex;
-}
-
 #spinner {
     margin-left: 10px; /* Add some space between the spinner and the buttons */
 }
@@ -131,6 +133,7 @@ html {
     padding: 10px;
     transform: translate(0%, -10%);
 }
+
 
 .stylechange{
     width: 100px;
