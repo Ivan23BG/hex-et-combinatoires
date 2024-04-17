@@ -1,17 +1,17 @@
-body {
-    /* background-image: url("static/images/tabletop.jpg"); */
-    padding: 2px 0 3px;
-    color: #DDE0BD;
-    user-select: none;
-}
-
 html {
     padding: 1em;
-    /*background-color: #090806;*/
     background-color: #01161E;
 }
 
-
+body {
+    color: #DDE0BD;
+    user-select: none;
+    margin-left: 0%;
+    margin-right: 0%;
+    padding-left: 0%;
+    padding-right: 0%;
+    
+}
 
 [data-flex] {
     display: flex;
