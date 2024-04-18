@@ -15,10 +15,20 @@
 
     <div class="container">
         <form action="/game_awale" method="post">
-            <div class="start_game1v1" type="button" onclick="submitForm()">Player vs Player</div>
+            <div class="start_game1v1" type="button" onclick="submitForm(1)">Player vs Player</div>
+        </form>
+        <form action="/game_awaleia" method="post">
+            <input type="hidden" id="size_input_2" name="size" value="" />
+            <input type="hidden" id="player" name="player" value="" />
+            <div class="start_gameIA" type="button" onclick="submitForm(2)">Player vs IA</div>
         </form>
         <div class="start_gameIA" type="button" onclick="submitForm()">Player vs IA</div>
         <div class="start_gameIAvsIA" type="button" onclick="submitForm()">IA vs IA</div>
+        <div id="choose_color">
+            <div class="chooseplayer_blue color_button selected_2" id="button_red" onclick="player_red()">red</div>
+            <div class="chooseplayer_red color_button" id="button_blue" onclick="player_blue()">blue</div>
+        </div>
+        <div class="button_out"></div>
     </div>
     <script src="../static/js/home_awale.js"></script>
 </body>

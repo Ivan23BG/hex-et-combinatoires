@@ -204,6 +204,14 @@ def game_awale():
     current_player = 1  # Set player 1 as the starting player
     return render_template('game_awale.html',current_player=current_player)
 
+@app.route('/game_awaleia', methods=['POST']) # Hex play page
+def game_awaleia():
+    global game_board, current_player
+    game_board = AwaleBoard()  # Create a new game board
+    game_board.display_board()  # Display the game board in the console
+    current_player = 1  # Set player 1 as the starting player
+    return render_template('game_awale_ia.html',current_player=current_player)
+
 
 @app.route('/awale_place_piece', methods=['POST']) # player place a piece on the board
 def awale_place_piece():
