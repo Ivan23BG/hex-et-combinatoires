@@ -64,14 +64,6 @@ body {
     vertical-align: top;
 }
 
-.hex-player1-hover:hover {
-    background-color: #344792;
-}
-
-.hex-player2-hover:hover {
-    background-color: #BA3533;
-}
-
 .cal {
     margin: -6px;
     width: 35px;

@@ -6,10 +6,15 @@ window.onload = function () {
     const game_history = []; // stack to store game history
     const cells = document.querySelectorAll('.hex'); // Get all hex cells
 
+    cells.forEach(function(element) {
+        element.addEventListener("mouseover", survolHex(element));
+        element.addEventListener("mouseout", survolHex(element));
+    });
+
     cells.forEach(hex => {
         // Add initial hover class
         hex.classList.add('hex-player1-hover');
-
+        console.log(hex.getAttribute('disabled'));
         // Add click event listener to each hex cell
         hex.onclick = function () {
 
@@ -61,7 +66,7 @@ window.onload = function () {
                     } else {
                         // add move to stack
                         game_history.push(hexid);
-
+                            
                     // check if the game is over
                     if (data.game_over === true) {
                         //save shortest_parth
@@ -72,6 +77,10 @@ window.onload = function () {
 
                         // toggle the colour of the hex cell
                         toggle_colour(this);
+                        // Pour le hover
+                        this.setAttribute('disabled', true);
+                        this.removeAttribute('nimp');
+                        this.setAttribute('couleur',true);
 
                         // toggle the current player
                         current_player = current_player === 1 ? 2 : 1;
@@ -219,17 +228,40 @@ window.onload = function () {
             // toggle the current player
             current_player = current_player === 1 ? 2 : 1;
 
-            
+            // Le dernier coup n'est plus disabled ni en couleur
+            hex.removeAttribute('disabled');
+            hex.removeAttribute('couleur');
+
             // toggle the hover class for each hexagon
             cells.forEach(cell => {
                 // remove the disabled attribute from the hex cell
-                if (cell.getAttribute('disabled')) {
+                if (cell.getAttribute('disabled') && !cell.getAttribute('couleur')) {
                     cell.removeAttribute('disabled');
                 }
                 toggle_hover(cell,current_player);
             });
         }
     } // end of undo_move
+
+    function survolHex(element){
+        return function(event) {
+            // Hover uniquement si on n'est ni une couleur ni désactivé
+            if (event.type === "mouseover" && game_over===false && !element.getAttribute('couleur') && !element.getAttribute("disabled")){
+                if (current_player===1){
+                    element.style.backgroundColor = "#344792";
+                }
+                if (current_player===2){
+                    element.style.backgroundColor = "#BA3533";
+                }
+                element.setAttribute("nimp",true);
+            }
+            // Enlève le hover si on quitte un hex ni en couleur ni disabled
+            else if (event.type === "mouseout" && game_over===false && element.getAttribute("nimp") && !element.getAttribute('disabled')){
+               element.style.backgroundColor = "#B0BFB1";
+               element.removeAttribute("nimp");
+            }
+        }
+    }
 }
 
 function back() {
@@ -289,3 +321,4 @@ function changecolor(b1,b2,r1,r2){
         }
     })
 }
+

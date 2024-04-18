@@ -54,7 +54,7 @@ body {
     border: 3px solid #BA3533;
 }
 
-.pit:hover {
+.pit-hover:hover {
     background-color: #63372C;
 }
 
@@ -177,4 +177,9 @@ body {
     font-size: 15px;
 }
 
-
+#side-panel {
+    flex-grow: 1;
+    width: 200px;
+    margin-top: 5%;
+    margin-left: 3.5%;
+}

@@ -104,7 +104,8 @@ def hex_place_piece():
         # Handle the exception here
         error_message = str(e)  # Get the error message
         game_board.display_board() # Display the game board in the console
-        return jsonify({'error': error_message}), 400
+        print("error: ", error_message)
+        return jsonify({'error': "An error has occured"}), 400
     #if current_player == 1:
     #    print("j1",game_board.idee(1))
     #    print("j2",game_board.idee(2))
@@ -137,7 +138,8 @@ def hexiaia_place_piece():
         # Handle the exception here
         error_message = str(e)  # Get the error message
         game_board.display_board()
-        return jsonify({'error': error_message}), 400
+        print("error: ", error_message)
+        return jsonify({'error': "An error has occured"}), 400
         
     return jsonify({'result': 'Success','iamove': iamove,'game_over': False})
 
@@ -189,12 +191,18 @@ def undo_move():
         error_message = str(e)  # Get the error message
         game_board.display_board()
 
-        return jsonify({'error': error_message}), 400
+        print("error: ", error_message)
+        return jsonify({'error': "An error has occured"}), 400
 
     return jsonify({'result': 'Success'})
 
 
-@app.route('/game_awale', methods=['POST']) # Awale player vs player page
+
+
+
+
+
+@app.route('/game_awale', methods=['POST']) # Hex play page
 def game_awale():
     global game_board, current_player
     game_board = AwaleBoard()  # Create a new game board
@@ -286,13 +294,37 @@ def awale_place_piece():
             winner = game_board.game_over()
             if winner:
                 winner = 2 - (game_board.score_1 > game_board.score_2)
-                return jsonify({'winner': current_player, 'game_over': True, 'current_player': current_player,'pitid':pitid})
+                return jsonify({'winner': current_player, 'game_over': True, 'current_player': current_player,'values':values,'pitid':pitid,'score_1':scores[0],'score_2':scores[1]})
             current_player = 1 if current_player == 2 else 2
         except Exception as e:
             # Handle the exception here
             error_message = str(e)  # Get the error message
-            return jsonify({'error': error_message}), 400
+            print("error: ", error_message)
+            return jsonify({'error': "An error has occured"}), 400
     return jsonify({'result': 'Success', 'current_player': current_player,'values':values,'score_1':scores[0],'score_2':scores[1]})
+
+
+
+@app.route('/undo_move_awale', methods=['POST']) # Place last board into game_board
+def undo_move_awale():
+    global game_board
+    
+    data = request.get_json()
+    values = data['values']
+    score_1 = int(data['score_1'])
+    score_2 = int(data['score_2'])
+
+    try:
+        if game_board is not None:
+            game_board.undo_move(values,score_1,score_2)
+
+    except Exception as e:
+        # Handle the exception here
+        error_message = str(e)  # Get the error message
+        print("error: ", error_message)
+        return jsonify({'error': "An error has occured"}), 400
+
+    return jsonify({'result': 'Success'})
 
 
 if __name__ == '__main__':
