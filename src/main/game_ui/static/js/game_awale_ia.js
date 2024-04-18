@@ -1,14 +1,14 @@
-let values = [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]
-let score_1 = 0
-let score_2 = 0
-
+let values = [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4];
+let score_1 = 0;
+let score_2 = 0;
+check_error = false;
 
 function back() {
     window.location.href = '/';
 }
 
 function home() {
-    window.location.href = '/home_awale'
+    window.location.href = '/home_awale';
 }
 
 function submitForm(type) {
@@ -148,8 +148,9 @@ window.onload = async function () {
                 }),
             })
                 .then(response => response.json())
-                .then(data => {
+                .then(async data => {
                     if (data.error) {
+                        check_error = true;
                         alert(data.error);
                     }
                     else {
@@ -164,19 +165,24 @@ window.onload = async function () {
                             // set game to over
                             game_over = true;
                         }
-
+                        if (game_over != true) {
+                            if (check_error){
+                                check_error = false
+                            }
+                            else{
+                            playable = false;
+                            const data = await fetchIAMoveJSON_awale(IA);
+                            values = []
+                            values = data.values;
+                            score_1 = data.score_1;
+                            score_2 = data.score_2;
+                            displayscores();
+                            displayCircles();
+                            }
+                        }
                     }
                 })
-            if (game_over != true) {
-                playable = false;
-                const data = await fetchIAMoveJSON_awale(IA);
-                values = []
-                values = data.values;
-                score_1 = data.score_1;
-                score_2 = data.score_2;
-                displayscores();
-                displayCircles();
-            }
+                console.log(check_error)
 
 
         }

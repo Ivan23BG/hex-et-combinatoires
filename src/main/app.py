@@ -11,7 +11,8 @@ game_board = None
 current_player = 1
 size = 5
 size_px = size
-depth = 4
+depth_hex = 4
+depth_awale = 10
 
 # Player vs IA variables
 player = 0
@@ -120,7 +121,7 @@ def hexiaia_place_piece():
     try:
         if game_board is not None:
 
-            move_IA = game_board.get_best_move(depth,current_IA)
+            move_IA = game_board.get_best_move(depth_hex,current_IA)
             game_board.place_piece(current_IA, move_IA) # Try to place the piece
             iamove = "hex" + str(move_IA[0]) + "-" + str(move_IA[1])
             
@@ -150,7 +151,7 @@ def players_hexia():
 @app.route('/first_move_IA_hex',methods=['POST']) #Return IA's first move if player=2
 def first_move_IA_hex():
     global game_board, IA 
-    move = game_board.get_best_move(depth,IA)
+    move = game_board.get_best_move(depth_hex,IA)
     game_board.place_piece(IA, move)
     iamove = "hex" + str(move[0]) + "-" + str(move[1])
     return jsonify({'result': 'Success','iamove':iamove})
@@ -220,7 +221,7 @@ def players_awaleia():
 @app.route('/first_move_IA_awale',methods=['POST']) #Return IA's first move if player=2
 def first_move_IA_awale():
     global game_board, IA 
-    move = game_board.get_best_move(depth,IA)
+    move = game_board.get_best_move(depth_awale,IA)
     game_board.make_move(move, IA)
     iamove = move
     values = game_board.get_board()
@@ -237,7 +238,7 @@ def awaleia_place_piece():
     try:
         if game_board is not None:
 
-            move_IA = game_board.get_best_move(depth,current_IA)
+            move_IA = game_board.get_best_move(depth_awale,current_IA)
             game_board.make_move(move_IA,current_IA) # Try to place the piece
             iamove = move_IA
             values = game_board.get_board()
