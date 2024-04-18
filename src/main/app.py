@@ -238,5 +238,29 @@ def awale_place_piece():
     return jsonify({'result': 'Success', 'current_player': current_player,'values':values,'score_1':scores[0],'score_2':scores[1]})
 
 
+
+@app.route('/undo_move_awale', methods=['POST']) # Place last board into game_board
+def undo_move_awale():
+    global game_board
+    
+    data = request.get_json()
+    values = data['values']
+    score_1 = int(data['score_1'])
+    score_2 = int(data['score_2'])
+
+    try:
+        if game_board is not None:
+            game_board.undo_move(values,score_1,score_2)
+
+    except Exception as e:
+        # Handle the exception here
+        error_message = str(e)  # Get the error message
+        game_board.display_board()
+
+        return jsonify({'error': error_message}), 400
+
+    return jsonify({'result': 'Success'})
+
+
 if __name__ == '__main__':
     app.run(debug=True)

@@ -202,3 +202,9 @@ class AwaleBoard:
                 return 1
             if self.score_2 > self.score_1:
                 return 2
+
+    # Associe l'ancien board et scores au game_board
+    def undo_move(self,board,score_1,score_2):
+        self.board = board
+        self.score_1 = score_1
+        self.score_2 = score_2

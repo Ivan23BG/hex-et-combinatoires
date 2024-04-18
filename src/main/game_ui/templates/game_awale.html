@@ -63,10 +63,12 @@
     </div>
 
 
-
-    <form action="/game_awale" method="post" id="reset-form">
-        <input type="submit" value="Reset board">
-    </form>
+    <div id="side-panel" class="text">
+        <button onclick="undo_move()">Undo move</button>
+        <form action="/game_awale" method="post" id="reset-form">
+            <input type="submit" value="Reset board">
+        </form>
+    </div>
 
     <script src="../static/js/game_awale.js"></script>
 </body>

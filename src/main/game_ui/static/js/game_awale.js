@@ -192,6 +192,40 @@ window.onload = function () {
         }; // End function
     } // End survolPit
 
+
+    window.undo_move = function () {
+        // pop last element in stack and set it to default colour
+        if (game_history.length > 1) {
+
+            game_history.pop();
+            // Selectionne le plateau précédent
+            const lastBoard = game_history[game_history.length-1]; 
+
+            // Associe les bonnes valeurs pour l'affichage
+            values = []
+            values = lastBoard[0];
+            score_1 = lastBoard[1];
+            score_2 = lastBoard[2];
+            displayscores()
+            displayCircles();
+
+            // Modifie le game_board
+            fetch('/undo_move_awale', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    'values': values,
+                    'score_1': score_1,
+                    'score_2': score_2,
+                }),
+            })
+            
+            current_player = current_player === 1 ? 2 : 1;
+        }
+    } // End of undo_move
+
 } // End of window.onload
 
 

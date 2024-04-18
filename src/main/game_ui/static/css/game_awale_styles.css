@@ -177,4 +177,9 @@ body {
     font-size: 15px;
 }
 
-
+#side-panel {
+    flex-grow: 1;
+    width: 200px;
+    margin-top: 5%;
+    margin-left: 3.5%;
+}
