@@ -33,12 +33,12 @@ def home_hex():
     return render_template('home_hex.html')
 
 
-@app.route('/home_awale') # Hex options page
+@app.route('/home_awale') # Awale options page
 def home_awale():
     return render_template('home_awale.html')
 
 
-@app.route('/game_hex', methods=['POST']) # Hex play page
+@app.route('/game_hex', methods=['POST']) # Hex player vs player page
 def game_hex():
     global game_board, current_player, size_px, size
     size = int(request.form['size'])
@@ -49,7 +49,7 @@ def game_hex():
     return render_template('game_hex.html', size=size, size_px=size_px, current_player=current_player)
 
 
-@app.route('/game_hexia', methods=['POST']) # Hex play page
+@app.route('/game_hexia', methods=['POST']) # Hex player vs IA page
 def game_hexia():
     global game_board, current_player, size_px, size, player, IA
     player = int(request.form['player'])
@@ -64,7 +64,7 @@ def game_hexia():
     return render_template('game_hexia.html', size=size, size_px=size_px)
 
 
-@app.route('/game_hexiaia', methods=['POST']) # Hex play page
+@app.route('/game_hexiaia', methods=['POST']) # Hex IA vs IA page
 def game_hexiaia():
     global game_board, size_px, size
     size = int(request.form['size'])
@@ -74,7 +74,7 @@ def game_hexiaia():
     return render_template('game_hexiaia.html', size=size, size_px=size_px)
 
 
-@app.route('/hex_place_piece', methods=['POST']) # Place a piece on the board
+@app.route('/hex_place_piece', methods=['POST']) # Player place a piece on the board
 def hex_place_piece():
     global game_board, current_player
     
@@ -110,7 +110,7 @@ def hex_place_piece():
     return jsonify({'result': 'Success', 'current_player': current_player})
 
 
-@app.route('/hexiaia_place_piece', methods=['POST']) # Place a unique piece on the board
+@app.route('/hexiaia_place_piece', methods=['POST']) # IA place a unique piece on the board
 def hexiaia_place_piece():
     global game_board, current_IA
 
@@ -158,7 +158,7 @@ def first_move_IA():
     iamove = "hex" + str(move[0]) + "-" + str(move[1])
     return jsonify({'result': 'Success','iamove':iamove})
 
-@app.route('/hexiaia_random',methods=['POST']) #Return IA's first move if player=2
+@app.route('/hexiaia_random',methods=['POST']) #Return random move for IA
 def hexiaia_random():
     global game_board, current_IA 
     data = request.get_json()
@@ -196,7 +196,7 @@ def undo_move():
     return jsonify({'result': 'Success'})
 
 
-@app.route('/game_awale', methods=['POST']) # Hex play page
+@app.route('/game_awale', methods=['POST']) # Awale player vs player page
 def game_awale():
     global game_board, current_player
     game_board = AwaleBoard()  # Create a new game board
@@ -205,7 +205,7 @@ def game_awale():
     return render_template('game_awale.html',current_player=current_player)
 
 
-@app.route('/awale_place_piece', methods=['POST']) # Place a piece on the board
+@app.route('/awale_place_piece', methods=['POST']) # player place a piece on the board
 def awale_place_piece():
     global game_board, current_player
     
