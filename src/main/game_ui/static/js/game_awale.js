@@ -147,7 +147,7 @@ window.onload = function () {
                                         document.getElementById("bluehole").style.backgroundColor = '#FFD700';
                                         clearInterval(intervalId);
                                     }
-                                }, 100);
+                                }, 450);
                             }
                         }
                         // Show board
