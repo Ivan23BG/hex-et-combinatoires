@@ -196,6 +196,11 @@ def undo_move():
     return jsonify({'result': 'Success'})
 
 
+
+
+
+
+
 @app.route('/game_awale', methods=['POST']) # Hex play page
 def game_awale():
     global game_board, current_player
@@ -224,7 +229,7 @@ def awale_place_piece():
             winner = game_board.game_over()
             if winner:
                 winner = 2 - (game_board.score_1 > game_board.score_2)
-                return jsonify({'winner': current_player, 'game_over': True, 'current_player': current_player,'pitid':pitid})
+                return jsonify({'winner': current_player, 'game_over': True, 'current_player': current_player,'values':values,'pitid':pitid})
             current_player = 1 if current_player == 2 else 2
         except Exception as e:
             # Handle the exception here
