@@ -6,10 +6,15 @@ window.onload = function () {
     const game_history = []; // stack to store game history
     const cells = document.querySelectorAll('.hex'); // Get all hex cells
 
+    cells.forEach(function(element) {
+        element.addEventListener("mouseover", survolHex(element));
+        element.addEventListener("mouseout", survolHex(element));
+    });
+
     cells.forEach(hex => {
         // Add initial hover class
         hex.classList.add('hex-player1-hover');
-
+        console.log(hex.getAttribute('disabled'));
         // Add click event listener to each hex cell
         hex.onclick = function () {
 
@@ -72,7 +77,7 @@ window.onload = function () {
 
                         // toggle the colour of the hex cell
                         toggle_colour(this);
-
+                        this.setAttribute('disabled', true);
                         // toggle the current player
                         current_player = current_player === 1 ? 2 : 1;
 
@@ -230,6 +235,24 @@ window.onload = function () {
             });
         }
     } // end of undo_move
+
+    function survolHex(element){
+        return function(event) {
+            // console.log("oui");
+            // console.log(element.style.backgroundColor);
+            if (event.type === "mouseover" && game_over===false && !element.getAttribute("disabled")){
+                if (current_player===1){
+                    element.style.backgroundColor = "#344792";
+                }
+                if (current_player===2){
+                    element.style.backgroundColor = "#BA3533";
+                }
+            }
+            if (event.type === "mouseout" && game_over===false && !element.getAttribute("disabled")){
+               element.style.backgroundColor = "#B0BFB1";
+            }
+        }
+    }
 }
 
 function back() {
@@ -289,3 +312,4 @@ function changecolor(b1,b2,r1,r2){
         }
     })
 }
+
