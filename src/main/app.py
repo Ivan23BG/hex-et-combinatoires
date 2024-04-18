@@ -54,8 +54,8 @@ def game_hexia():
     global game_board, current_player, size_px, size, player, IA
     player = int(request.form['player'])
     IA = 3 - player
-    print(player)
-    print(IA)   
+    #print(player)
+    #print(IA)   
     size = int(request.form['size'])
     size_px = 120 + (44 * size)  # update the size_px used in the play.html
     game_board = HexBoard(size)  # Create a new game board
@@ -206,11 +206,19 @@ def game_awale():
 
 @app.route('/game_awaleia', methods=['POST']) # Hex play page
 def game_awaleia():
-    global game_board, current_player
+    global game_board, current_player, player, IA
     game_board = AwaleBoard()  # Create a new game board
     game_board.display_board()  # Display the game board in the console
+    player = int(request.form['player'])
+    IA = 3 - player
     current_player = 1  # Set player 1 as the starting player
     return render_template('game_awale_ia.html',current_player=current_player)
+
+
+@app.route('/players_awaleia', methods=['POST']) # Return player's and IA's values
+def players_awaleia():
+    global player, IA
+    return jsonify({'result': 'Success','player': player,'IA':IA})
 
 
 @app.route('/awale_place_piece', methods=['POST']) # player place a piece on the board

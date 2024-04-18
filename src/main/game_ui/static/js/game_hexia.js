@@ -56,6 +56,7 @@ window.onload = async function () {
     const data1 = await fetchPlayersJSON() 
     player = data1.player;
     IA = data1.IA;
+    //console.log(player)
     document.getElementById('player').value = player;
     
     // If IA is playing Blue, she play first move

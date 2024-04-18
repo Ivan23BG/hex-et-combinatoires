@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
     <title>Jeux combinatoires</title>
     <link rel="stylesheet" href="../static/css/home_awale_styles.css">
 </head>
@@ -11,7 +10,7 @@
     <div class="home" onclick="back()">Home</div>
     <div class = "titre">
         <h1><center>Awale</center></h1>
-      </div>
+    </div>
 
     <div class="container">
         <form action="/game_awale" method="post">
@@ -22,7 +21,6 @@
             <input type="hidden" id="player" name="player" value="" />
             <div class="start_gameIA" type="button" onclick="submitForm(2)">Player vs IA</div>
         </form>
-        <div class="start_gameIA" type="button" onclick="submitForm()">Player vs IA</div>
         <div class="start_gameIAvsIA" type="button" onclick="submitForm()">IA vs IA</div>
         <div id="choose_color">
             <div class="chooseplayer_blue color_button selected_2" id="button_red" onclick="player_red()">red</div>

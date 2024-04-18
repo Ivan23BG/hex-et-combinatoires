@@ -51,16 +51,34 @@ function displayscores() {
     createCircles("bluehole", score_2);//ajouter les cercles dans les compteurs
 }
 
+//============================================================================================================
+// async
+
+async function fetchPlayersJSON() { 
+    const response = await fetch('/players_awaleia',{method:'POST',headers:{'Content-Type': 'application/json'}});
+    const data = response.json();
+    return data;
+}
 
 
 
+window.onload =  async function () {
+    displayCircles(); //init des cercless
+    let player = 0; // Player default value 
+    let IA = 0; // IA default value 
 
-window.onload = function () {
-    let current_player = 1; // Player 1 starts the game
+    let recup_error = false; // Variable qui empêche que l'IA joue si on clic sur un hex pas bon
+    let playable = true; // Check if player can play or not 
     let game_over = false;
-    displayCircles();
+    let winner = 0;
     //const game_history = []; // stack to store game history
     const pits = document.querySelectorAll('.pit'); // Get all pits
+
+    const data1 = await fetchPlayersJSON() 
+    player = data1.player;
+    IA = data1.IA;
+    console.log(player)
+    document.getElementById('player').value = player;
 
     pits.forEach(pit => {
 
