@@ -13,9 +13,12 @@ function start1v1() {
 function submitForm(type) {
     if (type == 1){
     document.forms[0].submit();}
-    if (type == 2){
+    else if (type == 2){
         document.getElementById('player').value = player;
         document.querySelector('form[action="/game_awaleia"]').submit();
+    }
+    else if (type == 3){
+        document.querySelector('form[action="/game_awaleiaia"]').submit();
     }
 }
 

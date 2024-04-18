@@ -6,7 +6,7 @@ function home() {
     window.location.href = '/home_hex'
 }
 
-async function fetchIAMoveJSON(current_IA) {
+async function fetchIAMoveJSON_hex(current_IA) {
     const response = await fetch('/hexiaia_place_piece', {method: 'POST',headers: {'Content-Type': 'application/json'},body: JSON.stringify({'current_IA': current_IA})});
     const data = response.json();
     return data;
@@ -44,7 +44,7 @@ window.onload = async function () {
             toggle_colour(iahex,2);
 
     while(!stopped){
-        const data = await fetchIAMoveJSON(current_IA);  // Get current_IA's move
+        const data = await fetchIAMoveJSON_hex(current_IA);  // Get current_IA's move
         let iamove = data.iamove;
         var iahex = document.getElementById(iamove);
 
