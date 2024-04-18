@@ -55,6 +55,9 @@ function displayscores() {
 window.onload = function () {
     let current_player = 1; // Player 1 starts the game
     let game_over = false;
+    let winner = 0;
+    let tabP1 = [0,1,2,3,4,5];
+    let tabP2 = [11,10,9,8,7,6];
     displayCircles();
     const game_history = [[values,score_1,score_2]]; // stack to store game history
     const pits = document.querySelectorAll('.pit'); // Get all pits
@@ -70,11 +73,12 @@ window.onload = function () {
 
         pit.onclick = function () {
             const pitid = this.id;
-            //console.log(current_player);
+            
+
             if (this.getAttribute('disabled')) {
                 return;
             }
-
+            
             if (game_over) {
                 // remove all hovers
                 pits.forEach(pit => {
@@ -105,17 +109,51 @@ window.onload = function () {
                         score_1 = data.score_1;
                         score_2 = data.score_2;
                         game_history.push([values,score_1,score_2]);
-                        displayscores()
                         console.log(values);
                         if (data.game_over === true) {
+                            winner = data.winner;
                             // set game to over
                             game_over = true;
                             pits.forEach(pit => {
                                 pit.setAttribute('disabled', true);
                             });
-                            console.log("Gagnant:",current_player);
+                            console.log("Gagnant:",winner);
                             console.log(score_1,score_2);
+
+                            if (winner===1){
+                                let k = 0;
+                                let intervalId = setInterval(() => {
+                                    let p = tabP1[tabP1.length-k-1];
+                                    document.getElementById(String(p)).style.backgroundColor = '#FFD700';
+                                    k++;
+                                    if (k === 6) {
+                                        document.getElementById("redhole").style.backgroundColor = '#FFD700';
+                                        clearInterval(intervalId);
+                                    }
+                                }, 100);
+                            }
+                            if (winner===2){
+                                let k = 0;
+                                let intervalId = setInterval(() => {
+                                    let p = tabP2[k];
+                                    document.getElementById(String(p)).style.backgroundColor = '#FFD700';
+                                    k++;
+                                    if (k === 6) {
+                                        document.getElementById("bluehole").style.backgroundColor = '#FFD700';
+                                        clearInterval(intervalId);
+                                    }
+                                }, 100);
+                            }
+                            // Show winnner's pits
+                            
+                            
+                            
+                            
+
+
                         }
+                        // Show board
+                        displayscores()
                         displayCircles();
 
                         current_player = data.current_player;
