@@ -269,7 +269,8 @@ def awaleia_place_piece():
         # Handle the exception here
         error_message = str(e)  # Get the error message
         game_board.display_board()
-        return jsonify({'error': error_message}), 400
+        print("error: ", error_message)
+        return jsonify({'error': "An error has occured"}), 400
         
     return jsonify({'result': 'Success','game_over': False,'iamove':iamove,'values':values,'score_1':scores[0],'score_2':scores[1]})
 
