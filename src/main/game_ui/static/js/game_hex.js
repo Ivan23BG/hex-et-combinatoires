@@ -77,9 +77,11 @@ window.onload = function () {
 
                         // toggle the colour of the hex cell
                         toggle_colour(this);
+                        // Pour le hover
                         this.setAttribute('disabled', true);
                         this.removeAttribute('nimp');
                         this.setAttribute('couleur',true);
+
                         // toggle the current player
                         current_player = current_player === 1 ? 2 : 1;
 
@@ -226,8 +228,10 @@ window.onload = function () {
             // toggle the current player
             current_player = current_player === 1 ? 2 : 1;
 
+            // Le dernier coup n'est plus disabled ni en couleur
             hex.removeAttribute('disabled');
             hex.removeAttribute('couleur');
+
             // toggle the hover class for each hexagon
             cells.forEach(cell => {
                 // remove the disabled attribute from the hex cell
@@ -241,7 +245,8 @@ window.onload = function () {
 
     function survolHex(element){
         return function(event) {
-            if (event.type === "mouseover" && game_over===false && element.style.backgroundColor!="#29335C" && element.style.backgroundColor!="#A51613" && !element.getAttribute("disabled")){
+            // Hover uniquement si on n'est ni une couleur ni désactivé
+            if (event.type === "mouseover" && game_over===false && !element.getAttribute('couleur') && !element.getAttribute("disabled")){
                 if (current_player===1){
                     element.style.backgroundColor = "#344792";
                 }
@@ -250,6 +255,7 @@ window.onload = function () {
                 }
                 element.setAttribute("nimp",true);
             }
+            // Enlève le hover si on quitte un hex ni en couleur ni disabled
             else if (event.type === "mouseout" && game_over===false && element.getAttribute("nimp") && !element.getAttribute('disabled')){
                element.style.backgroundColor = "#B0BFB1";
                element.removeAttribute("nimp");
