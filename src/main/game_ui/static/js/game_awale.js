@@ -235,15 +235,7 @@ window.onload = function () {
                 }),
             })
 
-            pits.forEach(pit => {
-                // remove the disabled attribute from the hex cell
-                if (pit.getAttribute('disabled')) {
-                    pit.removeAttribute('disabled');
-                }
-            });
-
             if (game_over) {
-
                 if (winner===1){
                     document.getElementById("redhole").style.backgroundColor = '#cc945b';
                     let k = 0;
@@ -273,6 +265,12 @@ window.onload = function () {
             } // End if game_over
             current_player = current_player === 1 ? 2 : 1;
             
+            pits.forEach(pit => {
+                // remove the disabled attribute from the hex cell
+                if (pit.getAttribute('disabled')) {
+                    pit.removeAttribute('disabled');
+                }
+            });
         }
     } // End of undo_move
 
