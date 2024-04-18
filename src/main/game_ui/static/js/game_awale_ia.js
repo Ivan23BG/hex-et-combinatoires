@@ -1,4 +1,4 @@
-let values = [4,4,4,4,4,4,4,4,4,4,4,4]
+let values = [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]
 let score_1 = 0
 let score_2 = 0
 
@@ -16,7 +16,7 @@ function createCircles(pitId, n, type) {
     var cont = document.getElementById(pitId);
     for (var i = 0; i < n; i++) {
         var circle = document.createElement("div");
-        if (type == 2){
+        if (type == 2) {
             circle.classList.add("temp");
         }
         circle.classList.add("circle");
@@ -29,9 +29,9 @@ function displayCircles() {
     for (var i = 0; i < values.length; i++) {
         var pitId = (i);
         // Vider le contenu du conteneur
-        var cont = document.getElementById("c"+pitId);
+        var cont = document.getElementById("c" + pitId);
         cont.innerHTML = '';
-        createCircles("c"+pitId, values[i], 1);
+        createCircles("c" + pitId, values[i], 1);
     }
 }
 
@@ -54,21 +54,21 @@ function displayscores() {
 //============================================================================================================
 // async
 
-async function fetchPlayersJSON() { 
-    const response = await fetch('/players_awaleia',{method:'POST',headers:{'Content-Type': 'application/json'}});
+async function fetchPlayersJSON() {
+    const response = await fetch('/players_awaleia', { method: 'POST', headers: { 'Content-Type': 'application/json' } });
     const data = response.json();
     return data;
 }
 
 // Request for IA's first move
 async function fetchFirstMoveJSON() {
-    const response = await fetch('/first_move_IA_awale',{method:'POST',headers:{'Content-Type': 'application/json'}});
+    const response = await fetch('/first_move_IA_awale', { method: 'POST', headers: { 'Content-Type': 'application/json' } });
     const data = response.json();
     return data;
 }
 
 
-window.onload =  async function () {
+window.onload = async function () {
     displayCircles(); //init des cercless
     let player = 0; // Player default value 
     let IA = 0; // IA default value 
@@ -80,15 +80,16 @@ window.onload =  async function () {
     //const game_history = []; // stack to store game history
     const pits = document.querySelectorAll('.pit'); // Get all pits
 
-    const data1 = await fetchPlayersJSON() 
+    const data1 = await fetchPlayersJSON()
     player = data1.player;
     IA = data1.IA;
     console.log(player)
     document.getElementById('player').value = player;
 
-    if (player===2){
+    if (player === 2) {
         const data2 = await fetchFirstMoveJSON();
         let iamove = data2.iamove;
+        console.log("iamove",iamove);
         values = []
         values = data2.values;
         score_1 = data2.score_1;
@@ -100,7 +101,7 @@ window.onload =  async function () {
     pits.forEach(pit => {
 
 
-        pit.onclick = function () {
+        /*pit.onclick = function () {
             const pitid = this.id;
             console.log(current_player);
             if (this.getAttribute('disabled')) {
@@ -143,7 +144,7 @@ window.onload =  async function () {
                             game_over = true;
                         }
 
-                        
+
 
                         displayCircles();
 
@@ -152,40 +153,40 @@ window.onload =  async function () {
                 })
 
 
-        }
+        }*/
     }
     )
 }
 
 
 function survolPit(element) {
-    return function(event) {
+    return function (event) {
 
-    if (event.type === "mouseover"){
-        let position = parseInt(element.id);
-        let valu = values[element.id];
-        //let temp =  values;
-        let current_position = position;
-        let pitId = "c" + current_position;
-        // Vider le contenu du conteneur
-        var cont = document.getElementById(pitId);
-        cont.innerHTML = '';
-        while (valu > 0){
-            current_position = ((current_position - 1) % 12 + 12) % 12;
-            if (current_position == position){
+        if (event.type === "mouseover") {
+            let position = parseInt(element.id);
+            let valu = values[element.id];
+            //let temp =  values;
+            let current_position = position;
+            let pitId = "c" + current_position;
+            // Vider le contenu du conteneur
+            var cont = document.getElementById(pitId);
+            cont.innerHTML = '';
+            while (valu > 0) {
                 current_position = ((current_position - 1) % 12 + 12) % 12;
+                if (current_position == position) {
+                    current_position = ((current_position - 1) % 12 + 12) % 12;
+                }
+                pitId = "c" + current_position;
+                //console.log(pitId);
+                createCircles(pitId, 1, 2);
+                valu = valu - 1;
             }
-            pitId = "c" + current_position;
-            //console.log(pitId);
-            createCircles(pitId, 1, 2);
-            valu = valu - 1 ;
         }
-    }
 
-    if (event.type === "mouseout") {
-        //console.log(values);
-        displayCircles();
-    }
+        if (event.type === "mouseout") {
+            //console.log(values);
+            displayCircles();
+        }
 
     };
 }
@@ -194,7 +195,7 @@ function survolPit(element) {
 var pits = document.querySelectorAll('.pit');
 
 // Ajout des gestionnaires d'événements hover à chaque élément surveillé
-pits.forEach(function(element) {
+pits.forEach(function (element) {
     element.addEventListener("mouseover", survolPit(element));
     element.addEventListener("mouseout", survolPit(element));
 });
