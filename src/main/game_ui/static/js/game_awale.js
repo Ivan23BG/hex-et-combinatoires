@@ -126,6 +126,10 @@ window.onload = function () {
                             console.log("Gagnant:",winner);
                             console.log(score_1,score_2);
 
+                            // Show board
+                            displayscores()
+                            displayCircles();
+
                             // Show winnner's pits
                             if (winner===1){
                                 let k = 0;
@@ -159,9 +163,7 @@ window.onload = function () {
                         } // End of winner
                         
                         
-                        // Show board
-                        displayscores()
-                        displayCircles();
+                        
 
                         current_player = data.current_player;
                     }
