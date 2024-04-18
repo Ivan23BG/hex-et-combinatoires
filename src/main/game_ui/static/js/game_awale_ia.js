@@ -11,6 +11,13 @@ function home() {
     window.location.href = '/home_awale'
 }
 
+function submitForm(type) {
+    if (type == 1){
+    document.forms[0].submit();}
+    if (type == 2){
+        document.querySelector('form[action="/game_awaleia"]').submit();
+    }
+}
 
 function createCircles(pitId, n, type) {
     var cont = document.getElementById(pitId);
@@ -69,7 +76,7 @@ async function fetchFirstMoveJSON() {
 
 // request for IA's move
 async function fetchIAMoveJSON_awale(IA) {
-    const response = await fetch('/awaleia_place_piece', {method: 'POST',headers: {'Content-Type': 'application/json'},body: JSON.stringify({'current_IA': IA})});
+    const response = await fetch('/awaleia_place_piece', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ 'current_IA': IA }) });
     const data = response.json();
     return data;
 }
@@ -92,6 +99,7 @@ window.onload = async function () {
 
     const data1 = await fetchPlayersJSON()
     player = data1.player;
+    document.getElementById('player').value = player;
     IA = data1.IA;
     console.log(player)
     document.getElementById('player').value = player;
@@ -99,7 +107,7 @@ window.onload = async function () {
     if (player === 2) {
         const data2 = await fetchFirstMoveJSON();
         let iamove = data2.iamove;
-        console.log("iamove",iamove);
+        console.log("iamove", iamove);
         values = []
         values = data2.values;
         score_1 = data2.score_1;
@@ -159,16 +167,16 @@ window.onload = async function () {
 
                     }
                 })
-                if (game_over != true){
-                    playable = false;
-                    const data = await fetchIAMoveJSON_awale(IA);
-                    values = []
-                    values = data.values;
-                    score_1 = data.score_1;
-                    score_2 = data.score_2;
-                    displayscores();
-                    displayCircles();
-                }
+            if (game_over != true) {
+                playable = false;
+                const data = await fetchIAMoveJSON_awale(IA);
+                values = []
+                values = data.values;
+                score_1 = data.score_1;
+                score_2 = data.score_2;
+                displayscores();
+                displayCircles();
+            }
 
 
         }
