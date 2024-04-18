@@ -232,9 +232,8 @@ class AwaleBoard:
             possible_moves = self.get_possible_moves(player)
             for move in possible_moves:
                 game_copy = copy.deepcopy(self) #copy pour undo move
-                self.make_move(move, player)
-                score, _ = self.minimax(depth - 1, 2, alpha, beta)
-                self = game_copy #undo move
+                game_copy.make_move( move, player)
+                score, _ = game_copy.minimax(depth - 1, 1, alpha, beta)
                 if score > best_score:
                         best_score = score
                         best_move = move
@@ -249,9 +248,9 @@ class AwaleBoard:
             possible_moves = self.get_possible_moves(player)
             for move in possible_moves:
                 game_copy = copy.deepcopy(self) #copy pour undo move
-                self.make_move( move, player)
-                score, _ = self.minimax(depth - 1, 1, alpha, beta)
-                self = game_copy #undo move
+                game_copy.make_move( move, player)
+                score, _ = game_copy.minimax(depth - 1, 1, alpha, beta)
+                #self = game_copy #undo move
                 if score < best_score:
                     best_score = score
                     best_move = move
@@ -261,7 +260,6 @@ class AwaleBoard:
             return best_score, best_move
         
     def get_best_move(self, depth, player):
-        if player == 2:
-            return random.randint(6,11)
-        if player == 1:
-            return random.randint(0,5)
+        a , best_move = self.minimax(depth, player, float('-inf'), float('inf'))
+        print(a, best_move, player)
+        return best_move
