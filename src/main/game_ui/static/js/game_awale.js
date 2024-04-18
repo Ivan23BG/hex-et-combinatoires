@@ -59,6 +59,7 @@ window.onload = function () {
     let tabP1 = [0,1,2,3,4,5]; // Tableau des id des pits rouges
     let tabP2 = [11,10,9,8,7,6]; // Tableau des id des pits bleu
     displayCircles();
+    displayscores();
     const game_history = [[values,score_1,score_2]]; // stack to store game history
     const pits = document.querySelectorAll('.pit'); // Get all pits
 
@@ -113,6 +114,9 @@ window.onload = function () {
                         game_history.push([values,score_1,score_2]);
                         console.log(game_history);
 
+                        // Show board
+                        displayscores();
+                        displayCircles();
 
                         if (data.game_over === true) {
                             winner = data.winner;
@@ -127,7 +131,7 @@ window.onload = function () {
                             console.log(score_1,score_2);
 
                             // Show board
-                            displayscores()
+                            displayscores();
                             displayCircles();
 
                             // Show winnner's pits
@@ -161,10 +165,6 @@ window.onload = function () {
                             });
                             return;
                         } // End of winner
-                        
-                        
-                        
-
                         current_player = data.current_player;
                     }
                 }) // End of fetch
@@ -221,7 +221,7 @@ window.onload = function () {
             values = lastBoard[0];
             score_1 = lastBoard[1];
             score_2 = lastBoard[2];
-            displayscores()
+            displayscores();
             displayCircles();
 
             // Modifie le game_board
