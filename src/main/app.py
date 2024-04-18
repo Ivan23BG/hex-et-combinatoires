@@ -229,7 +229,7 @@ def awale_place_piece():
             winner = game_board.game_over()
             if winner:
                 winner = 2 - (game_board.score_1 > game_board.score_2)
-                return jsonify({'winner': current_player, 'game_over': True, 'current_player': current_player,'values':values,'pitid':pitid})
+                return jsonify({'winner': current_player, 'game_over': True, 'current_player': current_player,'values':values,'pitid':pitid,'score_1':scores[0],'score_2':scores[1]})
             current_player = 1 if current_player == 2 else 2
         except Exception as e:
             # Handle the exception here

@@ -52,14 +52,11 @@ function displayscores() {
 }
 
 
-
-
-
 window.onload = function () {
     let current_player = 1; // Player 1 starts the game
     let game_over = false;
     displayCircles();
-    //const game_history = []; // stack to store game history
+    const game_history = [[values,score_1,score_2]]; // stack to store game history
     const pits = document.querySelectorAll('.pit'); // Get all pits
 
     // Ajout des gestionnaires d'événements hover à chaque élément surveillé
@@ -70,7 +67,6 @@ window.onload = function () {
 
 
     pits.forEach(pit => {
-
 
         pit.onclick = function () {
             const pitid = this.id;
@@ -106,8 +102,9 @@ window.onload = function () {
                     else {
                         values = []
                         values = data.values;
-                        score_1 = data.score_1
-                        score_2 = data.score_2
+                        score_1 = data.score_1;
+                        score_2 = data.score_2;
+                        game_history.push([values,score_1,score_2]);
                         displayscores()
                         console.log(values);
                         if (data.game_over === true) {
@@ -117,6 +114,7 @@ window.onload = function () {
                                 pit.setAttribute('disabled', true);
                             });
                             console.log("Gagnant:",current_player);
+                            console.log(score_1,score_2);
                         }
                         displayCircles();
 
@@ -129,34 +127,33 @@ window.onload = function () {
     function survolPit(element) {
         return function(event) {
     
-        if (event.type === "mouseover" && game_over===false){
-            let position = parseInt(element.id);
-            let valu = values[element.id];
-            //let temp =  values;
-            let current_position = position;
-            let pitId = "c" + current_position;
-            // Vider le contenu du conteneur
-            var cont = document.getElementById(pitId);
-            cont.innerHTML = '';
-            while (valu > 0){
-                current_position = ((current_position - 1) % 12 + 12) % 12;
-                if (current_position == position){
+            if (event.type === "mouseover" && game_over===false){
+                let position = parseInt(element.id);
+                let valu = values[element.id];
+                //let temp =  values;
+                let current_position = position;
+                let pitId = "c" + current_position;
+                // Vider le contenu du conteneur
+                var cont = document.getElementById(pitId);
+                cont.innerHTML = '';
+                while (valu > 0){
                     current_position = ((current_position - 1) % 12 + 12) % 12;
-                }
-                pitId = "c" + current_position;
-                //console.log(pitId);
-                createCircles(pitId, 1, 2);
-                valu = valu - 1 ;
-            }
-        }
-    
-        if (event.type === "mouseout" && game_over===false) {
-            console.log(values);
-            displayCircles();
-        }
-    
-        };
-    }
+                    if (current_position == position){
+                        current_position = ((current_position - 1) % 12 + 12) % 12;
+                    }
+                    pitId = "c" + current_position;
+                    //console.log(pitId);
+                    createCircles(pitId, 1, 2);
+                    valu = valu - 1 ;
+                }// End while
+            }//End if
+        
+            if (event.type === "mouseout" && game_over===false) {
+                //console.log(values);
+                displayCircles();
+            } // End if
+        }; // End function
+    } // End survolPit
 
 
 
