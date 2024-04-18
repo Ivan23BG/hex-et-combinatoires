@@ -151,8 +151,8 @@ window.onload = function () {
                                     }
                                 }, 200);
                             }
+                            // Add disabled attribute 
                             pits.forEach(pit => {
-                                pit.classList.remove("pit-hover");
                                 pit.setAttribute('disabled', true);
                             });
                             return;
@@ -174,7 +174,9 @@ window.onload = function () {
         return function(event) {
     
             if (event.type === "mouseover" && game_over===false){
+                // correct hover color for pits
                 element.style.backgroundColor = "#63372C";
+
                 let position = parseInt(element.id);
                 let valu = values[element.id];
                 //let temp =  values;
@@ -203,7 +205,7 @@ window.onload = function () {
         }; // End function
     } // End survolPit
 
-
+    // Charge le board avant le dernier coup
     window.undo_move = function () {
         // pop last element in stack and set it to default colour
         if (game_history.length > 1) {
@@ -232,14 +234,12 @@ window.onload = function () {
                     'score_2': score_2,
                 }),
             })
-            current_player = current_player === 1 ? 2 : 1;
 
             pits.forEach(pit => {
                 // remove the disabled attribute from the hex cell
                 if (pit.getAttribute('disabled')) {
                     pit.removeAttribute('disabled');
                 }
-                pit.classList.add("pit-hover");
             });
 
             if (game_over) {
@@ -269,10 +269,9 @@ window.onload = function () {
                     }, 200);
                 }
                 game_over = false;
+                current_player = current_player === 1 ? 2 : 1;
             } // End if game_over
-
-
-            // Add pit-hover forEach pit
+            current_player = current_player === 1 ? 2 : 1;
             
         }
     } // End of undo_move
