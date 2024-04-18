@@ -67,6 +67,16 @@ async function fetchFirstMoveJSON() {
     return data;
 }
 
+// request for IA's move
+async function fetchIAMoveJSON_awale(IA) {
+    const response = await fetch('/awaleia_place_piece', {method: 'POST',headers: {'Content-Type': 'application/json'},body: JSON.stringify({'current_IA': IA})});
+    const data = response.json();
+    return data;
+}
+
+
+// ========= "main" =======================================================================
+
 
 window.onload = async function () {
     displayCircles(); //init des cercless
@@ -100,10 +110,12 @@ window.onload = async function () {
 
     pits.forEach(pit => {
 
+        pit.onclick = async function () {
 
-        /*pit.onclick = function () {
+            // to do add spinner
+
             const pitid = this.id;
-            console.log(current_player);
+            console.log(player);
             if (this.getAttribute('disabled')) {
                 return;
             }
@@ -124,7 +136,7 @@ window.onload = async function () {
                 },
                 body: JSON.stringify({
                     'pitid': pitid,
-                    'current_player': current_player
+                    'current_player': player
                 }),
             })
                 .then(response => response.json())
@@ -138,22 +150,28 @@ window.onload = async function () {
                         score_1 = data.score_1
                         score_2 = data.score_2
                         displayscores()
+                        displayCircles();
                         console.log(values);
                         if (data.game_over === true) {
                             // set game to over
                             game_over = true;
                         }
 
-
-
-                        displayCircles();
-
-                        current_player = data.current_player;
                     }
                 })
+                if (game_over != true){
+                    playable = false;
+                    const data = await fetchIAMoveJSON_awale(IA);
+                    values = []
+                    values = data.values;
+                    score_1 = data.score_1;
+                    score_2 = data.score_2;
+                    displayscores();
+                    displayCircles();
+                }
 
 
-        }*/
+        }
     }
     )
 }

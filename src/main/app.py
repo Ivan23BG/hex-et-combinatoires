@@ -138,9 +138,6 @@ def hexiaia_place_piece():
         game_board.display_board()
         return jsonify({'error': error_message}), 400
         
-    #if current_player == 1:
-        #print("j1",game_board.idee(1), move_IA)
-        #print("j2",game_board.idee(2),move_IA)
     return jsonify({'result': 'Success','iamove': iamove,'game_over': False})
 
 
@@ -229,6 +226,37 @@ def first_move_IA_awale():
     values = game_board.get_board()
     scores = game_board.get_scores()
     return jsonify({'result': 'Success','iamove':iamove,'values':values,'score_1':scores[0],'score_2':scores[1]})
+
+@app.route('/awaleia_place_piece', methods=['POST']) # IA place a unique piece on the board
+def awaleia_place_piece():
+    
+    global game_board, current_IA
+    data = request.get_json()
+    current_IA = data['current_IA']
+
+    try:
+        if game_board is not None:
+
+            move_IA = game_board.get_best_move(depth,current_IA)
+            game_board.make_move(move_IA,current_IA) # Try to place the piece
+            iamove = move_IA
+            values = game_board.get_board()
+            scores = game_board.get_scores()
+            
+            # check if current_IA won
+            winner = game_board.check_winner()
+            if winner:
+                return jsonify({'winner': current_IA, 'game_over': True,'iamove':iamove,'values':values,'score_1':scores[0],'score_2':scores[1]})
+            
+    except Exception as e:
+        # Handle the exception here
+        error_message = str(e)  # Get the error message
+        game_board.display_board()
+        return jsonify({'error': error_message}), 400
+        
+    return jsonify({'result': 'Success','game_over': False,'iamove':iamove,'values':values,'score_1':scores[0],'score_2':scores[1]})
+
+
 
 @app.route('/awale_place_piece', methods=['POST']) # player place a piece on the board
 def awale_place_piece():

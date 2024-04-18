@@ -21,7 +21,7 @@ async function fetchFirstMoveJSON() {
 }
 
 // request for IA's move
-async function fetchIAMoveJSON(IA) {
+async function fetchIAMoveJSON_hex(IA) {
     console.log("deux");
     const response = await fetch('/hexiaia_place_piece', {method: 'POST',headers: {'Content-Type': 'application/json'},body: JSON.stringify({'current_IA': IA})});
     const data = response.json();
@@ -169,7 +169,7 @@ window.onload = async function () {
             //Place piece if player doesn't win
             if (game_over!=true && recup_error!=true){
                 playable=false;
-                const data = await fetchIAMoveJSON(IA);  // Get IA's move            
+                const data = await fetchIAMoveJSON_hex(IA);  // Get IA's move            
                 let iamove = data.iamove;
                 console.log(data.iamove);
                 var iahex = document.getElementById(iamove);
