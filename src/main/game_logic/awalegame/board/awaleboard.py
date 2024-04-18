@@ -261,6 +261,7 @@ class AwaleBoard:
             return best_score, best_move
         
     def get_best_move(self, depth, player):
-        #a , best_move = self.minimax(depth, player, float('-inf'), float('inf'))
-        #print(a, best_move, player)
-        return 3
+        if player == 2:
+            return random.randint(6,11)
+        if player == 1:
+            return random.randint(0,5)
