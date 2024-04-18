@@ -56,8 +56,8 @@ window.onload = function () {
     let current_player = 1; // Player 1 starts the game
     let game_over = false;
     let winner = 0;
-    let tabP1 = [0,1,2,3,4,5];
-    let tabP2 = [11,10,9,8,7,6];
+    let tabP1 = [0,1,2,3,4,5]; // Tableau des id des pits rouges
+    let tabP2 = [11,10,9,8,7,6]; // Tableau des id des pits bleu
     displayCircles();
     const game_history = [[values,score_1,score_2]]; // stack to store game history
     const pits = document.querySelectorAll('.pit'); // Get all pits
@@ -73,7 +73,6 @@ window.onload = function () {
 
         pit.onclick = function () {
             const pitid = this.id;
-            
 
             if (this.getAttribute('disabled')) {
                 return;
@@ -108,18 +107,24 @@ window.onload = function () {
                         values = data.values;
                         score_1 = data.score_1;
                         score_2 = data.score_2;
+                        // Add new board to history
                         game_history.push([values,score_1,score_2]);
-                        console.log(values);
+                        console.log(game_history);
+
+
                         if (data.game_over === true) {
                             winner = data.winner;
                             // set game to over
                             game_over = true;
+                            // Disabled pits
                             pits.forEach(pit => {
                                 pit.setAttribute('disabled', true);
                             });
+                            // Show winner and points
                             console.log("Gagnant:",winner);
                             console.log(score_1,score_2);
 
+                            // Show winnner's pits
                             if (winner===1){
                                 let k = 0;
                                 let intervalId = setInterval(() => {
@@ -144,13 +149,6 @@ window.onload = function () {
                                     }
                                 }, 100);
                             }
-                            // Show winnner's pits
-                            
-                            
-                            
-                            
-
-
                         }
                         // Show board
                         displayscores()
@@ -161,6 +159,7 @@ window.onload = function () {
                 }) // End of fetch
         } // End of Onclick
     })// End of pits.forEach
+
 
     function survolPit(element) {
         return function(event) {
@@ -192,8 +191,6 @@ window.onload = function () {
             } // End if
         }; // End function
     } // End survolPit
-
-
 
 } // End of window.onload
 
