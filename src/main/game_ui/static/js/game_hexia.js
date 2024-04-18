@@ -68,15 +68,12 @@ window.onload = async function () {
         toggle_colour(iahex,IA);
     }
         
+    cells.forEach(function(element) {
+        element.addEventListener("mouseover", survolHex(element));
+        element.addEventListener("mouseout", survolHex(element));
+    });
     
-    cells.forEach(hex => {    
-        // Add correct hover class for each cell
-        if (player===1){
-            hex.classList.add('hex-player1-hover');
-        }
-        if (player===2){
-            hex.classList.add('hex-player2-hover');            
-        }
+    cells.forEach(hex => {
         
         // Add click event listener to each hex cell
         hex.onclick = async function () {
@@ -97,8 +94,6 @@ window.onload = async function () {
             if (game_over) {
                 // remove all hovers
                 cells.forEach(cell => {
-                    cell.classList.remove('hex-player1-hover');
-                    cell.classList.remove('hex-player2-hover');
                     cell.setAttribute('disabled', true);
                 });
                 // stop game immediately if game is over
@@ -130,6 +125,10 @@ window.onload = async function () {
                 recup_error = false;
                 game_history.push(hexid);
                 toggle_colour(this,player);
+                // Pour le hover
+                this.setAttribute('disabled', true);
+                this.removeAttribute('nimp');
+                this.setAttribute('couleur',true);
 
                 // check if player 1 won
                 if (data.game_over === true) {
@@ -177,6 +176,10 @@ window.onload = async function () {
 
                 game_history.push(iamove);
                 toggle_colour(iahex,IA);
+                iahex.setAttribute('disabled', true);
+                iahex.removeAttribute('nimp');
+                iahex.setAttribute('couleur',true);
+
                 // hide spinner
                 document.getElementById('spinner').style.display = 'none';
                 playable = true;   
@@ -281,6 +284,9 @@ window.onload = async function () {
             const hex = document.getElementById(lastMove);
             hex.style.backgroundColor = '#B0BFB1';
 
+            // Le dernier coup n'est plus disabled ni en couleur
+            hex.removeAttribute('disabled');
+            hex.removeAttribute('couleur');
             if (game_over) {
                 console.log(short_path);
                 let index = short_path.indexOf(lastMove);
@@ -326,18 +332,15 @@ window.onload = async function () {
 
             const hex = document.getElementById(lastMove);
             hex.style.backgroundColor = '#B0BFB1';
+            // Le dernier coup n'est plus disabled ni en couleur
+            hex.removeAttribute('disabled');
+            hex.removeAttribute('couleur');
         }    
             // toggle the hover class for each hexagon
             cells.forEach(cell => {
                 // remove the disabled attribute from the hex cell
-                if (cell.getAttribute('disabled')) {
+                if (cell.getAttribute('disabled') && !cell.getAttribute('couleur')) {
                     cell.removeAttribute('disabled');
-                }
-                if (player===1){
-                    cell.classList.add('hex-player1-hover');
-                }
-                else{
-                    cell.classList.add('hex-player2-hover');
                 }
             });
         
@@ -353,6 +356,26 @@ window.onload = async function () {
         else {
             undo_move();
             undo_move();
+        }
+    }
+
+    function survolHex(element){
+        return function(event) {
+            // Hover uniquement si on n'est ni une couleur ni désactivé
+            if (event.type === "mouseover" && game_over===false && !element.getAttribute('couleur') && !element.getAttribute("disabled")){
+                if (player===1){
+                    element.style.backgroundColor = "#344792";
+                }
+                if (player===2){
+                    element.style.backgroundColor = "#BA3533";
+                }
+                element.setAttribute("nimp",true);
+            }
+            // Enlève le hover si on quitte un hex ni en couleur ni disabled
+            else if (event.type === "mouseout" && game_over===false && element.getAttribute("nimp") && !element.getAttribute('disabled')){
+               element.style.backgroundColor = "#B0BFB1";
+               element.removeAttribute("nimp");
+            }
         }
     }
 }
