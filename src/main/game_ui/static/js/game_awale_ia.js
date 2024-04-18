@@ -60,6 +60,12 @@ async function fetchPlayersJSON() {
     return data;
 }
 
+// Request for IA's first move
+async function fetchFirstMoveJSON() {
+    const response = await fetch('/first_move_IA_awale',{method:'POST',headers:{'Content-Type': 'application/json'}});
+    const data = response.json();
+    return data;
+}
 
 
 window.onload =  async function () {
@@ -79,6 +85,17 @@ window.onload =  async function () {
     IA = data1.IA;
     console.log(player)
     document.getElementById('player').value = player;
+
+    if (player===2){
+        const data2 = await fetchFirstMoveJSON();
+        let iamove = data2.iamove;
+        values = []
+        values = data2.values;
+        score_1 = data2.score_1;
+        score_2 = data2.score_2;
+        displayscores();
+        displayCircles();
+    }
 
     pits.forEach(pit => {
 
@@ -166,7 +183,7 @@ function survolPit(element) {
     }
 
     if (event.type === "mouseout") {
-        console.log(values);
+        //console.log(values);
         displayCircles();
     }
 

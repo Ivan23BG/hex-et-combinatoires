@@ -15,7 +15,7 @@ async function fetchPlayersJSON() {
 
 // Request for IA's first move
 async function fetchFirstMoveJSON() {
-    const response = await fetch('/first_move_IA',{method:'POST',headers:{'Content-Type': 'application/json'}});
+    const response = await fetch('/first_move_IA_hex',{method:'POST',headers:{'Content-Type': 'application/json'}});
     const data = response.json();
     return data;
 }

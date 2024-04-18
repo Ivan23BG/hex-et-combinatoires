@@ -150,8 +150,8 @@ def players_hexia():
     return jsonify({'result': 'Success','player': player,'IA':IA})
 
 
-@app.route('/first_move_IA',methods=['POST']) #Return IA's first move if player=2
-def first_move_IA():
+@app.route('/first_move_IA_hex',methods=['POST']) #Return IA's first move if player=2
+def first_move_IA_hex():
     global game_board, IA 
     move = game_board.get_best_move(depth,IA)
     game_board.place_piece(IA, move)
@@ -220,6 +220,15 @@ def players_awaleia():
     global player, IA
     return jsonify({'result': 'Success','player': player,'IA':IA})
 
+@app.route('/first_move_IA_awale',methods=['POST']) #Return IA's first move if player=2
+def first_move_IA_awale():
+    global game_board, IA 
+    move = game_board.get_best_move(depth,IA)
+    game_board.make_move(move, IA)
+    iamove = move
+    values = game_board.get_board()
+    scores = game_board.get_scores()
+    return jsonify({'result': 'Success','iamove':iamove,'values':values,'score_1':scores[0],'score_2':scores[1]})
 
 @app.route('/awale_place_piece', methods=['POST']) # player place a piece on the board
 def awale_place_piece():
