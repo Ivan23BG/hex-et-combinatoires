@@ -54,7 +54,7 @@ body {
     border: 3px solid #BA3533;
 }
 
-.pit:hover {
+.pit-hover:hover {
     background-color: #63372C;
 }
 

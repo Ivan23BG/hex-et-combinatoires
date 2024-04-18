@@ -8,7 +8,7 @@ function back() {
 }
 
 function home() {
-    window.location.href = '/home_awale'
+    window.location.href = '/home_awale';
 }
 
 
@@ -70,6 +70,8 @@ window.onload = function () {
 
 
     pits.forEach(pit => {
+        // add hover for pits
+        pit.classList.add("pit-hover");
 
         pit.onclick = function () {
             const pitid = this.id;
@@ -149,7 +151,14 @@ window.onload = function () {
                                     }
                                 }, 200);
                             }
-                        }
+                            pits.forEach(pit => {
+                                pit.classList.remove("pit-hover");
+                                pit.setAttribute('disabled', true);
+                            });
+                            return;
+                        } // End of winner
+                        
+                        
                         // Show board
                         displayscores()
                         displayCircles();
@@ -165,6 +174,7 @@ window.onload = function () {
         return function(event) {
     
             if (event.type === "mouseover" && game_over===false){
+                element.style.backgroundColor = "#63372C";
                 let position = parseInt(element.id);
                 let valu = values[element.id];
                 //let temp =  values;
@@ -186,6 +196,7 @@ window.onload = function () {
             }//End if
         
             if (event.type === "mouseout" && game_over===false) {
+                element.style.backgroundColor = "#cc945b";
                 //console.log(values);
                 displayCircles();
             } // End if
@@ -221,8 +232,48 @@ window.onload = function () {
                     'score_2': score_2,
                 }),
             })
-            
             current_player = current_player === 1 ? 2 : 1;
+
+            pits.forEach(pit => {
+                // remove the disabled attribute from the hex cell
+                if (pit.getAttribute('disabled')) {
+                    pit.removeAttribute('disabled');
+                }
+                pit.classList.add("pit-hover");
+            });
+
+            if (game_over) {
+
+                if (winner===1){
+                    document.getElementById("redhole").style.backgroundColor = '#cc945b';
+                    let k = 0;
+                    let intervalId = setInterval(() => {
+                        let p = tabP1[k];
+                        document.getElementById(String(p)).style.backgroundColor = '#cc945b';
+                        k++;
+                        if (k === 6) {
+                            clearInterval(intervalId);
+                        }
+                    }, 200);
+                }
+                if (winner===2){
+                    document.getElementById("bluehole").style.backgroundColor = '#cc945b';
+                    let k = 0;
+                    let intervalId = setInterval(() => {
+                        let p = tabP2[tabP2.length-k-1];
+                        document.getElementById(String(p)).style.backgroundColor = '#cc945b';
+                        k++;
+                        if (k === 6) {
+                            clearInterval(intervalId);
+                        }
+                    }, 200);
+                }
+                game_over = false;
+            } // End if game_over
+
+
+            // Add pit-hover forEach pit
+            
         }
     } // End of undo_move
 
