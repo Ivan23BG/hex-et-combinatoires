@@ -103,7 +103,8 @@ def hex_place_piece():
         # Handle the exception here
         error_message = str(e)  # Get the error message
         game_board.display_board() # Display the game board in the console
-        return jsonify({'error': error_message}), 400
+        print("error: ", error_message)
+        return jsonify({'error': "An error has occured"}), 400
     #if current_player == 1:
     #    print("j1",game_board.idee(1))
     #    print("j2",game_board.idee(2))
@@ -136,7 +137,8 @@ def hexiaia_place_piece():
         # Handle the exception here
         error_message = str(e)  # Get the error message
         game_board.display_board()
-        return jsonify({'error': error_message}), 400
+        print("error: ", error_message)
+        return jsonify({'error': "An error has occured"}), 400
         
     #if current_player == 1:
         #print("j1",game_board.idee(1), move_IA)
@@ -191,7 +193,8 @@ def undo_move():
         error_message = str(e)  # Get the error message
         game_board.display_board()
 
-        return jsonify({'error': error_message}), 400
+        print("error: ", error_message)
+        return jsonify({'error': "An error has occured"}), 400
 
     return jsonify({'result': 'Success'})
 
@@ -234,7 +237,8 @@ def awale_place_piece():
         except Exception as e:
             # Handle the exception here
             error_message = str(e)  # Get the error message
-            return jsonify({'error': error_message}), 400
+            print("error: ", error_message)
+            return jsonify({'error': "An error has occured"}), 400
     return jsonify({'result': 'Success', 'current_player': current_player,'values':values,'score_1':scores[0],'score_2':scores[1]})
 
 
@@ -255,9 +259,8 @@ def undo_move_awale():
     except Exception as e:
         # Handle the exception here
         error_message = str(e)  # Get the error message
-        game_board.display_board()
-
-        return jsonify({'error': error_message}), 400
+        print("error: ", error_message)
+        return jsonify({'error': "An error has occured"}), 400
 
     return jsonify({'result': 'Success'})
 
