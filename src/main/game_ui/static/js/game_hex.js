@@ -66,7 +66,7 @@ window.onload = function () {
                     } else {
                         // add move to stack
                         game_history.push(hexid);
-
+                            
                     // check if the game is over
                     if (data.game_over === true) {
                         //save shortest_parth
@@ -78,6 +78,8 @@ window.onload = function () {
                         // toggle the colour of the hex cell
                         toggle_colour(this);
                         this.setAttribute('disabled', true);
+                        this.removeAttribute('nimp');
+                        this.setAttribute('couleur',true);
                         // toggle the current player
                         current_player = current_player === 1 ? 2 : 1;
 
@@ -224,11 +226,12 @@ window.onload = function () {
             // toggle the current player
             current_player = current_player === 1 ? 2 : 1;
 
-            
+            hex.removeAttribute('disabled');
+            hex.removeAttribute('couleur');
             // toggle the hover class for each hexagon
             cells.forEach(cell => {
                 // remove the disabled attribute from the hex cell
-                if (cell.getAttribute('disabled')) {
+                if (cell.getAttribute('disabled') && !cell.getAttribute('couleur')) {
                     cell.removeAttribute('disabled');
                 }
                 toggle_hover(cell,current_player);
@@ -238,18 +241,18 @@ window.onload = function () {
 
     function survolHex(element){
         return function(event) {
-            // console.log("oui");
-            // console.log(element.style.backgroundColor);
-            if (event.type === "mouseover" && game_over===false && !element.getAttribute("disabled")){
+            if (event.type === "mouseover" && game_over===false && element.style.backgroundColor!="#29335C" && element.style.backgroundColor!="#A51613" && !element.getAttribute("disabled")){
                 if (current_player===1){
                     element.style.backgroundColor = "#344792";
                 }
                 if (current_player===2){
                     element.style.backgroundColor = "#BA3533";
                 }
+                element.setAttribute("nimp",true);
             }
-            if (event.type === "mouseout" && game_over===false && !element.getAttribute("disabled")){
+            else if (event.type === "mouseout" && game_over===false && element.getAttribute("nimp") && !element.getAttribute('disabled')){
                element.style.backgroundColor = "#B0BFB1";
+               element.removeAttribute("nimp");
             }
         }
     }
