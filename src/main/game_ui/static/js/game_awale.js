@@ -135,7 +135,7 @@ window.onload = function () {
                                         document.getElementById("redhole").style.backgroundColor = '#FFD700';
                                         clearInterval(intervalId);
                                     }
-                                }, 100);
+                                }, 200);
                             }
                             if (winner===2){
                                 let k = 0;
@@ -147,7 +147,7 @@ window.onload = function () {
                                         document.getElementById("bluehole").style.backgroundColor = '#FFD700';
                                         clearInterval(intervalId);
                                     }
-                                }, 450);
+                                }, 200);
                             }
                         }
                         // Show board
