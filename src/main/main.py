@@ -1,7 +1,7 @@
 # main.py
 #vous etes sur la branche de Ibrahim (Creation de plusieurs function d'evaluatoin et de les tester)
 # import the HexBoard class from hexboard.py
-from hexgame.board.hexboard import HexBoard
+from game_logic.hexgame.board.hexboard import HexBoard
 
 # ask player for board size
 size = int(input("Enter the size of the board: "))

@@ -2,6 +2,8 @@ from math import *
 from collections import deque
 import heapq
 import random
+from time import time 
+import numpy as np
 # HexGame/board/hex_board.py
 class InvalidPositionError(Exception):
     pass
@@ -227,14 +229,14 @@ class HexBoard:
         return self.board[row][col] == 0
     
     def get_dijkstra_score2(self, player):
-        scores = np.array([[LOSE for _ in range(self.board.size)] for _ in range(self.board.size)])
-        updated = np.array([[True for _ in range(self.board.size)] for _ in range(self.board.size)]) #Start updating at one side of the board 
+        scores = np.array([[False for _ in range(self.size)] for _ in range(self.size)])
+        updated = np.array([[True for _ in range(self.size)] for _ in range(self.size)]) #Start updating at one side of the board 
 
         #alignment of player (1 = left->right so (1,0))
         alignment = (0, 1) if player == 1 else (1, 0)
 
 
-        for i in range(self.board.size):
+        for i in range(self.size):
             newcoord = tuple([i * j for j in alignment]) #iterate over last row or column based on alignment of current color
 
             updated[newcoord] = False
@@ -249,7 +251,7 @@ class HexBoard:
 
         #self.board.print_dijkstra(scores)
 
-        results = [scores[alignment[0] * i - 1 + alignment[0]][alignment[1]*i - 1 + alignment[1]] for i in range(self.board.size)] #take "other side" to get the list of distance from end-end on board
+        results = [scores[alignment[0] * i - 1 + alignment[0]][alignment[1]*i - 1 + alignment[1]] for i in range(self.size)] #take "other side" to get the list of distance from end-end on board
         best_result = min(results)
         return best_result
     
