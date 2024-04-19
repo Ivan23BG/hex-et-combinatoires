@@ -408,58 +408,6 @@ class HexBoard:
 
         return is_winner
 
-    
-    def evaluate_hex(self, player):
-        player_1_score = 0
-        player_2_score = 0
-
-        for i in range(self.size):
-            for j in range(self.size):
-                if self.board[i][j] == 1:
-                    voisins = self.get_neighbors((i, j), self.size, self.size)
-                    connected_pieces = 0
-                    for v in voisins:
-                        if self.board[v[0]][v[1]] == 1:
-                            player_1_score += 2 
-                            connected_pieces += 1
-                    #player_1_score += min(i, j, self.size - i, self.size - j)
-                    player_1_score += connected_pieces ** 2
-                elif self.board[i][j] == 2:
-                    voisins = self.get_neighbors((i, j), self.size, self.size)
-                    connected_pieces = 0
-                    for v in voisins:
-                        if self.board[v[0]][v[1]] == 2:
-                            player_2_score += 2
-                            connected_pieces += 1
-                    #player_2_score += min(i, j, self.size - i, self.size - j)
-                    player_2_score += connected_pieces ** 2
-
-        # Check if there's a potential winning move
-        
-            if self.check_winner(): 
-                #print("touché moi")
-                return 1000  # A high score to prioritize the winning move
-
-
-        # Add points if the shortest path of the opposite player is longer
-        if player == 1:
-            shortest_path_2 = self.shortest_path(2)
-            if shortest_path_2 != "error":
-                player_1_score += len(shortest_path_2)
-            else:
-                player_1_score += 0  # or some other value
-        else:
-            shortest_path_1 = self.shortest_path(1)
-            if shortest_path_1 != "error":
-                player_2_score += len(shortest_path_1)
-            else:
-                player_2_score += 0  # or some other value
-
-        score_difference = (player_1_score - player_2_score)
-
-        return score_difference if player == 1 else -score_difference
-
-
     def get_CC(self,tab, move):
             tab.append(move)
             voisin = self.get_neighbors(move, self.size, self.size)
@@ -566,6 +514,53 @@ class HexBoard:
         if path == []:
             return 0
         return len(path)
+    
+    def evaluate_hex(self, player):
+        player_1_score = 0
+        player_2_score = 0
+
+        if self.check_winner() == 1:
+            return 1000
+        if self.check_winner() == 2:
+            return -1000
+
+        for i in range(self.size):
+            for j in range(self.size):
+                if self.board[i][j] == 1:
+                    voisins = self.get_neighbors((i, j), self.size, self.size)
+                    connected_pieces = 0
+                    for v in voisins:
+                        if self.board[v[0]][v[1]] == 1:
+                            player_1_score += 2 
+                            connected_pieces += 1
+                    player_1_score += min(i, j, self.size - i, self.size - j)
+                    player_1_score += connected_pieces ** 2
+                elif self.board[i][j] == 2:
+                    voisins = self.get_neighbors((i, j), self.size, self.size)
+                    connected_pieces = 0
+                    for v in voisins:
+                        if self.board[v[0]][v[1]] == 2:
+                            player_2_score += 2
+                            connected_pieces += 1
+                    player_2_score += min(i, j, self.size - i, self.size - j)
+                    player_2_score += connected_pieces ** 2
+
+        # Check if there's a potential winning move
+        if player == 1:
+            if self.is_potential_winner(player, (0, 0)):  # Assuming player 1 starts from the top-left corner
+                return 1000  # A high score to prioritize the winning move
+        else:
+            if self.is_potential_winner(player, (0, 0)):  # Assuming player 2 starts from the top-left corner
+                return -1000  # A high negative score to prioritize blocking the opponent's winning move
+
+        # Add points if the shortest path of the opposite player is longer
+        if player == 1:
+            player_1_score += self.get_dijkstra_score(1)  # or some other value
+        else:
+            player_2_score += self.get_dijkstra_score(2) # or some other value
+
+        score_difference = (player_1_score - player_2_score) 
+        return player_1_score if player == 1 else player_2_score
     
     def eval(self, player):
             center = (self.size//2,self.size//2)
