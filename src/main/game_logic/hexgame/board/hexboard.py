@@ -474,7 +474,7 @@ class HexBoard:
     """
     def minimax(self, depth, player, alpha, beta):
         if depth == 0 or self.check_winner() is not None:
-            return self.eval_dijkstra(player), None
+            return self.eval_dijkstra(player)*((depth+1)*(depth+1)), None
 
         if player == 1:  # Maximizing player
             best_score = float('-inf')
@@ -518,11 +518,23 @@ class HexBoard:
         print(a, best_move, player)
         return best_move
 
+    def random_move(self):
+        Trouve = False
+        while(not Trouve):
+            x = random.randint(0,self.size-1)
+            y = random.randint(0,self.size-1)
+            if not(self.is_position_occupied((x,y))):
+                Trouve = True
+                return (x,y)
 
     """
         PARTIE EVALUATION
     """
     def eval_dijkstra(self, player):
+        if self.check_winner() == 1 : #winning move
+            return 1000
+        if self.check_winner() == 2 :
+            return -1000
         return self.get_dijkstra_score(player)- self.get_dijkstra_score(3-player)
     
     def eval(self, player):
