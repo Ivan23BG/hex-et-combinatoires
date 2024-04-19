@@ -238,14 +238,14 @@ class HexBoard:
             newcoord = tuple([i * j for j in alignment]) #iterate over last row or column based on alignment of current color
 
             updated[newcoord] = False
-            if self.is_player(newcoord, player)): #if same color --> path starts at 0
+            if self.is_player(newcoord, player): #if same color --> path starts at 0
                 scores[newcoord] = 0
             elif self.is_empty(newcoord): #if empty --> costs 1 move to use this path 
                 scores[newcoord] = 1
             else: #If other color --> can't use this path
                 scores[newcoord] = LOSE
 
-        scores = self.dijkstra_update(color, scores, updated)
+        scores = self.dijkstra_update(player, scores, updated)
 
         #self.board.print_dijkstra(scores)
 
@@ -257,9 +257,9 @@ class HexBoard:
         """Updates the given dijkstra scores array for given color
 
         Args:
-            player (HexBoard.color): player to evaluate
-            scores (int array): array of initial scores
-            updated (bool array): array of which nodes are up-to-date (at least 1 should be false for update to do something)
+            player : player to evaluate
+            scores : array of initial scores
+            updated : array of which nodes are up-to-date (at least 1 should be false for update to do something)
 
         Returns:
             the updated scores
@@ -285,7 +285,9 @@ class HexBoard:
                                 updating = True #make sure next loop is started
         return scores
 
-
+    def eval_dijkstra(self, player):
+        return self.get_dijkstra_score2(3-player)-self.get_dijkstra_score2(player)
+    
     def get_neighbors(self, node, rows, cols):
         neighbors = []
         directions = [(-1, 0), (1, 0), (0, -1), (0, 1), (1, -1), (-1, 1)]
@@ -771,7 +773,7 @@ class HexBoard:
         
     def minimax(self, depth, player, alpha, beta):
         if depth == 0 or self.check_winner() is not None:
-            return self.eval(player)*((depth+1)*(depth+1)), None
+            return self.eval_dijkstra(player)*((depth+1)*(depth+1)), None
 
         if player == 1:  # Maximizing player
             best_score = float('-inf')
