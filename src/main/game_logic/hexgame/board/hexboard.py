@@ -657,9 +657,9 @@ class HexBoard:
                     if d[1] == M1[1] or d[1] == M1[1] and d[1] != 0 and d[1] != self.size:
                         cpt = cpt + 1
             player_1_score += (cpt)
-            player_1_score += self.get_dijkstra_score(1)
+            #player_1_score += self.get_dijkstra_score(1)
             player_1_score = player_1_score//len(components1)
-            player_1_score = player_1_score//len(self.get_dijkstra_score(1))
+            #player_1_score = player_1_score//self.size
             return (player_1_score) 
             
 
@@ -677,13 +677,14 @@ class HexBoard:
                     if d[0] == M2[0] or d[0] == M2[0]:
                         cpt = cpt + 1
             player_2_score += (cpt)
-            player_2_score += self.get_dijkstra_score(2)
+            #player_2_score += self.get_dijkstra_score(2)
             player_2_score = player_2_score//len(components2)
+            #player_2_score = player_2_score//self.size
             return (-player_2_score)
         
     def minimax(self, depth, player, alpha, beta):
         if depth == 0 or self.check_winner() is not None:
-            return self.evaluate_hex(player)*((depth+1)*(depth+1)), None
+            return self.eval(player)*((depth+1)*(depth+1)), None
 
         if player == 1:  # Maximizing player
             best_score = float('-inf')
