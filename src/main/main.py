@@ -81,7 +81,8 @@ elif mode == "2":
 
         #give me the evaluation of the board
         print(game_board.evaluate_hex(2))
-        print("Dijkstra", game_board.shortest_path(1))
+        print("joueur 1", game_board.get_dijkstra_score2(1))
+        print("joueur 2", game_board.get_dijkstra_score2(2))
         # print(game_board.eval_dijkstra(1))
 
         # make a move using minimax algorithm and get_best_move method

@@ -4,7 +4,12 @@ import heapq
 import random
 from time import time 
 import numpy as np
+
+#initialiser le lose à une valeur superieure au evalution expecté par chaque joueur.
+LOSE=1000
+
 # HexGame/board/hex_board.py
+#Mettre en place les exceptions
 class InvalidPositionError(Exception):
     pass
 
@@ -229,7 +234,7 @@ class HexBoard:
         return self.board[row][col] == 0
     
     def get_dijkstra_score2(self, player):
-        scores = np.array([[False for _ in range(self.size)] for _ in range(self.size)])
+        scores = np.array([[LOSE for _ in range(self.size)] for _ in range(self.size)])
         updated = np.array([[True for _ in range(self.size)] for _ in range(self.size)]) #Start updating at one side of the board 
 
         #alignment of player (1 = left->right so (1,0))
@@ -248,8 +253,6 @@ class HexBoard:
                 scores[newcoord] = LOSE
 
         scores = self.dijkstra_update(player, scores, updated)
-
-        #self.board.print_dijkstra(scores)
 
         results = [scores[alignment[0] * i - 1 + alignment[0]][alignment[1]*i - 1 + alignment[1]] for i in range(self.size)] #take "other side" to get the list of distance from end-end on board
         best_result = min(results)
@@ -288,7 +291,7 @@ class HexBoard:
         return scores
 
     def eval_dijkstra(self, player):
-        return self.get_dijkstra_score2(3-player)-self.get_dijkstra_score2(player)
+        return self.get_dijkstra_score2(player)- self.get_dijkstra_score2(3-player)
     
     def get_neighbors(self, node, rows, cols):
         neighbors = []
@@ -775,7 +778,7 @@ class HexBoard:
         
     def minimax(self, depth, player, alpha, beta):
         if depth == 0 or self.check_winner() is not None:
-            return self.eval_dijkstra(player)*((depth+1)*(depth+1)), None
+            return self.eval_dijkstra(player), None
 
         if player == 1:  # Maximizing player
             best_score = float('-inf')
