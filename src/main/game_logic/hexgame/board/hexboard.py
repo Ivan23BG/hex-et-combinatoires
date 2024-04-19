@@ -540,6 +540,33 @@ class HexBoard:
 
             return components
 
+    def get_dijkstra_score(self, player):
+        path = []
+        start = (0, 0)
+        if player == 1:
+            for k in range(self.size):
+                if self.board[k][0] == player:
+                    start = (k, 0)
+                    temp = self.dijkstra(player, start)
+                    if path == []:
+                        path = temp
+                    else:
+                        if len(path) > len(temp) and len(temp) != 0:
+                            path = temp
+        if player == 2:
+            for k in range(self.size):
+                if self.board[0][k] == player:
+                    start = (0, k)
+                    temp = self.dijkstra(player, start)
+                    if path == []:
+                        path = temp
+                    else:
+                        if len(path) >= len(temp) and len(temp) != 0:
+                            path = temp
+        if path == []:
+            return 0
+        return len(path)
+    
     def eval(self, player):
             center = (self.size//2,self.size//2)
             cv = self.get_neighbors(center,self.size,self.size)
