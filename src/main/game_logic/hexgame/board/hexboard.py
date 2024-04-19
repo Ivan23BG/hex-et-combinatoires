@@ -675,3 +675,54 @@ class HexBoard:
             if not(self.is_position_occupied((x,y))):
                 Trouve = True
                 return (x,y)
+    
+    def getWinFactor(self, player):
+        cnt=0
+        winPath = self.get_winning_path(player)
+        for i in range(self.size):
+            for j in range(self.size):
+                if (i,j) in winPath:
+                    cnt+=1
+        return cnt/len(winPath)*100
+    
+    def getPathFactor(self, player):
+        score=0
+        path=[]
+        if (player == 1):
+            for i in range(self.size):
+                for j in range (self.size):
+                    if (self.board[i][j] == 1):
+                        path = self.dijkstra(1, (i,j))
+                        score += 1
+        else:
+            for i in range(self.size):
+                for j in range (self.size):
+                    if (self.board[j][i] == 2):
+                        path = self.dijkstra(2, (j,i))
+                        score += 1
+        return score/(self.size*self.size)*100
+    
+    def getAdjFactor(self, player):
+        score=0
+        if (player == 1):
+            for i in range(self.size):
+                for j in range (self.size):
+                    if (self.board[i][j] == 1):
+                        voisins = self.get_neighbors((i,j), self.size, self.size)
+                        for v in voisins:
+                            if (self.board[v[0]][v[1]] == 1):
+                                score += 1
+        else:
+            for i in range(self.size):
+                for j in range (self.size):
+                    if (self.board[j][i] == 2):
+                        voisins = self.get_neighbors((j,i), self.size, self.size)
+                        for v in voisins:
+                            if (self.board[v[0]][v[1]] == 2):
+                                score += 1
+        return score/(self.size*self.size)*100
+    
+    def getScore(self, player):
+        if self.check_winner() == player:
+            return 1000
+        return max (self.getWinFactor(player), self.getPathFactor(player) ,self.getAdjFactor(player))
