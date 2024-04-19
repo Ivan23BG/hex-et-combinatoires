@@ -253,7 +253,37 @@ class HexBoard:
         best_result = min(results)
         return best_result
     
+    def dijkstra_update(self, player, scores, updated):
+        """Updates the given dijkstra scores array for given color
 
+        Args:
+            player (HexBoard.color): player to evaluate
+            scores (int array): array of initial scores
+            updated (bool array): array of which nodes are up-to-date (at least 1 should be false for update to do something)
+
+        Returns:
+            the updated scores
+        """
+        updating = True
+        while updating: 
+            updating = False
+            for i, row in enumerate(scores): #go over rows
+                for j, point in enumerate(row): #go over points 
+                    if not updated[i][j]: 
+                        neighborcoords = self.get_neighbors((i,j), self.size, self.size)
+                        for neighborcoord in neighborcoords:
+                            target_coord = tuple(neighborcoord)
+                            path_cost = LOSE #1 for no color, 0 for same color, INF for other color 
+                            if self.is_empty(target_coord):
+                                path_cost = 1
+                            elif self.is_player(target_coord, player):
+                                path_cost = 0
+                            
+                            if scores[target_coord] > scores[i][j] + path_cost: #if new best path to this neighbor
+                                scores[target_coord] = scores[i][j] + path_cost #update score
+                                updated[target_coord] = False #This neighbor should be updated
+                                updating = True #make sure next loop is started
+        return scores
 
 
     def get_neighbors(self, node, rows, cols):
