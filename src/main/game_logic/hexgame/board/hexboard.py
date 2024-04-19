@@ -198,6 +198,63 @@ class HexBoard:
                 if len(path) > len(temp) and len(temp) != 0:
                     path = temp
         return path
+    
+    def is_player(self, position, player):
+        """
+        Check if the position on the board belongs to the given player.
+
+        Args:
+            position (tuple): The position on the board.
+            player (int): The player value (1 or 2).
+
+        Returns:
+            bool: True if the position belongs to the player, False otherwise.
+        """
+        row, col = position
+        return self.board[row][col] == player
+    
+    def is_empty(self, position):
+        """
+        Check if the given position on the board is empty.
+
+        Args:
+            position (tuple): The position on the board.
+
+        Returns:
+            bool: True if the position is empty, False otherwise.
+        """
+        row, col = position
+        return self.board[row][col] == 0
+    
+    def get_dijkstra_score2(self, player):
+        scores = np.array([[LOSE for _ in range(self.board.size)] for _ in range(self.board.size)])
+        updated = np.array([[True for _ in range(self.board.size)] for _ in range(self.board.size)]) #Start updating at one side of the board 
+
+        #alignment of player (1 = left->right so (1,0))
+        alignment = (0, 1) if player == 1 else (1, 0)
+
+
+        for i in range(self.board.size):
+            newcoord = tuple([i * j for j in alignment]) #iterate over last row or column based on alignment of current color
+
+            updated[newcoord] = False
+            if self.is_player(newcoord, player)): #if same color --> path starts at 0
+                scores[newcoord] = 0
+            elif self.is_empty(newcoord): #if empty --> costs 1 move to use this path 
+                scores[newcoord] = 1
+            else: #If other color --> can't use this path
+                scores[newcoord] = LOSE
+
+        scores = self.dijkstra_update(color, scores, updated)
+
+        #self.board.print_dijkstra(scores)
+
+        results = [scores[alignment[0] * i - 1 + alignment[0]][alignment[1]*i - 1 + alignment[1]] for i in range(self.board.size)] #take "other side" to get the list of distance from end-end on board
+        best_result = min(results)
+        return best_result
+    
+
+
 
     def get_neighbors(self, node, rows, cols):
         neighbors = []
