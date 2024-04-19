@@ -5,12 +5,11 @@
 % windows:
 % pdflatex modele_rapport_latex.tex -output-directory=output && pdflatex modele_rapport_latex.tex -output-directory=output && move -Y output\modele_rapport_latex.pdf .\
 %
-\include{./sources/common} % fichier contenant les packages et les commandes personnalisées
+\documentclass[a4paper]{article} % Utilisation de la classe article
+\input{./sources/common} % fichier contenant les packages et les commandes personnalisées
 
 
 \begin{document}
-
-
 \include{./sources/0_frontpage}  % page de garde
 \newpage
 
