@@ -198,7 +198,7 @@ def undo_move():
 
 
 
-
+# ====== "awale" =========================================================================== #
 
 
 
@@ -302,7 +302,7 @@ def awale_place_piece():
             error_message = str(e)  # Get the error message
             print("error: ", error_message)
             return jsonify({'error': "An error has occured"}), 400
-    return jsonify({'result': 'Success', 'current_player': current_player,'values':values,'score_1':scores[0],'score_2':scores[1]})
+    return jsonify({'result': 'Success', 'game_over': False,'current_player': current_player,'values':values,'score_1':scores[0],'score_2':scores[1]})
 
 
 

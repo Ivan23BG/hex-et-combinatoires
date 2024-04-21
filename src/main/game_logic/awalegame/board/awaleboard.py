@@ -260,3 +260,8 @@ class AwaleBoard:
     
     def set_board(self, board):
         self.board = board
+
+    def undo_move(self,values,score_1,score_2):
+        self.board = values
+        self.score_1 = score_1
+        self.score_2 = score_2

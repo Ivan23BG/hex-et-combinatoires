@@ -10,6 +10,9 @@
 <body>
     <div class="back_button" onclick="back()">Home</div>
     <div class="back_button" onclick="home()">Awale</div>
+    <div id="spinner" style="display: none;">
+        <div class="loader"></div>
+      </div>
     <div class = "titre">
         <h1><center>Awale game</center></h1>
       </div>
@@ -64,7 +67,7 @@
 
 
     <div id="side-panel" class="text">
-        <button onclick="undo_move()">Undo move</button>
+        <button onclick="undo_move2()">Undo move</button>
         <form action="/game_awaleia" method="post" id="reset-form">
             <input type="hidden" id="player" name="player" value="" />
             <button class="start_gameIA" type="submit" onclick="submitForm(2)">Reset board</button>
