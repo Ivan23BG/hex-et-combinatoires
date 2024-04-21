@@ -8,10 +8,11 @@
 
 
 <body>
-    <div class="back_button" onclick="back()">Index</div>
-    <div class="back_button" onclick="home()">Home</div>
-
-    <h1>Awale game</h1>
+    <div class="back_button" onclick="back()">Home</div>
+    <div class="back_button" onclick="home()">Awale</div>
+    <div class = "titre">
+        <h1><center>Awale game</center></h1>
+      </div>
     <div class="game">
         <div class="pannel" id="redpannel"> <div class="hole" id="redhole"></div></div>
         <div class="board">
@@ -62,11 +63,13 @@
     </div>
 
 
-
-    <form action="/game_awaleia" method="post">
-        <input type="hidden" id="player" name="player" value="" />
-        <div class="start_gameIA" type="button" onclick="submitForm(2)">Player vs IA</div>
-    </form>
+    <div id="side-panel" class="text">
+        <button onclick="undo_move()">Undo move</button>
+        <form action="/game_awaleia" method="post" id="reset-form">
+            <input type="hidden" id="player" name="player" value="" />
+            <button class="start_gameIA" type="submit" onclick="submitForm(2)">Reset board</button>
+        </form>
+    </div>
 
     <script src="../static/js/game_awale_ia.js"></script>
 </body>
