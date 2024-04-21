@@ -35,8 +35,8 @@ class AwaleBoard:
         print(f"|\t{self.board[0]}\t{self.board[1]}\t{self.board[2]}\t{self.board[3]}\t{self.board[4]}\t{self.board[5]}\t|")
         print(f"|\t{self.board[11]}\t{self.board[10]}\t{self.board[9]}\t{self.board[8]}\t{self.board[7]}\t{self.board[6]}\t|\n")
         print("|\t11\t10\t9\t8\t7\t6\t|")
-        
-        
+    
+    
     def make_move(self, position, player):
         # Check if the position is valid
         if position < 0 or position > 11:
@@ -55,26 +55,12 @@ class AwaleBoard:
         
         # Check rule "affamer"
         if self.affamer(position, player):
-            return AffamerError("Player cannot play this move, it will starve the opponent")
+            raise AffamerError("Player cannot play this move, it will starve the opponent")
         
         
         # Check rule "nourrir"
-        try:
-            self.nourrir(position, player)
-        except CanFeedError:
-            return NourrirError("Player can feed the opponent")
-        except CannotFeedError:
-            # add all the remaining seeds to the opponent's score
-            # then end the game
-            if player == 1:
-                for i in range(12):
-                    self.score_2 += self.board[i]
-                    self.board[i] = 0
-            else:
-                for i in range(12):
-                    self.score_1 += self.board[i]
-                    self.board[i] = 0
-            return NourrirError("Player can't feed the opponent")
+        if not self.nourrir(position, player):
+            raise NourrirError("Player can feed the opponent")
         
         # Sow the seeds
         position = self.sow_seeds(position, player)
@@ -123,12 +109,12 @@ class AwaleBoard:
         if player == 1:
             for i in range(6):
                 if game_copy.board[i] >= 6 - i:
-                    return CanFeedError("Player can feed the opponent")
+                    return False
         else:
             for i in range(6, 12):
                 if game_copy.board[i] >= 12 - i:
-                    return CanFeedError("Player can feed the opponent")
-        return CannotFeedError("Player can't feed the opponent")
+                    return False
+        return True
     
     
     def sow_seeds(self, position, player):
@@ -182,11 +168,14 @@ class AwaleBoard:
             return True
         return False
     
+    
     def get_scores(self):
         return[self.score_1,self.score_2]
     
+    
     def get_board(self):
         return self.board
+    
     
     def check_winner(self):
         
@@ -204,6 +193,7 @@ class AwaleBoard:
             if self.score_2 > self.score_1:
                 return 2
     
+    
     def get_possible_moves(self,player):
         res = []
         if player == 1:
@@ -216,11 +206,13 @@ class AwaleBoard:
                     res.append(i)
         return res
     
+    
     def randomsaufpoints(self,player):
         if player == 1 :
             return random.randint(0,100)
         else :
             return random.randint(-100,0)
+    
     
     def minimax(self, depth, player, alpha, beta):
         if depth == 0 or self.check_winner() is not None:
@@ -258,8 +250,13 @@ class AwaleBoard:
                 if beta <= alpha:
                     break  # Alpha-Beta pruning
             return best_score, best_move
-        
+    
+    
     def get_best_move(self, depth, player):
         a , best_move = self.minimax(depth, player, float('-inf'), float('inf'))
         print(a, best_move, player)
         return best_move
+    
+    
+    def set_board(self, board):
+        self.board = board
