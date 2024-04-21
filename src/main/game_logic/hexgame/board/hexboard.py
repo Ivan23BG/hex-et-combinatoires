@@ -474,7 +474,7 @@ class HexBoard:
     """
     def minimax(self, depth, player, alpha, beta):
         if depth == 0 or self.check_winner() is not None:
-            return self.eval_dijkstra(player)*((depth+1)*(depth+1)), None
+            return self.eval(player)*((depth+1)*(depth+1)), None
 
         if player == 1:  # Maximizing player
             best_score = float('-inf')
@@ -536,6 +536,57 @@ class HexBoard:
         if self.check_winner() == 2 :
             return -1000
         return self.get_dijkstra_score(3-player)- self.get_dijkstra_score(player)
+    
+    def eval_test(self, player):
+        center = (self.size//2,self.size//2)
+        cv = self.get_neighbors(center,self.size,self.size)
+        cv.append(center)
+        player_1_score = 0
+        player_2_score = 0
+
+        if self.check_winner() == 1 :
+            return 1000
+        if self.check_winner() == 2 :
+            return -1000
+        
+        if player == 1:
+                components1 = self.find_connected_components(1)
+                cpt = 0
+                for co in components1:
+                    M1 = max(co, key=lambda x: x[1])
+                    m1 = min(co, key=lambda x: x[1])
+                    s1 =  M1[1] - m1[1]
+                    cpt = cpt + s1*5
+                    t = []
+                    for d in co :
+                        if d in cv:
+                            cpt += 2
+                        if d[1] not in t:
+                            t.append(d[1])
+                            cpt = cpt+1
+                        if d[1] == M1[1] or d[1] == M1[1] and d[1] != 0 and d[1] != self.size:
+                            cpt = cpt + 1
+                player_1_score += (cpt)
+                player_1_score = player_1_score//len(components1)
+                player_1_score += self.get_dijkstra_score(2)- self.get_dijkstra_score(1)
+                return (player_1_score)
+        if player == 2:
+                components2 = self.find_connected_components(2)
+                cpt = 0
+                for co in components2:
+                    M2 = max(co, key=lambda x: x[0])
+                    m2 = min(co, key=lambda x: x[0])
+                    s2 =  M2[0] - m2[0]
+                    cpt = cpt + s2*5
+                    for d in co :
+                        if d in cv:
+                            cpt += 2
+                        if d[0] == M2[0] or d[0] == M2[0]:
+                            cpt = cpt + 1
+                player_2_score += (cpt)
+                player_2_score = player_2_score//len(components2)
+                player_2_score += self.get_dijkstra_score(1)- self.get_dijkstra_score(2)
+                return (-player_2_score)
     
     def eval(self, player):
             center = (self.size//2,self.size//2)
