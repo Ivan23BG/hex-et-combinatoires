@@ -535,7 +535,7 @@ class HexBoard:
             return 1000
         if self.check_winner() == 2 :
             return -1000
-        return self.get_dijkstra_score(player)- self.get_dijkstra_score(3-player)
+        return self.get_dijkstra_score(3-player)- self.get_dijkstra_score(player)
     
     def eval(self, player):
             center = (self.size//2,self.size//2)
