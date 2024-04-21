@@ -36,9 +36,9 @@ function displayCircles() {
     for (var i = 0; i < values.length; i++) {
         var pitId = (i);
         // Vider le contenu du conteneur
-        var cont = document.getElementById("c" + pitId);
+        var cont = document.getElementById("c"+pitId);
         cont.innerHTML = '';
-        createCircles("c" + pitId, values[i], 1);
+        createCircles("c"+pitId, values[i], 1);
     }
 }
 
@@ -97,7 +97,8 @@ async function fetchPlayerMoveJSON(pitid,player) {
 
 
 window.onload = async function () {
-    displayCircles(); //init des cercless
+    displayCircles(); //init des cercles
+
     let player = 0; // Player default value 
     let IA = 0; // IA default value 
     let tabP1 = [0,1,2,3,4,5]; // Tableau des id des pits rouges
@@ -107,6 +108,7 @@ window.onload = async function () {
     let playable = true; // Check if player can play or not 
     let game_over = false;
     let winner = 0;
+
     const game_history = [[values,score_1,score_2]]; // stack to store game history
     const pits = document.querySelectorAll('.pit'); // Get all pits
 
@@ -116,17 +118,16 @@ window.onload = async function () {
         element.addEventListener("mouseout", survolPit(element));
     });
 
-    const data1 = await fetchPlayersJSON()
+    // Donne les bonnes valeurs à player et à l'IA
+    const data1 = await fetchPlayersJSON();
     player = data1.player;
     document.getElementById('player').value = player;
     IA = data1.IA;
-    //console.log(player)
-    document.getElementById('player').value = player;
 
+    // L'IA joue le premier coup si elle est rouge
     if (player === 2) {
         const data2 = await fetchFirstMoveJSON();
-        //console.log("iamove", iamove);
-        values = []
+        values = [];
         values = data2.values;
         score_1 = data2.score_1;
         score_2 = data2.score_2;
@@ -164,6 +165,7 @@ window.onload = async function () {
                 return;
             }
 
+            // On fait jouer le coup au joueur
             const data = await fetchPlayerMoveJSON(pitid,player); 
             if (data.error) {
                 check_error = true;
@@ -171,20 +173,19 @@ window.onload = async function () {
             }
             else {
                 check_error = false;
-                values = [];
                 values = data.values;
-                score_1 = data.score_1
-                score_2 = data.score_2
+                score_1 = data.score_1;
+                score_2 = data.score_2;
                 
                 // Add new board to history
                 game_history.push([values,score_1,score_2]);
-                //console.log(game_history);
 
                 displayscores();
                 displayCircles();
 
                 if (data.game_over === true) {
                     winner = player;
+
                     // set game to over
                     game_over = true;
                     pits.forEach(pit => {
@@ -234,21 +235,18 @@ window.onload = async function () {
                     check_error = false;
                 }
                 else{
-
                     playable = false;
                     const data = await fetchIAMoveJSON_awale(IA);
-                    values = [];
                     values = data.values;
                     score_1 = data.score_1;
                     score_2 = data.score_2;
                     
                     // Add new board to history
                     game_history.push([values,score_1,score_2]);
-                    //console.log(game_history);
 
                     displayscores();
                     displayCircles();
-                    console.log("joué");
+                    console.log("L'IA a joué");
 
                     // hide spinner
                     document.getElementById('spinner').style.display = 'none';
@@ -257,12 +255,15 @@ window.onload = async function () {
                     // Check if IA won
                     if (data.game_over === true) {
                         winner = IA;
+
                         // set game to over
                         game_over = true;
+
                         // Disabled pits
                         pits.forEach(pit => {
                             pit.setAttribute('disabled', true);
                         });
+
                         // Show winner and points
                         console.log("Gagnant:",winner);
                         console.log(score_1,score_2);
@@ -338,11 +339,11 @@ window.onload = async function () {
                     createCircles(pitId, 1, 2);
                     valu = valu - 1 ;
                 }// End while
-            }//End if
+            }//End mouseover
         
             if (event.type === "mouseout" && game_over===false) {
                 element.style.backgroundColor = "#cc945b";
-                //console.log(values);
+                
                 displayCircles();
             } // End if
         }; // End function
@@ -360,7 +361,6 @@ window.onload = async function () {
             const lastBoard = game_history[game_history.length-1]; 
 
             // Associe les bonnes valeurs pour l'affichage
-            values = []
             values = lastBoard[0];
             score_1 = lastBoard[1];
             score_2 = lastBoard[2];
@@ -421,8 +421,6 @@ window.onload = async function () {
             values = [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4];
             score_1 = 0;
             score_2 = 0;
-            displayscores();
-            displayCircles();
 
             // Modifie le game_board
             fetch('/undo_move_awale', {
@@ -436,6 +434,8 @@ window.onload = async function () {
                     'score_2': score_2,
                 }),
             })
+            displayscores();
+            displayCircles();
         }    
     } // End of undo_move
 

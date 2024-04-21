@@ -217,7 +217,6 @@ window.onload = function () {
             const lastBoard = game_history[game_history.length-1]; 
 
             // Associe les bonnes valeurs pour l'affichage
-            values = []
             values = lastBoard[0];
             score_1 = lastBoard[1];
             score_2 = lastBoard[2];
