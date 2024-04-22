@@ -616,7 +616,6 @@ class HexBoard:
                 if score > best_score:
                         best_score = score
                         best_move = move
-                        #print(best_score, best_move)
                 alpha = max(alpha, best_score)
                 if beta <= alpha:
                     break  # Alpha-Beta pruning
@@ -648,8 +647,8 @@ class HexBoard:
     def random_move(self):
         Trouve = False
         while(not Trouve):
-            x = random.randint(0,self.size-1)
-            y = random.randint(0,self.size-1)
+            x = random.randint(1,self.size-2)
+            y = random.randint(1,self.size-2)
             if not(self.is_position_occupied((x,y))):
                 Trouve = True
                 return (x,y)
