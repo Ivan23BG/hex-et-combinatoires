@@ -36,6 +36,35 @@ class AwaleBoard:
         print(f"|\t{self.board[11]}\t{self.board[10]}\t{self.board[9]}\t{self.board[8]}\t{self.board[7]}\t{self.board[6]}\t|\n")
         print("|\t11\t10\t9\t8\t7\t6\t|")
     
+    def is_legal_move(self, position, player):
+        # Check if the position is valid
+        if position < 0 or position > 11:
+            raise InvalidPositionError("Invalid position, position must be between 0 and 11")
+        
+        # Check if the position is empty
+        if self.board[position] == 0:
+            raise PositionEmptyError("Position is empty")
+        
+        # Check if the position is on the opponent's side
+        if player == 1 and position > 5:
+            raise InvalidPositionError("Invalid position, position must be on player 1's side")
+        if player == 2 and position <= 5:
+            raise InvalidPositionError("Invalid position, position must be on player 2's side")
+        
+        # Check rule "affamer"
+        if self.affamer(position, player):
+            raise AffamerError("Player would starve the opponent")
+        
+        # Check rule "nourrir"
+        try:
+            self.nourrir(position, player)
+        except CanFeedError:
+            raise CanFeedError("Player can feed the opponent")
+        except CannotFeedError:
+            raise CannotFeedError("Game should be over after this move")
+        
+        return True
+
     
     def make_move(self, position, player):
         # Check if the position is valid
