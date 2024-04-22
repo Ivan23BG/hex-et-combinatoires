@@ -271,7 +271,7 @@ window.onload = async function () {
         if (game_history.length >=2) {
 
             const lastMove = game_history.pop();
-            fetch('/undo_move', {
+            fetch('/hex_undo_move', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -320,7 +320,7 @@ window.onload = async function () {
         }
         if (player===1 && game_history.length===1){
             const lastMove = game_history.pop();
-            fetch('/undo_move', {
+            fetch('/hex_undo_move', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

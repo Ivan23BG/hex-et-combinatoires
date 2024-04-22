@@ -37,10 +37,10 @@ class AwaleBoard:
         print("|\t11\t10\t9\t8\t7\t6\t|")
     
     
-    def make_move(self, position, player):
+    def is_legal_move(self, position, player):
         # Check if the position is valid
         if position < 0 or position > 11:
-            raise InvalidPositionError("Invalid position, position should be between 1 and 12")
+            raise InvalidPositionError("Invalid position, position must be between 0 and 11")
         
         # Check if the position is empty
         if self.board[position] == 0:
@@ -48,19 +48,42 @@ class AwaleBoard:
         
         # Check if the position is on the opponent's side
         if player == 1 and position > 5:
-            raise InvalidPositionError("Invalid position, position is on the opponent's side")
+            raise InvalidPositionError("Invalid position, position must be on player 1's side")
         if player == 2 and position <= 5:
-            raise InvalidPositionError("Invalid position, position is on the opponent's side")
-        
+            raise InvalidPositionError("Invalid position, position must be on player 2's side")
         
         # Check rule "affamer"
         if self.affamer(position, player):
-            raise AffamerError("Player cannot play this move, it will starve the opponent")
-        
+            raise AffamerError("Player would starve the opponent")
         
         # Check rule "nourrir"
-        if not self.nourrir(position, player):
-            raise NourrirError("Player can feed the opponent")
+        try:
+            self.nourrir(position, player)
+        except CanFeedError:
+            raise CanFeedError("Player can feed the opponent")
+        except CannotFeedError:
+            raise CannotFeedError("Game should be over after this move")
+        
+        return True
+    
+    
+    def make_move(self, position, player):
+        # Check if the move is legal
+        try:
+            self.is_legal_move(position, player)
+        except Exception as e:
+            print(str(e))
+            if str(e) == "Game should be over after this move":
+                # force the game to end
+                if player == 1:
+                    for i in range(0, 12):
+                        self.score_1 += self.board[i]
+                        self.board[i] = 0
+                else:
+                    for i in range(0, 12):
+                        self.score_2 += self.board[i]
+                        self.board[i] = 0
+            return False
         
         # Sow the seeds
         position = self.sow_seeds(position, player)
@@ -70,8 +93,7 @@ class AwaleBoard:
         # Check if any capture is possible
         self.capture(position, player)
         
-        # Check if the game is over
-        return self.game_over()
+        return True
     
     
     def affamer(self, position, player):
@@ -91,30 +113,39 @@ class AwaleBoard:
     
     
     def nourrir(self, position, player):
+        # Check if the opponent's side is empty
+        if player == 1:
+            if sum(self.board[6:12]) != 0:
+                return True
+        else:
+            if sum(self.board[0:6]) != 0:
+                return True
+        
+        # Check if the player's move will feed the opponent
         game_copy = copy.deepcopy(self)
         game_copy.sow_seeds(position, player)
-        
-        # Check if the other player can still play
         if player == 1:
-            for i in range(6, 12):
-                if game_copy.board[i] > 0:
-                    return True
+            if sum(game_copy.board[6:12]) != 0:
+                return True
         else:
-            for i in range(6):
-                if game_copy.board[i] > 0:
-                    return True
+            if sum(game_copy.board[0:6]) != 0:
+                return True
         
-        # If the other player cannot play, check if the current player can feed the opponent
-        game_copy = copy.deepcopy(self)
+        
+        # Check if the player can feed the opponent
         if player == 1:
-            for i in range(6):
-                if game_copy.board[i] >= 6 - i:
-                    return False
+            for i in range(0, 6):
+                game_copy = copy.deepcopy(self)
+                game_copy.sow_seeds(i, player)
+                if sum(game_copy.board[6:12]) != 0:
+                    raise CanFeedError("Player can feed the opponent")
         else:
             for i in range(6, 12):
-                if game_copy.board[i] >= 12 - i:
-                    return False
-        return True
+                game_copy = copy.deepcopy(self)
+                game_copy.sow_seeds(i, player)
+                if sum(game_copy.board[0:6]) != 0:
+                    raise CanFeedError("Player can feed the opponent")
+        raise CannotFeedError("Player cannot feed the opponent")
     
     
     def sow_seeds(self, position, player):
@@ -156,17 +187,17 @@ class AwaleBoard:
         return finished_capture
     
     
-    def game_over(self):
+    def check_winner(self):
         # Check if any player has a score of 25 or more
         if self.score_1 >= 25 or self.score_2 >= 25:
-            return True
+            return 1 if self.score_1 > self.score_2 else 2
         # Check if there are less than 6 seeds left on the board
         seeds_left = 0
         for i in range(12):
             seeds_left += self.board[i]
         if seeds_left < 6:
-            return True
-        return False
+            return 1 if self.score_1 > self.score_2 else 2
+        return None
     
     
     def get_scores(self):
@@ -175,23 +206,6 @@ class AwaleBoard:
     
     def get_board(self):
         return self.board
-    
-    
-    def check_winner(self):
-        
-        if self.board[0:6] == [0,0,0,0,0,0]:
-            self.score_2  = 48
-            return 2
-    
-        if self.board[5:11] == [0,0,0,0,0,0]:
-            self.score_1  = 48
-            return 1
-        
-        if sum(self.board) <= 3:
-            if self.score_1 > self.score_2:
-                return 1
-            if self.score_2 > self.score_1:
-                return 2
     
     
     def get_possible_moves(self,player):
@@ -260,3 +274,14 @@ class AwaleBoard:
     
     def set_board(self, board):
         self.board = board
+    
+    
+    def set_scores(self, scores):
+        self.score_1 = scores[0]
+        self.score_2 = scores[1]
+        
+    
+    def undo_move(self, new_board, new_score_1, new_score_2):
+        self.board = new_board
+        self.score_1 = new_score_1
+        self.score_2 = new_score_2
