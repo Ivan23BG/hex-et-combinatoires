@@ -179,11 +179,11 @@ class AwaleBoard:
     
     def check_winner(self):
         
-        if self.board[0:6] == [0,0,0,0,0,0]:
+        if self.board[0:5] == [0,0,0,0,0,0]:
             self.score_2  = 48
             return 2
     
-        if self.board[5:11] == [0,0,0,0,0,0]:
+        if self.board[6:11] == [0,0,0,0,0,0]:
             self.score_1  = 48
             return 1
         
@@ -197,11 +197,11 @@ class AwaleBoard:
     def get_possible_moves(self,player):
         res = []
         if player == 1:
-            for i in range(0, 5):
+            for i in range(0, 6):
                 if self.board[i] != 0 :
                     res.append(i)
         if player == 2:
-            for i in range(6,11):
+            for i in range(6,12):
                 if self.board[i] != 0 :
                     res.append(i)
         return res
@@ -249,6 +249,7 @@ class AwaleBoard:
                 beta = min(beta, best_score)
                 if beta <= alpha:
                     break  # Alpha-Beta pruning
+                print(best_score,best_move)
             return best_score, best_move
     
     

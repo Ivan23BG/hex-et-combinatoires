@@ -12,7 +12,7 @@ current_player = 1
 size = 5
 size_px = size
 depth_hex = 4
-depth_awale = 10
+depth_awale = 6
 
 # Player vs IA variables
 player = 0
@@ -253,7 +253,7 @@ def awaleia_place_piece():
 
     try:
         if game_board is not None:
-
+            print("oui")
             move_IA = game_board.get_best_move(depth_awale,current_IA)
             print(move_IA)
             game_board.make_move(move_IA,current_IA) # Try to place the piece
