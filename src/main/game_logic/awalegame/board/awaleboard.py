@@ -67,22 +67,29 @@ class AwaleBoard:
     
     
     def make_move(self, position, player):
-        # Check if the move is legal
-        try:
-            self.is_legal_move(position, player)
-        except Exception as e:
-            print(str(e))
-            if str(e) == "Game should be over after this move":
-                # force the game to end
-                if player == 1:
-                    for i in range(0, 12):
-                        self.score_1 += self.board[i]
-                        self.board[i] = 0
-                else:
-                    for i in range(0, 12):
-                        self.score_2 += self.board[i]
-                        self.board[i] = 0
-            return False
+        # Check if the position is valid
+        if position < 0 or position > 11:
+            raise InvalidPositionError("Invalid position, position should be between 1 and 12")
+        
+        # Check if the position is empty
+        if self.board[position] == 0:
+            raise PositionEmptyError("Position is empty")
+        
+        # Check if the position is on the opponent's side
+        if player == 1 and position > 5:
+            raise InvalidPositionError("Invalid position, position is on the opponent's side")
+        if player == 2 and position <= 5:
+            raise InvalidPositionError("Invalid position, position is on the opponent's side")
+        
+        
+        # Check rule "affamer"
+        if self.affamer(position, player):
+            raise AffamerError("Player cannot play this move, it will starve the opponent")
+        
+        
+        # Check rule "nourrir"
+        if not self.nourrir(position, player):
+            raise NourrirError("Player can feed the opponent")
         
         # Sow the seeds
         position = self.sow_seeds(position, player)
@@ -92,7 +99,8 @@ class AwaleBoard:
         # Check if any capture is possible
         self.capture(position, player)
         
-        return True
+        # Check if the game is over
+        return self.check_winner()
     
     
     def affamer(self, position, player):
@@ -184,19 +192,6 @@ class AwaleBoard:
             origin = (origin + 1) % 12
             finished_capture = True
         return finished_capture
-    
-    
-    def check_winner(self):
-        # Check if any player has a score of 25 or more
-        if self.score_1 >= 25 or self.score_2 >= 25:
-            return 1 if self.score_1 > self.score_2 else 2
-        # Check if there are less than 6 seeds left on the board
-        seeds_left = 0
-        for i in range(12):
-            seeds_left += self.board[i]
-        if seeds_left < 6:
-            return 1 if self.score_1 > self.score_2 else 2
-        return None
     
     
     def get_scores(self):
