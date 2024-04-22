@@ -253,27 +253,31 @@ def awaleia_place_piece():
 
     try:
         if game_board is not None:
-            print("oui")
+
             move_IA = game_board.get_best_move(depth_awale,current_IA)
-            print(move_IA)
             game_board.make_move(move_IA,current_IA) # Try to place the piece
+            iamove = move_IA
             values = game_board.get_board()
             scores = game_board.get_scores()
             
             # check if current_IA won
             winner = game_board.check_winner()
-            print("Gagnant IA",winner)
-            if winner:
-                return jsonify({'winner': current_IA, 'game_over': True,'values':values,'score_1':scores[0],'score_2':scores[1]})
+            print(winner)
+            if winner == 1 or winner == 2:
+                print(winner,"OUI!!")
+                return jsonify({'winner': current_IA, 'game_over': True,'iamove':iamove,'values':values,'score_1':scores[0],'score_2':scores[1]})
             
     except Exception as e:
+        print("OUI!!")
         # Handle the exception here
         error_message = str(e)  # Get the error message
         game_board.display_board()
+        values = game_board.get_board()
+        scores = game_board.get_scores()
         print("error: ", error_message)
         return jsonify({'error': "An error has occured"}), 400
-        
-    return jsonify({'result': 'Success','game_over': False,'values':values,'score_1':scores[0],'score_2':scores[1]})
+    print("iamove",iamove)
+    return jsonify({'result': 'Success','game_over': False,'iamove':iamove,'values':values,'score_1':scores[0],'score_2':scores[1]})
 
 
 

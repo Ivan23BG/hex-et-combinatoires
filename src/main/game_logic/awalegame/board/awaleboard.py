@@ -186,12 +186,17 @@ class AwaleBoard:
         if self.board[6:11] == [0,0,0,0,0,0]:
             self.score_1  = 48
             return 1
+        if self.score_1 > 24:
+            return 1
+        if self.score_2 > 24:
+            return 2
         
         if sum(self.board) <= 3:
             if self.score_1 > self.score_2:
                 return 1
             if self.score_2 > self.score_1:
                 return 2
+        #return 0
     
     
     def get_possible_moves(self,player):
