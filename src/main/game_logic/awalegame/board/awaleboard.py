@@ -90,6 +90,7 @@ class AwaleBoard:
         return True
     
     
+    
     def nourrir(self, position, player):
         game_copy = copy.deepcopy(self)
         game_copy.sow_seeds(position, player)
