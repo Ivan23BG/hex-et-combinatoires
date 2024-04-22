@@ -195,7 +195,7 @@ body {
     padding: 0;
     line-height: 40px;
     transform: translate(-10%, 0%);
-    background-color: #22AAA1;
+    background-color: #875234;
     border-radius: 10px;
     transition: transform .1s;
     font-size: 95%;
@@ -203,6 +203,34 @@ body {
 }
 
 .color_button:hover {
-    background-color: #4CE0D2;
+    background-color: #cc945b;
     transform: scale(1.1) translate(-10%, 0%);
 }
+
+/* Ajoutez ces règles CSS dans votre fichier home_awale_styles.css */
+
+.choose_color {
+    display: row;
+    justify-content: center;
+    align-items: column;
+}
+
+.color_button {
+    display: flex;
+    margin: 10px;
+}
+
+.containeIA {
+    margin-left: 5.5%;
+    display: flex;
+    align-items: center; /* Aligne les éléments verticalement */
+}
+
+
+.selected_2{
+    background-color: #cc945b;
+}
+
+.selected_2:hover{
+    background-color: #cc945b;
+}  
