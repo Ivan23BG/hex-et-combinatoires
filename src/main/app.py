@@ -301,7 +301,7 @@ def awale_place_piece():
             board_awale.display_board() # Display the game board in the console
             values = board_awale.get_board()
             #print("values",values)
-            winner = board_awale.game_over()
+            winner = board_awale.check_winner()
             print("Gagnant joueur",winner)
             if winner:
                 winner = 2 - (board_awale.score_1 > board_awale.score_2)
