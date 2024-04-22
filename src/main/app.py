@@ -293,6 +293,7 @@ def awale_place_piece():
     pitid = data['pitid']
     current_player = data['current_player']
     id = int(pitid)
+    print("current_player",current_player)
     
     if board_awale is not None:
         try:
