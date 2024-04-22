@@ -181,7 +181,7 @@ window.onload = function () {
         if (game_history.length > 0) {
 
             const lastMove = game_history.pop();
-            fetch('/undo_move', {
+            fetch('/hex_undo_move', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
