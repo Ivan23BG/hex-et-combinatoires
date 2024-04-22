@@ -239,14 +239,22 @@ class AwaleBoard:
     
     def get_possible_moves(self,player):
         res = []
+        game_copy = copy.deepcopy(self)
+        
         if player == 1:
-            for i in range(0, 6):
-                if self.board[i] != 0 :
+            for i in range(0, 5):
+                try:
+                    game_copy.is_legal_move(i, player)
                     res.append(i)
-        if player == 2:
-            for i in range(6,12):
-                if self.board[i] != 0 :
+                except Exception as e:
+                    pass
+        else:
+            for i in range(6, 11):
+                try:
+                    game_copy.is_legal_move(i, player)
                     res.append(i)
+                except Exception as e:
+                    pass
         return res
     
     
