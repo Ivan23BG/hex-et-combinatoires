@@ -1,14 +1,19 @@
 html {
     padding: 1em;
     background-color: #01161E;
-    color: #F2E5D7;
 }
 
 body {
+    user-select: none;
+    color: #F2E5D7;
     margin-left: 0%;
     margin-right: 0%;
     padding-left: 0%;
     padding-right: 0%;
+}
+
+[data-flex] {
+    display: flex;
 }
 
 .row {
@@ -182,4 +187,33 @@ body {
     width: 200px;
     margin-top: 5%;
     margin-left: 3.5%;
+}
+
+.header{
+    margin:auto;
+    display: flex;
+}
+
+#spinner {
+    margin-left: 10px; /* Add some space between the spinner and the buttons */
+}
+
+.loader {
+    border: 8px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 8px solid #3498db;
+    width: 40px;
+    height: 40px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }

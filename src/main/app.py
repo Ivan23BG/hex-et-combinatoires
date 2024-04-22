@@ -13,7 +13,7 @@ current_player = 1
 size = 5
 size_px = size
 depth_hex = 4
-depth_awale = 10
+depth_awale = 6
 
 # Player vs IA variables
 player = 0
@@ -198,8 +198,6 @@ def hex_undo_move():
     return jsonify({'result': 'Success'})
 
 
-
-
 # --------------------------------- Awale pages --------------------------------- #
 @app.route('/game_awale', methods=['POST']) # Hex play page
 def game_awale():
@@ -260,6 +258,16 @@ def players_awaleia():
     global player, IA
     return jsonify({'result': 'Success','player': player,'IA':IA})
 
+@app.route('/first_move_IA_awale',methods=['POST']) #Return IA's first move if player=2
+def first_move_IA_awale():
+    global game_board, IA 
+    move = game_board.get_best_move(depth_awale,IA)
+    game_board.make_move(move, IA)
+    iamove = move
+    values = game_board.get_board()
+    scores = game_board.get_scores()
+    return jsonify({'result': 'Success','values':values,'score_1':scores[0],'score_2':scores[1]})
+
 
 @app.route('/awaleia_place_piece', methods=['POST']) # IA place a unique piece on the board
 def awaleia_place_piece():
@@ -278,29 +286,58 @@ def awaleia_place_piece():
             scores = board_awale.get_scores()
             
             # check if current_IA won
-            winner = board_awale.check_winner()
-            if winner:
+
+            winner = game_board.check_winner()
+            print(winner)
+            if winner == 1 or winner == 2:
+                print(winner,"OUI!!")
+
                 return jsonify({'winner': current_IA, 'game_over': True,'iamove':iamove,'values':values,'score_1':scores[0],'score_2':scores[1]})
             
     except Exception as e:
+        print("OUI!!")
         # Handle the exception here
         error_message = str(e)  # Get the error message
-        board_awale.display_board()
+
+        game_board.display_board()
+        values = game_board.get_board()
+        scores = game_board.get_scores()
+
         print("error: ", error_message)
         return jsonify({'error': "An error has occured"}), 400
-        
+    print("iamove",iamove)
     return jsonify({'result': 'Success','game_over': False,'iamove':iamove,'values':values,'score_1':scores[0],'score_2':scores[1]})
 
 
-@app.route('/first_move_IA_awale',methods=['POST']) #Return IA's first move if player=2
-def first_move_IA_awale():
-    global board_awale, IA 
-    move = board_awale.get_best_move(depth_awale,IA)
-    board_awale.make_move(move, IA)
-    iamove = move
-    values = board_awale.get_board()
-    scores = board_awale.get_scores()
-    return jsonify({'result': 'Success','iamove':iamove,'values':values,'score_1':scores[0],'score_2':scores[1]})
+@app.route('/awale_place_piece', methods=['POST']) # player place a piece on the board
+def awale_place_piece():
+    global game_board, current_player
+    
+    data = request.get_json()
+    pitid = data['pitid']
+    current_player = data['current_player']
+    id = int(pitid)
+    
+    if game_board is not None:
+        try:
+            game_board.make_move(id, current_player) # Try to place the piece
+            scores = game_board.get_scores()
+            game_board.display_board() # Display the game board in the console
+            values = game_board.get_board()
+            #print("values",values)
+            winner = game_board.game_over()
+            print("Gagnant joueur",winner)
+            if winner:
+                winner = 2 - (game_board.score_1 > game_board.score_2)
+                return jsonify({'winner': current_player, 'game_over': True, 'current_player': current_player,'values':values,'pitid':pitid,'score_1':scores[0],'score_2':scores[1]})
+            current_player = 1 if current_player == 2 else 2
+        except Exception as e:
+            # Handle the exception here
+            error_message = str(e)  # Get the error message
+            print("error: ", error_message)
+            return jsonify({'error': "An error has occured"}), 400
+    return jsonify({'result': 'Success', 'game_over': False,'current_player': current_player,'values':values,'score_1':scores[0],'score_2':scores[1],'pitid':pitid})
+
 
 
 

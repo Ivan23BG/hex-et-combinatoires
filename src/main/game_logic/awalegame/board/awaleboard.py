@@ -36,7 +36,6 @@ class AwaleBoard:
         print(f"|\t{self.board[11]}\t{self.board[10]}\t{self.board[9]}\t{self.board[8]}\t{self.board[7]}\t{self.board[6]}\t|\n")
         print("|\t11\t10\t9\t8\t7\t6\t|")
     
-    
     def is_legal_move(self, position, player):
         # Check if the position is valid
         if position < 0 or position > 11:
@@ -207,17 +206,47 @@ class AwaleBoard:
     def get_board(self):
         return self.board
     
+
+    def check_winner(self):
+        
+        if self.board[0:5] == [0,0,0,0,0,0]:
+            self.score_2  = 48
+            return 2
     
+        if self.board[6:11] == [0,0,0,0,0,0]:
+            self.score_1  = 48
+            return 1
+        if self.score_1 > 24:
+            return 1
+        if self.score_2 > 24:
+            return 2
+        
+        if sum(self.board) <= 3:
+            if self.score_1 > self.score_2:
+                return 1
+            if self.score_2 > self.score_1:
+                return 2
+        #return 0
+    
+
     def get_possible_moves(self,player):
         res = []
+        game_copy = copy.deepcopy(self)
+        
         if player == 1:
-            for i in range(0, 5):
-                if self.board[i] != 0 :
+            for i in range(0, 6):
+                try:
+                    game_copy.is_legal_move(i, player)
                     res.append(i)
-        if player == 2:
-            for i in range(6,11):
-                if self.board[i] != 0 :
+                except Exception as e:
+                    pass
+        else:
+            for i in range(6, 12):
+                try:
+                    game_copy.is_legal_move(i, player)
                     res.append(i)
+                except Exception as e:
+                    pass
         return res
     
     
@@ -263,6 +292,7 @@ class AwaleBoard:
                 beta = min(beta, best_score)
                 if beta <= alpha:
                     break  # Alpha-Beta pruning
+                print(best_score,best_move)
             return best_score, best_move
     
     
