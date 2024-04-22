@@ -91,30 +91,39 @@ class AwaleBoard:
     
     
     def nourrir(self, position, player):
+        # Check if the opponent's side is empty
+        if player == 1:
+            if sum(self.board[6:12]) != 0:
+                return True
+        else:
+            if sum(self.board[0:6]) != 0:
+                return True
+        
+        # Check if the player's move will feed the opponent
         game_copy = copy.deepcopy(self)
         game_copy.sow_seeds(position, player)
-        
-        # Check if the other player can still play
         if player == 1:
-            for i in range(6, 12):
-                if game_copy.board[i] > 0:
-                    return True
+            if sum(game_copy.board[6:12]) != 0:
+                return True
         else:
-            for i in range(6):
-                if game_copy.board[i] > 0:
-                    return True
+            if sum(game_copy.board[0:6]) != 0:
+                return True
         
-        # If the other player cannot play, check if the current player can feed the opponent
-        game_copy = copy.deepcopy(self)
+        
+        # Check if the player can feed the opponent
         if player == 1:
-            for i in range(6):
-                if game_copy.board[i] >= 6 - i:
-                    return False
+            for i in range(0, 6):
+                game_copy = copy.deepcopy(self)
+                game_copy.sow_seeds(i, player)
+                if sum(game_copy.board[6:12]) != 0:
+                    raise CanFeedError("Player can feed the opponent")
         else:
             for i in range(6, 12):
-                if game_copy.board[i] >= 12 - i:
-                    return False
-        return True
+                game_copy = copy.deepcopy(self)
+                game_copy.sow_seeds(i, player)
+                if sum(game_copy.board[0:6]) != 0:
+                    raise CanFeedError("Player can feed the opponent")
+        raise CannotFeedError("Player cannot feed the opponent")
     
     
     def sow_seeds(self, position, player):
