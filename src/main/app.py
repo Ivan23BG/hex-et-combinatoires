@@ -267,18 +267,15 @@ def awaleia_place_piece():
             print(winner)
             if winner == 1 or winner == 2:
                 print(winner,"OUI!!")
-
                 return jsonify({'winner': current_IA, 'game_over': True,'iamove':iamove,'values':values,'score_1':scores[0],'score_2':scores[1]})
             
     except Exception as e:
         print("OUI!!")
         # Handle the exception here
         error_message = str(e)  # Get the error message
-
         board_awale.display_board()
         values = board_awale.get_board()
         scores = board_awale.get_scores()
-
         print("error: ", error_message)
         return jsonify({'error': "An error has occured"}), 400
     print("iamove",iamove)
