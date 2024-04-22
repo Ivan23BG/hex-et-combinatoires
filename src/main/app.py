@@ -12,7 +12,7 @@ current_player = 1
 size = 5
 size_px = size
 depth_hex = 4
-depth_awale = 10
+depth_awale = 6
 
 # Player vs IA variables
 player = 0
@@ -262,16 +262,21 @@ def awaleia_place_piece():
             
             # check if current_IA won
             winner = game_board.check_winner()
-            if winner:
+            print(winner)
+            if winner == 1 or winner == 2:
+                print(winner,"OUI!!")
                 return jsonify({'winner': current_IA, 'game_over': True,'iamove':iamove,'values':values,'score_1':scores[0],'score_2':scores[1]})
             
     except Exception as e:
+        print("OUI!!")
         # Handle the exception here
         error_message = str(e)  # Get the error message
         game_board.display_board()
+        values = game_board.get_board()
+        scores = game_board.get_scores()
         print("error: ", error_message)
         return jsonify({'error': "An error has occured"}), 400
-        
+    print("iamove",iamove)
     return jsonify({'result': 'Success','game_over': False,'iamove':iamove,'values':values,'score_1':scores[0],'score_2':scores[1]})
 
 
@@ -295,7 +300,7 @@ def awale_place_piece():
             winner = game_board.game_over()
             if winner:
                 winner = 2 - (game_board.score_1 > game_board.score_2)
-                return jsonify({'winner': current_player, 'game_over': True, 'current_player': current_player,'values':values,'pitid':pitid,'score_1':scores[0],'score_2':scores[1]})
+                return jsonify({'winner': current_player,'values':values ,'game_over': True, 'current_player': current_player,'values':values,'pitid':pitid,'score_1':scores[0],'score_2':scores[1]})
             current_player = 1 if current_player == 2 else 2
         except Exception as e:
             # Handle the exception here

@@ -179,29 +179,34 @@ class AwaleBoard:
     
     def check_winner(self):
         
-        if self.board[0:6] == [0,0,0,0,0,0]:
+        if self.board[0:5] == [0,0,0,0,0,0]:
             self.score_2  = 48
             return 2
     
-        if self.board[5:11] == [0,0,0,0,0,0]:
+        if self.board[6:11] == [0,0,0,0,0,0]:
             self.score_1  = 48
             return 1
+        if self.score_1 > 24:
+            return 1
+        if self.score_2 > 24:
+            return 2
         
         if sum(self.board) <= 3:
             if self.score_1 > self.score_2:
                 return 1
             if self.score_2 > self.score_1:
                 return 2
+        #return 0
     
     
     def get_possible_moves(self,player):
         res = []
         if player == 1:
-            for i in range(0, 5):
+            for i in range(0, 6):
                 if self.board[i] != 0 :
                     res.append(i)
         if player == 2:
-            for i in range(6,11):
+            for i in range(6,12):
                 if self.board[i] != 0 :
                     res.append(i)
         return res
@@ -209,9 +214,9 @@ class AwaleBoard:
     
     def randomsaufpoints(self,player):
         if player == 1 :
-            return random.randint(0,100)
+            return self.score_1
         else :
-            return random.randint(-100,0)
+            return -(self.score_2)
     
     
     def minimax(self, depth, player, alpha, beta):
@@ -222,9 +227,11 @@ class AwaleBoard:
             best_score = float('-inf')
             best_move = None
             possible_moves = self.get_possible_moves(player)
+            #print(possible_moves)
             for move in possible_moves:
+                #print("m", move)
                 game_copy = copy.deepcopy(self) #copy pour undo move
-                game_copy.make_move( move, player)
+                game_copy.make_move(move, player)
                 score, _ = game_copy.minimax(depth - 1, 1, alpha, beta)
                 if score > best_score:
                         best_score = score
@@ -254,7 +261,7 @@ class AwaleBoard:
     
     def get_best_move(self, depth, player):
         a , best_move = self.minimax(depth, player, float('-inf'), float('inf'))
-        print(a, best_move, player)
+        print("mov",a, best_move, player)
         return best_move
     
     
