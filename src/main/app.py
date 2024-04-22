@@ -262,6 +262,7 @@ def awaleia_place_piece():
             
             # check if current_IA won
             winner = game_board.check_winner()
+            print("Gagnant IA",winner)
             if winner:
                 return jsonify({'winner': current_IA, 'game_over': True,'values':values,'score_1':scores[0],'score_2':scores[1]})
             
@@ -293,6 +294,7 @@ def awale_place_piece():
             values = game_board.get_board()
             #print("values",values)
             winner = game_board.game_over()
+            print("Gagnant joueur",winner)
             if winner:
                 winner = 2 - (game_board.score_1 > game_board.score_2)
                 return jsonify({'winner': current_player, 'game_over': True, 'current_player': current_player,'values':values,'pitid':pitid,'score_1':scores[0],'score_2':scores[1]})
