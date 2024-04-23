@@ -262,6 +262,7 @@ def awaleia_place_piece():
             move_IA = board_awale.get_best_move(depth_awale,current_IA)
             winner = board_awale.check_winner()
             
+            # check if current_IA won
             if winner == 1 or winner == 2:
                 return jsonify({'winner': current_player, 'game_over': True, 'current_player': current_player,'values':values,'score_1':scores[0],'score_2':scores[1]})
             
@@ -270,12 +271,8 @@ def awaleia_place_piece():
             iamove = move_IA
             values = board_awale.get_board()
             scores = board_awale.get_scores()
-            
-            # check if current_IA won
+        
     
-            if winner == 1 or winner == 2:
-                return jsonify({'winner': current_player, 'game_over': True, 'current_player': current_player,'values':values,'score_1':scores[0],'score_2':scores[1]})
-            
     except Exception as e:
         #print("OUI!!")
         # Handle the exception here
