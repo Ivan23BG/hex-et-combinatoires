@@ -13,6 +13,7 @@ current_player = 1
 size = 5
 size_px = size
 depth_hex = 4
+
 depth_awale = 6
 
 # Player vs IA variables
@@ -262,8 +263,7 @@ def awaleia_place_piece():
             scores = board_awale.get_scores()
             
             # check if current_IA won
-
-            winner = board_awale.check_winner()
+            winner = game_board.check_winner()
             print(winner)
             if winner == 1 or winner == 2:
                 print(winner,"OUI!!")

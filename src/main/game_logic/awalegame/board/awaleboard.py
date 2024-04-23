@@ -119,6 +119,7 @@ class AwaleBoard:
         return True
     
     
+    
     def nourrir(self, position, player):
         # Check if the opponent's side is empty
         if player == 1:
@@ -247,9 +248,9 @@ class AwaleBoard:
     
     def randomsaufpoints(self,player):
         if player == 1 :
-            return random.randint(0,100)
+            return self.score_1
         else :
-            return random.randint(-100,0)
+            return -(self.score_2)
     
     
     def minimax(self, depth, player, alpha, beta):
@@ -260,9 +261,11 @@ class AwaleBoard:
             best_score = float('-inf')
             best_move = None
             possible_moves = self.get_possible_moves(player)
+            #print(possible_moves)
             for move in possible_moves:
+                #print("m", move)
                 game_copy = copy.deepcopy(self) #copy pour undo move
-                game_copy.make_move( move, player)
+                game_copy.make_move(move, player)
                 score, _ = game_copy.minimax(depth - 1, 1, alpha, beta)
                 if score > best_score:
                         best_score = score
@@ -293,7 +296,7 @@ class AwaleBoard:
     
     def get_best_move(self, depth, player):
         a , best_move = self.minimax(depth, player, float('-inf'), float('inf'))
-        print(a, best_move, player)
+        print("mov",a, best_move, player)
         return best_move
     
     
