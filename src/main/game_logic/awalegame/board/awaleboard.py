@@ -204,7 +204,7 @@ class AwaleBoard:
     
 
     def check_winner(self):
-        
+    
         if self.board[0:5] == [0,0,0,0,0,0]:
             self.score_2  = 48
             return 2
@@ -212,8 +212,10 @@ class AwaleBoard:
         if self.board[6:11] == [0,0,0,0,0,0]:
             self.score_1  = 48
             return 1
+        
         if self.score_1 > 24:
             return 1
+        
         if self.score_2 > 24:
             return 2
         
@@ -260,7 +262,7 @@ class AwaleBoard:
     
     
     def minimax(self, depth, player, alpha, beta):
-        if depth == 0 or self.check_winner() == 1 or self.check_winner() == 2:
+        if depth == 0 :
             return self.eval(player)*((depth+1)*(depth+1)), None
 
         if player == 1:  # Maximizing player

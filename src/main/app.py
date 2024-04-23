@@ -255,18 +255,26 @@ def awaleia_place_piece():
 
     try:
         if board_awale is not None:
-
+            
+            values = board_awale.get_board()
+            scores = board_awale.get_scores()
+            print(scores)
             move_IA = board_awale.get_best_move(depth_awale,current_IA)
+            winner = board_awale.check_winner()
+            
+            if winner == 1 or winner == 2:
+                return jsonify({'winner': current_player, 'game_over': True, 'current_player': current_player,'values':values,'score_1':scores[0],'score_2':scores[1]})
+            
+            
             board_awale.make_move(move_IA,current_IA) # Try to place the piece
             iamove = move_IA
             values = board_awale.get_board()
             scores = board_awale.get_scores()
             
             # check if current_IA won
-            winner = board_awale.check_winner()
-            print("Gagnant joueur",winner)
+    
             if winner == 1 or winner == 2:
-                return jsonify({'winner': current_player, 'game_over': True, 'current_player': current_player,'values':values,'pitid':pitid,'score_1':scores[0],'score_2':scores[1]})
+                return jsonify({'winner': current_player, 'game_over': True, 'current_player': current_player,'values':values,'score_1':scores[0],'score_2':scores[1]})
             
     except Exception as e:
         #print("OUI!!")
