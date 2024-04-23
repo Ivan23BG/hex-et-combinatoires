@@ -62,11 +62,12 @@
     </div>
 
 
-
-    <form action="/game_awaleia" method="post">
-        <input type="hidden" id="player" name="player" value="" />
-        <div class="start_gameIA" type="button" onclick="submitForm(2)">Player vs IA</div>
-    </form>
+    <div id="side-panel" class="text">
+        <form action="/game_awaleiaia" method="post" id="reset-form">
+            <input type="submit" value="Reset board">
+        </form>
+    </div>
+    
 
     <script src="../static/js/game_awale_iaia.js"></script>
 </body>
