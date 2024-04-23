@@ -104,14 +104,12 @@ window.onload = async function () {
         displayscores();
         displayCircles();
 
-
+        console.log(data.game_over);
         // check if current_IA won
         if (data.game_over === true) {
             winner = current_IA;
             game_over = true;
             stopped=true;
-
-            return;
         }
         else{
             current_IA = current_IA === 1 ? 2 : 1;

@@ -246,6 +246,12 @@ class AwaleBoard:
         return res
     
     
+    def eval(self, player):
+        if player == 1:
+            return self.score_1
+        if player == 2:
+            return -(self.score_2)
+    
     def randomsaufpoints(self,player):
         if player == 1 :
             return self.score_1
@@ -254,8 +260,8 @@ class AwaleBoard:
     
     
     def minimax(self, depth, player, alpha, beta):
-        if depth == 0 or self.check_winner() is not None:
-            return self.randomsaufpoints(player)*((depth+1)*(depth+1)), None
+        if depth == 0 or self.check_winner() == 1 or self.check_winner() == 2:
+            return self.eval(player)*((depth+1)*(depth+1)), None
 
         if player == 1:  # Maximizing player
             best_score = float('-inf')
@@ -267,12 +273,13 @@ class AwaleBoard:
                 game_copy = copy.deepcopy(self) #copy pour undo move
                 game_copy.make_move(move, player)
                 score, _ = game_copy.minimax(depth - 1, 1, alpha, beta)
-                if score > best_score:
+                if score is not None and score > best_score:
                         best_score = score
                         best_move = move
                 alpha = max(alpha, best_score)
                 if beta <= alpha:
                     break  # Alpha-Beta pruning
+            #print("ici",best_score, best_move)
             return best_score, best_move
         
         else:  # Minimizing player
@@ -284,19 +291,19 @@ class AwaleBoard:
                 game_copy.make_move( move, player)
                 score, _ = game_copy.minimax(depth - 1, 1, alpha, beta)
                 #self = game_copy #undo move
-                if score < best_score:
+                if score is not None and score < best_score:
                     best_score = score
                     best_move = move
                 beta = min(beta, best_score)
                 if beta <= alpha:
                     break  # Alpha-Beta pruning
-                print(best_score,best_move)
+                #print(best_score,best_move)
             return best_score, best_move
     
     
     def get_best_move(self, depth, player):
         a , best_move = self.minimax(depth, player, float('-inf'), float('inf'))
-        print("mov",a, best_move, player)
+        #print("mov",a, best_move, player)
         return best_move
     
     
