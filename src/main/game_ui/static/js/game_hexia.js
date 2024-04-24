@@ -7,15 +7,15 @@ function home() {
 }
 
 // Request for correct IA's and player's values
-async function fetchPlayersJSON() { 
-    const response = await fetch('/players_hexia',{method:'POST',headers:{'Content-Type': 'application/json'}});
+async function fetchPlayersJSON() {
+    const response = await fetch('/players_hexia', { method: 'POST', headers: { 'Content-Type': 'application/json' } });
     const data = response.json();
     return data;
 }
 
 // Request for IA's first move
 async function fetchFirstMoveJSON() {
-    const response = await fetch('/first_move_IA_hex',{method:'POST',headers:{'Content-Type': 'application/json'}});
+    const response = await fetch('/first_move_IA_hex', { method: 'POST', headers: { 'Content-Type': 'application/json' } });
     const data = response.json();
     return data;
 }
@@ -23,19 +23,19 @@ async function fetchFirstMoveJSON() {
 // request for IA's move
 async function fetchIAMoveJSON_hex(IA) {
     console.log("deux");
-    const response = await fetch('/hexiaia_place_piece', {method: 'POST',headers: {'Content-Type': 'application/json'},body: JSON.stringify({'current_IA': IA})});
+    const response = await fetch('/hexiaia_place_piece', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ 'current_IA': IA }) });
     const data = response.json();
     return data;
 }
 
 // request for place player's move
-async function fetchPlayerMoveJSON(hexid,player) {
-    const response = await fetch('/hex_place_piece', {method: 'POST',headers: {'Content-Type': 'application/json',},body: JSON.stringify({'hexid': hexid,'current_player': player}),});
+async function fetchPlayerMoveJSON(hexid, player) {
+    const response = await fetch('/hex_place_piece', { method: 'POST', headers: { 'Content-Type': 'application/json', }, body: JSON.stringify({ 'hexid': hexid, 'current_player': player }), });
     const data = response.json().catch((error) => {
         // log error
         console.log('Unknown error, should never happen, if you get this please warn your supervisor' + error);
     }) //End of fetch player
-;
+        ;
     return data;
 }
 
@@ -51,30 +51,30 @@ window.onload = async function () {
 
     const game_history = []; // stack to store game history
     const cells = document.querySelectorAll('.hex'); // Get all hex cells
-    
+
     // Initialise correct player's and IA's values 
-    const data1 = await fetchPlayersJSON() 
+    const data1 = await fetchPlayersJSON()
     player = data1.player;
     IA = data1.IA;
     //console.log(player)
     document.getElementById('player').value = player;
-    
+
     // If IA is playing Blue, she play first move
-    if (player===2){
+    if (player === 2) {
         const data2 = await fetchFirstMoveJSON();
         let iamove = data2.iamove;
         var iahex = document.getElementById(iamove);
         game_history.push(iamove);
-        toggle_colour(iahex,IA);
+        toggle_colour(iahex, IA);
     }
-        
-    cells.forEach(function(element) {
+
+    cells.forEach(function (element) {
         element.addEventListener("mouseover", survolHex(element));
         element.addEventListener("mouseout", survolHex(element));
     });
-    
+
     cells.forEach(hex => {
-        
+
         // Add click event listener to each hex cell
         hex.onclick = async function () {
 
@@ -82,7 +82,7 @@ window.onload = async function () {
             document.getElementById('spinner').style.display = 'block';
 
 
-            if (this.getAttribute('disabled') || playable===false) {
+            if (this.getAttribute('disabled') || playable === false) {
                 // hide spinner
                 document.getElementById('spinner').style.display = 'none';
                 return;
@@ -102,7 +102,7 @@ window.onload = async function () {
                 document.getElementById('spinner').style.display = 'none';
                 return;
             }
-            const data = await fetchPlayerMoveJSON(hexid,player); 
+            const data = await fetchPlayerMoveJSON(hexid, player);
             if (data.error) {
                 let error = data.error
                 recup_error = true;
@@ -124,11 +124,11 @@ window.onload = async function () {
             } else {
                 recup_error = false;
                 game_history.push(hexid);
-                toggle_colour(this,player);
+                toggle_colour(this, player);
                 // Pour le hover
                 this.setAttribute('disabled', true);
                 this.removeAttribute('nimp');
-                this.setAttribute('couleur',true);
+                this.setAttribute('couleur', true);
 
                 // check if player 1 won
                 if (data.game_over === true) {
@@ -163,11 +163,11 @@ window.onload = async function () {
                     return;
                 }
             }
-            
-            
+
+
             //Place piece if player doesn't win
-            if (game_over!=true && recup_error!=true){
-                playable=false;
+            if (game_over != true && recup_error != true) {
+                playable = false;
                 const data = await fetchIAMoveJSON_hex(IA);  // Get IA's move            
                 let iamove = data.iamove;
                 console.log(data.iamove);
@@ -175,14 +175,14 @@ window.onload = async function () {
                 console.log(iahex);
 
                 game_history.push(iamove);
-                toggle_colour(iahex,IA);
+                toggle_colour(iahex, IA);
                 iahex.setAttribute('disabled', true);
                 iahex.removeAttribute('nimp');
-                iahex.setAttribute('couleur',true);
+                iahex.setAttribute('couleur', true);
 
                 // hide spinner
                 document.getElementById('spinner').style.display = 'none';
-                playable = true;   
+                playable = true;
                 // check if current_IA won
                 if (data.game_over === true) {
                     winner = IA;
@@ -192,13 +192,13 @@ window.onload = async function () {
                     // Display winning path when game is over
                     let k = 0;
                     let intervalId = setInterval(() => {
-                    let hex = document.getElementById(short_path[k]);
-                    hex.style.backgroundColor = '#FFD700';
-                    k++;
-                    if (k === short_path.length) {
-                        clearInterval(intervalId);
+                        let hex = document.getElementById(short_path[k]);
+                        hex.style.backgroundColor = '#FFD700';
+                        k++;
+                        if (k === short_path.length) {
+                            clearInterval(intervalId);
 
-                    }
+                        }
                     }, 100);
                     cells.forEach(cell => {
                         cell.classList.remove('hex-player1-hover');
@@ -211,14 +211,14 @@ window.onload = async function () {
                 }
 
             }; // end of IA's turn 
-        // hide spinner
-        document.getElementById('spinner').style.display = 'none';
+            // hide spinner
+            document.getElementById('spinner').style.display = 'none';
         }// End of onclick
     });// end of cells.forEach
 
     // Function to toggle the colour of the hex cell
     // also adds the hover class for the next player
-    function toggle_colour(hex,current_player) {
+    function toggle_colour(hex, current_player) {
         // check if the hex is disabled
         if (hex.getAttribute('disabled')) {
             return;
@@ -254,10 +254,10 @@ window.onload = async function () {
             // reset the colour of all hex cells
             hex.style.backgroundColor = '#B0BFB1';
             // reset the hover class for all hex cells
-            if (player===1){
+            if (player === 1) {
                 hex.classList.add('hex-player1-hover');
             }
-            else{
+            else {
                 hex.classList.add('hex-player2-hover');
             }
         });
@@ -268,7 +268,7 @@ window.onload = async function () {
     // Function to undo the last move
     window.undo_move = function () {
         // pop last element in stack and set it to default colour
-        if (game_history.length >=2) {
+        if (game_history.length >= 2) {
 
             const lastMove = game_history.pop();
             fetch('/hex_undo_move', {
@@ -291,10 +291,10 @@ window.onload = async function () {
                 console.log(short_path);
                 let index = short_path.indexOf(lastMove);
                 short_path.splice(index, 1);
-                if (winner===2){
-                    let k=0;
+                if (winner === 2) {
+                    let k = 0;
                     let intervalId = setInterval(() => {
-                        let hex = document.getElementById(short_path[short_path.length-k-1]);
+                        let hex = document.getElementById(short_path[short_path.length - k - 1]);
                         hex.style.backgroundColor = '#A51613';
                         k++;
                         if (k === short_path.length) {
@@ -303,10 +303,10 @@ window.onload = async function () {
                     }, 100);
                     winner = 0;
                 }
-                if (winner===1){
-                    let k=0;
+                if (winner === 1) {
+                    let k = 0;
                     let intervalId = setInterval(() => {
-                        let hex = document.getElementById(short_path[short_path.length-k-1]);
+                        let hex = document.getElementById(short_path[short_path.length - k - 1]);
                         hex.style.backgroundColor = '#29335C';
                         k++;
                         if (k === short_path.length) {
@@ -318,7 +318,7 @@ window.onload = async function () {
                 game_over = false;
             }
         }
-        if (player===1 && game_history.length===1){
+        if (player === 1 && game_history.length === 1) {
             const lastMove = game_history.pop();
             fetch('/hex_undo_move', {
                 method: 'POST',
@@ -335,22 +335,22 @@ window.onload = async function () {
             // Le dernier coup n'est plus disabled ni en couleur
             hex.removeAttribute('disabled');
             hex.removeAttribute('couleur');
-        }    
-            // toggle the hover class for each hexagon
-            cells.forEach(cell => {
-                // remove the disabled attribute from the hex cell
-                if (cell.getAttribute('disabled') && !cell.getAttribute('couleur')) {
-                    cell.removeAttribute('disabled');
-                }
-            });
-        
+        }
+        // toggle the hover class for each hexagon
+        cells.forEach(cell => {
+            // remove the disabled attribute from the hex cell
+            if (cell.getAttribute('disabled') && !cell.getAttribute('couleur')) {
+                cell.removeAttribute('disabled');
+            }
+        });
+
     } // end of undo_move
 
     window.undo_move2 = function () {
-        if (player===1 && winner===1){
+        if (player === 1 && winner === 1) {
             undo_move();
         }
-        else if (player===2 && winner===2){
+        else if (player === 2 && winner === 2) {
             undo_move();
         }
         else {
@@ -359,22 +359,22 @@ window.onload = async function () {
         }
     }
 
-    function survolHex(element){
-        return function(event) {
+    function survolHex(element) {
+        return function (event) {
             // Hover uniquement si on n'est ni une couleur ni désactivé
-            if (event.type === "mouseover" && game_over===false && !element.getAttribute('couleur') && !element.getAttribute("disabled")){
-                if (player===1){
+            if (event.type === "mouseover" && game_over === false && !element.getAttribute('couleur') && !element.getAttribute("disabled")) {
+                if (player === 1) {
                     element.style.backgroundColor = "#344792";
                 }
-                if (player===2){
+                if (player === 2) {
                     element.style.backgroundColor = "#BA3533";
                 }
-                element.setAttribute("nimp",true);
+                element.setAttribute("nimp", true);
             }
             // Enlève le hover si on quitte un hex ni en couleur ni disabled
-            else if (event.type === "mouseout" && game_over===false && element.getAttribute("nimp") && !element.getAttribute('disabled')){
-               element.style.backgroundColor = "#B0BFB1";
-               element.removeAttribute("nimp");
+            else if (event.type === "mouseout" && game_over === false && element.getAttribute("nimp") && !element.getAttribute('disabled')) {
+                element.style.backgroundColor = "#B0BFB1";
+                element.removeAttribute("nimp");
             }
         }
     }
@@ -407,17 +407,17 @@ function changerFichiers() {
         styleSheet.setAttribute('href', "../static/css/game_hex_marine_skin.css");
         div1.setAttribute("value", Mred);
         div2.setAttribute("value", Mblue);
-        changecolor(blue,Mblue,red,Mred)
+        changecolor(blue, Mblue, red, Mred)
     } else {
         styleSheet.setAttribute('href', "../static/css/game_hex_styles.css");
-        div1.setAttribute("value",red);
+        div1.setAttribute("value", red);
         div2.setAttribute("value", blue);
-        changecolor(Mblue,blue,Mred,red)
+        changecolor(Mblue, blue, Mred, red)
     }
 
 }
 
-function changecolor(b1,b2,r1,r2){
+function changecolor(b1, b2, r1, r2) {
     const cells = document.querySelectorAll('.hex');
     cells.forEach(hex => {
         console.log(hex.style.backgroundColor);

@@ -26,27 +26,27 @@ function selectDiv(divNumber) {
 }
 
 function submitForm(formNumber) {
-    if(formNumber === 1) {
+    if (formNumber === 1) {
         document.getElementById('size_input_1').value = size;
         document.querySelector('form[action="/game_hex"]').submit();
-    } else if(formNumber === 2) {
+    } else if (formNumber === 2) {
         document.getElementById('player').value = player;
         document.getElementById('size_input_2').value = size;
         document.querySelector('form[action="/game_hexia"]').submit();
     }
-    else if (formNumber === 3){
+    else if (formNumber === 3) {
         document.getElementById('size_input_3').value = size;
         document.querySelector('form[action="/game_hexiaia"]').submit();
     }
 }
 
-function player_red(){
+function player_red() {
     document.getElementById("button_red").classList.add("selected_2")
     document.getElementById("button_blue").classList.remove("selected_2")
     player = 2;
 }
 
-function player_blue(){
+function player_blue() {
     document.getElementById("button_red").classList.remove("selected_2")
     document.getElementById("button_blue").classList.add("selected_2")
     player = 1;

@@ -6,7 +6,7 @@ window.onload = function () {
     const game_history = []; // stack to store game history
     const cells = document.querySelectorAll('.hex'); // Get all hex cells
 
-    cells.forEach(function(element) {
+    cells.forEach(function (element) {
         element.addEventListener("mouseover", survolHex(element));
         element.addEventListener("mouseout", survolHex(element));
     });
@@ -66,21 +66,21 @@ window.onload = function () {
                     } else {
                         // add move to stack
                         game_history.push(hexid);
-                            
-                    // check if the game is over
-                    if (data.game_over === true) {
-                        //save shortest_parth
-                        short_path = data.hexid;
-                        // set game to over
-                        game_over = true;
-                    }
+
+                        // check if the game is over
+                        if (data.game_over === true) {
+                            //save shortest_parth
+                            short_path = data.hexid;
+                            // set game to over
+                            game_over = true;
+                        }
 
                         // toggle the colour of the hex cell
                         toggle_colour(this);
                         // Pour le hover
                         this.setAttribute('disabled', true);
                         this.removeAttribute('nimp');
-                        this.setAttribute('couleur',true);
+                        this.setAttribute('couleur', true);
 
                         // toggle the current player
                         current_player = current_player === 1 ? 2 : 1;
@@ -199,10 +199,10 @@ window.onload = function () {
                 console.log(short_path);
                 let index = short_path.indexOf(lastMove);
                 short_path.splice(index, 1);
-                if (current_player===1){
-                    let k=0;
+                if (current_player === 1) {
+                    let k = 0;
                     let intervalId = setInterval(() => {
-                        let hex = document.getElementById(short_path[short_path.length-k-1]);
+                        let hex = document.getElementById(short_path[short_path.length - k - 1]);
                         hex.style.backgroundColor = '#A51613';
                         k++;
                         if (k === short_path.length) {
@@ -210,10 +210,10 @@ window.onload = function () {
                         }
                     }, 100);
                 }
-                if (current_player===2){
-                    let k=0;
+                if (current_player === 2) {
+                    let k = 0;
                     let intervalId = setInterval(() => {
-                        let hex = document.getElementById(short_path[short_path.length-k-1]);
+                        let hex = document.getElementById(short_path[short_path.length - k - 1]);
                         hex.style.backgroundColor = '#29335C';
                         k++;
                         if (k === short_path.length) {
@@ -221,7 +221,7 @@ window.onload = function () {
                         }
                     }, 100);
                 }
-                
+
                 game_over = false;
             }
 
@@ -238,27 +238,27 @@ window.onload = function () {
                 if (cell.getAttribute('disabled') && !cell.getAttribute('couleur')) {
                     cell.removeAttribute('disabled');
                 }
-                toggle_hover(cell,current_player);
+                toggle_hover(cell, current_player);
             });
         }
     } // end of undo_move
 
-    function survolHex(element){
-        return function(event) {
+    function survolHex(element) {
+        return function (event) {
             // Hover uniquement si on n'est ni une couleur ni désactivé
-            if (event.type === "mouseover" && game_over===false && !element.getAttribute('couleur') && !element.getAttribute("disabled")){
-                if (current_player===1){
+            if (event.type === "mouseover" && game_over === false && !element.getAttribute('couleur') && !element.getAttribute("disabled")) {
+                if (current_player === 1) {
                     element.style.backgroundColor = "#344792";
                 }
-                if (current_player===2){
+                if (current_player === 2) {
                     element.style.backgroundColor = "#BA3533";
                 }
-                element.setAttribute("nimp",true);
+                element.setAttribute("nimp", true);
             }
             // Enlève le hover si on quitte un hex ni en couleur ni disabled
-            else if (event.type === "mouseout" && game_over===false && element.getAttribute("nimp") && !element.getAttribute('disabled')){
-               element.style.backgroundColor = "#B0BFB1";
-               element.removeAttribute("nimp");
+            else if (event.type === "mouseout" && game_over === false && element.getAttribute("nimp") && !element.getAttribute('disabled')) {
+                element.style.backgroundColor = "#B0BFB1";
+                element.removeAttribute("nimp");
             }
         }
     }
@@ -299,17 +299,17 @@ function changerFichiers() {
         styleSheet.setAttribute('href', "../static/css/game_hex_marine_skin.css");
         div1.setAttribute("value", Mred);
         div2.setAttribute("value", Mblue);
-        changecolor(blue,Mblue,red,Mred)
+        changecolor(blue, Mblue, red, Mred)
     } else {
         styleSheet.setAttribute('href', "../static/css/game_hex_styles.css");
-        div1.setAttribute("value",red);
+        div1.setAttribute("value", red);
         div2.setAttribute("value", blue);
-        changecolor(Mblue,blue,Mred,red)
+        changecolor(Mblue, blue, Mred, red)
     }
 
 }
 
-function changecolor(b1,b2,r1,r2){
+function changecolor(b1, b2, r1, r2) {
     const cells = document.querySelectorAll('.hex');
     cells.forEach(hex => {
         console.log(hex.style.backgroundColor);

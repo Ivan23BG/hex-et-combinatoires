@@ -12,9 +12,10 @@ function home() {
 }
 
 function submitForm(type) {
-    if (type == 1){
-    document.forms[0].submit();}
-    if (type == 2){
+    if (type == 1) {
+        document.forms[0].submit();
+    }
+    if (type == 2) {
         document.querySelector('form[action="/game_awaleiaia"]').submit();
     }
 }
@@ -95,7 +96,7 @@ window.onload = async function () {
 
     const pits = document.querySelectorAll('.pit'); // Get all pits
 
-    while(!stopped){
+    while (!stopped) {
         const data = await fetchIAMoveJSON_awale(current_IA);  // Get current_IA's move
         values = []
         values = data.values;
@@ -109,12 +110,13 @@ window.onload = async function () {
         if (data.game_over === true) {
             winner = current_IA;
             game_over = true;
-            stopped=true;
+            stopped = true;
         }
-        else{
+        else {
             current_IA = current_IA === 1 ? 2 : 1;
         }
-}}
+    }
+}
 
 
 /*function survolPit(element) {

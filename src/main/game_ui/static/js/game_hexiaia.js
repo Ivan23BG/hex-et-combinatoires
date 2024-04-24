@@ -7,13 +7,13 @@ function home() {
 }
 
 async function fetchIAMoveJSON_hex(current_IA) {
-    const response = await fetch('/hexiaia_place_piece', {method: 'POST',headers: {'Content-Type': 'application/json'},body: JSON.stringify({'current_IA': current_IA})});
+    const response = await fetch('/hexiaia_place_piece', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ 'current_IA': current_IA }) });
     const data = response.json();
     return data;
 }
 
 async function fetchRandomMoveJSON(current_IA) {
-    const response = await fetch('/hexiaia_random', {method: 'POST',headers: {'Content-Type': 'application/json'},body: JSON.stringify({'current_IA': current_IA})});
+    const response = await fetch('/hexiaia_random', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ 'current_IA': current_IA }) });
     const data = response.json();
     return data;
 }
@@ -28,60 +28,60 @@ window.onload = async function () {
 
     const game_history = []; // stack to store game_history
     const cells = document.querySelectorAll('.hex'); // Get all hex cells    
-    
+
     const data1 = await fetchRandomMoveJSON(1);  // Get current_IA's move
-            let iamove = data1.iamove;
-            var iahex = document.getElementById(iamove);
+    let iamove = data1.iamove;
+    var iahex = document.getElementById(iamove);
 
-            game_history.push(iamove);
-            toggle_colour(iahex,1);
+    game_history.push(iamove);
+    toggle_colour(iahex, 1);
 
-            const data2 = await fetchRandomMoveJSON(2);  // Get current_IA's move
-            iamove = data2.iamove;
-            iahex = document.getElementById(iamove);
+    const data2 = await fetchRandomMoveJSON(2);  // Get current_IA's move
+    iamove = data2.iamove;
+    iahex = document.getElementById(iamove);
 
-            game_history.push(iamove);
-            toggle_colour(iahex,2);
+    game_history.push(iamove);
+    toggle_colour(iahex, 2);
 
-    while(!stopped){
+    while (!stopped) {
         const data = await fetchIAMoveJSON_hex(current_IA);  // Get current_IA's move
         let iamove = data.iamove;
         var iahex = document.getElementById(iamove);
 
         game_history.push(iamove);
-        toggle_colour(iahex,current_IA);
+        toggle_colour(iahex, current_IA);
 
         // check if current_IA won
         if (data.game_over === true) {
             winner = current_IA;
             short_path = data.hexid;
             game_over = true;
-            stopped=true;
+            stopped = true;
 
             // Display winning path when game is over
             let k = 0;
             let intervalId = setInterval(() => {
-            let hex = document.getElementById(short_path[k]);
-            hex.style.backgroundColor = '#FFD700';
-            k++;
-            if (k === short_path.length) {
-                clearInterval(intervalId);
-            }
+                let hex = document.getElementById(short_path[k]);
+                hex.style.backgroundColor = '#FFD700';
+                k++;
+                if (k === short_path.length) {
+                    clearInterval(intervalId);
+                }
             }, 100);
             return;
         }
-        else{
+        else {
             current_IA = current_IA === 1 ? 2 : 1;
         }
     }
-        
-        
+
+
     // End of jeu
-    
+
 
     // Function to toggle the colour of the hex cell
-    function toggle_colour(hex,current_player) {
-        
+    function toggle_colour(hex, current_player) {
+
         if (current_player === 1) {
             let colorelem = document.getElementById("hidden_data_blue");
             let color = colorelem.getAttribute("value");
@@ -106,7 +106,7 @@ window.onload = async function () {
         game_over = false;
         current_IA = 1;
     } // end of reset_board
-    
+
 }
 
 function gestionnairePressionTouche(event) {
@@ -135,17 +135,17 @@ function changerFichiers() {
         styleSheet.setAttribute('href', "../static/css/game_hex_marine_skin.css");
         div1.setAttribute("value", Mred);
         div2.setAttribute("value", Mblue);
-        changecolor(blue,Mblue,red,Mred)
+        changecolor(blue, Mblue, red, Mred)
     } else {
         styleSheet.setAttribute('href', "../static/css/game_hex_styles.css");
-        div1.setAttribute("value",red);
+        div1.setAttribute("value", red);
         div2.setAttribute("value", blue);
-        changecolor(Mblue,blue,Mred,red)
+        changecolor(Mblue, blue, Mred, red)
     }
 
 }
 
-function changecolor(b1,b2,r1,r2){
+function changecolor(b1, b2, r1, r2) {
     const cells = document.querySelectorAll('.hex');
     cells.forEach(hex => {
         console.log(hex.style.backgroundColor);

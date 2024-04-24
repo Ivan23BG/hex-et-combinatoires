@@ -12,9 +12,10 @@ function home() {
 }
 
 function submitForm(type) {
-    if (type == 1){
-    document.forms[0].submit();}
-    if (type == 2){
+    if (type == 1) {
+        document.forms[0].submit();
+    }
+    if (type == 2) {
         document.querySelector('form[action="/game_awaleia"]').submit();
     }
 }
@@ -36,9 +37,9 @@ function displayCircles() {
     for (var i = 0; i < values.length; i++) {
         var pitId = (i);
         // Vider le contenu du conteneur
-        var cont = document.getElementById("c"+pitId);
+        var cont = document.getElementById("c" + pitId);
         cont.innerHTML = '';
-        createCircles("c"+pitId, values[i], 1);
+        createCircles("c" + pitId, values[i], 1);
     }
 }
 
@@ -82,13 +83,13 @@ async function fetchIAMoveJSON_awale(IA) {
 }
 
 // request for place player's move
-async function fetchPlayerMoveJSON(pitid,player) {
-    const response = await fetch('/awale_place_piece', {method: 'POST',headers: {'Content-Type': 'application/json',},body: JSON.stringify({'pitid': pitid,'current_player': player}),});
+async function fetchPlayerMoveJSON(pitid, player) {
+    const response = await fetch('/awale_place_piece', { method: 'POST', headers: { 'Content-Type': 'application/json', }, body: JSON.stringify({ 'pitid': pitid, 'current_player': player }), });
     const data = response.json().catch((error) => {
         // log error
         console.log('Unknown error, should never happen, if you get this please warn your supervisor' + error);
     }) //End of fetch player
-;
+        ;
     return data;
 }
 
@@ -101,15 +102,15 @@ window.onload = async function () {
 
     let player = 0; // Player default value 
     let IA = 0; // IA default value 
-    let tabP1 = [0,1,2,3,4,5]; // Tableau des id des pits rouges
-    let tabP2 = [11,10,9,8,7,6]; // Tableau des id des pits bleu
+    let tabP1 = [0, 1, 2, 3, 4, 5]; // Tableau des id des pits rouges
+    let tabP2 = [11, 10, 9, 8, 7, 6]; // Tableau des id des pits bleu
 
     let recup_error = false; // Variable qui empêche que l'IA joue si on clic sur un hex pas bon
     let playable = true; // Check if player can play or not 
     let game_over = false;
     let winner = 0;
 
-    const game_history = [[values,score_1,score_2]]; // stack to store game history
+    const game_history = [[values, score_1, score_2]]; // stack to store game history
     const pits = document.querySelectorAll('.pit'); // Get all pits
 
     // Ajout des gestionnaires d'événements hover à chaque élément surveillé
@@ -140,12 +141,12 @@ window.onload = async function () {
         pit.onclick = async function () {
             // add hover for pits
             pit.classList.add("pit-hover");
-            
+
             // show spinner
             document.getElementById('spinner').style.display = 'block';
 
-            
-            if (this.getAttribute('disabled') || playable===false) {
+
+            if (this.getAttribute('disabled') || playable === false) {
                 // hide spinner
                 document.getElementById('spinner').style.display = 'none';
                 return;
@@ -166,7 +167,7 @@ window.onload = async function () {
             }
 
             // On fait jouer le coup au joueur
-            const data = await fetchPlayerMoveJSON(pitid,player); 
+            const data = await fetchPlayerMoveJSON(pitid, player);
             if (data.error) {
                 check_error = true;
                 alert(data.error);
@@ -176,9 +177,9 @@ window.onload = async function () {
                 values = data.values;
                 score_1 = data.score_1;
                 score_2 = data.score_2;
-                
+
                 // Add new board to history
-                game_history.push([values,score_1,score_2]);
+                game_history.push([values, score_1, score_2]);
 
                 displayscores();
                 displayCircles();
@@ -193,18 +194,18 @@ window.onload = async function () {
                     });
 
                     // Show winner and points
-                    console.log("Gagnant:",winner);
-                    console.log(score_1,score_2);
+                    console.log("Gagnant:", winner);
+                    console.log(score_1, score_2);
 
                     // Show board
                     displayscores();
                     displayCircles();
 
                     // Show winnner's pits
-                    if (winner===1){
+                    if (winner === 1) {
                         let k = 0;
                         let intervalId = setInterval(() => {
-                            let p = tabP1[tabP1.length-k-1];
+                            let p = tabP1[tabP1.length - k - 1];
                             document.getElementById(String(p)).style.backgroundColor = '#FFD700';
                             k++;
                             if (k === 6) {
@@ -213,7 +214,7 @@ window.onload = async function () {
                             }
                         }, 200);
                     }
-                    if (winner===2){
+                    if (winner === 2) {
                         let k = 0;
                         let intervalId = setInterval(() => {
                             let p = tabP2[k];
@@ -230,19 +231,19 @@ window.onload = async function () {
             } // End of player's turn
 
             // Place piece if player doesn't win
-            if (game_over != true && recup_error!=true) {
-                if (check_error){
+            if (game_over != true && recup_error != true) {
+                if (check_error) {
                     check_error = false;
                 }
-                else{
+                else {
                     playable = false;
                     const data = await fetchIAMoveJSON_awale(IA);
                     values = data.values;
                     score_1 = data.score_1;
                     score_2 = data.score_2;
-                    
+
                     // Add new board to history
-                    game_history.push([values,score_1,score_2]);
+                    game_history.push([values, score_1, score_2]);
 
                     displayscores();
                     displayCircles();
@@ -265,18 +266,18 @@ window.onload = async function () {
                         });
 
                         // Show winner and points
-                        console.log("Gagnant:",winner);
-                        console.log(score_1,score_2);
+                        console.log("Gagnant:", winner);
+                        console.log(score_1, score_2);
 
                         // Show board
                         displayscores();
                         displayCircles();
 
                         // Show winnner's pits
-                        if (winner===1){
+                        if (winner === 1) {
                             let k = 0;
                             let intervalId = setInterval(() => {
-                                let p = tabP1[tabP1.length-k-1];
+                                let p = tabP1[tabP1.length - k - 1];
                                 document.getElementById(String(p)).style.backgroundColor = '#FFD700';
                                 k++;
                                 if (k === 6) {
@@ -285,7 +286,7 @@ window.onload = async function () {
                                 }
                             }, 200);
                         }
-                        if (winner===2){
+                        if (winner === 2) {
                             let k = 0;
                             let intervalId = setInterval(() => {
                                 let p = tabP2[k];
@@ -306,7 +307,7 @@ window.onload = async function () {
                 }
             }// End IA's turn
 
-            
+
             //console.log(check_error);
 
 
@@ -315,12 +316,12 @@ window.onload = async function () {
 
 
     function survolPit(element) {
-        return function(event) {
-    
-            if (event.type === "mouseover" && game_over===false){
+        return function (event) {
+
+            if (event.type === "mouseover" && game_over === false) {
                 // correct hover color for pits
                 element.style.backgroundColor = "#63372C";
-    
+
                 let position = parseInt(element.id);
                 let valu = values[element.id];
                 //let temp =  values;
@@ -329,21 +330,21 @@ window.onload = async function () {
                 // Vider le contenu du conteneur
                 var cont = document.getElementById(pitId);
                 cont.innerHTML = '';
-                while (valu > 0){
+                while (valu > 0) {
                     current_position = ((current_position - 1) % 12 + 12) % 12;
-                    if (current_position == position){
+                    if (current_position == position) {
                         current_position = ((current_position - 1) % 12 + 12) % 12;
                     }
                     pitId = "c" + current_position;
                     //console.log(pitId);
                     createCircles(pitId, 1, 2);
-                    valu = valu - 1 ;
+                    valu = valu - 1;
                 }// End while
             }//End mouseover
-        
-            if (event.type === "mouseout" && game_over===false) {
+
+            if (event.type === "mouseout" && game_over === false) {
                 element.style.backgroundColor = "#cc945b";
-                
+
                 displayCircles();
             } // End if
         }; // End function
@@ -358,7 +359,7 @@ window.onload = async function () {
 
             game_history.pop();
             // Selectionne le plateau précédent
-            const lastBoard = game_history[game_history.length-1]; 
+            const lastBoard = game_history[game_history.length - 1];
 
             // Associe les bonnes valeurs pour l'affichage
             values = lastBoard[0];
@@ -381,7 +382,7 @@ window.onload = async function () {
             })
 
             if (game_over) {
-                if (winner===1){
+                if (winner === 1) {
                     document.getElementById("redhole").style.backgroundColor = '#cc945b';
                     let k = 0;
                     let intervalId = setInterval(() => {
@@ -393,11 +394,11 @@ window.onload = async function () {
                         }
                     }, 200);
                 }
-                if (winner===2){
+                if (winner === 2) {
                     document.getElementById("bluehole").style.backgroundColor = '#cc945b';
                     let k = 0;
                     let intervalId = setInterval(() => {
-                        let p = tabP2[tabP2.length-k-1];
+                        let p = tabP2[tabP2.length - k - 1];
                         document.getElementById(String(p)).style.backgroundColor = '#cc945b';
                         k++;
                         if (k === 6) {
@@ -407,7 +408,7 @@ window.onload = async function () {
                 }
                 game_over = false;
             } // End if game_over
-            
+
             pits.forEach(pit => {
                 // remove the disabled attribute from the hex cell
                 if (pit.getAttribute('disabled')) {
@@ -416,7 +417,7 @@ window.onload = async function () {
             });
         }
 
-        if (player===1 && game_history.length===1){
+        if (player === 1 && game_history.length === 1) {
             // Associe les bonnes valeurs pour l'affichage
             values = [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4];
             score_1 = 0;
@@ -436,14 +437,14 @@ window.onload = async function () {
             })
             displayscores();
             displayCircles();
-        }    
+        }
     } // End of undo_move
 
     window.undo_move2 = function () {
-        if (player===1 && winner===1){
+        if (player === 1 && winner === 1) {
             undo_move();
         }
-        else if (player===2 && winner===2){
+        else if (player === 2 && winner === 2) {
             undo_move();
         }
         else {

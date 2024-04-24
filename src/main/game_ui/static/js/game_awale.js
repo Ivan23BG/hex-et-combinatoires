@@ -1,4 +1,4 @@
-let values = [4,4,4,4,4,4,4,4,4,4,4,4]
+let values = [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]
 let score_1 = 0
 let score_2 = 0
 
@@ -16,7 +16,7 @@ function createCircles(pitId, n, type) {
     var cont = document.getElementById(pitId);
     for (var i = 0; i < n; i++) {
         var circle = document.createElement("div");
-        if (type == 2){
+        if (type == 2) {
             circle.classList.add("temp");
         }
         circle.classList.add("circle");
@@ -29,9 +29,9 @@ function displayCircles() {
     for (var i = 0; i < values.length; i++) {
         var pitId = (i);
         // Vider le contenu du conteneur
-        var cont = document.getElementById("c"+pitId);
+        var cont = document.getElementById("c" + pitId);
         cont.innerHTML = '';
-        createCircles("c"+pitId, values[i], 1);
+        createCircles("c" + pitId, values[i], 1);
     }
 }
 
@@ -56,15 +56,15 @@ window.onload = function () {
     let current_player = 1; // Player 1 starts the game
     let game_over = false;
     let winner = 0;
-    let tabP1 = [0,1,2,3,4,5]; // Tableau des id des pits rouges
-    let tabP2 = [11,10,9,8,7,6]; // Tableau des id des pits bleu
+    let tabP1 = [0, 1, 2, 3, 4, 5]; // Tableau des id des pits rouges
+    let tabP2 = [11, 10, 9, 8, 7, 6]; // Tableau des id des pits bleu
     displayCircles();
     displayscores();
-    const game_history = [[values,score_1,score_2]]; // stack to store game history
+    const game_history = [[values, score_1, score_2]]; // stack to store game history
     const pits = document.querySelectorAll('.pit'); // Get all pits
 
     // Ajout des gestionnaires d'événements hover à chaque élément surveillé
-    pits.forEach(function(element) {
+    pits.forEach(function (element) {
         element.addEventListener("mouseover", survolPit(element));
         element.addEventListener("mouseout", survolPit(element));
     });
@@ -80,7 +80,7 @@ window.onload = function () {
             if (this.getAttribute('disabled')) {
                 return;
             }
-            
+
             if (game_over) {
                 // remove all hovers
                 pits.forEach(pit => {
@@ -111,7 +111,7 @@ window.onload = function () {
                         score_1 = data.score_1;
                         score_2 = data.score_2;
                         // Add new board to history
-                        game_history.push([values,score_1,score_2]);
+                        game_history.push([values, score_1, score_2]);
                         console.log(game_history);
 
                         // Show board
@@ -127,18 +127,18 @@ window.onload = function () {
                                 pit.setAttribute('disabled', true);
                             });
                             // Show winner and points
-                            console.log("Gagnant:",winner);
-                            console.log(score_1,score_2);
+                            console.log("Gagnant:", winner);
+                            console.log(score_1, score_2);
 
                             // Show board
                             displayscores();
                             displayCircles();
 
                             // Show winnner's pits
-                            if (winner===1){
+                            if (winner === 1) {
                                 let k = 0;
                                 let intervalId = setInterval(() => {
-                                    let p = tabP1[tabP1.length-k-1];
+                                    let p = tabP1[tabP1.length - k - 1];
                                     document.getElementById(String(p)).style.backgroundColor = '#FFD700';
                                     k++;
                                     if (k === 6) {
@@ -147,7 +147,7 @@ window.onload = function () {
                                     }
                                 }, 200);
                             }
-                            if (winner===2){
+                            if (winner === 2) {
                                 let k = 0;
                                 let intervalId = setInterval(() => {
                                     let p = tabP2[k];
@@ -173,9 +173,9 @@ window.onload = function () {
 
 
     function survolPit(element) {
-        return function(event) {
-    
-            if (event.type === "mouseover" && game_over===false){
+        return function (event) {
+
+            if (event.type === "mouseover" && game_over === false) {
                 // correct hover color for pits
                 element.style.backgroundColor = "#63372C";
 
@@ -187,19 +187,19 @@ window.onload = function () {
                 // Vider le contenu du conteneur
                 var cont = document.getElementById(pitId);
                 cont.innerHTML = '';
-                while (valu > 0){
+                while (valu > 0) {
                     current_position = ((current_position - 1) % 12 + 12) % 12;
-                    if (current_position == position){
+                    if (current_position == position) {
                         current_position = ((current_position - 1) % 12 + 12) % 12;
                     }
                     pitId = "c" + current_position;
                     //console.log(pitId);
                     createCircles(pitId, 1, 2);
-                    valu = valu - 1 ;
+                    valu = valu - 1;
                 }// End while
             }//End if
-        
-            if (event.type === "mouseout" && game_over===false) {
+
+            if (event.type === "mouseout" && game_over === false) {
                 element.style.backgroundColor = "#cc945b";
                 //console.log(values);
                 displayCircles();
@@ -214,7 +214,7 @@ window.onload = function () {
 
             game_history.pop();
             // Selectionne le plateau précédent
-            const lastBoard = game_history[game_history.length-1]; 
+            const lastBoard = game_history[game_history.length - 1];
 
             // Associe les bonnes valeurs pour l'affichage
             values = lastBoard[0];
@@ -237,7 +237,7 @@ window.onload = function () {
             })
 
             if (game_over) {
-                if (winner===1){
+                if (winner === 1) {
                     document.getElementById("redhole").style.backgroundColor = '#cc945b';
                     let k = 0;
                     let intervalId = setInterval(() => {
@@ -249,11 +249,11 @@ window.onload = function () {
                         }
                     }, 200);
                 }
-                if (winner===2){
+                if (winner === 2) {
                     document.getElementById("bluehole").style.backgroundColor = '#cc945b';
                     let k = 0;
                     let intervalId = setInterval(() => {
-                        let p = tabP2[tabP2.length-k-1];
+                        let p = tabP2[tabP2.length - k - 1];
                         document.getElementById(String(p)).style.backgroundColor = '#cc945b';
                         k++;
                         if (k === 6) {
@@ -265,7 +265,7 @@ window.onload = function () {
                 current_player = current_player === 1 ? 2 : 1;
             } // End if game_over
             current_player = current_player === 1 ? 2 : 1;
-            
+
             pits.forEach(pit => {
                 // remove the disabled attribute from the hex cell
                 if (pit.getAttribute('disabled')) {

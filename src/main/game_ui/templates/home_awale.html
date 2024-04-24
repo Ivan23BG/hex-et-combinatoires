@@ -1,39 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <title>Jeux combinatoires</title>
-    <link rel="stylesheet" href="../static/css/home_awale_styles.css">
-</head>
+    <link rel="stylesheet" href="../static/css/home_awale_styles.css" />
+  </head>
 
-<body>
+  <body>
     <div class="home" onclick="back()">Home</div>
-    <div class = "titre">
-        <h1><center>Awale</center></h1>
+    <div class="titre">
+      <h1><center>Awale</center></h1>
     </div>
 
     <div class="container">
-        <form action="/game_awale" method="post">
-            <div class="start_game1v1" type="button" onclick="submitForm(1)">Player vs Player</div>
+      <form action="/game_awale" method="post">
+        <div class="start_game1v1" type="button" onclick="submitForm(1)">Player vs Player</div>
+      </form>
+      <div class="containeIA">
+        <form action="/game_awaleia" method="post">
+          <input type="hidden" id="player" name="player" value="" />
+          <div class="start_gameIA" type="button" onclick="submitForm(2)">Player vs IA</div>
         </form>
-        <div class = "containeIA">
-            <form action="/game_awaleia" method="post">
-                <input type="hidden" id="player" name="player" value="" />
-                <div class="start_gameIA" type="button" onclick="submitForm(2)">Player vs IA</div>
-            </form>
-            <div class="choose_color">
-                <div class="chooseplayer_blue color_button selected_2" id="button_red" onclick="player_red()">Red</div>
-                <div class="chooseplayer_red color_button" id="button_blue" onclick="player_blue()">Blue</div>
-            </div>
+        <div class="choose_color">
+          <div class="chooseplayer_blue color_button selected_2" id="button_red" onclick="player_red()">Red</div>
+          <div class="chooseplayer_red color_button" id="button_blue" onclick="player_blue()">Blue</div>
         </div>
-        
-        <form action="/game_awaleiaia" method="post">
+      </div>
+
+      <form action="/game_awaleiaia" method="post">
         <div class="start_gameIAvsIA" type="button" onclick="submitForm(3)">IA vs IA</div>
-        </form>
-        
-        <div class="button_out"></div>
+      </form>
+
+      <div class="button_out"></div>
     </div>
     <script src="../static/js/home_awale.js"></script>
-</body>
-
+  </body>
 </html>
