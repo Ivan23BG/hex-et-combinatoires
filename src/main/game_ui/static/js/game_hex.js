@@ -1,3 +1,7 @@
+var hover1 = "#344792"
+var hover2 = "#BA3533"
+var hex_color = "#B0BFB1"
+
 window.onload = function () {
     let current_player = 1; // Player 1 starts the game
     let game_over = false;
@@ -248,16 +252,16 @@ window.onload = function () {
             // Hover uniquement si on n'est ni une couleur ni désactivé
             if (event.type === "mouseover" && game_over===false && !element.getAttribute('couleur') && !element.getAttribute("disabled")){
                 if (current_player===1){
-                    element.style.backgroundColor = "#344792";
+                    element.style.backgroundColor = hover1;
                 }
                 if (current_player===2){
-                    element.style.backgroundColor = "#BA3533";
+                    element.style.backgroundColor = hover2;
                 }
                 element.setAttribute("nimp",true);
             }
             // Enlève le hover si on quitte un hex ni en couleur ni disabled
             else if (event.type === "mouseout" && game_over===false && element.getAttribute("nimp") && !element.getAttribute('disabled')){
-               element.style.backgroundColor = "#B0BFB1";
+               element.style.backgroundColor = hex_color;
                element.removeAttribute("nimp");
             }
         }
@@ -287,6 +291,10 @@ document.addEventListener("keydown", gestionnairePressionTouche);
 
 
 function changerFichiers() {
+    var bhover1 = "#344792"
+    var bhover2 = "#BA3533"
+    var mhover1 = "#5197BA"
+    var mhover2 = "#F6995C"
     var Mblue = "rgb(81, 130, 155)";
     var Mred = "rgb(248, 124, 41)";
     var blue = "rgb(41, 51, 92)";
@@ -297,27 +305,36 @@ function changerFichiers() {
     if (styleSheet.getAttribute('href') === "../static/css/game_hex_styles.css") {
         //console.log("touché");
         styleSheet.setAttribute('href', "../static/css/game_hex_marine_skin.css");
+        hex_color = "#ADBBC6"
+        hover1 = mhover1;
+        hover2 = mhover2;
         div1.setAttribute("value", Mred);
         div2.setAttribute("value", Mblue);
-        changecolor(blue,Mblue,red,Mred)
+        changecolor(blue,Mblue,red,Mred,hex_color)
     } else {
         styleSheet.setAttribute('href', "../static/css/game_hex_styles.css");
+        hex_color = "#B0BFB1"
+        hover1 = bhover1;
+        hover2 = bhover2;
         div1.setAttribute("value",red);
         div2.setAttribute("value", blue);
-        changecolor(Mblue,blue,Mred,red)
+        changecolor(Mblue,blue,Mred,red,hex_color)
     }
 
 }
 
-function changecolor(b1,b2,r1,r2){
+function changecolor(b1,b2,r1,r2,hex_color){
     const cells = document.querySelectorAll('.hex');
     cells.forEach(hex => {
-        console.log(hex.style.backgroundColor);
+        //console.log(hex.style.backgroundColor);
         if (hex.style.backgroundColor == b1) {
             hex.style.backgroundColor = b2;
         }
-        if (hex.style.backgroundColor == r1) {
+        else if (hex.style.backgroundColor == r1) {
             hex.style.backgroundColor = r2;
+        }
+        else {
+            hex.style.backgroundColor = hex_color;
         }
     })
 }
