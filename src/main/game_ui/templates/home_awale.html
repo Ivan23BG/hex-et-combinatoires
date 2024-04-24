@@ -1,28 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <title>Jeux combinatoires</title>
     <link rel="stylesheet" href="../static/css/home_awale_styles.css" />
-  </head>
+</head>
 
   <body>
     <div class="home" onclick="back()">Home</div>
-    <div class="titre">
-      <h1><center>Awale</center></h1>
-    </div>
+        <div class="titre">
+            <h1><center>Awale</center></h1>
+        </div>
 
     <div class="container">
-      <form action="/game_awale" method="post">
+    <form action="/game_awale" method="post">
         <div class="start_game1v1" type="button" onclick="submitForm(1)">Player vs Player</div>
-      </form>
-      <div class="containeIA">
+    </form>
+    <div class="containeIA">
         <form action="/game_awaleia" method="post">
-          <input type="hidden" id="player" name="player" value="" />
-          <div class="start_gameIA" type="button" onclick="submitForm(2)">Player vs IA</div>
+            <input type="hidden" id="player" name="player" value="" />
+            <div class="start_gameIA" type="button" onclick="submitForm(2)">Player vs IA</div>
         </form>
         <div class="choose_color">
-          <div class="chooseplayer_blue color_button selected_2" id="button_red" onclick="player_red()">Red</div>
-          <div class="chooseplayer_red color_button" id="button_blue" onclick="player_blue()">Blue</div>
+            <div class="chooseplayer_blue color_button selected_2" id="button_red" onclick="player_red()">Red</div>
+            <div class="chooseplayer_red color_button" id="button_blue" onclick="player_blue()">Blue</div>
         </div>
       </div>
 
@@ -32,6 +32,23 @@
 
       <div class="button_out"></div>
     </div>
+    <button id="reglesBtn">Regles</button>
+
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="regles-content">
+          <p>L'awalé ou awélé est un jeu de société combinatoire abstrait créé en Afrique. </p>
+
+          <p>Chaque tour consiste à choisir l'un des trous de son camp, puis à prendre toutes les graines de ce trou pour les semer une par une dans les trous suivants, d'abord sur sa propre rangée, puis sur celle de l'adversaire, dans le sens trigonometrique.</p>
+
+          <p>Si la dernière graine semée atterrit dans un trou du camp adverse et qu'il y a alors deux ou trois graines dans ce trou, le joueur capture ces graines et les met de côté. Ensuite, il regarde la case précédente et capture également si elle contient deux ou trois graines, et ainsi de suite jusqu'à son camp ou jusqu'à ce qu'il y ait un nombre différent de graines.</p>
+
+          <p>La partie se termine lorsque l'un des joueurs a capturé au moins 25 graines (la moitié ou plus), lorsqu'il n'est plus possible de capturer d'autres graines, ou lorsqu'un joueur n'a plus de graines dans son camp sans possibilité de nourrir son adversaire.</p>
+        </div>
+      </div>
+    </div>
+
     <script src="../static/js/home_awale.js"></script>
   </body>
 </html>
