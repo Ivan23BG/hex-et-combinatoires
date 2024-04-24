@@ -35,3 +35,26 @@ function player_blue(){
     document.getElementById("button_blue").classList.add("selected_2")
     player = 2;
 }
+
+// ========== fenetre regles ==================================
+
+const openModalBtn = document.getElementById('reglesBtn');
+const modal = document.getElementById('modal');
+const closeBtn = document.getElementsByClassName('close')[0];
+
+// Fonction pour ouvrir la fenêtre regles
+openModalBtn.onclick = function() {
+    modal.style.display = 'block';
+}
+
+// Fonction pour fermer la fenêtre modale lorsque l'utilisateur clique sur le bouton de fermeture (×)
+closeBtn.onclick = function() {
+    modal.style.display = 'none';
+}
+
+// Fermer la fenêtre modale si l'utilisateur clique en dehors de la fenêtre modale
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = 'none';
+    }
+}
