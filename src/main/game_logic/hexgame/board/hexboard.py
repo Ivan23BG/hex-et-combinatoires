@@ -472,9 +472,13 @@ class HexBoard:
     """
         PARTIE MINIMAX AVEC ALPHA BETA PRUNING
     """
+    time_limit = 2
     def minimax(self, depth, player, alpha, beta):
+        start_time = time()
+        #while time()-start_time < self.time_limit:
+
         if depth == 0 or self.check_winner() is not None:
-            return self.eval(player)*((depth+1)*(depth+1)), None
+            return self.eval_dijkstra(player)((depth+1)*(depth+1)), None
 
         if player == 1:  # Maximizing player
             best_score = float('-inf')
@@ -512,6 +516,7 @@ class HexBoard:
                     break  # Alpha-Beta pruning
             #print("min",best_score,best_move)
             return best_score, best_move
+            pass
         
     def get_best_move(self, depth, player):
         a , best_move = self.minimax(depth, player, float('-inf'), float('inf'))
