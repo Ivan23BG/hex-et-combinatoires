@@ -103,7 +103,18 @@ window.onload = function () {
                 .then(response => response.json())
                 .then(data => {
                     if (data.error) {
-                        alert(data.error);
+                        // briefly change the color of the pit to red
+                        pit.style.backgroundColor = 'red';
+
+                        // disable the cell
+                        pit.setAttribute('disabled', true);
+
+                        setTimeout(() => {
+                            pit.style.backgroundColor = '#cc945b';
+
+                            // remove the disabled attribute from the hex cell
+                            pit.removeAttribute('disabled');
+                        }, 500);
                     }
                     else {
                         values = []

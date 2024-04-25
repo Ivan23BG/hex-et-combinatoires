@@ -294,7 +294,6 @@ def awale_place_piece():
     pitid = data['pitid']
     current_player = data['current_player']
     id = int(pitid)
-    print("current_player",current_player)
     
     if board_awale is not None:
         try:
@@ -305,13 +304,14 @@ def awale_place_piece():
             #print("values",values)
             winner = board_awale.check_winner()
             print("Gagnant joueur",winner)
-            if winner == 1 or winner == 2:
+            if winner:
 
-                return jsonify({'winner': current_player, 'game_over': True, 'current_player': current_player,'values':values,'pitid':pitid,'score_1':scores[0],'score_2':scores[1]})
+                return jsonify({'winner': winner, 'game_over': True, 'current_player': current_player,'values':values,'pitid':pitid,'score_1':scores[0],'score_2':scores[1]})
             current_player = 1 if current_player == 2 else 2
         except Exception as e:
             # Handle the exception here
             error_message = str(e)  # Get the error message
+            board_awale.display_board() # Display the game board in the console
             print("error: ", error_message)
             return jsonify({'error': "An error has occured"}), 400
     return jsonify({'result': 'Success', 'game_over': False,'current_player': current_player,'values':values,'score_1':scores[0],'score_2':scores[1],'pitid':pitid})
