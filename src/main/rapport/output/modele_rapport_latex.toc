@@ -2,7 +2,13 @@
 \contentsline {section}{\numberline {1}Présentation du sujet}{2}{}%
 \contentsline {section}{\numberline {2}Technologies utilisées}{3}{}%
 \contentsline {section}{\numberline {3}Développements Logiciel: Conception, Modélisation, Implémentation}{4}{}%
-\contentsline {section}{\numberline {4}Algorithmes et Analyse}{5}{}%
+\contentsline {section}{\numberline {4}Moteur de jeux combinatoires abstrait}{5}{}%
+\contentsline {subsection}{\numberline {4.1}la Recherche arborescente Monte-Carlo}{5}{}%
+\contentsline {paragraph}{presentation}{5}{}%
+\contentsline {paragraph}{MCTS - fonctionnement succinct}{5}{}%
+\contentsline {subsection}{\numberline {4.2}algorithme MinMax}{5}{}%
+\contentsline {paragraph}{presentation}{5}{}%
+\contentsline {paragraph}{MinMax - fonctionnement succinct}{5}{}%
 \contentsline {section}{\numberline {5}Analyse des résultats}{6}{}%
 \contentsline {section}{\numberline {6}Gestion du Projet}{7}{}%
 \contentsline {section}{\numberline {7}Bilan et Conclusions}{8}{}%
