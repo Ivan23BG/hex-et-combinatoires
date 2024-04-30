@@ -3,15 +3,15 @@
 \contentsline {section}{\numberline {2}Technologies utilisées}{3}{}%
 \contentsline {section}{\numberline {3}Développements Logiciel: Conception, Modélisation, Implémentation}{4}{}%
 \contentsline {section}{\numberline {4}Moteur de jeux combinatoires abstrait}{5}{}%
-\contentsline {subsection}{\numberline {4.1}la Recherche arborescente Monte-Carlo}{5}{}%
-\contentsline {paragraph}{presentation}{5}{}%
+\contentsline {subsection}{\numberline {4.1}La recherche arborescente Monte-Carlo}{5}{}%
+\contentsline {paragraph}{Présentation}{5}{}%
 \contentsline {paragraph}{MCTS - fonctionnement succinct}{5}{}%
-\contentsline {subsection}{\numberline {4.2}algorithme MinMax}{5}{}%
-\contentsline {paragraph}{presentation}{5}{}%
+\contentsline {subsection}{\numberline {4.2}MinMax}{5}{}%
+\contentsline {paragraph}{Présentation}{5}{}%
 \contentsline {paragraph}{MinMax - fonctionnement succinct}{5}{}%
-\contentsline {section}{\numberline {5}Analyse des résultats}{6}{}%
-\contentsline {section}{\numberline {6}Gestion du Projet}{7}{}%
-\contentsline {section}{\numberline {7}Bilan et Conclusions}{8}{}%
-\contentsline {section}{\numberline {8}Bibliographie}{9}{}%
-\contentsline {section}{\numberline {9}Annexes}{10}{}%
-\contentsline {subsection}{\numberline {9.1}Annexe I : Cahier des charges}{10}{}%
+\contentsline {section}{\numberline {5}Analyse des résultats}{7}{}%
+\contentsline {section}{\numberline {6}Gestion du Projet}{8}{}%
+\contentsline {section}{\numberline {7}Bilan et Conclusions}{9}{}%
+\contentsline {section}{\numberline {8}Bibliographie}{10}{}%
+\contentsline {section}{\numberline {9}Annexes}{11}{}%
+\contentsline {subsection}{\numberline {9.1}Annexe I : Cahier des charges}{11}{}%

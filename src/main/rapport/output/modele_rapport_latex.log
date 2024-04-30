@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.2.13)  30 APR 2024 16:28
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.2.13)  30 APR 2024 18:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -458,35 +458,44 @@ File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 \openout2 = `./sources/4_algorithmes_et_analyse.aux'.
 
 
-(sources/4_algorithmes_et_analyse.tex) [5
+(sources/4_algorithmes_et_analyse.tex
+<root/MinMax.jpeg, id=24, 733.74126pt x 362.35374pt>
+File: root/MinMax.jpeg Graphic file (type jpg)
+<use root/MinMax.jpeg>
+Package pdftex.def Info: root/MinMax.jpeg  used on input line 64.
+(pdftex.def)             Requested size: 181.18439pt x 89.47687pt.
+) [5
 
 
 
-]
+] [6 <./root/MinMax.jpeg>]
 \openout2 = `./sources/5_analyse_des_resultats.aux'.
 
- (sources/5_analyse_des_resultats.tex) [6
+
+(sources/5_analyse_des_resultats.tex) [7
 
 
 
 ]
 \openout2 = `./sources/6_gestion_du_projet.aux'.
 
- (sources/6_gestion_du_projet.tex) [7
+ (sources/6_gestion_du_projet.tex)
+[8
 
 
 
 ]
 \openout2 = `./sources/7_bilan_et_conclusions.aux'.
 
- (sources/7_bilan_et_conclusions.tex) [8
+ (sources/7_bilan_et_conclusions.tex) [9
 
 
 
 ]
 \openout2 = `./sources/8_bibliographie.aux'.
 
- (sources/8_bibliographie.tex) [9
+ (sources/8_bibliographie.tex)
+[10
 
 
 
@@ -494,18 +503,18 @@ File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 \openout2 = `./sources/9_annexes.aux'.
 
  (sources/9_annexes.tex
-<root/hex_jeu_bleu.png, id=40, 660.066pt x 398.08725pt>
+<root/hex_jeu_bleu.png, id=45, 660.066pt x 398.08725pt>
 File: root/hex_jeu_bleu.png Graphic file (type png)
 <use root/hex_jeu_bleu.png>
 Package pdftex.def Info: root/hex_jeu_bleu.png  used on input line 39.
 (pdftex.def)             Requested size: 330.03218pt x 199.04314pt.
- [10
+ [11
 
 
 
 {C:/Users/Ivan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/U
 sers/Ivan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc} <./ro
-ot/hex_jeu_bleu.png>]) [11]
+ot/hex_jeu_bleu.png>]) [12]
 (C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\rapport\output\mo
 dele_rapport_latex.aux
 (C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\rapport\output\so
@@ -538,11 +547,11 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 6709 strings out of 474542
- 124594 string characters out of 5744918
- 1932978 words of memory out of 5000000
- 28739 multiletter control sequences out of 15000+600000
- 599996 words of font info for 58 fonts, out of 8000000 for 9000
+ 6720 strings out of 474542
+ 124800 string characters out of 5744918
+ 1933978 words of memory out of 5000000
+ 28749 multiletter control sequences out of 15000+600000
+ 604259 words of font info for 59 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  77i,8n,82p,1182b,457s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/Ivan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb
@@ -550,11 +559,12 @@ Here is how much of TeX's memory you used:
 <C:/Users/Ivan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmcsc10.pfb>
 <C:/Users/Ivan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C
 :/Users/Ivan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr9.pfb><C:/U
-sers/Ivan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb>
+sers/Ivan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Us
+ers/Ivan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb>
 Output written on C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\
-rapport\output\modele_rapport_latex.pdf (12 pages, 356549 bytes).
+rapport\output\modele_rapport_latex.pdf (13 pages, 444277 bytes).
 PDF statistics:
- 83 PDF objects out of 1000 (max. 8388607)
+ 93 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 16 words of extra memory for PDF output out of 10000 (max. 10000000)
 
