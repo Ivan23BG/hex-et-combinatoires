@@ -1,74 +1,74 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.2.13)  30 APR 2024 18:06
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.3.31) (preloaded format=pdflatex 2024.4.25)  2 MAY 2024 12:54
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **./modele_rapport_latex.tex
 (modele_rapport_latex.tex
 LaTeX2e <2023-11-01> patch level 1
-L3 programming layer <2024-01-22>
-(C:\Users\Ivan\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
+L3 programming layer <2024-03-14>
+(C:\Users\2raph\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
 Document Class: article 2023/05/17 v1.4n Standard LaTeX document class
-(C:\Users\Ivan\AppData\Local\Programs\MiKTeX\tex/latex/base\size10.clo
+(C:\Users\2raph\AppData\Local\Programs\MiKTeX\tex/latex/base\size10.clo
 File: size10.clo 2023/05/17 v1.4n Standard LaTeX file (size option)
 )
-\c@part=\count187
-\c@section=\count188
-\c@subsection=\count189
-\c@subsubsection=\count190
-\c@paragraph=\count191
-\c@subparagraph=\count192
-\c@figure=\count193
-\c@table=\count194
+\c@part=\count188
+\c@section=\count189
+\c@subsection=\count190
+\c@subsubsection=\count191
+\c@paragraph=\count192
+\c@subparagraph=\count193
+\c@figure=\count194
+\c@table=\count195
 \abovecaptionskip=\skip48
 \belowcaptionskip=\skip49
 \bibindent=\dimen140
 )
 (sources/common.tex
-(C:\Users\Ivan\AppData\Local\Programs\MiKTeX\tex/latex/base\inputenc.sty
+(C:\Users\2raph\AppData\Local\Programs\MiKTeX\tex/latex/base\inputenc.sty
 Package: inputenc 2021/02/14 v1.3d Input encoding file
 \inpenc@prehook=\toks17
 \inpenc@posthook=\toks18
 )
-(C:\Users\Ivan\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty
+(C:\Users\2raph\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty
 Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
 )
-(C:\Users\Ivan\AppData\Local\Programs\MiKTeX\tex/generic/babel\babel.sty
-Package: babel 2024/02/07 v24.2 The Babel package
-\babel@savecnt=\count195
+(C:\Users\2raph\AppData\Local\Programs\MiKTeX\tex/generic/babel\babel.sty
+Package: babel 2024/03/29 v24.3 The Babel package
+\babel@savecnt=\count196
 \U@D=\dimen141
 \l@unhyphenated=\language79
 
-(C:\Users\Ivan\AppData\Local\Programs\MiKTeX\tex/generic/babel\txtbabel.def)
+(C:\Users\2raph\AppData\Local\Programs\MiKTeX\tex/generic/babel\txtbabel.def)
 \bbl@readstream=\read2
-\bbl@dirlevel=\count196
+\bbl@dirlevel=\count197
 
 *************************************
 * Local config file bblopts.cfg used
 *
-(C:\Users\Ivan\AppData\Local\Programs\MiKTeX\tex/latex/arabi\bblopts.cfg
+(C:\Users\2raph\AppData\Local\Programs\MiKTeX\tex/latex/arabi\bblopts.cfg
 File: bblopts.cfg 2005/09/08 v0.1 add Arabic and Farsi to "declared" options of
  babel
 )
-(C:\Users\Ivan\AppData\Local\Programs\MiKTeX\tex/generic/babel-french\french.ld
-f
-Language: french 2023-12-19 v3.5r French support from the babel system
+(C:\Users\2raph\AppData\Local\Programs\MiKTeX\tex/generic/babel-french\french.l
+df
+Language: french 2024-02-29 v3.5s French support from the babel system
 Package babel Info: Hyphen rules for 'acadian' set to \l@french
 (babel)             (\language22). Reported on input line 91.
 Package babel Info: Hyphen rules for 'canadien' set to \l@french
 (babel)             (\language22). Reported on input line 92.
-\FB@stdchar=\count197
+\FB@stdchar=\count198
 Package babel Info: Making : an active character on input line 420.
 Package babel Info: Making ; an active character on input line 421.
 Package babel Info: Making ! an active character on input line 422.
 Package babel Info: Making ? an active character on input line 423.
-\FBguill@level=\count198
+\FBguill@level=\count199
 \FBold@everypar=\toks19
 \FB@Mht=\dimen142
-\mc@charclass=\count199
-\mc@charfam=\count266
-\mc@charslot=\count267
-\std@mcc=\count268
-\dec@mcc=\count269
+\mc@charclass=\count266
+\mc@charfam=\count267
+\mc@charslot=\count268
+\std@mcc=\count269
+\dec@mcc=\count270
 \FB@parskip=\dimen143
 \listindentFB=\dimen144
 \descindentFB=\dimen145
@@ -78,41 +78,41 @@ Package babel Info: Making ? an active character on input line 423.
 \parindentFFN=\dimen149
 \FBfnindent=\dimen150
 ))
-(C:\Users\Ivan\AppData\Local\Programs\MiKTeX\tex/generic/babel/locale/fr\babel-
-french.tex
+(C:\Users\2raph\AppData\Local\Programs\MiKTeX\tex/generic/babel/locale/fr\babel
+-french.tex
 Package babel Info: Importing font and identification data for french
 (babel)             from babel-fr.ini. Reported on input line 11.
 )
-(C:\Users\Ivan\AppData\Local\Programs\MiKTeX\tex/latex/carlisle\scalefnt.sty)
-(C:\Users\Ivan\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
+(C:\Users\2raph\AppData\Local\Programs\MiKTeX\tex/latex/carlisle\scalefnt.sty)
+(C:\Users\2raph\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
 Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
 \KV@toks@=\toks20
 )
-(C:\Users\Ivan\AppData\Local\Programs\MiKTeX\tex/latex/preprint\fullpage.sty
+(C:\Users\2raph\AppData\Local\Programs\MiKTeX\tex/latex/preprint\fullpage.sty
 Package: fullpage 1999/02/23 1.1 (PWD)
 \FP@margin=\skip50
 )
-(C:\Users\Ivan\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
+(C:\Users\2raph\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
 Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
 
-(C:\Users\Ivan\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
+(C:\Users\2raph\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
 Package: graphics 2022/03/10 v1.4e Standard LaTeX Graphics (DPC,SPQR)
 
-(C:\Users\Ivan\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
+(C:\Users\2raph\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
 Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
 )
-(C:\Users\Ivan\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.cf
-g
+(C:\Users\2raph\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.c
+fg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 107.
 
-(C:\Users\Ivan\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def
-File: pdftex.def 2022/09/22 v1.2b Graphics/color driver for pdftex
+(C:\Users\2raph\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def
+File: pdftex.def 2024/04/13 v1.2c Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen151
 \Gin@req@width=\dimen152
-) (C:\Users\Ivan\AppData\Local\Programs\MiKTeX\tex/latex/lm\lmodern.sty
+) (C:\Users\2raph\AppData\Local\Programs\MiKTeX\tex/latex/lm\lmodern.sty
 Package: lmodern 2015/05/01 v1.6.1 Latin Modern Fonts
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  OT1/cmr/m/n --> OT1/lmr/m/n on input line 22.
@@ -147,100 +147,100 @@ LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 38.
 )
-(C:\Users\Ivan\AppData\Local\Programs\MiKTeX\tex/latex/datetime\datetime.sty
+(C:\Users\2raph\AppData\Local\Programs\MiKTeX\tex/latex/datetime\datetime.sty
 Package: datetime 2015/03/20 v2.60 Date Time Package
 
-(C:\Users\Ivan\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty
+(C:\Users\2raph\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty
 Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count270
+\etb@tempcnta=\count271
 )
-(C:\Users\Ivan\AppData\Local\Programs\MiKTeX\tex/latex/fmtcount\fmtcount.sty
+(C:\Users\2raph\AppData\Local\Programs\MiKTeX\tex/latex/fmtcount\fmtcount.sty
 Package: fmtcount 2020/01/30 v3.07
 
-(C:\Users\Ivan\AppData\Local\Programs\MiKTeX\tex/latex/base\ifthen.sty
+(C:\Users\2raph\AppData\Local\Programs\MiKTeX\tex/latex/base\ifthen.sty
 Package: ifthen 2022/04/13 v1.1d Standard LaTeX ifthen package (DPC)
 )
-(C:\Users\Ivan\AppData\Local\Programs\MiKTeX\tex/latex/xkeyval\xkeyval.sty
+(C:\Users\2raph\AppData\Local\Programs\MiKTeX\tex/latex/xkeyval\xkeyval.sty
 Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
 
-(C:\Users\Ivan\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkeyval.tex
-(C:\Users\Ivan\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkvutils.tex
+(C:\Users\2raph\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkeyval.tex
+(C:\Users\2raph\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkvutils.tex
 \XKV@toks=\toks21
 \XKV@tempa@toks=\toks22
 )
-\XKV@depth=\count271
+\XKV@depth=\count272
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
-)) (C:\Users\Ivan\AppData\Local\Programs\MiKTeX\tex/latex/fmtcount\fcprefix.sty
+))
+(C:\Users\2raph\AppData\Local\Programs\MiKTeX\tex/latex/fmtcount\fcprefix.sty
 Package: fcprefix 2012/09/28
 
-(C:\Users\Ivan\AppData\Local\Programs\MiKTeX\tex/latex/fmtcount\fcnumparser.sty
+(C:\Users\2raph\AppData\Local\Programs\MiKTeX\tex/latex/fmtcount\fcnumparser.st
+y
 Package: fcnumparser 2017/06/15
-\fc@digit@counter=\count272
-)) (C:\Users\Ivan\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty
+\fc@digit@counter=\count273
+)) (C:\Users\2raph\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks23
 \ex@=\dimen153
 )
-\c@padzeroesN=\count273
-\fc@tmpcatcode=\count274
-
-(C:\Users\Ivan\AppData\Local\Programs\MiKTeX\tex/latex/fmtcount\fc-french.def
+\c@padzeroesN=\count274
+\fc@tmpcatcode=\count275
+(C:\Users\2raph\AppData\Local\Programs\MiKTeX\tex/latex/fmtcount\fc-french.def
 File: fc-french.def 2020/02/24
 )
-\@DT@modctr=\count275
-\@ordinalctr=\count276
-\@orgargctr=\count277
-\@strctr=\count278
-\@tmpstrctr=\count279
-\@DT@loopN=\count280
-\@DT@X=\count281
+\@DT@modctr=\count276
+\@ordinalctr=\count277
+\@orgargctr=\count278
+\@strctr=\count279
+\@tmpstrctr=\count280
+\@DT@loopN=\count281
+\@DT@X=\count282
 )
-(C:\Users\Ivan\AppData\Local\Programs\MiKTeX\tex/latex/datetime\datetime-defaul
-ts.sty
+(C:\Users\2raph\AppData\Local\Programs\MiKTeX\tex/latex/datetime\datetime-defau
+lts.sty
 Package: datetime-defaults 2013/09/10
 )
-\@day=\count282
-\@month=\count283
-\@year=\count284
-\c@HOUR=\count285
-\c@HOURXII=\count286
-\c@MINUTE=\count287
-\c@TOHOUR=\count288
-\c@TOMINUTE=\count289
-\c@SECOND=\count290
-\currenthour=\count291
-\currentminute=\count292
-\currentsecond=\count293
+\@day=\count283
+\@month=\count284
+\@year=\count285
+\c@HOUR=\count286
+\c@HOURXII=\count287
+\c@MINUTE=\count288
+\c@TOHOUR=\count289
+\c@TOMINUTE=\count290
+\c@SECOND=\count291
+\currenthour=\count292
+\currentminute=\count293
+\currentsecond=\count294
 Package datetime Info: No datetime.cfg file found, using default settings on in
 put line 308.
-\@dtctr=\count294
-\dayofyear=\count295
-\dayofweek=\count296
+\@dtctr=\count295
+\dayofyear=\count296
+\dayofweek=\count297
 LaTeX Info: Redefining \today on input line 736.
 
-(C:\Users\Ivan\AppData\Local\Programs\MiKTeX\tex/latex/datetime\dt-french.def
+(C:\Users\2raph\AppData\Local\Programs\MiKTeX\tex/latex/datetime\dt-french.def
 File: dt-french.def 2013/09/10
 LaTeX Info: Redefining \datefrench on input line 91.
 )
 \dt@a=\toks24
 \dt@b=\toks25
-) (C:\Users\Ivan\AppData\Local\Programs\MiKTeX\tex/latex/enumitem\enumitem.sty
+) (C:\Users\2raph\AppData\Local\Programs\MiKTeX\tex/latex/enumitem\enumitem.sty
 Package: enumitem 2019/06/20 v3.9 Customized lists
 \labelindent=\skip51
 \enit@outerparindent=\dimen154
 \enit@toks=\toks26
 \enit@inbox=\box51
-\enit@count@id=\count297
-\enitdp@description=\count298
-)) (C:\Users\Ivan\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
+\enit@count@id=\count298
+\enitdp@description=\count299
+)) (C:\Users\2raph\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
 Package: xcolor 2023/11/15 v3.01 LaTeX color extensions (UK)
 
-(C:\Users\Ivan\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.cfg
+(C:\Users\2raph\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package xcolor Info: Driver file: pdftex.def on input line 274.
-
-(C:\Users\Ivan\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcolor.ltx)
+(C:\Users\2raph\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcolor.ltx)
 Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1350.
 Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1354.
 Package xcolor Info: Model `RGB' extended on input line 1366.
@@ -253,37 +253,15 @@ Package xcolor Info: Model `wave' substituted by `hsb' on input line 1373.
 )
 LaTeX Font Info:    Trying to load font information for T1+lmr on input line 12
 .
-(C:\Users\Ivan\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmr.fd
+ (C:\Users\2raph\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmr.fd
 File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-(C:\Users\Ivan\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdft
-ex.def
-File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count299
+(C:\Users\2raph\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdf
+tex.def
+File: l3backend-pdftex.def 2024-03-14 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count300
 \l__pdf_internal_box=\box52
-)
-(C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\rapport\output\mo
-dele_rapport_latex.aux
-(C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\rapport\output\so
-urces\0_frontpage.aux)
-(C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\rapport\output\so
-urces\1_presentation_sujet.aux)
-(C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\rapport\output\so
-urces\2_technologies_utilisees.aux)
-(C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\rapport\output\so
-urces\3_developpements_logiciel.aux)
-(C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\rapport\output\so
-urces\4_algorithmes_et_analyse.aux)
-(C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\rapport\output\so
-urces\5_analyse_des_resultats.aux)
-(C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\rapport\output\so
-urces\6_gestion_du_projet.aux)
-(C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\rapport\output\so
-urces\7_bilan_et_conclusions.aux)
-(C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\rapport\output\so
-urces\8_bibliographie.aux)
-(C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\rapport\output\so
-urces\9_annexes.aux))
+) (modele_rapport_latex.aux (sources/0_frontpage.aux))
 \openout1 = `modele_rapport_latex.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 12.
@@ -309,49 +287,48 @@ Package french.ldf Info: Setting StandardEnumerateEnv=true for
 (french.ldf)             reported on input line 12.
 LaTeX Info: Redefining \up on input line 12.
 
-(C:\Users\Ivan\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mki
-i
+(C:\Users\2raph\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
+ii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count300
+\scratchcounter=\count301
 \scratchdimen=\dimen155
 \scratchbox=\box53
-\nofMPsegments=\count301
-\nofMParguments=\count302
+\nofMPsegments=\count302
+\nofMParguments=\count303
 \everyMPshowfont=\toks27
-\MPscratchCnt=\count303
+\MPscratchCnt=\count304
 \MPscratchDim=\dimen156
-\MPnumerator=\count304
-\makeMPintoPDFobject=\count305
+\MPnumerator=\count305
+\makeMPintoPDFobject=\count306
 \everyMPtoPDFconversion=\toks28
 )
-(C:\Users\Ivan\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-ba
-se.sty
+(C:\Users\2raph\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-b
+ase.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 
-(C:\Users\Ivan\AppData\Local\Programs\MiKTeX\tex/generic/infwarerr\infwarerr.st
-y
+(C:\Users\2raph\AppData\Local\Programs\MiKTeX\tex/generic/infwarerr\infwarerr.s
+ty
 Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
-) (C:\Users\Ivan\AppData\Local\Programs\MiKTeX\tex/latex/grfext\grfext.sty
+) (C:\Users\2raph\AppData\Local\Programs\MiKTeX\tex/latex/grfext\grfext.sty
 Package: grfext 2019/12/03 v1.3 Manage graphics extensions (HO)
 
-(C:\Users\Ivan\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys\kvdefinek
-eys.sty
+(C:\Users\2raph\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys\kvdefine
+keys.sty
 Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
 ))
-(C:\Users\Ivan\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions.sty
+(C:\Users\2raph\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions.sty
 Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
-
-(C:\Users\Ivan\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxcmds.sty
+(C:\Users\2raph\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxcmds.sty
 Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
 )
-(C:\Users\Ivan\AppData\Local\Programs\MiKTeX\tex/latex/kvsetkeys\kvsetkeys.sty
+(C:\Users\2raph\AppData\Local\Programs\MiKTeX\tex/latex/kvsetkeys\kvsetkeys.sty
 Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
 ))
-(C:\Users\Ivan\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\pdftexcmds.
-sty
+(C:\Users\2raph\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\pdftexcmds
+.sty
 Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
 )
- (C:\Users\Ivan\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty
+ (C:\Users\2raph\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty
 Package: iftex 2022/02/03 v1.0f TeX engine tests
 )
 Package pdftexcmds Info: \pdf@primitive is available.
@@ -365,8 +342,8 @@ Package grfext Info: Graphics extension search list:
 G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 504.
 
-(C:\Users\Ivan\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.cf
-g
+(C:\Users\2raph\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.c
+fg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
 \openout2 = `./sources/0_frontpage.aux'.
@@ -385,41 +362,11 @@ LaTeX Font Warning: Font shape `T1/lmr/bx/sc' undefined
 [1
 
 
-{C:/Users/Ivan/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/Ivan/
-AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc} <./root/UM1.png>])
-(C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\rapport\output\mo
-dele_rapport_latex.toc
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 6
-.
-
-(C:\Users\Ivan\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmr.fd
-File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+{C:/Users/2raph/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/2rap
+h/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc} <./root/UM1.png>]
 )
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 6
-.
-
-(C:\Users\Ivan\AppData\Local\Programs\MiKTeX\tex/latex/lm\omllmm.fd
-File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)
-LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-6.
-
-(C:\Users\Ivan\AppData\Local\Programs\MiKTeX\tex/latex/lm\omslmsy.fd
-File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)
-LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-6.
-
-(C:\Users\Ivan\AppData\Local\Programs\MiKTeX\tex/latex/lm\omxlmex.fd
-File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 6.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 6.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 6.
-)
+(C:\Users\2raph\OneDrive\Bureau\Projet\hex-et-combinatoires\src\main\rapport\ou
+tput\modele_rapport_latex.toc)
 \tf@toc=\write3
 \openout3 = `modele_rapport_latex.toc'.
 
@@ -429,16 +376,15 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 ]
 \openout2 = `./sources/1_presentation_sujet.aux'.
 
-
-(sources/1_presentation_sujet.tex
+ (sources/1_presentation_sujet.tex
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 1
 6.
 
-(C:\Users\Ivan\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd
+(C:\Users\2raph\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )) [2
 
-{C:/Users/Ivan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}]
+{C:/Users/2raph/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}]
 \openout2 = `./sources/2_technologies_utilisees.aux'.
 
 
@@ -503,7 +449,37 @@ Package pdftex.def Info: root/MinMax.jpeg  used on input line 64.
 \openout2 = `./sources/9_annexes.aux'.
 
  (sources/9_annexes.tex
-<root/hex_jeu_bleu.png, id=45, 660.066pt x 398.08725pt>
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 3
+0.
+
+(C:\Users\2raph\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmr.fd
+File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 3
+0.
+
+(C:\Users\2raph\AppData\Local\Programs\MiKTeX\tex/latex/lm\omllmm.fd
+File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
+30.
+
+(C:\Users\2raph\AppData\Local\Programs\MiKTeX\tex/latex/lm\omslmsy.fd
+File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
+30.
+
+(C:\Users\2raph\AppData\Local\Programs\MiKTeX\tex/latex/lm\omxlmex.fd
+File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 30.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 30.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line 30.
+<root/hex_jeu_bleu.png, id=46, 660.066pt x 398.08725pt>
 File: root/hex_jeu_bleu.png Graphic file (type png)
 <use root/hex_jeu_bleu.png>
 Package pdftex.def Info: root/hex_jeu_bleu.png  used on input line 39.
@@ -512,34 +488,13 @@ Package pdftex.def Info: root/hex_jeu_bleu.png  used on input line 39.
 
 
 
-{C:/Users/Ivan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/U
-sers/Ivan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc} <./ro
-ot/hex_jeu_bleu.png>]) [12]
-(C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\rapport\output\mo
-dele_rapport_latex.aux
-(C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\rapport\output\so
-urces\0_frontpage.aux)
-(C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\rapport\output\so
-urces\1_presentation_sujet.aux)
-(C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\rapport\output\so
-urces\2_technologies_utilisees.aux)
-(C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\rapport\output\so
-urces\3_developpements_logiciel.aux)
-(C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\rapport\output\so
-urces\4_algorithmes_et_analyse.aux)
-(C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\rapport\output\so
-urces\5_analyse_des_resultats.aux)
-(C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\rapport\output\so
-urces\6_gestion_du_projet.aux)
-(C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\rapport\output\so
-urces\7_bilan_et_conclusions.aux)
-(C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\rapport\output\so
-urces\8_bibliographie.aux)
-(C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\rapport\output\so
-urces\9_annexes.aux))
+{C:/Users/2raph/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/
+Users/2raph/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc} <./
+root/hex_jeu_bleu.png>]) [12] (modele_rapport_latex.aux (sources/0_frontpage.au
+x))
  ***********
 LaTeX2e <2023-11-01> patch level 1
-L3 programming layer <2024-01-22>
+L3 programming layer <2024-03-14>
  ***********
 
 
@@ -547,24 +502,24 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 6720 strings out of 474542
- 124800 string characters out of 5744918
- 1933978 words of memory out of 5000000
- 28749 multiletter control sequences out of 15000+600000
- 604259 words of font info for 59 fonts, out of 8000000 for 9000
+ 6651 strings out of 474424
+ 119405 string characters out of 5741739
+ 1936496 words of memory out of 5000000
+ 28834 multiletter control sequences out of 15000+600000
+ 604624 words of font info for 60 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 77i,8n,82p,1182b,457s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/Ivan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb
-><C:/Users/Ivan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb>
-<C:/Users/Ivan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmcsc10.pfb>
-<C:/Users/Ivan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C
-:/Users/Ivan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr9.pfb><C:/U
-sers/Ivan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Us
-ers/Ivan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb>
-Output written on C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\
-rapport\output\modele_rapport_latex.pdf (13 pages, 444277 bytes).
+ 77i,8n,82p,1269b,457s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<C:/Users/2raph/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pf
+b><C:/Users/2raph/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pf
+b><C:/Users/2raph/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmcsc10.p
+fb><C:/Users/2raph/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pf
+b><C:/Users/2raph/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr9.pfb>
+<C:/Users/2raph/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb>
+<C:/Users/2raph/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb>
+Output written on C:\Users\2raph\OneDrive\Bureau\Projet\hex-et-combinatoires\sr
+c\main\rapport\output\modele_rapport_latex.pdf (13 pages, 446219 bytes).
 PDF statistics:
- 93 PDF objects out of 1000 (max. 8388607)
+ 96 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  16 words of extra memory for PDF output out of 10000 (max. 10000000)
 
