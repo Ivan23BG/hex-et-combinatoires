@@ -9,6 +9,7 @@
 \contentsline {subsection}{\numberline {4.2}MinMax}{5}{}%
 \contentsline {paragraph}{Présentation}{5}{}%
 \contentsline {paragraph}{MinMax - fonctionnement succinct}{5}{}%
+\contentsline {paragraph}{Élagage alpha-bêta}{6}{}%
 \contentsline {section}{\numberline {5}Algo MinMax observations}{7}{}%
 \contentsline {section}{\numberline {6}Algo MinMax observations}{7}{}%
 \contentsline {subsection}{\numberline {6.1}Hexgame : Mauvaise performance}{7}{}%
