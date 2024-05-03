@@ -62,3 +62,12 @@ une fonction d'évaluation estime une valeur heuristique pour le nœud. La quali
 qualité et la précision du résultat final de minimax.
 
 \includegraphics[width=0.4\textwidth]{root/MinMax.jpeg}
+
+\paragraph{Élagage alpha-bêta}
+L'algorithme minimax effectue une exploration complète de l'arbre de recherche jusqu'à un niveau donné. L'élagage alpha-beta permet d'optimiser 
+l'algorithme minimax sans en modifier le résultat. Pour cela, il ne réalise qu'une exploration
+partielle de l'arbre. En effet on observe que il n'est pas utile d'explorer les sous arbres qui conduisent a des valeurs
+qui ne participerons pas au calcul du gain de la racine de l'arbre. (voir exemple ci dessou :)
+
+%faire un exemple pour le alpha beta (voir wikipedia)
+
