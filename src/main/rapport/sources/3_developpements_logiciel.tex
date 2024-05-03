@@ -1,22 +1,72 @@
 \section{Développements Logiciel: Conception, Modélisation, Implémentation} 
 
 % présenter les développements logiciel réalisés dans le cadre du projet
-
+Pour la réalisation de ce projet, nous avons développé un logiciel qui permet de jouer
+aux jeux de stratégie combinatoire abstraits du Hex et de l'Awalé. Ce logiciel est
+composé de plusieurs modules, dont les principaux sont les suivants:
 
 % présenter les principaux modules du logiciel développé dans le cadre du projet
 % Utiliser le langage UML pour la modélisation : donner le diagramme de cas
 % d'utilisation et le diagramme des classes
+\begin{itemize}
+    \item \textbf{Module Hex:} Ce module contient les classes et les fonctions nécessaires
+    pour jouer au jeu de Hex. Il contient notamment la classe \texttt{HexBoard} qui 
+    représente le plateau de jeu et les joueurs du jeu de Hex. Ce module contient également 
+    les fonctions pour l'implémentation de l'algorithme Minimax avec élagage alpha-bêta pour 
+    la résolution du jeu de Hex.
+    
+    \item \textbf{Module Awalé:} Ce module contient les classes et les fonctions nécessaires
+    pour jouer au jeu de l'Awalé. Il contient la classe \texttt{AwaleBoard} qui représente le
+    plateau de jeu et les joueurs du jeu de l'Awalé. Ce module contient également les fonctions
+    pour l'implémentation de l'algorithme de Dijsktra pour la résolution du jeu de l'Awalé.
+    
+    \item \textbf{Module Interface Graphique:} Ce module contient les fichiers HTML, CSS et
+    JavaScript nécessaires pour l'implémentation de l'interface graphique des jeux de Hex et
+    d'Awalé. Il contient notamment les fichiers \texttt{home.html}, \texttt{hex.html} et
+    \texttt{awale.html} qui permettent à l'utilisateur de choisir le jeu auquel il veut jouer
+    et les paramètres de la partie. Il contient également des fichiers JavaScript pour la
+    gestion des événements et des interactions avec l'utilisateur.
+    
+    \item \textbf{Module Tests:} Ce module contient les fichiers de tests unitaires pour les
+    classes et les fonctions des modules Hex et Awalé. Il contient notamment les fichiers
+    \texttt{test\_hex.py} et \texttt{test\_awale.py}, qui permettent de tester les classes
+    et les fonctions des modules Hex et Awalé. ***TODO: Ajouter les tests unitaires***
+\end{itemize}
 
 
-% décrire les fonctionnalités de l'inteface graphique implémentée (si votre 
+% décrire les fonctionnalités de l'interface graphique implémentée (si votre 
 % logiciel dispose d'une interface graphique)
-
+L'interface graphique de notre logiciel comprend une page d'accueil qui permet à l'utilisateur
+de choisir le jeu auquel il veut jouer (Hex ou Awalé), une page principale pour chaque jeu
+qui permet à l'utilisateur de choisir les paramètres de la partie (taille du plateau (pour Hex),
+mode de jeu (joueur contre joueur, joueur contre ordinateur, ordinateur contre ordinateur),
+niveau de difficulté (pour l'ordinateur), etc.), et une page de jeu qui permet à l'utilisateur
+de jouer au jeu choisi. L'interface graphique est implémentée en HTML, CSS et JavaScript, et
+elle communique avec les modules Hex et Awalé via des appels de fonctions JavaScript à des
+fonctions Python via des requêtes json et le module Flask.
 
 % présenter les principales structures de données définies dans le cadre du
 % projet. Décrire le format des données en entrée ou encore les conventions
 % utilisées pour les entrées de vos programmes. Décrire les procédures de
 % lecture et validation des entrées.
+Les principales structures de données définies dans le cadre de ce projet sont les classes
+\texttt{HexBoard} et \texttt{AwaleBoard} qui représentent les plateaux de jeu du Hex et de
+l'Awalé, respectivement. Ces classes contiennent les attributs et les méthodes nécessaires
+pour représenter les plateaux de jeu et les joueurs, et pour effectuer les opérations de jeu
+(placement de pions, déplacement de pions, etc.). Les données en entrée des programmes sont
+sous forme de chaînes de caractères qui représentent les paramètres de la partie (taille du
+plateau, mode de jeu, niveau de difficulté, etc.). Les procédures de lecture et de validation
+des entrées sont effectuées par les fonctions des modules Hex et Awalé qui vérifient que les
+paramètres de la partie sont valides avant de commencer la partie.
 
 
 % Statistiques : nombre de modules/composantes/classes/scripts développés.
 % Nombre de lignes de code.
+Voici quelques statistiques sur le logiciel développé dans le cadre de ce projet:
+\begin{itemize}
+    \item Nombre de modules (sans les tests): 39
+    \item Nombre de classes: 11 (principalement dans les modules Hex et Awalé)
+    \item Nombre de fonctions: 68 (en Python) et 99 (en JavaScript) pour 167 en tout
+    \item Nombre de lignes de code: 1405 (en Python), 2008 (en JavaScript), 553 (en HTML), 1331 (en CSS)
+    et 480 (en \LaTeX) pour un total de 5777 lignes de code
+\end{itemize}

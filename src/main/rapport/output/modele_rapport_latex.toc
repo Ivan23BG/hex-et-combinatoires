@@ -1,0 +1,24 @@
+\babel@toc {french}{}\relax 
+\contentsline {section}{\numberline {1}Présentation du sujet}{2}{}%
+\contentsline {section}{\numberline {2}Technologies utilisées}{3}{}%
+\contentsline {section}{\numberline {3}Développements Logiciel: Conception, Modélisation, Implémentation}{4}{}%
+\contentsline {section}{\numberline {4}Moteur de jeux combinatoires abstrait}{5}{}%
+\contentsline {subsection}{\numberline {4.1}La recherche arborescente Monte-Carlo}{5}{}%
+\contentsline {paragraph}{Présentation}{5}{}%
+\contentsline {paragraph}{MCTS - fonctionnement succinct}{5}{}%
+\contentsline {subsection}{\numberline {4.2}MinMax}{5}{}%
+\contentsline {paragraph}{Présentation}{5}{}%
+\contentsline {paragraph}{MinMax - fonctionnement succinct}{5}{}%
+\contentsline {section}{\numberline {5}Algo MinMax observations}{7}{}%
+\contentsline {section}{\numberline {6}Algo MinMax observations}{7}{}%
+\contentsline {subsection}{\numberline {6.1}Hexgame : Mauvaise performance}{7}{}%
+\contentsline {paragraph}{Trop grande complexité}{7}{}%
+\contentsline {paragraph}{Fonction d'evaluation : casse tête}{7}{}%
+\contentsline {subsection}{\numberline {6.2}Awale : Bonne performance}{7}{}%
+\contentsline {paragraph}{tout le contraire du hex:}{7}{}%
+\contentsline {paragraph}{Conclusion}{7}{}%
+\contentsline {section}{\numberline {7}Gestion du Projet}{8}{}%
+\contentsline {section}{\numberline {8}Bilan et Conclusions}{9}{}%
+\contentsline {section}{\numberline {9}Bibliographie}{10}{}%
+\contentsline {section}{\numberline {10}Annexes}{11}{}%
+\contentsline {subsection}{\numberline {10.1}Annexe I : Cahier des charges}{11}{}%

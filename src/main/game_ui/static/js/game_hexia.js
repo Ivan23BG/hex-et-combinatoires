@@ -373,8 +373,8 @@ window.onload = async function () {
             }
             // Enlève le hover si on quitte un hex ni en couleur ni disabled
             else if (event.type === "mouseout" && game_over===false && element.getAttribute("nimp") && !element.getAttribute('disabled')){
-               element.style.backgroundColor = "#ADBBC6";
-               element.removeAttribute("nimp");
+                element.style.backgroundColor = "#ADBBC6";
+                element.removeAttribute("nimp");
             }
         }
     }
