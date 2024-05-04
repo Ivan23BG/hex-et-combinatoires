@@ -17,9 +17,9 @@
 Pour répondre aux attentes de notre projet, nous avons décidé de développer une application web sur laquelle 
 nous pourrions jouer au jeu du Hex et de l'Awalé.
 
-Pour chaque jeu nous devons implémenter les règles officielles afin d'assurer une cohérence
+Pour chaque jeu, nous devons implémenter les règles officielles afin d'assurer une cohérence
 entre tous les joueurs. De plus, nous voulons fournir une interface graphique agréable pour l'utilisateur. 
-Cela comprend donc une page d'accueil intuitive ainsi que des plateaux de jeu faciles d'utilisation.
+Cela comprend donc une page d'accueil intuitive ainsi que des plateaux de jeux faciles d'utilisation.
 
 \subsubsection*{Description des jeux:}
 \begin{itemize}
@@ -30,7 +30,7 @@ Cela comprend donc une page d'accueil intuitive ainsi que des plateaux de jeu fa
     du plateau peut varier, mais est généralement de $11\times 11$. Deux côtés opposés du losange sont bleus, les deux 
     autres sont rouges. 
 
-    Le joueur bleu commence. Les joueurs jouent chacun à leur tour. A chaque tour, un joueur place un pion de sa couleur sur une 
+    Le joueur bleu commence. Les joueurs jouent chacun à leur tour. À chaque tour, un joueur place un pion de sa couleur sur une 
     case libre du plateau. Le premier joueur qui réussit à relier ses deux bords par un chemin de pions contigus de sa couleur
     a gagné. Il ne peut y avoir qu'un pion par case. Les pions posés le sont définitivement, ils ne peuvent être ni retirés, ni
     déplacés.\\
@@ -38,14 +38,14 @@ Cela comprend donc une page d'accueil intuitive ainsi que des plateaux de jeu fa
         \begin{center}
             \includegraphics[scale=0.5]{root/hex_jeu_bleu}
         \end{center}
-        \caption{Ici bleu a gagné, en reliant ses deux bords.}\label{fig:hex_jeu_bleu}
+        \caption{Ici bleu a gagné, ses deux bords sont reliés.}\label{fig:hex_jeu_bleu}
     \end{figure}
     
 
     \item Awalé:
     
     L'Awalé est un jeu de stratégie à deux joueurs. Il se compose d'un plateau et de graines. Au début de la partie, 4 graines se 
-    situent dans chaque cases du plateau. Les joueurs jouent à tour de rôle. A chaque tour, le joueur prend toutes les graines d’un 
+    situent dans chaque case du plateau. Les joueurs jouent à tour de rôle. À chaque tour, le joueur prend toutes les graines d’un 
     des trous de son camp puis il les égrène une par une dans toutes les cases qui suivent sur sa rangée puis sur celle de son adversaire 
     suivant le sens de rotation (une graine dans chaque trou après celui où il a récupéré les graines).
 
@@ -77,9 +77,9 @@ Cela comprend donc une page d'accueil intuitive ainsi que des plateaux de jeu fa
 
 \subsection*{Interface utilisateur:}
 L'application s'ouvrira sur une page d'accueil sur laquelle nous pourrons choisir le jeu auquel nous souhaitons jouer.
-Pour chaque jeu nous pourrons trouver une page home nous permettant de selectionner le mode de jeu que nous voulons
+Pour chaque jeu, nous pourrons trouver une page home nous permettant de sélectionner le mode de jeu que nous voulons
 choisir. Nous retrouverons alors pour les deux jeux les modes joueur contre joueur, joueur contre IA et IA contre IA.
 
 De nombreux boutons de couleur bleus seront mis en place afin de naviguer entre toutes les pages de l'application. D'autres
-boutons plus petit seront disponibles. Ils permettront pendant les diverses parties de réinitialiser le plateau de jeu, ou de défaire 
+boutons plus petits seront disponibles. Ils permettront pendant les diverses parties de réinitialiser le plateau de jeu, ou de défaire 
 notre dernier coup dans les modes de jeu joueur contre joueur et joueur contre IA.

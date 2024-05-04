@@ -262,6 +262,16 @@ INPUT .\sources\5_analyse_des_resultats.tex
 INPUT .\sources\5_analyse_des_resultats.tex
 INPUT sources\5_analyse_des_resultats.tex
 INPUT C:\Users\Raphael\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ts1-lmr10.tfm
+INPUT .\root\pont.png
+INPUT .\root\pont.png
+INPUT .\root\pont.png
+INPUT .\root\pont.png
+INPUT .\root\pont.png
+INPUT .\root\pont.png
+INPUT .\root\pont.png
+INPUT C:\Users\Raphael\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmr8.tfm
+INPUT C:\Users\Raphael\AppData\Local\Programs\MiKTeX\fonts\enc\dvips\lm\lm-rm.enc
+INPUT C:\Users\Raphael\AppData\Local\Programs\MiKTeX\fonts\enc\dvips\lm\lm-mathsy.enc
 INPUT .\sources\6_gestion_du_projet.tex
 INPUT .\sources\6_gestion_du_projet.tex
 OUTPUT .\sources\6_gestion_du_projet.aux
@@ -292,8 +302,6 @@ INPUT .\root\hex_jeu_bleu.png
 INPUT .\root\hex_jeu_bleu.png
 INPUT .\root\hex_jeu_bleu.png
 INPUT .\root\hex_jeu_bleu.png
-INPUT C:\Users\Raphael\AppData\Local\Programs\MiKTeX\fonts\enc\dvips\lm\lm-rm.enc
-INPUT C:\Users\Raphael\AppData\Local\Programs\MiKTeX\fonts\enc\dvips\lm\lm-mathsy.enc
 INPUT modele_rapport_latex.aux
 INPUT .\sources\0_frontpage.aux
 INPUT .\sources\0_frontpage.aux
@@ -337,6 +345,8 @@ INPUT C:\Users\Raphael\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmr10
 INPUT C:\Users\Raphael\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmr10.pfb
 INPUT C:\Users\Raphael\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmr7.pfb
 INPUT C:\Users\Raphael\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmr7.pfb
+INPUT C:\Users\Raphael\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmr8.pfb
+INPUT C:\Users\Raphael\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmr8.pfb
 INPUT C:\Users\Raphael\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmr9.pfb
 INPUT C:\Users\Raphael\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmr9.pfb
 INPUT C:\Users\Raphael\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmri10.pfb
