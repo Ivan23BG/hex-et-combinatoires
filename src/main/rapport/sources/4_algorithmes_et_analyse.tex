@@ -61,13 +61,38 @@ plus favorables pour le joueur minimisant. Les valeurs heuristiques pour les nœ
 une fonction d'évaluation estime une valeur heuristique pour le nœud. La qualité de cette estimation et la profondeur de recherche déterminent la 
 qualité et la précision du résultat final de minimax.
 
-\includegraphics[width=0.4\textwidth]{root/MinMax.jpeg}
+
+\begin{figure}[h]
+    \begin{center}
+        \includegraphics[width=0.4\textwidth]{root/MinMax.jpeg}
+    \end{center}
+    \caption{Ici le joueur bleu cherche à maximiser ses gains avec une profondeur 4.}\label{fig:min_max}
+\end{figure}
+
 
 \paragraph{Élagage alpha-bêta}
 L'algorithme minimax effectue une exploration complète de l'arbre de recherche jusqu'à un niveau donné. L'élagage alpha-beta permet d'optimiser 
 l'algorithme minimax sans en modifier le résultat. Pour cela, il ne réalise qu'une exploration
-partielle de l'arbre. En effet on observe que il n'est pas utile d'explorer les sous arbres qui conduisent a des valeurs
-qui ne participerons pas au calcul du gain de la racine de l'arbre. (voir exemple ci dessou :)
+partielle de l'arbre. En effet on observe qu'il n'est pas utile d'explorer les sous arbres qui conduisent à des valeurs
+qui ne participeront pas au calcul du gain de la racine de l'arbre. Dit autrement, l'élagage alpha beta n'évalue pas des nœuds dont on peut penser, 
+si la fonction d'évaluation est à peu près correcte, que leur qualité sera inférieure à celle d'un nœud déjà évalué.
 
-%faire un exemple pour le alpha beta (voir wikipedia)
+\begin{figure}[h]
+    \begin{center}
+        \includegraphics[width=0.5\textwidth]{root/minmax_alpha_beta.png}
+    \end{center}
+    \caption{Minmax avec élagage $\alpha$-$\beta$.}\label{fig:min_max_alpha_beta}
+\end{figure}
+
+
+Plusieurs coupures ont pu être réalisées. De gauche à droite :
+\begin{enumerate}
+    \item Le nœud MIN vient de mettre à jour sa valeur courante à 4. Celle-ci, qui ne peut que baisser, est déjà inférieure à $\alpha$=5, 
+    la valeur actuelle du nœud MAX précédent. Celui-ci cherchant la valeur la plus grande possible, ne la choisira donc de toute façon pas.
+    \item Le nœud MIN vient de mettre à jour sa valeur courante à 6. Celle-ci, qui ne peut que baisser, est déjà égale à $\alpha$=6, la valeur 
+    actuelle du nœud MAX précédent. Celui-ci cherchant une valeur supérieure, il ne mettra de toute façon pas à jour sa valeur que ce nœud 
+    vaille 6 ou moins.
+    \item Le nœud MIN vient de mettre à jour sa valeur courante à 5. Celle-ci, qui ne peut que baisser, est déjà inférieure à $\alpha$=6, la valeur 
+    actuelle du nœud MAX précédent. Celui-ci cherchant la valeur la plus grande possible, ne la choisira donc de toute façon pas.
+\end{enumerate}
 
