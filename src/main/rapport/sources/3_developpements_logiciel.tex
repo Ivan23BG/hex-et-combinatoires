@@ -1,6 +1,6 @@
 \section{Développements Logiciel: Conception, Modélisation, Implémentation} 
 \subsection{Description des modules utilisés}
-% présenter les développements logiciel réalisés dans le cadre du projet
+% présenter les développements logiciels réalisés dans le cadre du projet
 Pour la réalisation de ce projet, nous avons développé un logiciel qui permet de jouer
 aux jeux de stratégie combinatoire abstraits du Hex et de l'Awalé. Ce logiciel est
 composé de plusieurs modules, dont les principaux sont les suivants:
@@ -61,28 +61,28 @@ plateau, mode de jeu, niveau de difficulté, etc.). Les procédures de lecture e
 des entrées sont effectuées par les fonctions des modules Hex et Awalé qui vérifient que les
 paramètres de la partie sont valides avant de commencer la partie.
 
-\subsection{Intération entre fichiers}
-% Explication de l'intéraction entre les fichiers pendant une partie
-Les fichiers de l'applications intéragissent entre eux de la même façon lors d'une partie de Hex ou 
-d'Awalé. Le fichier \texttt{app.py} éberge l'application flask et gère l'intéraction entre le frontend et le 
+\subsection{Interaction entre fichiers}
+% Explication de l'interaction entre les fichiers pendant une partie
+Les fichiers de l'application interagissent entre eux de la même façon lors d'une partie de Hex ou 
+d'Awalé. Le fichier \texttt{app.py} héberge l'application flask et gère l'interaction entre le frontend et le 
 backend.
 
 \paragraph{Initialisation de la partie}
 La sélection du jeu et des paramètres de la partie se fait dans le fichier \texttt{home\_hex.html}
 (respectivement \texttt{home\_awale.html} pour l'Awalé). Ces informations seront envoyées au fichier \texttt{app.py}
-lors de l'appuie sur l'un des boutons de lancement de partie. Le bouton sélectionné appelera dans le fichier \texttt{app.py} la 
+lors de l'appui sur l'un des boutons de lancement de partie. Le bouton sélectionné appellera dans le fichier \texttt{app.py} la 
 fonction adéquate renvoyant la page html correspondant aux choix fait par le(s) joueur(s). En parallèle, une instance du plateau de
 jeu désiré sera créée dans l'\texttt{app.py}. 
 
 \paragraph{Déroulement d'une partie}
 Lorsqu'une partie est jouée, l'information des pièces placées au Hex, ou des graines déplacées à l'Awalé est récupérée par
-le fichier JavaScript adapté (par exemple \texttt{game\_hexia.js} si la partie est une partie de Hex joueur contre ordinateur, ou encore 
+le fichier JavaScript adapté (par exemple \texttt{game\_hexia.js} si la partie est une partie de Hex joueur contre l'ordinateur, ou encore 
 \texttt{game\_awale.js} si la partie est une partie d'Awalé joueur contre joueur). Cette information est gérée par le capteur d'événements
 hex.onclick pour le Hex et pit.onclick pour l'Awalé. Si un tel événement est entendu, le fichier JavaScript correspondant envoie une requête 
-json au fichier \texttt{app.py} afin de savoir si le coup est valide. La validité du coup est géré par une fonction appelée dans la classe du
+json au fichier \texttt{app.py} afin de savoir si le coup est valide. La validité du coup est gérée par une fonction appelée dans la classe du
 plateau de jeu adéquat. Si le coup est valide, alors celui-ci est joué et rajouté à l'instance du plateau de jeu, et est renvoyé au fichier 
 JavaScript qui va s'occuper du nouvel affichage graphique (En modifiant le CSS ou le html). Si une erreur est attrapée, elle est renvoyée
-au fichier JavaScript qu'il va gérer en affichant une alerte sur l'écran du joueur indiquant la non validité du coup. Lors du placement de chaque
+au fichier JavaScript qu'il va gérer en affichant une alerte sur l'écran du joueur indiquant la non-validité du coup. Lors du placement de chaque
 hex (déplacement de graines pour l'Awalé), la fonction \textit{check\_winner} de la classe du plateau est appelée afin de vérifier si un joueur à 
 gagné. Si c'est le cas, alors la fonction questionnée par la requête json renvoie la variable \textsf{game\_over} égale à \textbf{True}. 
 En récupérant cette variable, le fichier JavaScript va pouvoir procéder à une animation indiquant au(x) joueur(s) que la partie est terminée.
@@ -99,8 +99,8 @@ En récupérant cette variable, le fichier JavaScript va pouvoir procéder à un
 Voici quelques statistiques sur le logiciel développé dans le cadre de ce projet:
 \begin{itemize}
     \item Nombre de modules (sans les tests): 39
-    \item Nombre de classes: 11 (principalement dans les modules Hex et Awalé)
-    \item Nombre de fonctions: 68 (en Python) et 99 (en JavaScript) pour 167 en tout
-    \item Nombre de lignes de code: 1405 (en Python), 2008 (en JavaScript), 553 (en HTML), 1331 (en CSS)
-    et 480 (en \LaTeX) pour un total de 5777 lignes de code
+    \item Nombre de classes : 11 (principalement dans les modules Hex et Awalé)
+    \item Nombre de fonctions : 68 (en Python) et 99 (en JavaScript) pour 167 en tout
+    \item Nombre de lignes de code : 1 405 (en Python), 2008 (en JavaScript), 553 (en HTML), 1 331 (en CSS)
+    et 480 (en \LaTeX) pour un total de 5 777 lignes de code
 \end{itemize}
