@@ -1,10 +1,10 @@
-\section{HexGame et stratégie gagnante}
+\subsection{HexGame et stratégie gagnante}
 
 Au Hex, pour toutes les tailles de plateaux, il existe une stratégie gagnante théorique pour le joueur qui commence.
 Celle-ci n'est pas connue pour la plupart des tailles de plateaux, en effet elle demande une connaissance totale de toutes  
 les parties possible ce qui n'est pas calculable en temps réaliste.
 
-\paragraph{Stratégies gagnantes et arbre du jeu}
+\subsubsection{Stratégies gagnantes et arbre du jeu}
 Modélisons le jeu de Hex à l'aide d'un arbre représentant toutes les parties possibles. L'arbre commence avec la position 
 initiale, un plateau vide. De cette racine partent autant de branches qu'il y a de premiers coups. Ainsi, pour un plateau de
 taille $2\times2$, on va retrouver 3 nœuds fils. Nous réitérons l'action à partir de chaque nœuds fils en leur rajoutant des branches vers
@@ -31,8 +31,8 @@ aux noirs de jouer. De cette manière, nous sommes assurés de remplir l'arbre e
 une couleur. Ainsi, le premier joueur possède une stratégie gagnante.
 
 
-\paragraph {Remarque:}
+\paragraph{Remarque:}
 Pour un plateau de dimension $2\times2$, l'arbre possède un total de 24 feuilles et 52 branches.
 il est calculé que pour le Hex a 11*11 la Game-tree complexity ou le nombre de feuilles de l'arbre est
-approximativement 10^98 et le nombre de positions totales que peut prendre le jeu est de 2.4*10^56 contre
-4.2*10^56
+approximativement $10^{98}$ et le nombre de positions totales que peut prendre le jeu est de $2.4*10^{56}$ contre
+$4.2*10^{56}$
