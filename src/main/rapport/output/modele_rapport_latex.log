@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.2.13)  6 MAY 2024 14:01
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.2.13)  6 MAY 2024 15:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -581,21 +581,21 @@ LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 1
 
 (C:\Users\Ivan\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)
-LaTeX Font Info:    Trying to load font information for T1+lmss on input line 8
-7.
-
-(C:\Users\Ivan\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmss.fd
-File: t1lmss.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) [4
 
 
 
-])
-[5]
+]
+LaTeX Font Info:    Trying to load font information for T1+lmss on input line 9
+1.
+
+(C:\Users\Ivan\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmss.fd
+File: t1lmss.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)) [5]
 \openout2 = `./sources/4_algorithmes_et_analyse.aux'.
 
- (sources/4_algorithmes_et_analyse.tex
+
+(sources/4_algorithmes_et_analyse.tex
 <root/MinMax.jpeg, id=144, 733.74126pt x 362.35374pt>
 File: root/MinMax.jpeg Graphic file (type jpg)
 <use root/MinMax.jpeg>
@@ -746,7 +746,7 @@ Package rerunfilecheck Info: File `modele_rapport_latex.out' has not changed.
 Here is how much of TeX's memory you used:
  13017 strings out of 474542
  224794 string characters out of 5744918
- 1936978 words of memory out of 5000000
+ 1935978 words of memory out of 5000000
  34882 multiletter control sequences out of 15000+600000
  613697 words of font info for 64 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -764,7 +764,7 @@ n/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss10.pfb><C:/Users/Ivan
 /AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/Ivan/
 AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb>
 Output written on C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\
-rapport\output\modele_rapport_latex.pdf (17 pages, 827990 bytes).
+rapport\output\modele_rapport_latex.pdf (17 pages, 828529 bytes).
 PDF statistics:
  321 PDF objects out of 1000 (max. 8388607)
  70 named destinations out of 1000 (max. 500000)

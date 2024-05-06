@@ -6,7 +6,7 @@
 \contentsline {paragraph}{Fonctionnalités de l'interface graphique}{4}{section*.2}%
 \contentsline {paragraph}{Structures de données}{4}{section*.3}%
 \contentsline {subsection}{\numberline {3.2}Interaction entre fichiers}{4}{subsection.3.2}%
-\contentsline {paragraph}{Initialisation de la partie}{4}{section*.4}%
+\contentsline {paragraph}{Initialisation de la partie}{5}{section*.4}%
 \contentsline {paragraph}{Déroulement d'une partie}{5}{section*.5}%
 \contentsline {paragraph}{Statistiques}{5}{section*.6}%
 \contentsline {section}{\numberline {4}Moteur de jeux combinatoires abstraits}{6}{section.4}%
