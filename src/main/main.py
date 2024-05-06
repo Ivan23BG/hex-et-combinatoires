@@ -1,7 +1,7 @@
 # main.py
 #vous etes sur la branche de Ibrahim (Creation de plusieurs function d'evaluatoin et de les tester)
 # import the HexBoard class from hexboard.py
-from hexgame.board.hexboard import HexBoard
+from game_logic.hexgame.board.hexboard import HexBoard
 
 # ask player for board size
 size = int(input("Enter the size of the board: "))
@@ -80,8 +80,8 @@ elif mode == "2":
         print("PC's turn")
 
         #give me the evaluation of the board
-        print(game_board.evaluate_hex(2))
-        print("Dijkstra", game_board.shortest_path(1))
+        print("joueur 1", game_board.get_dijkstra_score(1))
+        print("joueur 2", game_board.get_dijkstra_score(2))
         # print(game_board.eval_dijkstra(1))
 
         # make a move using minimax algorithm and get_best_move method
