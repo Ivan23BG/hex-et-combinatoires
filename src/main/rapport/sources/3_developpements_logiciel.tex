@@ -30,7 +30,7 @@ composé de plusieurs modules, dont les principaux sont les suivants:
     \item \textbf{Module Tests:} Ce module contient les fichiers de tests unitaires pour les
     classes et les fonctions des modules Hex et Awalé. Il contient notamment les fichiers
     \texttt{test\_hex.py} et \texttt{test\_awale.py}, qui permettent de tester les classes
-    et les fonctions des modules Hex et Awalé. ***TODO: Ajouter les tests unitaires***
+    et les fonctions des modules Hex et Awalé.
 \end{itemize}
 
 
@@ -38,11 +38,15 @@ composé de plusieurs modules, dont les principaux sont les suivants:
 % logiciel dispose d'une interface graphique)
 \paragraph{Fonctionnalités de l'interface graphique}
 L'interface graphique de notre logiciel comprend une page d'accueil qui permet à l'utilisateur
-de choisir le jeu auquel il veut jouer (Hex ou Awalé), une page principale pour chaque jeu
+de choisir le jeu auquel il veut jouer (Hex ou Awalé), une page principale (home) pour chaque jeu
 qui permet à l'utilisateur de choisir les paramètres de la partie (taille du plateau (pour Hex),
 mode de jeu (joueur contre joueur, joueur contre ordinateur, ordinateur contre ordinateur),
-niveau de difficulté (pour l'ordinateur), etc.), et une page de jeu qui permet à l'utilisateur
-de jouer au jeu choisi. L'interface graphique est implémentée en HTML, CSS et JavaScript, et
+(pour l'ordinateur), etc.) la page home permet aussi de consulter les regles du jeu que nous avons choisi.
+Ensuine nous sommes dirigés vrs la page du jeu ou nous pouvons jouer direcement en cliquant sur la page.
+Sur les 2 jeu il est possible de previsualiser le prochain coup garce a des fonctions "hover" quand la souris passe
+au dessu de cerains elements.
+Sur le Hex il est possible de changer le theme graphique de la page avec la touche "H" cela change la page css chargée dans le navigateur.
+L'interface graphique est implémentée en HTML, CSS et JavaScript, et
 elle communique avec les modules Hex et Awalé via des appels de fonctions JavaScript à des
 fonctions Python via des requêtes json et le module Flask.
 
@@ -57,7 +61,7 @@ l'Awalé, respectivement. Ces classes contiennent les attributs et les méthodes
 pour représenter les plateaux de jeu et les joueurs, et pour effectuer les opérations de jeu
 (placement de pions, déplacement de pions, etc.). Les données en entrée des programmes sont
 sous forme de chaînes de caractères qui représentent les paramètres de la partie (taille du
-plateau, mode de jeu, niveau de difficulté, etc.). Les procédures de lecture et de validation
+plateau, mode de jeu etc.). Les procédures de lecture et de validation
 des entrées sont effectuées par les fonctions des modules Hex et Awalé qui vérifient que les
 paramètres de la partie sont valides avant de commencer la partie.
 
