@@ -478,7 +478,7 @@ class HexBoard:
         #while time()-start_time < self.time_limit:
 
         if depth == 0 or self.check_winner() is not None:
-            return self.eval(player)((depth+1)*(depth+1)), None
+            return self.eval(player)*((depth+1)*(depth+1)), None
 
         if player == 1:  # Maximizing player
             best_score = float('-inf')
