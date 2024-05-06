@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.2.13)  3 MAY 2024 17:02
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.2.13)  6 MAY 2024 10:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -283,7 +283,9 @@ urces\7_bilan_et_conclusions.aux)
 (C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\rapport\output\so
 urces\8_bibliographie.aux)
 (C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\rapport\output\so
-urces\9_annexes.aux))
+urces\9_annexes.aux)
+(C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\rapport\output\so
+urces\annexes\9_1_strategie_gagnante_hex.aux))
 \openout1 = `modele_rapport_latex.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 12.
@@ -389,36 +391,36 @@ LaTeX Font Warning: Font shape `T1/lmr/bx/sc' undefined
 AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc} <./root/UM1.png>])
 (C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\rapport\output\mo
 dele_rapport_latex.toc
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 6
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 5
 .
 
 (C:\Users\Ivan\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 6
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 5
 .
 
 (C:\Users\Ivan\AppData\Local\Programs\MiKTeX\tex/latex/lm\omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-6.
+5.
 
 (C:\Users\Ivan\AppData\Local\Programs\MiKTeX\tex/latex/lm\omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-6.
+5.
 
 (C:\Users\Ivan\AppData\Local\Programs\MiKTeX\tex/latex/lm\omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 6.
+(Font)              <10> on input line 5.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 6.
+(Font)              <7> on input line 5.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 6.
+(Font)              <5> on input line 5.
 )
 \tf@toc=\write3
 \openout3 = `modele_rapport_latex.toc'.
@@ -456,44 +458,77 @@ LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 1
 
 (C:\Users\Ivan\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)) [4
+)
+LaTeX Font Info:    Trying to load font information for T1+lmss on input line 8
+7.
+
+(C:\Users\Ivan\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmss.fd
+File: t1lmss.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+) [4
+
+
+
+])
+[5]
+\openout2 = `./sources/4_algorithmes_et_analyse.aux'.
+
+ (sources/4_algorithmes_et_analyse.tex
+<root/MinMax.jpeg, id=31, 733.74126pt x 362.35374pt>
+File: root/MinMax.jpeg Graphic file (type jpg)
+<use root/MinMax.jpeg>
+Package pdftex.def Info: root/MinMax.jpeg  used on input line 67.
+(pdftex.def)             Requested size: 181.18439pt x 89.47687pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[6
 
 
 
 ]
-\openout2 = `./sources/4_algorithmes_et_analyse.aux'.
-
-
-(sources/4_algorithmes_et_analyse.tex
-<root/MinMax.jpeg, id=26, 733.74126pt x 362.35374pt>
-File: root/MinMax.jpeg Graphic file (type jpg)
-<use root/MinMax.jpeg>
-Package pdftex.def Info: root/MinMax.jpeg  used on input line 64.
-(pdftex.def)             Requested size: 181.18439pt x 89.47687pt.
- [5
-
-
-
-]) [6 <./root/MinMax.jpeg>]
+<root/minmax_alpha_beta.png, id=36, 652.68843pt x 328.22626pt>
+File: root/minmax_alpha_beta.png Graphic file (type png)
+<use root/minmax_alpha_beta.png>
+Package pdftex.def Info: root/minmax_alpha_beta.png  used on input line 82.
+(pdftex.def)             Requested size: 226.48395pt x 113.89426pt.
+) [7{C:/Users/Ivan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.e
+nc} <./root/MinMax.jpeg> <./root/minmax_alpha_beta.png>]
 \openout2 = `./sources/5_analyse_des_resultats.aux'.
 
 
-(sources/5_analyse_des_resultats.tex) [7
+(sources/5_analyse_des_resultats.tex
+<root/pont.png, id=43, 161.85469pt x 163.3603pt>
+File: root/pont.png Graphic file (type png)
+<use root/pont.png>
+Package pdftex.def Info: root/pont.png  used on input line 45.
+(pdftex.def)             Requested size: 80.92714pt x 81.67995pt.
+ [8
 
 
 
-]
+{C:/Users/Ivan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/U
+sers/Ivan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc} <./ro
+ot/pont.png>]) [9]
 \openout2 = `./sources/6_gestion_du_projet.aux'.
 
- (sources/6_gestion_du_projet.tex)
-[8
+
+(sources/6_gestion_du_projet.tex
+
+LaTeX Warning: Reference `annexe:gantt' on page 10 undefined on input line 17.
+
+
+LaTeX Warning: Reference `sec:evolution' on page 10 undefined on input line 23.
+
+
+) [10
 
 
 
 ]
 \openout2 = `./sources/7_bilan_et_conclusions.aux'.
 
- (sources/7_bilan_et_conclusions.tex) [9
+ (sources/7_bilan_et_conclusions.tex) [11
 
 
 
@@ -501,7 +536,7 @@ Package pdftex.def Info: root/MinMax.jpeg  used on input line 64.
 \openout2 = `./sources/8_bibliographie.aux'.
 
  (sources/8_bibliographie.tex)
-[10
+[12
 
 
 
@@ -509,18 +544,30 @@ Package pdftex.def Info: root/MinMax.jpeg  used on input line 64.
 \openout2 = `./sources/9_annexes.aux'.
 
  (sources/9_annexes.tex
-<root/hex_jeu_bleu.png, id=48, 660.066pt x 398.08725pt>
+<root/hex_jeu_bleu.png, id=65, 660.066pt x 398.08725pt>
 File: root/hex_jeu_bleu.png Graphic file (type png)
 <use root/hex_jeu_bleu.png>
 Package pdftex.def Info: root/hex_jeu_bleu.png  used on input line 39.
 (pdftex.def)             Requested size: 330.03218pt x 199.04314pt.
- [11
+ [13
 
 
 
-{C:/Users/Ivan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/U
-sers/Ivan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc} <./ro
-ot/hex_jeu_bleu.png>]) [12]
+ <./root/hex_jeu_bleu.png>]) [14]
+\openout2 = `./sources/annexes/9_1_strategie_gagnante_hex.aux'.
+
+
+(sources/annexes/9_1_strategie_gagnante_hex.tex
+<root/strategie_gagnante.png, id=73, 636.87938pt x 386.19281pt>
+File: root/strategie_gagnante.png Graphic file (type png)
+<use root/strategie_gagnante.png>
+Package pdftex.def Info: root/strategie_gagnante.png  used on input line 14.
+(pdftex.def)             Requested size: 181.18439pt x 109.86572pt.
+) [15
+
+
+
+ <./root/strategie_gagnante.png>]
 (C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\rapport\output\mo
 dele_rapport_latex.aux
 (C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\rapport\output\so
@@ -542,7 +589,9 @@ urces\7_bilan_et_conclusions.aux)
 (C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\rapport\output\so
 urces\8_bibliographie.aux)
 (C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\rapport\output\so
-urces\9_annexes.aux))
+urces\9_annexes.aux)
+(C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\rapport\output\so
+urces\annexes\9_1_strategie_gagnante_hex.aux))
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
@@ -551,28 +600,34 @@ L3 programming layer <2024-01-22>
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
+
+LaTeX Warning: There were undefined references.
+
  ) 
 Here is how much of TeX's memory you used:
- 6770 strings out of 474542
- 125596 string characters out of 5744918
- 1934978 words of memory out of 5000000
- 28793 multiletter control sequences out of 15000+600000
- 607935 words of font info for 62 fonts, out of 8000000 for 9000
+ 6869 strings out of 474542
+ 129197 string characters out of 5744918
+ 1936978 words of memory out of 5000000
+ 28876 multiletter control sequences out of 15000+600000
+ 613697 words of font info for 64 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  77i,8n,82p,1182b,457s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/Ivan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb
 ><C:/Users/Ivan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb>
 <C:/Users/Ivan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmcsc10.pfb>
-<C:/Users/Ivan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C
-:/Users/Ivan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr7.pfb><C:/U
-sers/Ivan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr9.pfb><C:/User
-s/Ivan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Users
-/Ivan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/
-Ivan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb>
+<C:/Users/Ivan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pfb><
+C:/Users/Ivan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:
+/Users/Ivan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr7.pfb><C:/Us
+ers/Ivan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Users
+/Ivan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr9.pfb><C:/Users/Iv
+an/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Users/Iva
+n/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss10.pfb><C:/Users/Ivan
+/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/Ivan/
+AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb>
 Output written on C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\
-rapport\output\modele_rapport_latex.pdf (13 pages, 493593 bytes).
+rapport\output\modele_rapport_latex.pdf (16 pages, 798221 bytes).
 PDF statistics:
- 106 PDF objects out of 1000 (max. 8388607)
+ 140 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 16 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 31 words of extra memory for PDF output out of 10000 (max. 10000000)
 
