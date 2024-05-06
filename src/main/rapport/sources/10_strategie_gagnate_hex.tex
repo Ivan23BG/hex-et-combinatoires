@@ -28,11 +28,17 @@ De cette manière nous sommes assurés de remplir l'abre en entier de nos couleu
 qui donc possèdera une strategie gagnante.
 
 
-\paragraph {remarque:}
-On voit que pour un plateau de 2*2 l'arbre de tous les possibles possède deja 24 feuilles et 52 branches
+\paragraph {remarques:}
+-On voit que pour un plateau de 2*2 l'arbre de tous les possibles possède deja 24 feuilles et 52 branches
 il est calculé que pour le Hex a 11*11 la Game-tree complexity ou le nombre de feuilles de l'arbre est
 approximativement 10^98 et le nombre de positions totales que peut prendre le jeu est de 2.4*10^56 contre
-4.6*10^46 donc en pratique utiliser cette technique pour trouver la strategie gagnanten'est pas possible
+4.6*10^46 donc en pratique utiliser cette technique pour trouver la strategie gagnanten'est pas possible.
+
+-On peut aussi appliquer ce genre de raisonemen pour d'autres jeux combinatoires abstraits pour essayer de
+prouver l'existance d'une eventuelle strategie gagnante.
+
+-Enfon on remarque que cette facon de faire resemble a l'algo MinMax mais si il avait une profondeur de recherche
+infinie.
 
 
 \paragraph {le premier joueur gagne a tous les coups:}

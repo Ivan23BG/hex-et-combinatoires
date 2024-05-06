@@ -36,9 +36,9 @@ seule fonction d'évaluation est quelque chose de très compliqué. Ainsi, nous 
 quelle stratégie adapter au fur et à mesure de la partie ? Parmi elles, la stratégie de faire des ponts (voir la figure 3) nous a posé beaucoup de problèmes.
 Un pont permet au joueur de s'assurer de pouvoir connecter 2 pièces lors d'un prochain coup. En effet, si le joueur adversaire cherche à bloquer
 l'une des deux cases, nous avons juste à ajouter notre jeton afin de créer un chemin entre ces deux pièces. Nous pouvons noter que lorsque la profondeur de 
-réflexion du MinMax est grande, il arrive parfois à remarquer que créer un pont le meilleur coup. Mais nous revenons au problème n°1 : la complexité.
-\textbf{PRECISER CETTE PHRASE (un peu confuse):} Dans notre projet, la fonction d'évaluation finale va permettre à l'ordinateur de créer les groupes de jetons les plus grands en largeur ou en hauteur en 
-fonction du joueur. Elle est cependant capable de battre des humains sur de petits plateaux. Mais en général, lorsque le plateau est de grande dimension, la fonction
+réflexion du MinMax est grande, il arrive parfois à remarquer que créer un pont le meilleur coup. Mais nous revenons au problème n°1 : la complexité. 
+Dans notre projet, la fonction d'évaluation finale va permettre à l'ordinateur de créer les groupes de jetons les plus grands en largeur ou en hauteur en 
+fonction du joueur. Elle est capable de battre des humains sur de petits plateaux. Mais en général, lorsque le plateau est de grande dimension, la fonction
 d'évaluation prend de nombreuses secondes avant de jouer.
 \begin{figure}[h]
     \begin{center}
@@ -46,7 +46,7 @@ d'évaluation prend de nombreuses secondes avant de jouer.
     \end{center}
     \caption[1]{Ici bleu a créé un pont\footnotemark.}\label{fig:pont_bleu}
 \end{figure}
-  
+
 \footnotetext{Si rouge joue sur la case 1, bleu joue sur la case 2, et relie ainsi les deux jetons bleus (respectivement si rouge joue sur la case 2)}
 
 
