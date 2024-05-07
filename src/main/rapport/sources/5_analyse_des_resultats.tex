@@ -14,18 +14,19 @@ Une fois l'implémentation de l'algorithme MinMax faite sur nos deux
 jeux combinatoires, nous pouvons nous demander est-ce que cet algorithme est adapté pour le jeu de Hex et l'Awale ?
 Nous observons que les performances du MinMax sont très différentes d'un jeu a l'autre, étudions pourquoi:
 
-\subsection {Hexgame : performances décevantes}
+\subsection{Hexgame : performances décevantes}
 L'implémentation de l'algorithme MinMax sur le jeu de Hex n'arrive quasiment jamais à battre un humain et cela pour 
 2 raisons principales: la faible profondeur et la difficulté de trouver une fonction d'évaluation satisfaisante.
 
-\paragraph {Trop grande complexité} Le premier problème provient du nombre de coups possibles à chaque tour: 
+\paragraph{Trop grande complexité} Le premier problème provient du nombre de coups possibles à chaque tour: 
 en effet, par exemple sur un plateau classique de $13\times13$ le premier joueur a 169 coups possibles et au coup suivant
 il y en a 168 etc\dots Cela rend les calculs lents. S'il joue en premier 
 et que la profondeur demandée est de 6, alors l'ordinateur doit calculer $2.1298467e+13$ (ou $169\times168\times167\times166\times165\times164$) 
 fois la fonction d'évaluation. Cela n'est pas réalisable en temps réaliste. Dans notre implémentation, la taille des côtés du plateau varie entre  
-une longueur de 5 cases et de 17, nous avons remarqué que pour un plateau de dimension $11\times11$ l'algorithme mettait déjà 
-plusieurs secondes à calculer le meilleur coup. Notons que ces calculs ne prennent pas en compte l'élagage alpha-bêta
-qui optimise significativement le MinMax. Mais même si une portion des nœuds n'est pas évaluée, le calcul reste trop lent.
+une longueur de 5 cases et de 17, nous avons remarqué que pour un plateau de dimension $11\times11$ et une profondeur demandée de 4 l'algorithme 
+mettait déjà plusieurs secondes à calculer le meilleur coup. Notons que ces calculs ne prennent pas en compte l'élagage alpha-bêta
+qui optimise significativement le MinMax. Mais même si une portion des nœuds n'est pas évaluée, le calcul reste trop lent pour pouvoir demander une 
+pronfondeur plus interresante de 6 ou de 8 par exemple.
 On peut aussi noter que la performance de l'élagage alpha-bêta dépend de la qualité de la fonction d'évaluation, qui, comme nous allons
 le voir, n'est pas assurée.
 
@@ -51,15 +52,20 @@ d'évaluation prend de nombreuses secondes avant de jouer.
 
 
 
-\subsection {Awale : Bonnes performances}
-\paragraph {Une fonction d'évaluation efficace} Le jeu de l'Awalé possède un avantage significatif par rapport au Hex, le nombre maximum de coups 
+\subsection{Awale : Bonnes performances}
+\paragraph{Une fonction d'évaluation efficace} Le jeu de l'Awalé possède un avantage significatif par rapport au Hex, le nombre maximum de coups 
 possible pour un joueur est de 6. Ainsi, l'arbre de recherche est bien plus petit que celui du Hex. L'algorithme MinMax est donc efficace en termes de 
-temps et de performances avec une grande profondeur (la profondeur initiale est de 6). 
+temps et de performances avec une grande profondeur (la profondeur initiale est de 6 ou 8). 
 
 Le choix de notre fonction d'évaluation est arrivé naturellement pendant nos recherches. Nous avons implémenté la simple fonction cherchant à
 maximiser les points de l'ordinateur tout en minimisant les points de son adversaire. Cette fonction combinée à une profondeur de taille 6 en fait un 
 adversaire redoutable que peu d'humains ont réussi à battre.
 
-\paragraph {Conclusion} L'algorithme MinMax est donc capable d'être efficace lorsque le nombre de nœuds est petit à chaque itérations. On peut alors 
-lui mettre une profondeur relativement grande afin d'explorer toutes les branches de cet arbre. Cependant, lorsque le nombre de nœuds devient gigantesque,
-l'algorithme ne devient plus très bon. Il est en effet très lent et peu performant.
+\subsection{Conclusion} 
+\paragraph
+L'algorithme MinMax est donc capable d'être efficace lorsque le nombre de nœuds est petit à chaque itérations. On peut alors 
+lui mettre une profondeur relativement grande afin d'explorer toutes les branches de cet arbre. 
+Cependant, lorsque le nombre de nœuds devient gigantesque,comme dans le Hex, l'algorithme ne devient plus très bon. Il est en effet très lent et peu performant.
+Dans la bibliographie est disponible un lien vers un papier scientifique cherchant une bonne fonction d'evaluation pour le Hex.
+Dans celui ci il est ecrit que les ordinateurs battent les humains pour des petits plateau, font jeu egal pour le plateau 9x9 mais
+est moin bon qu'un humain pour un plus grand plateau. On y voit aussi la difficulté de trouver une bonne fonction d'evalutaion.
