@@ -17,13 +17,13 @@ depth_hex = 4
 depth_awale = 6
 
 # Player vs IA variables
-player = 0
-IA = 0
+player = 1
+IA = 2
 
 # IA vs IA variables
 IA1 = 1
 IA2 = 2
-current_IA = 1
+current_IA = 2
 
 # --------------------------------- Home pages --------------------------------- #
 @app.route('/') # Home page
@@ -59,7 +59,7 @@ def game_hex():
 def game_hexia():
     global board_hex, current_player, size_px, size, player, IA
     player = int(request.form['player'])
-    IA = 3 - player
+    IA = 1 if player == 2 else 2
     #print(player)
     #print(IA)   
     size = int(request.form['size'])
@@ -215,7 +215,7 @@ def game_awaleia():
     board_awale = AwaleBoard()  # Create a new game board
     board_awale.display_board()  # Display the game board in the console
     player = int(request.form['player'])
-    IA = 3 - player
+    IA = 1 if player == 2 else 2
     current_player = 1  # Set player 1 as the starting player
     return render_template('game_awale_ia.html',current_player=current_player)
 

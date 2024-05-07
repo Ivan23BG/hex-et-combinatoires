@@ -22,7 +22,7 @@ async function fetchFirstMoveJSON() {
 
 // request for IA's move
 async function fetchIAMoveJSON_hex(IA) {
-    console.log("deux");
+    console.log(IA);
     const response = await fetch('/hexiaia_place_piece', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ 'current_IA': IA }) });
     const data = response.json();
     return data;
@@ -40,8 +40,8 @@ async function fetchPlayerMoveJSON(hexid, player) {
 }
 
 window.onload = async function () {
-    let player = 0; // Player default value 
-    let IA = 0; // IA default value 
+    let player = 1; // Player default value 
+    let IA = 2; // IA default value 
 
     let recup_error = false; // Variable qui empêche que l'IA joue si on clic sur un hex pas bon
     let playable = true; // Check if player can play or not 
@@ -56,7 +56,7 @@ window.onload = async function () {
     const data1 = await fetchPlayersJSON()
     player = data1.player;
     IA = data1.IA;
-    //console.log(player)
+    console.log(player, IA);
     document.getElementById('player').value = player;
 
     // If IA is playing Blue, she play first move
@@ -83,8 +83,6 @@ window.onload = async function () {
 
 
             if (this.getAttribute('disabled') || playable === false) {
-                // hide spinner
-                document.getElementById('spinner').style.display = 'none';
                 return;
             }
 
