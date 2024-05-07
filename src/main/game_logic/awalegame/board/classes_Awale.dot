@@ -1,0 +1,11 @@
+digraph "classes_ProjectName" {
+rankdir=BT
+charset="utf-8"
+"awaleboard.AffamerError" [color="black", fontcolor="red", label=<{AffamerError|<br ALIGN="LEFT"/>|}>, shape="record", style="solid"];
+"awaleboard.AwaleBoard" [color="black", fontcolor="black", label=<{AwaleBoard|board : list<br ALIGN="LEFT"/>score_1 : int<br ALIGN="LEFT"/>score_2 : int<br ALIGN="LEFT"/>|affamer(position, player)<br ALIGN="LEFT"/>capture(origin, player)<br ALIGN="LEFT"/>check_winner()<br ALIGN="LEFT"/>display_board()<br ALIGN="LEFT"/>eval(player)<br ALIGN="LEFT"/>get_best_move(depth, player)<br ALIGN="LEFT"/>get_board()<br ALIGN="LEFT"/>get_possible_moves(player)<br ALIGN="LEFT"/>get_scores()<br ALIGN="LEFT"/>is_legal_move(position, player)<br ALIGN="LEFT"/>make_move(position, player)<br ALIGN="LEFT"/>minimax(depth, player, alpha, beta)<br ALIGN="LEFT"/>nourrir(position, player)<br ALIGN="LEFT"/>randomsaufpoints(player)<br ALIGN="LEFT"/>set_board(board)<br ALIGN="LEFT"/>set_scores(scores)<br ALIGN="LEFT"/>sow_seeds(position, player)<br ALIGN="LEFT"/>undo_move(new_board, new_score_1, new_score_2)<br ALIGN="LEFT"/>}>, shape="record", style="solid"];
+"awaleboard.CanFeedError" [color="black", fontcolor="red", label=<{CanFeedError|<br ALIGN="LEFT"/>|}>, shape="record", style="solid"];
+"awaleboard.CannotFeedError" [color="black", fontcolor="red", label=<{CannotFeedError|<br ALIGN="LEFT"/>|}>, shape="record", style="solid"];
+"awaleboard.InvalidPositionError" [color="black", fontcolor="red", label=<{InvalidPositionError|<br ALIGN="LEFT"/>|}>, shape="record", style="solid"];
+"awaleboard.NourrirError" [color="black", fontcolor="red", label=<{NourrirError|<br ALIGN="LEFT"/>|}>, shape="record", style="solid"];
+"awaleboard.PositionEmptyError" [color="black", fontcolor="red", label=<{PositionEmptyError|<br ALIGN="LEFT"/>|}>, shape="record", style="solid"];
+}
