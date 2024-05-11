@@ -1,9 +1,8 @@
 \section{Développements Logiciel: Conception, Modélisation, Implémentation} 
 \subsection{Description des modules utilisés}
 % présenter les développements logiciels réalisés dans le cadre du projet
-Pour la réalisation de ce projet, nous avons développé un logiciel qui permet de jouer
-aux jeux de stratégie combinatoire abstraits du Hex et de l'Awalé avec la Possibilité
-d'ajouter facilement d'autres jeux combinatoires et d'appliquer le MinMax dessu. Ce logiciel est
+Pour la réalisation de ce projet, nous avons développé une application web qui permet de jouer
+aux jeux du Hex et de l'Awalé avec la possibilité d'ajouter facilement d'autres jeux combinatoires. Ce logiciel est
 composé de plusieurs modules, dont les principaux sont les suivants:
 
 % présenter les principaux modules du logiciel développé dans le cadre du projet
@@ -11,23 +10,23 @@ composé de plusieurs modules, dont les principaux sont les suivants:
 % d'utilisation et le diagramme des classes
 \begin{itemize}
     \item \textbf{Module Hex:} Ce module contient les classes et les fonctions nécessaires
-    pour jouer au jeu de Hex. Il contient notamment la classe \texttt{HexBoard} qui 
+    pour jouer au jeu du Hex. Il contient notamment la classe \texttt{HexBoard} qui 
     représente le plateau de jeu et les joueurs du jeu de Hex. Ce module contient également 
     les fonctions pour l'implémentation de l'algorithme MinMax avec élagage alpha-bêta pour 
-    la résolution du jeu de Hex.
+    la résolution du Hex.
     
     \item \textbf{Module Awalé:} Ce module contient les classes et les fonctions nécessaires
     pour jouer au jeu de l'Awalé. Il contient la classe \texttt{AwaleBoard} qui représente le
     plateau de jeu et les joueurs du jeu de l'Awalé. Ce module contient également les fonctions
-    pour l'implémentation de l'algorithme de MinMax pour la résolution du jeu de l'Awalé. (a noter que la fonction MinMax
-    en elle meme est la meme pour les 2 jeux seule les fonctions d'evalutaions changent.)
+    pour l'implémentation de l'algorithme de MinMax pour la résolution du jeu de l'Awalé. (à noter que la fonction MinMax
+    est la même pour les 2 jeux. Seule les fonctions d'évalutaions changent.)
     
     \item \textbf{Module Interface Graphique:} Ce module contient les fichiers HTML, CSS et
-    JavaScript nécessaires pour l'implémentation de l'interface graphique des jeux de Hex et
+    JavaScript nécessaires pour l'implémentation de l'interface graphique des jeux du Hex et
     d'Awalé. Il contient notamment les fichiers \texttt{home.html}, \texttt{hex.html} et
     \texttt{awale.html} qui permettent à l'utilisateur de choisir le jeu auquel il veut jouer
     et les paramètres de la partie. Il contient également des fichiers JavaScript pour la
-    gestion des événements et des interactions avec l'utilisateur.
+    gestion des événements et des intéractions avec l'utilisateur.
     
     \item \textbf{Module Tests:} Ce module contient les fichiers de tests unitaires pour les
     classes et les fonctions des modules Hex et Awalé. Il contient notamment les fichiers
@@ -40,16 +39,15 @@ composé de plusieurs modules, dont les principaux sont les suivants:
 % logiciel dispose d'une interface graphique)
 \paragraph{Fonctionnalités de l'interface graphique}
 L'interface graphique de notre logiciel comprend une page d'accueil qui permet à l'utilisateur
-de choisir le jeu auquel il veut jouer (Hex ou Awalé), une page principale (home) pour chaque jeu
-qui permet à l'utilisateur de choisir les paramètres de la partie (taille du plateau (pour Hex),
-mode de jeu (joueur contre joueur, joueur contre ordinateur, ordinateur contre ordinateur),
-(pour l'ordinateur), etc.) la page home permet aussi de consulter les regles du jeu que nous avons choisi.
-Ensuine nous sommes dirigés vrs la page du jeu ou nous pouvons jouer direcement en cliquant sur la page.
-Sur les 2 jeu il est possible de previsualiser le prochain coup garce a des fonctions "hover" quand la souris passe
-au dessu de cerains elements.
-Sur le Hex il est possible de changer le theme graphique de la page avec la touche "H" cela change la page css chargée dans le navigateur.
-L'interface graphique est implémentée en HTML, CSS et JavaScript, et
-elle communique avec les modules Hex et Awalé via des appels de fonctions JavaScript à des
+de choisir le jeu auquel il veut jouer (Hex ou Awalé), une page principale (home) pour chaque jeu.
+Cela permet à l'utilisateur de choisir les paramètres de la partie comme la taille du plateau ou le 
+mode de jeu. La page home permet aussi de consulter les règles du jeu que nous avons sélectionné.
+Lorsque l'on clique sur le bouton correspondant au mode de jeu choisi, nous sommes dirigés vers la page de
+jeu.
+Sur les deux jeux, le joueur à la possibilité de prévisualiser le prochain coup grâce à des fonctions de "hover" lorsqu'il survole avec 
+la souris certains éléments.
+Lors d'une partie de Hex, il est possible de changer le thème graphique de la page avec la touche "H". Cela modifie la page css chargée dans le navigateur.
+L'interface graphique est implémentée en HTML, CSS et JavaScript. Celle-ci communique avec les modules Hex et Awalé via des appels de fonctions JavaScript à des
 fonctions Python via des requêtes json et le module Flask.
 
 % présenter les principales structures de données définies dans le cadre du
