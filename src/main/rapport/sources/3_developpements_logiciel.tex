@@ -56,12 +56,12 @@ fonctions Python via des requêtes json et le module Flask.
 % lecture et validation des entrées.
 \paragraph{Structures de données}
 Les principales structures de données définies dans le cadre de ce projet sont les classes
-\texttt{HexBoard} et \texttt{AwaleBoard} qui représentent les plateaux de jeu du Hex et de
-l'Awalé, respectivement. Ces classes contiennent les attributs et les méthodes nécessaires
+\texttt{HexBoard} et \texttt{AwaleBoard}. Elles représentent respectivement les plateaux de jeu du Hex et de
+l'Awalé. Ces classes contiennent les attributs et les méthodes nécessaires
 pour représenter les plateaux de jeu et les joueurs, et pour effectuer les opérations de jeu
-(placement de pions, déplacement de pions, etc.). Les données en entrée des programmes sont
-sous forme de chaînes de caractères qui représentent les paramètres de la partie (taille du
-plateau, mode de jeu etc.). Les procédures de lecture et de validation
+(placement de pions, déplacement de pions, etc.) Les données sont fournies en entrée des programmes
+sous la forme de chaînes de caractères qui représentent les paramètres de la partie (taille du
+plateau, mode de jeu etc.) Les procédures de lecture et de validation
 des entrées sont effectuées par les fonctions des modules Hex et Awalé qui vérifient que les
 paramètres de la partie sont valides avant de commencer la partie.
 
@@ -77,11 +77,11 @@ Voici quelques statistiques sur le logiciel développé dans le cadre de ce proj
     et 480 (en \LaTeX) pour un total de 5 777 lignes de code
 \end{itemize}
 
-\subsection{Interaction entre fichiers}
+\subsection{Intéraction entre fichiers}
 % Explication de l'interaction entre les fichiers pendant une partie
-Les fichiers de l'application interagissent entre eux de la même façon lors d'une partie de Hex ou 
-d'Awalé. Le fichier \texttt{app.py} héberge l'application flask et gère l'interaction entre le frontend et le 
-backend pour les 2 jeux.
+L'intéraction entre les fichiers de l'application est la même lors d'une partie de Hex ou 
+d'Awalé. Le fichier \texttt{app.py} héberge l'application flask et gère l'intéraction entre le frontend et le 
+backend pour les deux jeux.
 
 \paragraph{Initialisation de la partie}
 La sélection du jeu et des paramètres de la partie se fait dans le fichier \texttt{home\_hex.html}
