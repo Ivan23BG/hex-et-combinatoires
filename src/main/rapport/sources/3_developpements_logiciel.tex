@@ -67,6 +67,18 @@ plateau, mode de jeu etc.). Les procédures de lecture et de validation
 des entrées sont effectuées par les fonctions des modules Hex et Awalé qui vérifient que les
 paramètres de la partie sont valides avant de commencer la partie.
 
+% Statistiques : nombre de modules/composantes/classes/scripts développés.
+% Nombre de lignes de code.
+\paragraph{Statistiques}
+Voici quelques statistiques sur le logiciel développé dans le cadre de ce projet:
+\begin{itemize}
+    \item Nombre de modules (sans les tests): 39
+    \item Nombre de classes : 11 (principalement dans les modules Hex et Awalé)
+    \item Nombre de fonctions : 68 (en Python) et 99 (en JavaScript) pour 167 en tout
+    \item Nombre de lignes de code : 1 405 (en Python), 2008 (en JavaScript), 553 (en HTML), 1 331 (en CSS)
+    et 480 (en \LaTeX) pour un total de 5 777 lignes de code
+\end{itemize}
+
 \subsection{Interaction entre fichiers}
 % Explication de l'interaction entre les fichiers pendant une partie
 Les fichiers de l'application interagissent entre eux de la même façon lors d'une partie de Hex ou 
@@ -82,11 +94,11 @@ jeu désiré sera créée dans l'\texttt{app.py}.
 
 \paragraph{Déroulement d'une partie}
 Lorsqu'une partie est jouée, l'information des pièces placées au Hex, ou des graines déplacées à l'Awalé est récupérée par
-le fichier JavaScript adapté (par exemple \texttt{game\_hexia.js} si la partie est une partie de Hex joueur contre l'ordinateur, ou encore 
-\texttt{game\_awale.js} si la partie est une partie d'Awalé joueur contre joueur). Cette information est gérée par le capteur d'événements
+le fichier JavaScript adapté. Par exemple \texttt{game\_hexia.js} si la partie est une partie de Hex joueur contre l'ordinateur, ou encore 
+\texttt{game\_awale.js} si la partie est une partie d'Awalé joueur contre joueur. Cette information est gérée par le capteur d'événements
 hex.onclick pour le Hex et pit.onclick pour l'Awalé. Si un tel événement est entendu, le fichier JavaScript correspondant envoie une requête 
 json au fichier \texttt{app.py} afin de savoir si le coup est valide. La validité du coup est gérée par une fonction appelée dans la classe du
-plateau de jeu adéquat. Si le coup est valide, alors celui-ci est joué et rajouté à l'instance du plateau de jeu, et est renvoyé au fichier 
+plateau de jeu adéquat. Si le coup est valide, alors celui-ci est joué et rajouté à l'instance du plateau de jeu. Il est ensuite renvoyé au fichier 
 JavaScript qui va s'occuper du nouvel affichage graphique (En modifiant le CSS ou le html). Si une erreur est attrapée, elle est renvoyée
 au fichier JavaScript qu'il va gérer en affichant une alerte sur l'écran du joueur indiquant la non-validité du coup. Lors du placement de chaque
 hex (déplacement de graines pour l'Awalé), la fonction \textit{check\_winner} de la classe du plateau est appelée afin de vérifier si un joueur à 
@@ -95,18 +107,14 @@ En récupérant cette variable, le fichier JavaScript va pouvoir procéder à un
 
 
 
-
-
-
-
-% Statistiques : nombre de modules/composantes/classes/scripts développés.
-% Nombre de lignes de code.
-\paragraph{Statistiques}
-Voici quelques statistiques sur le logiciel développé dans le cadre de ce projet:
-\begin{itemize}
-    \item Nombre de modules (sans les tests): 39
-    \item Nombre de classes : 11 (principalement dans les modules Hex et Awalé)
-    \item Nombre de fonctions : 68 (en Python) et 99 (en JavaScript) pour 167 en tout
-    \item Nombre de lignes de code : 1 405 (en Python), 2008 (en JavaScript), 553 (en HTML), 1 331 (en CSS)
-    et 480 (en \LaTeX) pour un total de 5 777 lignes de code
-\end{itemize}
+\subsection{Fonctions asynchrones}
+L'envoie des différentes requêtes des fichiers JavaScript à \texttt{app.py} se fait grâce aux différents appels à la fonction fetch.
+La méthode globale \textit{fetch} démarre le chargement d'une ressource sur le réseau et retourne une promesse qui est résolue dès que la 
+réponse est disponible. Cependant, le fait que la réponse ne soit renvoyée que lorsque celle-ci est disponible nous a gêné lors de l'implémentation
+des modes JcIA et IAvIA pour les deux jeux. En effet, nous souhaitons que notre programme s'exécute de façon synchrone (ligne après ligne). 
+Or le \textit{fetch} peut prendre un certain temps avant de résoudre la promesse faite, cela est notamment dû à la lenteur des fonctions d'évaluation.
+Ainsi, pour éviter que le reste du programme ne s'exécute avant la résolution de la prommesse, nous avons décidé d'ajouter le décorateur 
+\textsf{async} à notre fonction \textit{window.onload}. Ce simple décorateur nous a alors permis d'utiliser le mot-clé \textsf{await}. Celui-ci 
+interrompt l'exécution de la fonction asynchrone et attend la résolution de la promesse passée. Ainsi, les requêtes se voient toujours résolues 
+avant d'exécuter la suite du programme. Cela permet d'éviter que le joueur joue plusieurs coups pendant que l'IA « réfléchie », ou encore le fait
+qu'une des deux IA dans le IAvIA joue plusieurs fois avant que l'autre ne joue.

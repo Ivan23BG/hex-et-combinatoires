@@ -14,7 +14,7 @@ Une fois l'implémentation de l'algorithme MinMax faite sur nos deux
 jeux combinatoires, nous pouvons nous demander est-ce que cet algorithme est adapté pour le jeu de Hex et l'Awale ?
 Nous observons que les performances du MinMax sont très différentes d'un jeu a l'autre, étudions pourquoi:
 
-\subsection{Hexgame : performances décevantes}
+\subsection{Hexgame : Performances décevantes}
 L'implémentation de l'algorithme MinMax sur le jeu de Hex n'arrive quasiment jamais à battre un humain et cela pour 
 2 raisons principales: la faible profondeur et la difficulté de trouver une fonction d'évaluation satisfaisante.
 
@@ -61,8 +61,7 @@ Le choix de notre fonction d'évaluation est arrivé naturellement pendant nos r
 maximiser les points de l'ordinateur tout en minimisant les points de son adversaire. Cette fonction combinée à une profondeur de taille 6 en fait un 
 adversaire redoutable que peu d'humains ont réussi à battre.
 
-\subsection{Conclusion} 
-\paragraph
+\subsection{Conclusion}
 L'algorithme MinMax est donc capable d'être efficace lorsque le nombre de nœuds est petit à chaque itérations. On peut alors 
 lui mettre une profondeur relativement grande afin d'explorer toutes les branches de cet arbre. 
 Cependant, lorsque le nombre de nœuds devient gigantesque,comme dans le Hex, l'algorithme ne devient plus très bon. Il est en effet très lent et peu performant.
