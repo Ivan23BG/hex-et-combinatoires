@@ -84,15 +84,15 @@ d'Awalé. Le fichier \texttt{app.py} héberge l'application flask et gère l'int
 backend pour les deux jeux.
 
 \paragraph{Initialisation de la partie}
-La sélection du jeu et des paramètres de la partie se fait dans le fichier \texttt{home\_hex.html}
+La sélection du jeu et des paramètres de la partie se fait dans le fichier \texttt{home\_hex.html} pour le Hex
 (respectivement \texttt{home\_awale.html} pour l'Awalé). Ces informations seront envoyées au fichier \texttt{app.py}
-lors de l'appui sur l'un des boutons de lancement de partie. Le bouton sélectionné appellera dans le fichier \texttt{app.py} la 
-fonction adéquate renvoyant la page html correspondant aux choix fait par le(s) joueur(s). En parallèle, une instance du plateau de
-jeu désiré sera créée dans l'\texttt{app.py}. 
+lorsqu'un clic souris sera effectué sur l'un des boutons. Le bouton sélectionné appellera dans le fichier \texttt{app.py} la 
+fonction adéquate renvoyant la page html en prenant compte des choix effectués plus tôt. En parallèle, une instance du plateau de
+jeu désiré sera créée dans le fichier \texttt{app.py}. 
 
 \paragraph{Déroulement d'une partie}
-Lorsqu'une partie est jouée, l'information des pièces placées au Hex, ou des graines déplacées à l'Awalé est récupérée par
-le fichier JavaScript adapté. Par exemple \texttt{game\_hexia.js} si la partie est une partie de Hex joueur contre l'ordinateur, ou encore 
+Lorsqu'une partie est jouée, l'information des pièces placées au Hex, ou des graines déplacées sur l'Awalé est récupérée par
+le fichier JavaScript adapté. Par exemple \texttt{game\_hexia.js} si la partie est une partie de Hex joueur contre ordinateur, ou encore 
 \texttt{game\_awale.js} si la partie est une partie d'Awalé joueur contre joueur. Cette information est gérée par le capteur d'événements
 hex.onclick pour le Hex et pit.onclick pour l'Awalé. Si un tel événement est entendu, le fichier JavaScript correspondant envoie une requête 
 json au fichier \texttt{app.py} afin de savoir si le coup est valide. La validité du coup est gérée par une fonction appelée dans la classe du
