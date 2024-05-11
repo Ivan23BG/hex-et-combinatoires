@@ -5,36 +5,38 @@
 \contentsline {subsection}{\numberline {3.1}Description des modules utilisés}{4}{subsection.3.1}%
 \contentsline {paragraph}{Fonctionnalités de l'interface graphique}{4}{section*.2}%
 \contentsline {paragraph}{Structures de données}{4}{section*.3}%
-\contentsline {subsection}{\numberline {3.2}Interaction entre fichiers}{4}{subsection.3.2}%
-\contentsline {paragraph}{Initialisation de la partie}{5}{section*.4}%
-\contentsline {paragraph}{Déroulement d'une partie}{5}{section*.5}%
-\contentsline {paragraph}{Statistiques}{5}{section*.6}%
-\contentsline {section}{\numberline {4}Moteur de jeux combinatoires abstraits}{6}{section.4}%
-\contentsline {subsection}{\numberline {4.1}La recherche arborescente Monte-Carlo}{6}{subsection.4.1}%
-\contentsline {paragraph}{Présentation}{6}{section*.7}%
-\contentsline {paragraph}{MCTS - fonctionnement succinct}{6}{section*.8}%
-\contentsline {subsection}{\numberline {4.2}MinMax}{6}{subsection.4.2}%
-\contentsline {paragraph}{Présentation}{6}{section*.9}%
-\contentsline {paragraph}{MinMax - fonctionnement succinct}{6}{section*.10}%
-\contentsline {paragraph}{Élagage alpha-bêta}{7}{section*.11}%
-\contentsline {section}{\numberline {5}Algo MinMax observations}{8}{section.5}%
-\contentsline {subsection}{\numberline {5.1}Hexgame : performances décevantes}{8}{subsection.5.1}%
-\contentsline {paragraph}{Trop grande complexité}{8}{section*.12}%
-\contentsline {paragraph}{Fonction d'évaluation : Un vrai casse-tête}{8}{section*.13}%
-\contentsline {subsection}{\numberline {5.2}Awale : Bonnes performances}{9}{subsection.5.2}%
-\contentsline {paragraph}{Une fonction d'évaluation efficace}{9}{section*.14}%
-\contentsline {paragraph}{Conclusion}{9}{section*.15}%
-\contentsline {section}{\numberline {6}Gestion du Projet}{10}{section.6}%
-\contentsline {subsection}{\numberline {6.1}Diagramme de Gantt}{10}{subsection.6.1}%
-\contentsline {subsection}{\numberline {6.2}Changements Majeurs}{10}{subsection.6.2}%
-\contentsline {section}{\numberline {7}Bilan et Conclusions}{11}{section.7}%
-\contentsline {section}{\numberline {8}Bibliographie}{12}{section.8}%
-\contentsline {paragraph}{Hex:}{12}{section*.16}%
-\contentsline {paragraph}{Stratégie gagnante:}{12}{section*.17}%
-\contentsline {paragraph}{Awale:}{12}{section*.18}%
-\contentsline {section}{\numberline {9}Annexes}{13}{section.9}%
-\contentsline {subsection}{\numberline {9.1}Annexe I : Cahier des charges}{13}{subsection.9.1}%
-\contentsline {subsection}{\numberline {9.2}HexGame et strategie gagnante}{15}{subsection.9.2}%
-\contentsline {subsubsection}{\numberline {9.2.1}Stratégies gagnantes et arbre du jeu}{15}{subsubsection.9.2.1}%
-\contentsline {paragraph}{Remarque:}{15}{section*.23}%
-\contentsline {paragraph}{Le premier joueur gagne à tous les coups:}{15}{section*.24}%
+\contentsline {paragraph}{Statistiques}{4}{section*.4}%
+\contentsline {subsection}{\numberline {3.2}Intéraction entre fichiers}{5}{subsection.3.2}%
+\contentsline {paragraph}{Initialisation de la partie}{5}{section*.5}%
+\contentsline {paragraph}{Déroulement d'une partie}{5}{section*.6}%
+\contentsline {subsection}{\numberline {3.3}Fonctions asynchrones}{6}{subsection.3.3}%
+\contentsline {section}{\numberline {4}Moteur de jeux combinatoires abstraits}{7}{section.4}%
+\contentsline {subsection}{\numberline {4.1}La recherche arborescente Monte-Carlo}{7}{subsection.4.1}%
+\contentsline {paragraph}{Présentation}{7}{section*.7}%
+\contentsline {paragraph}{MCTS - Fonctionnement succinct}{7}{section*.8}%
+\contentsline {subsection}{\numberline {4.2}MinMax}{7}{subsection.4.2}%
+\contentsline {paragraph}{Présentation}{7}{section*.9}%
+\contentsline {paragraph}{MinMax - Fonctionnement succinct}{7}{section*.10}%
+\contentsline {paragraph}{Élagage alpha-bêta}{8}{section*.11}%
+\contentsline {paragraph}{Remarques:}{8}{section*.12}%
+\contentsline {section}{\numberline {5}Observations de l'algorithme MinMax sur nos jeux}{9}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Hexgame : Performances décevantes}{9}{subsection.5.1}%
+\contentsline {paragraph}{Trop grande complexité}{9}{section*.13}%
+\contentsline {paragraph}{Fonction d'évaluation : Un vrai casse-tête}{9}{section*.14}%
+\contentsline {subsection}{\numberline {5.2}Awale : Bonnes performances}{10}{subsection.5.2}%
+\contentsline {paragraph}{Une fonction d'évaluation efficace}{10}{section*.15}%
+\contentsline {subsection}{\numberline {5.3}Conclusion}{10}{subsection.5.3}%
+\contentsline {section}{\numberline {6}Gestion du Projet}{11}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Diagramme de Gantt}{11}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Changements Majeurs}{11}{subsection.6.2}%
+\contentsline {section}{\numberline {7}Bilan et Conclusions}{12}{section.7}%
+\contentsline {section}{\numberline {8}Bibliographie}{13}{section.8}%
+\contentsline {paragraph}{Hex:}{13}{section*.16}%
+\contentsline {paragraph}{Stratégie gagnante:}{13}{section*.17}%
+\contentsline {paragraph}{Awale:}{13}{section*.18}%
+\contentsline {section}{\numberline {9}Annexes}{14}{section.9}%
+\contentsline {subsection}{\numberline {9.1}Annexe I : Cahier des charges}{14}{subsection.9.1}%
+\contentsline {subsection}{\numberline {9.2}HexGame et strategie gagnante}{16}{subsection.9.2}%
+\contentsline {subsubsection}{\numberline {9.2.1}Stratégies gagnantes et arbre du jeu}{16}{subsubsection.9.2.1}%
+\contentsline {paragraph}{Remarque:}{16}{section*.23}%
+\contentsline {paragraph}{Le premier joueur gagne à tous les coups:}{16}{section*.24}%
