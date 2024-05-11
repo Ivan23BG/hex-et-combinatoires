@@ -40,3 +40,7 @@
 \contentsline {subsubsection}{\numberline {9.2.1}Stratégies gagnantes et arbre du jeu}{16}{subsubsection.9.2.1}%
 \contentsline {paragraph}{Remarque:}{16}{section*.23}%
 \contentsline {paragraph}{Le premier joueur gagne à tous les coups:}{16}{section*.24}%
+\contentsline {section}{\numberline {10}HexGame et stratégie gagnante}{18}{section.10}%
+\contentsline {paragraph}{Stratégies gagnantes et arbre du jeu}{18}{section*.25}%
+\contentsline {paragraph}{Remarques}{18}{section*.26}%
+\contentsline {paragraph}{Le premier joueur gagne à tous les coups}{18}{section*.27}%
