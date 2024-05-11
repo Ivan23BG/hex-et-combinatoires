@@ -1,0 +1,93 @@
+\subsection{Fonctions d'évaluation}
+
+L'évaluation d'une position est une étape cruciale dans la conception d'un programme de jeu. 
+Elle permet de déterminer la force relative des positions des deux joueurs et d'orienter le choix du coup à jouer à la fois
+pour une IA et pour un joueur humain qui concéptualise la stratégie à suivre.
+Dans le cadre de notre projet, nous avons implémenté plusieurs fonctions d'évaluation pour le jeu Hex.
+
+\subsubsection{Fonction d'évaluation initiale}
+La première fonction d'évaluation implémentée était très simple. Elle attribuait un score de 1 à chaque case du plateau
+occupée par une pièce du joueur et un score de -1 à chaque case occupée par une pièce de l'adversaire.
+Le score final de la position dépendait alors de la différence entre le nombre de cases occupées par le joueur
+et le nombre de cases occupées par l'adversaire autour de la case centrale du plateau.
+Cette fonction d'évaluation a été implémentée pour tester le fonctionnement du jeu et de l'IA, mais elle s'est avérée
+trop simpliste pour être efficace.
+
+\subsubsection{Fonction d'évaluation basée sur la proximité au bord}
+La deuxième fonction d'évaluation implémentée prenait en compte la proximité des cases au bord du plateau.
+Elle attribuait un score plus élevé aux cases proches du bord, car elles sont plus stratégiques et plus difficiles à bloquer.
+Cette fonction d'évaluation a permis d'améliorer les performances de l'IA, mais elle n'était pas suffisante pour
+prendre en compte les stratégies de blocage et de connexion des pièces.
+
+De plus, lors de l'implémentation de cette fonction, nous avons rencontré des difficultés pour catégoriser les cases
+qui étaient similaires en termes de proximité au bord. Cela a conduit à des situations où l'IA plaçait ses pièces
+dans un ordre aléatoire, ce qui n'était pas optimal.
+
+\subsubsection{Fonction d'évaluation basée sur les voisins}
+La troisième fonction d'évaluation implémentée comptait le nombre de voisins de chaque joueur et essayait de bloquer
+l'ajout d'un autre voisin pour ne pas former une chaîne en plus. En bref, l'idée de cette fonction était de vérifier
+l'intérêt à bloquer les chaînes de l'adversaire plutôt que de former les siennes.
+Cette fonction d'évaluation nous a permis de mieux comprendre les stratégies de blocage et de connexion des pièces,
+mais elle n'était toujours pas suffisante et était facile à contrer.
+
+\subsubsection{Fonction d'évaluation basée sur la position actuelle}
+La quatrième fonction d'évaluation implémentée évaluait la position actuelle sur le plateau de jeu pour déterminer
+la force relative des positions des deux joueurs. Elle prenait en compte les composantes connectées des pions de chaque joueur,
+leur proximité au centre du plateau et la possibilité de victoire imminente.
+C'était un grand pas en avant par rapport aux fonctions d'évaluation précédentes car elle changeait activement
+de stratégie en fonction de la position actuelle sur le plateau. Elle était donc moins `prévisible' pour l'adversaire et 
+moins facile à contrer.
+Néanmoins, cette fonction d'évaluation était toujours basée sur des critères statiques et ne prenait pas complètement
+en compte les stratégies de blocage et de connexion des pièces.
+
+\subsubsection{Fonction d'évaluation basée sur l'algorithme de Dijkstra}
+Un des gros problèmes rencontrés lors de l'implémentation des fonctions d'évaluation était qu'on implémentait
+des `idées' de stratégies sans vraiment les formaliser. Cela a conduit à des fonctions d'évaluation très complexes
+et difficiles à optimiser sans pour autant être efficaces.
+On a donc décidé d'implémenter une fonction d'évaluation basée sur l'algorithme de Dijkstra pour mettre à jour
+les scores des cases sur le plateau en trouvant les chemins les plus courts du point de départ du joueur vers chaque case.
+Cette fonction d'évaluation permettait de déterminer les cases qui rapprochaient le joueur de la victoire et de les
+prioriser dans le choix du coup à jouer.
+
+On avait alors une fonction d'évaluation qui `visualisait' les chemins possibles pour chaque joueur et qui permettait
+de déterminer les coups les plus stratégiques à jouer. 
+Cependant, cette fonction d'évaluation était très complexe (en termes de temps de calcul) car elle nécessitait de parcourir
+une grande partie du plateau pour chaque coup. Cela a conduit à des temps de calcul très longs et à des performances
+globales de l'IA qui n'étaient pas satisfaisantes.
+
+\subsubsection{Le problème de la complexité}
+La dernière fonction d'évaluation implémentée, bien que plus efficace que les précédentes, souffrait toujours du problème
+de complexité. En effet, les fonctions d'évaluation étaient de plus en plus complexes et nécessitaient de plus en plus de
+calculs pour déterminer le score d'une position. Plusieurs choix se présentent alors pour résoudre ce problème:
+\begin{itemize}
+    \item Réduire la complexité des fonctions d'évaluation en simplifiant les critères pris en compte.
+    \item Optimiser les fonctions d'évaluation pour réduire le temps de calcul.
+    \item Implémenter des algorithmes de recherche plus efficaces pour déterminer le coup à jouer.
+\end{itemize}
+Dans le cadre de notre projet, nous avons choisi de simplifier les fonctions d'évaluation et d'optimiser les algorithmes
+de recherche pour améliorer les performances de l'IA.
+Cela a permis de réduire la complexité du programme et d'obtenir des résultats plus satisfaisants en termes de temps de 
+calcul et de performances globales de l'IA.
+Mais, comme pour tout problème de recherche, il n'y a pas de solution parfaite et il est important 
+de trouver un compromis entre la complexité des fonctions d'évaluation et les performances de l'IA:
+\begin{itemize}
+    \item Réduire la complexité des fonctions d'évaluation peut entraîner une perte de précision dans l'évaluation des positions
+    et une moins bonne performance de l'IA.
+    \item Optimiser les fonctions d'évaluation peut permettre d'améliorer les performances de l'IA, mais cela nécessite
+    beaucoup de travail et atteint rapidement des limites: il est difficile d'optimiser une fonction d'évaluation
+    complexe sans la simplifier.
+    \item Implémenter des algorithmes de recherche plus efficaces peut permettre d'améliorer les performances de l'IA,
+    mais cela nécessite également beaucoup de travail et de recherche pour trouver les algorithmes les plus adaptés
+    au jeu et à l'IA.
+\end{itemize}
+
+\subsubsection{Conclusion}
+En conclusion, cette partie aborde les différentes approches d'évaluation implémentées dans le projet.
+Les évaluations ont évolué pour être plus précises et tenir compte de la proximité du bord, des stratégies de blocage
+et de la recherche de chemins optimaux vers la victoire, tout en essayant de réduire le temps de calcul et la complexité
+du programme.
+Cependant, le problème de la complexité reste un défi majeur dans la conception d'une IA pour le jeu Hex, et il est donc
+toujours possible d'améliorer les fonctions d'évaluation et les algorithmes de recherche pour obtenir de meilleurs résultats.
+Dans le cadre de notre projet, nous avons choisi de passer ce temps à améliorer d'autres aspects du jeu,
+mais il reste encore beaucoup à faire pour obtenir une IA optimale pour le jeu Hex.
+

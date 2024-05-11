@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.2.13)  11 MAY 2024 18:01
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.2.13)  11 MAY 2024 21:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -423,11 +423,11 @@ urces\7_bilan_et_conclusions.aux)
 (C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\rapport\output\so
 urces\8_bibliographie.aux)
 (C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\rapport\output\so
-urces\9_annexes.aux)
+urces\annexes\9_0_cahier_des_charges.aux)
 (C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\rapport\output\so
 urces\annexes\9_1_strategie_gagnante_hex.aux)
 (C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\rapport\output\so
-urces\10_strategie_gagnate_hex.aux))
+urces\annexes\9_2_fonctions_evaluation.aux))
 \openout1 = `modele_rapport_latex.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 12.
@@ -483,15 +483,18 @@ g
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
 Package hyperref Info: Link coloring OFF on input line 12.
- (modele_rapport_latex.out) (modele_rapport_latex.out)
+
+(C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\rapport\output\mo
+dele_rapport_latex.out)
+(C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\rapport\output\mo
+dele_rapport_latex.out)
 \@outlinefile=\write3
 \openout3 = `modele_rapport_latex.out'.
 
 \openout2 = `./sources/0_frontpage.aux'.
 
-
-(sources/0_frontpage.tex
-<root/UM1.png, id=91, 194.6472pt x 71.0655pt>
+ (sources/0_frontpage.tex
+<root/UM1.png, id=139, 194.6472pt x 71.0655pt>
 File: root/UM1.png Graphic file (type png)
 <use root/UM1.png>
 Package pdftex.def Info: root/UM1.png  used on input line 5.
@@ -581,17 +584,17 @@ LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 1
 (C:\Users\Ivan\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-<root/exemple_home.png, id=139, 1000.48781pt x 476.53032pt>
+<root/exemple_home.png, id=197, 1000.48781pt x 476.53032pt>
 File: root/exemple_home.png Graphic file (type png)
 <use root/exemple_home.png>
 Package pdftex.def Info: root/exemple_home.png  used on input line 55.
 (pdftex.def)             Requested size: 227.62204pt x 108.41444pt.
-<root/awale_board.png, id=140, 1011.02719pt x 469.755pt>
+<root/awale_board.png, id=198, 1011.02719pt x 469.755pt>
 File: root/awale_board.png Graphic file (type png)
 <use root/awale_board.png>
 Package pdftex.def Info: root/awale_board.png  used on input line 59.
 (pdftex.def)             Requested size: 227.62204pt x 105.75482pt.
-<root/exemple_partie_hex.png, id=141, 1002.74625pt x 468.24937pt>
+<root/exemple_partie_hex.png, id=199, 1002.74625pt x 468.24937pt>
 File: root/exemple_partie_hex.png Graphic file (type png)
 <use root/exemple_partie_hex.png>
 Package pdftex.def Info: root/exemple_partie_hex.png  used on input line 63.
@@ -619,12 +622,12 @@ x.png>]) [6]
 
 
 ]
-<root/MinMax.jpeg, id=179, 733.74126pt x 362.35374pt>
+<root/MinMax.jpeg, id=237, 733.74126pt x 362.35374pt>
 File: root/MinMax.jpeg Graphic file (type jpg)
 <use root/MinMax.jpeg>
 Package pdftex.def Info: root/MinMax.jpeg  used on input line 74.
 (pdftex.def)             Requested size: 181.18439pt x 89.47687pt.
-<root/minmax_alpha_beta.png, id=180, 652.68843pt x 328.22626pt>
+<root/minmax_alpha_beta.png, id=238, 652.68843pt x 328.22626pt>
 File: root/minmax_alpha_beta.png Graphic file (type png)
 <use root/minmax_alpha_beta.png>
 Package pdftex.def Info: root/minmax_alpha_beta.png  used on input line 89.
@@ -634,7 +637,7 @@ nc} <./root/MinMax.jpeg> <./root/minmax_alpha_beta.png>]
 \openout2 = `./sources/5_analyse_des_resultats.aux'.
 
  (sources/5_analyse_des_resultats.tex
-<root/pont.png, id=194, 161.85469pt x 163.3603pt>
+<root/pont.png, id=252, 161.85469pt x 163.3603pt>
 File: root/pont.png Graphic file (type png)
 <use root/pont.png>
 Package pdftex.def Info: root/pont.png  used on input line 46.
@@ -689,13 +692,13 @@ pdf ?
 
 
 ]
-\openout2 = `./sources/9_annexes.aux'.
+\openout2 = `./sources/annexes/9_0_cahier_des_charges.aux'.
 
- (sources/9_annexes.tex
-<root/hex_jeu_bleu.png, id=239, 660.066pt x 398.08725pt>
+ (sources/annexes/9_0_cahier_des_charges.tex
+<root/hex_jeu_bleu.png, id=297, 660.066pt x 398.08725pt>
 File: root/hex_jeu_bleu.png Graphic file (type png)
 <use root/hex_jeu_bleu.png>
-Package pdftex.def Info: root/hex_jeu_bleu.png  used on input line 36.
+Package pdftex.def Info: root/hex_jeu_bleu.png  used on input line 24.
 (pdftex.def)             Requested size: 330.03218pt x 199.04314pt.
  [14
 
@@ -704,30 +707,25 @@ Package pdftex.def Info: root/hex_jeu_bleu.png  used on input line 36.
  <./root/hex_jeu_bleu.png>]) [15]
 \openout2 = `./sources/annexes/9_1_strategie_gagnante_hex.aux'.
 
-
-(sources/annexes/9_1_strategie_gagnante_hex.tex
-<root/strategie_gagnante.png, id=254, 636.87938pt x 386.19281pt>
+ (sources/annexes/9_1_strategie_gagnante_hex.tex
+<root/strategie_gagnante.png, id=310, 636.87938pt x 386.19281pt>
 File: root/strategie_gagnante.png Graphic file (type png)
 <use root/strategie_gagnante.png>
-Package pdftex.def Info: root/strategie_gagnante.png  used on input line 15.
+Package pdftex.def Info: root/strategie_gagnante.png  used on input line 14.
 (pdftex.def)             Requested size: 181.18439pt x 109.86572pt.
  [16
 
 
 
  <./root/strategie_gagnante.png>]) [17]
-\openout2 = `./sources/10_strategie_gagnate_hex.aux'.
+\openout2 = `./sources/annexes/9_2_fonctions_evaluation.aux'.
 
- (sources/10_strategie_gagnate_hex.tex
-File: root/strategie_gagnante.png Graphic file (type png)
-<use root/strategie_gagnante.png>
-Package pdftex.def Info: root/strategie_gagnante.png  used on input line 13.
-(pdftex.def)             Requested size: 181.18439pt x 109.86572pt.
- [18
+ (sources/annexes/9_2_fonctions_evaluation.tex [18
 
 
 
-]) [19]
+])
+[19]
 (C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\rapport\output\mo
 dele_rapport_latex.aux
 (C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\rapport\output\so
@@ -751,11 +749,11 @@ urces\7_bilan_et_conclusions.aux)
 (C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\rapport\output\so
 urces\8_bibliographie.aux)
 (C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\rapport\output\so
-urces\9_annexes.aux)
+urces\annexes\9_0_cahier_des_charges.aux)
 (C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\rapport\output\so
 urces\annexes\9_1_strategie_gagnante_hex.aux)
 (C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\rapport\output\so
-urces\10_strategie_gagnate_hex.aux))
+urces\annexes\9_2_fonctions_evaluation.aux))
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
@@ -768,13 +766,13 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `modele_rapport_latex.out' has not changed.
-(rerunfilecheck)             Checksum: D31D3DD463C9F8B83146945B15F23356;4406.
+(rerunfilecheck)             Checksum: 501930820943B01B0712556BB897C76E;7017.
  ) 
 Here is how much of TeX's memory you used:
- 13080 strings out of 474542
- 227034 string characters out of 5744918
+ 13096 strings out of 474542
+ 228292 string characters out of 5744918
  1937978 words of memory out of 5000000
- 34926 multiletter control sequences out of 15000+600000
+ 34938 multiletter control sequences out of 15000+600000
  613697 words of font info for 64 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  79i,8n,82p,1182b,576s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -791,9 +789,9 @@ n/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss10.pfb><C:/Users/Ivan
 /AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/Ivan/
 AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb>
 Output written on C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\
-rapport\output\modele_rapport_latex.pdf (20 pages, 989958 bytes).
+rapport\output\modele_rapport_latex.pdf (20 pages, 999156 bytes).
 PDF statistics:
- 361 PDF objects out of 1000 (max. 8388607)
- 82 named destinations out of 1000 (max. 500000)
- 222 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 413 PDF objects out of 1000 (max. 8388607)
+ 86 named destinations out of 1000 (max. 500000)
+ 318 words of extra memory for PDF output out of 10000 (max. 10000000)
 

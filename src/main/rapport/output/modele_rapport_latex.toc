@@ -34,13 +34,19 @@
 \contentsline {paragraph}{Hex:}{13}{section*.16}%
 \contentsline {paragraph}{Stratégie gagnante:}{13}{section*.17}%
 \contentsline {paragraph}{Awale:}{13}{section*.18}%
-\contentsline {section}{\numberline {9}Annexes}{14}{section.9}%
-\contentsline {subsection}{\numberline {9.1}Annexe I : Cahier des charges}{14}{subsection.9.1}%
-\contentsline {subsection}{\numberline {9.2}HexGame et strategie gagnante}{16}{subsection.9.2}%
+\contentsline {section}{\numberline {9}Annexe}{14}{section.9}%
+\contentsline {subsection}{\numberline {9.1}Cahier des charges}{14}{subsection.9.1}%
+\contentsline {subsubsection}{\numberline {9.1.1}Objectifs du projet}{14}{subsubsection.9.1.1}%
+\contentsline {subsubsection}{\numberline {9.1.2}Description des jeux}{14}{subsubsection.9.1.2}%
+\contentsline {subsection}{\numberline {9.2}HexGame et stratégie gagnante}{16}{subsection.9.2}%
 \contentsline {subsubsection}{\numberline {9.2.1}Stratégies gagnantes et arbre du jeu}{16}{subsubsection.9.2.1}%
-\contentsline {paragraph}{Remarque:}{16}{section*.23}%
-\contentsline {paragraph}{Le premier joueur gagne à tous les coups:}{16}{section*.24}%
-\contentsline {section}{\numberline {10}HexGame et stratégie gagnante}{18}{section.10}%
-\contentsline {paragraph}{Stratégies gagnantes et arbre du jeu}{18}{section*.25}%
-\contentsline {paragraph}{Remarques}{18}{section*.26}%
-\contentsline {paragraph}{Le premier joueur gagne à tous les coups}{18}{section*.27}%
+\contentsline {subsubsection}{\numberline {9.2.2}Remarques}{16}{subsubsection.9.2.2}%
+\contentsline {subsubsection}{\numberline {9.2.3}Le premier joueur gagne à tous les coups}{16}{subsubsection.9.2.3}%
+\contentsline {subsection}{\numberline {9.3}Fonctions d'évaluation}{18}{subsection.9.3}%
+\contentsline {subsubsection}{\numberline {9.3.1}Fonction d'évaluation initiale}{18}{subsubsection.9.3.1}%
+\contentsline {subsubsection}{\numberline {9.3.2}Fonction d'évaluation basée sur la proximité au bord}{18}{subsubsection.9.3.2}%
+\contentsline {subsubsection}{\numberline {9.3.3}Fonction d'évaluation basée sur les voisins}{18}{subsubsection.9.3.3}%
+\contentsline {subsubsection}{\numberline {9.3.4}Fonction d'évaluation basée sur la position actuelle}{18}{subsubsection.9.3.4}%
+\contentsline {subsubsection}{\numberline {9.3.5}Fonction d'évaluation basée sur l'algorithme de Dijkstra}{18}{subsubsection.9.3.5}%
+\contentsline {subsubsection}{\numberline {9.3.6}Le problème de la complexité}{19}{subsubsection.9.3.6}%
+\contentsline {subsubsection}{\numberline {9.3.7}Conclusion}{19}{subsubsection.9.3.7}%
