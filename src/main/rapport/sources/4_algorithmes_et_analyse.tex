@@ -1,4 +1,4 @@
-\section{Moteur de jeux combinatoires abstraits}
+\section{Moteur de jeux combinatoires abstraits et algorithmes}
 
 
 % présenter les principaux algorithmes utilisés comme moteur de jeu combinatoires absrtaits
@@ -106,3 +106,29 @@ Plusieurs coupures ont pu être réalisées. De gauche à droite :
 \paragraph{Remarques:}
 À l'aide de l'algorithme MinMax, il est possible de donner une preuve de l'existence d'une stratégie gagnante au jeu du Hex notamment. Nous détaillons
 cette preuve en annexe.
+
+\subsection{autres algorithmes}
+\paragraph{dijkstra et BFS}
+Dans le projet lorsque un joueur gagne au Hex le chemin le plus court entre ses deux bords du plateau est mis en valeur
+pour cela nous devions d'abord detecter qu'un joueur ait gagné. Pour cela nous avons implementé l'algorithme du parcours
+en largeur (BFS) en interpretant le tableau dans lequel les coups des joueurs est sauvegradé comme une graphe.Le parcous en profondeur
+va generer un graphe couvrant depuis un bord en ne passant que par des coups placés par un joueur, si le graphe generé attein le bord opposé
+alors le joueur a gagné. Nous appellons cet algorithme a chaque fois qu'un coup est placé et celui ci est de complexité O(|V|+|E|).
+Notons ici que nous appelons l'algo seulement sur l'arbre correspondant aux coups joué par un joueur, donc en pratique l'appel a cet algorithme
+est tres rapide.
+
+Ensuite nous voulions mettre en valeur le chemin le plus court qui relie les 2 bords du joueur qui a gagné. Pour cela,
+nous avons utilisé l'algorithme de dijkstra un peu modifié en effet le BFS nous assure qu'un chemin existe mais ne nous aide pas vraiment
+a trouver le plus court en effet il peut y avoir plusieurs points de departs (point sur le bord) et point d'arrivée (points sur le bord opposé)
+Nous avons opté pour une solution naive, nous appellons l'algorithme plusieurs fois (une pour chaque point de depart possible)
+puis nous comparons la taille des chemins trouvés. La complexité de dijkstra est a l'orgigine dans le pire des cas de O(|V|+|E|*log(|V|)) 
+mais notre implementation est plus complexe elle a une complexité dans le pire des cas de O(n*(|V|+|E|*log(|V|))) ou n est la taille de notre plateau
+a noter que ce cas arrive en pratique jamais et il n'est appelé qu'une fois a la fin de chaque partie. En pratique le chemin le plus court est trouvé
+instantanement.
+
+\begin{figure}[h]
+    \begin{center}
+        \includegraphics[width=0.5\textwidth]{root/chemin_gagnat.png}
+    \end{center}
+    \caption{Ici bleu a gagné et le chemin le plus court est trouvé}\label{fig:chemin_gagnant}
+\end{figure}

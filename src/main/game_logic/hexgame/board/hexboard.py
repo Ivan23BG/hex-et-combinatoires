@@ -66,10 +66,6 @@ class HexBoard:
 
 
     def initialize_board(self) -> None:
-        """
-        Initialize the board with zeros, representing an empty board.
-        """
-        
         self.board = [[0] * self.size for _ in range(self.size)]
 
 
