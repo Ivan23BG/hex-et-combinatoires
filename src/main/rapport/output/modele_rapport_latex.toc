@@ -10,46 +10,46 @@
 \contentsline {paragraph}{Initialisation de la partie}{5}{section*.5}%
 \contentsline {paragraph}{Déroulement d'une partie}{5}{section*.6}%
 \contentsline {subsection}{\numberline {3.3}Fonctions asynchrones}{6}{subsection.3.3}%
-\contentsline {section}{\numberline {4}Moteur de jeux combinatoires abstraits et algorithmes}{7}{section.4}%
-\contentsline {subsection}{\numberline {4.1}La recherche arborescente Monte-Carlo}{7}{subsection.4.1}%
-\contentsline {paragraph}{Présentation}{7}{section*.7}%
-\contentsline {paragraph}{MCTS - Fonctionnement succinct}{7}{section*.8}%
-\contentsline {subsection}{\numberline {4.2}MinMax}{7}{subsection.4.2}%
-\contentsline {subsubsection}{\numberline {4.2.1}Présentation}{7}{subsubsection.4.2.1}%
-\contentsline {subsubsection}{\numberline {4.2.2}MinMax - Fonctionnement succinct}{7}{subsubsection.4.2.2}%
-\contentsline {subsubsection}{\numberline {4.2.3}Élagage alpha-bêta}{8}{subsubsection.4.2.3}%
-\contentsline {subsubsection}{\numberline {4.2.4}Remarques:}{9}{subsubsection.4.2.4}%
-\contentsline {subsection}{\numberline {4.3}Autres algorithmes}{9}{subsection.4.3}%
-\contentsline {subsubsection}{\numberline {4.3.1}Dijkstra et BFS}{9}{subsubsection.4.3.1}%
-\contentsline {section}{\numberline {5}Observations de l'algorithme MinMax sur nos jeux}{10}{section.5}%
-\contentsline {subsection}{\numberline {5.1}Hexgame : Performances décevantes}{10}{subsection.5.1}%
-\contentsline {paragraph}{Trop grande complexité}{10}{section*.9}%
-\contentsline {paragraph}{Fonction d'évaluation : Un vrai casse-tête}{10}{section*.10}%
-\contentsline {subsection}{\numberline {5.2}Awale : Bonnes performances}{11}{subsection.5.2}%
-\contentsline {paragraph}{Une fonction d'évaluation efficace}{11}{section*.11}%
-\contentsline {subsection}{\numberline {5.3}Conclusion}{11}{subsection.5.3}%
-\contentsline {subsection}{\numberline {5.4}Fonctions d'évaluation}{12}{subsection.5.4}%
-\contentsline {subsubsection}{\numberline {5.4.1}Fonction d'évaluation initiale}{12}{subsubsection.5.4.1}%
-\contentsline {subsubsection}{\numberline {5.4.2}Fonction d'évaluation basée sur la proximité au bord}{12}{subsubsection.5.4.2}%
-\contentsline {subsubsection}{\numberline {5.4.3}Fonction d'évaluation basée sur les voisins}{12}{subsubsection.5.4.3}%
-\contentsline {subsubsection}{\numberline {5.4.4}Fonction d'évaluation basée sur la position actuelle}{12}{subsubsection.5.4.4}%
-\contentsline {subsubsection}{\numberline {5.4.5}Fonction d'évaluation basée sur l'algorithme de Dijkstra}{12}{subsubsection.5.4.5}%
-\contentsline {subsubsection}{\numberline {5.4.6}Le problème de la complexité}{13}{subsubsection.5.4.6}%
-\contentsline {subsubsection}{\numberline {5.4.7}Conclusion}{13}{subsubsection.5.4.7}%
-\contentsline {section}{\numberline {6}Gestion du Projet}{14}{section.6}%
-\contentsline {subsection}{\numberline {6.1}Diagramme de Gantt}{14}{subsection.6.1}%
-\contentsline {subsection}{\numberline {6.2}Changements Majeurs}{14}{subsection.6.2}%
-\contentsline {section}{\numberline {7}Bilan et Conclusions}{15}{section.7}%
-\contentsline {section}{\numberline {8}Bibliographie}{16}{section.8}%
-\contentsline {section}{\numberline {9}Annexe}{17}{section.9}%
-\contentsline {subsection}{\numberline {9.1}Cahier des charges}{17}{subsection.9.1}%
-\contentsline {subsubsection}{\numberline {9.1.1}Objectifs du projet}{17}{subsubsection.9.1.1}%
-\contentsline {subsubsection}{\numberline {9.1.2}Description des jeux}{17}{subsubsection.9.1.2}%
-\contentsline {subsection}{\numberline {9.2}HexGame et stratégie gagnante}{20}{subsection.9.2}%
-\contentsline {subsubsection}{\numberline {9.2.1}Stratégies gagnantes et arbre du jeu}{20}{subsubsection.9.2.1}%
-\contentsline {subsubsection}{\numberline {9.2.2}Remarques}{20}{subsubsection.9.2.2}%
-\contentsline {subsubsection}{\numberline {9.2.3}Le premier joueur gagne à tous les coups}{20}{subsubsection.9.2.3}%
-\contentsline {subsection}{\numberline {9.3}Diagrammes UML}{22}{subsection.9.3}%
-\contentsline {subsubsection}{\numberline {9.3.1}Diagramme du module Hex et Awalé}{22}{subsubsection.9.3.1}%
-\contentsline {subsubsection}{\numberline {9.3.2}Diagramme de fonctionnement de l'application}{22}{subsubsection.9.3.2}%
-\contentsline {subsection}{\numberline {9.4}Diagramme de Gantt}{24}{subsection.9.4}%
+\contentsline {subsection}{\numberline {3.4}Diagrammes UML}{7}{subsection.3.4}%
+\contentsline {subsubsection}{\numberline {3.4.1}Diagramme du module Hex et Awalé}{7}{subsubsection.3.4.1}%
+\contentsline {subsubsection}{\numberline {3.4.2}Diagramme de fonctionnement de l'application}{7}{subsubsection.3.4.2}%
+\contentsline {section}{\numberline {4}Moteur de jeux combinatoires abstraits et algorithmes}{9}{section.4}%
+\contentsline {subsection}{\numberline {4.1}La recherche arborescente Monte-Carlo}{9}{subsection.4.1}%
+\contentsline {paragraph}{Présentation}{9}{section*.7}%
+\contentsline {paragraph}{MCTS - Fonctionnement succinct}{9}{section*.8}%
+\contentsline {subsection}{\numberline {4.2}MinMax}{9}{subsection.4.2}%
+\contentsline {subsubsection}{\numberline {4.2.1}Présentation}{9}{subsubsection.4.2.1}%
+\contentsline {subsubsection}{\numberline {4.2.2}MinMax - Fonctionnement succinct}{9}{subsubsection.4.2.2}%
+\contentsline {subsubsection}{\numberline {4.2.3}Élagage alpha-bêta}{10}{subsubsection.4.2.3}%
+\contentsline {subsubsection}{\numberline {4.2.4}Remarques:}{11}{subsubsection.4.2.4}%
+\contentsline {subsection}{\numberline {4.3}Autres algorithmes}{11}{subsection.4.3}%
+\contentsline {subsubsection}{\numberline {4.3.1}Dijkstra et BFS}{11}{subsubsection.4.3.1}%
+\contentsline {section}{\numberline {5}Observations de l'algorithme MinMax sur nos jeux}{12}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Hexgame : Performances décevantes}{12}{subsection.5.1}%
+\contentsline {paragraph}{Trop grande complexité}{12}{section*.9}%
+\contentsline {paragraph}{Fonction d'évaluation : Un vrai casse-tête}{12}{section*.10}%
+\contentsline {subsection}{\numberline {5.2}Awale : Bonnes performances}{13}{subsection.5.2}%
+\contentsline {paragraph}{Une fonction d'évaluation efficace}{13}{section*.11}%
+\contentsline {subsection}{\numberline {5.3}Conclusion}{13}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Fonctions d'évaluation}{14}{subsection.5.4}%
+\contentsline {subsubsection}{\numberline {5.4.1}Fonction d'évaluation initiale}{14}{subsubsection.5.4.1}%
+\contentsline {subsubsection}{\numberline {5.4.2}Fonction d'évaluation basée sur la proximité au bord}{14}{subsubsection.5.4.2}%
+\contentsline {subsubsection}{\numberline {5.4.3}Fonction d'évaluation basée sur les voisins}{14}{subsubsection.5.4.3}%
+\contentsline {subsubsection}{\numberline {5.4.4}Fonction d'évaluation basée sur la position actuelle}{14}{subsubsection.5.4.4}%
+\contentsline {subsubsection}{\numberline {5.4.5}Fonction d'évaluation basée sur l'algorithme de Dijkstra}{14}{subsubsection.5.4.5}%
+\contentsline {subsubsection}{\numberline {5.4.6}Le problème de la complexité}{15}{subsubsection.5.4.6}%
+\contentsline {subsubsection}{\numberline {5.4.7}Conclusion}{15}{subsubsection.5.4.7}%
+\contentsline {section}{\numberline {6}Gestion du Projet}{16}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Diagramme de Gantt}{16}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Changements Majeurs}{16}{subsection.6.2}%
+\contentsline {section}{\numberline {7}Bilan et Conclusions}{17}{section.7}%
+\contentsline {section}{\numberline {8}Bibliographie}{18}{section.8}%
+\contentsline {section}{\numberline {9}Annexe}{19}{section.9}%
+\contentsline {subsection}{\numberline {9.1}Cahier des charges}{19}{subsection.9.1}%
+\contentsline {subsubsection}{\numberline {9.1.1}Objectifs du projet}{19}{subsubsection.9.1.1}%
+\contentsline {subsubsection}{\numberline {9.1.2}Description des jeux}{19}{subsubsection.9.1.2}%
+\contentsline {subsection}{\numberline {9.2}HexGame et stratégie gagnante}{22}{subsection.9.2}%
+\contentsline {subsubsection}{\numberline {9.2.1}Stratégies gagnantes et arbre du jeu}{22}{subsubsection.9.2.1}%
+\contentsline {subsubsection}{\numberline {9.2.2}Remarques}{22}{subsubsection.9.2.2}%
+\contentsline {subsubsection}{\numberline {9.2.3}Le premier joueur gagne à tous les coups}{22}{subsubsection.9.2.3}%
+\contentsline {subsection}{\numberline {9.3}Diagramme de Gantt}{24}{subsection.9.3}%
