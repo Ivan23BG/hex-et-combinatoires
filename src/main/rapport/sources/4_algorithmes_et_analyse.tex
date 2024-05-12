@@ -12,28 +12,28 @@ Implémenter un algorithme pour jouer à des jeux combinatoires contre l'ordinat
 mais plusieurs questions naturelles ont alors vu le jour: quels sont les algorithmes qui permettent à un ordinateur
 de jouer à un jeu combinatoire abstrait? Quels sont leurs points forts et faibles? Dans cette section, nous allons
 présenter deux algorithmes principaux qui aident à répondre à ces questions: la recherche arborescente \emph{Monte-Carlo} (Monte-carlo Tree Search) 
-et l'algorithme du \emph{MinMax} avec élagage alpha-bêta:
+et l'algorithme du \emph{MinMax} avec élagage alpha-bêta.
 
 \subsection{La recherche arborescente Monte-Carlo}
 
-\paragraph{Présentation}
+\subsubsection{Présentation}
 La recherche arborescente \emph{Monte-Carlo} ou \emph{Monte-Carlo} (MCTS) est un algorithme de recherche heuristique.
 Il est principalement utilisé dans le cadre de mise en place d'intelligence artificielle pour des jeux tels que le go, mais pas uniquement.
 En effet, il peut aussi être utilisé pour les moteurs de jeux des échecs comme le moteur AlphaZero de Google qui est
 l'un des leaders en termes d'intelligence de jeux aux échecs. Cet algorithme peut même être implémenté dans des jeux où le hasard 
 apparaît par exemple au poker.
 
-\paragraph{MCTS --- Fonctionnement succinct}
+\subsubsection{MCTS --- Fonctionnement succinct}
 \emph{MCTS} est un algorithme qui explore l'arbre des possibles. La racine est la configuration initiale du jeu.
 Chaque nœud est une configuration (une situation en jeu) et ses enfants sont les configurations suivantes.\ \emph{MCTS} conserve en mémoire 
 un arbre qui correspond aux nœuds déjà explorés. Une feuille de cet arbre est soit une configuration finale (donc un des joueurs a gagné),
 soit un nœud dont aucun enfant n'a encore été exploré. Dans chaque nœud, on stocke deux nombres: le nombre de simulations gagnantes, 
 et le nombre total de simulations. 
 
-À chaque itération \emph{MCTS} va chercher la feuille la plus prometteuse, comprendre la suite de coups qui possède la meilleure heuristique, 
-et ensuite, depuis cette feuille, créer grâce aux règles du jeu, une nouvelle feuille au hasard dont le but est d'atteindre une configuration finale.
-Dans le cas où on trouverait une configuration gagnante pour un joueur, on va incrémenter le nombre de simulations gagnantes, pour les nœuds
-correspondant au joueur et dans les parents de la feuille que l'on vient de créer.
+À chaque itération \emph{MCTS} va déterminer la `meilleure' feuille (celle qui a le plus de potentiel) à partir de la racine.
+Depuis cette feuille, il va créer grâce aux règles du jeu, une nouvelle feuille au hasard dont le but est d'atteindre une configuration finale.
+Dans le cas où on trouverait une configuration gagnante pour un joueur, il va incrémenter le nombre de simulations gagnantes.
+Cela vaut pour les nœuds correspondant au joueur et aussi pour les parents de la feuille qui a été créée.\@
 L'algorithme répète cette opération un certain nombre de fois avant de choisir un coup, i.e: choisir le coup qui a le plus de simulations
 gagnantes et le moins de simulations totales.
 
@@ -59,7 +59,7 @@ et négative dans le cas contraire.
 
 En ce qui concerne les nœuds feuilles non-terminaux, c'est-à-dire ceux représentant une configuration de jeu non gagnante, mais bloqués par la 
 profondeur de recherche, c'est une fonction d'évaluation qui va estimer leur valeur heuristique. La qualité de cette fonction va 
-déterminer « l'intelligence » de l'ordinateur. Cette estimation et la profondeur de recherche déterminent donc la qualité et la 
+déterminer ``l'intelligence'' de l'ordinateur. Cette estimation et la profondeur de recherche déterminent donc la qualité et la 
 précision du résultat final du \emph{MinMax}.
 
 Les nœuds qui ne sont pas des feuilles vont hériter d'une des valeurs de leurs enfants en fonction de s'ils sont le minimisant, ou le maximisant.
