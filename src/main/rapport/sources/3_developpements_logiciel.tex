@@ -124,7 +124,7 @@ La méthode globale \textit{fetch} démarre le chargement d'une ressource sur le
 réponse est disponible. Cependant, le fait que la réponse ne soit renvoyée que lorsque celle-ci est disponible nous a gêné lors de l'implémentation
 des modes JcIA et IAvIA pour les deux jeux. En effet, nous souhaitons que notre programme s'exécute de façon synchrone (ligne après ligne). 
 Or, le \textit{fetch} peut prendre un certain temps avant de résoudre la promesse faite, cela est notamment dû à la lenteur des fonctions d'évaluation.
-Ainsi, pour éviter que le reste du programme ne s'exécute avant la résolution de la prommesse, nous avons décidé d'ajouter le décorateur 
+Ainsi, pour éviter que le reste du programme ne s'exécute avant la résolution de la promesse, nous avons décidé d'ajouter le décorateur 
 \textsf{async} à notre fonction \textit{window.onload}. Ce simple décorateur nous a alors permis d'utiliser le mot-clé \textsf{await} devant les requêtes \textit{fetch}.
 Celui-ci interrompt l'exécution de la fonction asynchrone et attend la résolution de la promesse passée. Ainsi, les requêtes se voient toujours résolues 
 avant d'exécuter la suite du programme. Cela permet d'éviter que le joueur puisse jouer plusieurs coups pendant que l'IA « réfléchie », ou encore le fait
