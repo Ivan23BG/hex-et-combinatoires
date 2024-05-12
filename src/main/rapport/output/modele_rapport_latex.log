@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.2.13)  12 MAY 2024 15:06
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.2.13)  12 MAY 2024 17:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -487,6 +487,8 @@ urces\2_technologies_utilisees.aux)
 (C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\rapport\output\so
 urces\3_developpements_logiciel.aux)
 (C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\rapport\output\so
+urces\annexes\9_3_diagrammes_uml.aux)
+(C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\rapport\output\so
 urces\4_algorithmes_et_analyse.aux)
 (C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\rapport\output\so
 urces\5_analyse_des_resultats.aux)
@@ -502,8 +504,6 @@ urces\8_bibliographie.aux)
 urces\annexes\9_0_cahier_des_charges.aux)
 (C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\rapport\output\so
 urces\annexes\9_1_strategie_gagnante_hex.aux)
-(C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\rapport\output\so
-urces\annexes\9_3_diagrammes_uml.aux)
 (C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\rapport\output\so
 urces\annexes\9_4_diagramme_de_gantt.aux))
 \openout1 = `modele_rapport_latex.aux'.
@@ -697,70 +697,96 @@ File: t1lmss.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 [5 <./root/exemple_home.png> <./root/awale_board.png> <./root/exemple_partie_he
 x.png>]) [6]
+\openout2 = `./sources/annexes/9_3_diagrammes_uml.aux'.
+
+ (sources/annexes/9_3_diagrammes_uml.tex
+<root/UML_hex.png, id=147, 4358.2825pt x 2640.86626pt>
+File: root/UML_hex.png Graphic file (type png)
+<use root/UML_hex.png>
+Package pdftex.def Info: root/UML_hex.png  used on input line 12.
+(pdftex.def)             Requested size: 362.37569pt x 219.57466pt.
+<root/UML_awale.png, id=148, 5041.83624pt x 1586.92876pt>
+File: root/UML_awale.png Graphic file (type png)
+<use root/UML_awale.png>
+Package pdftex.def Info: root/UML_awale.png  used on input line 17.
+(pdftex.def)             Requested size: 362.37569pt x 114.05054pt.
+<root/UML_app.png, id=149, 7340.42375pt x 2597.705pt>
+File: root/UML_app.png Graphic file (type png)
+<use root/UML_app.png>
+Package pdftex.def Info: root/UML_app.png  used on input line 34.
+(pdftex.def)             Requested size: 452.9679pt x 160.295pt.
+
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 34--35
+ [][] 
+ []
+
+) [7
+
+
+
+ <./root/UML_hex.png> <./root/UML_awale.png>] [8 <./root/UML_app.png>]
 \openout2 = `./sources/4_algorithmes_et_analyse.aux'.
 
- (sources/4_algorithmes_et_analyse.tex [7
+
+(sources/4_algorithmes_et_analyse.tex [9
 
 
 
 ]
-<root/MinMax.jpeg, id=153, 733.74126pt x 362.35374pt>
+<root/MinMax.jpeg, id=170, 733.74126pt x 362.35374pt>
 File: root/MinMax.jpeg Graphic file (type jpg)
 <use root/MinMax.jpeg>
 Package pdftex.def Info: root/MinMax.jpeg  used on input line 74.
 (pdftex.def)             Requested size: 181.18439pt x 89.47687pt.
-<root/minmax_alpha_beta.png, id=154, 652.68843pt x 328.22626pt>
+<root/minmax_alpha_beta.png, id=171, 652.68843pt x 328.22626pt>
 File: root/minmax_alpha_beta.png Graphic file (type png)
 <use root/minmax_alpha_beta.png>
 Package pdftex.def Info: root/minmax_alpha_beta.png  used on input line 89.
 (pdftex.def)             Requested size: 226.48395pt x 113.89426pt.
- [8{C:/Users/Ivan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.en
-c} <./root/MinMax.jpeg> <./root/minmax_alpha_beta.png>]
-<root/chemin_gagnant.png, id=166, 554.82281pt x 328.22626pt>
+ [10{C:/Users/Ivan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.e
+nc} <./root/MinMax.jpeg> <./root/minmax_alpha_beta.png>]
+<root/chemin_gagnant.png, id=183, 554.82281pt x 328.22626pt>
 File: root/chemin_gagnant.png Graphic file (type png)
 <use root/chemin_gagnant.png>
 Package pdftex.def Info: root/chemin_gagnant.png  used on input line 133.
 (pdftex.def)             Requested size: 226.48395pt x 133.98265pt.
-) [9{C:/Users/Ivan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{
-C:/Users/Ivan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc} <
-./root/chemin_gagnant.png>]
+) [11{C:/Users/Ivan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}
+{C:/Users/Ivan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc} 
+<./root/chemin_gagnant.png>]
 \openout2 = `./sources/5_analyse_des_resultats.aux'.
 
 
 (sources/5_analyse_des_resultats.tex
-<root/pont.png, id=175, 161.85469pt x 163.3603pt>
+<root/pont.png, id=192, 161.85469pt x 163.3603pt>
 File: root/pont.png Graphic file (type png)
 <use root/pont.png>
 Package pdftex.def Info: root/pont.png  used on input line 46.
 (pdftex.def)             Requested size: 80.92714pt x 81.67995pt.
- [10
+ [12
 
 
 
- <./root/pont.png>]) [11]
+ <./root/pont.png>]) [13]
 \openout2 = `./sources/annexes/9_2_fonctions_evaluation.aux'.
 
 
-(sources/annexes/9_2_fonctions_evaluation.tex [12
+(sources/annexes/9_2_fonctions_evaluation.tex [14
 
 
 
-]) [13]
+]) [15]
 \openout2 = `./sources/6_gestion_du_projet.aux'.
 
 
-(sources/6_gestion_du_projet.tex
-
-LaTeX Warning: Reference `annexe:gantt' on page 14 undefined on input line 17.
-
-) [14
+(sources/6_gestion_du_projet.tex) [16
 
 
 
 ]
 \openout2 = `./sources/7_bilan_et_conclusions.aux'.
 
- (sources/7_bilan_et_conclusions.tex) [15
+ (sources/7_bilan_et_conclusions.tex)
+[17
 
 
 
@@ -837,7 +863,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 39--40
 \T1/lmtt/m/n/10 implémentation-[]dune-[]ia-[]pour-[]l-[]awalé-[]partie-[]1 \
  []
 
-) [16
+) [18
 
 
 
@@ -849,17 +875,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 18--22
 
  []
 
-<root/hex_jeu_bleu.png, id=276, 660.066pt x 398.08725pt>
+<root/hex_jeu_bleu.png, id=296, 660.066pt x 398.08725pt>
 File: root/hex_jeu_bleu.png Graphic file (type png)
 <use root/hex_jeu_bleu.png>
 Package pdftex.def Info: root/hex_jeu_bleu.png  used on input line 25.
 (pdftex.def)             Requested size: 330.03218pt x 199.04314pt.
-[17
+[19
 
 
 
  <./root/hex_jeu_bleu.png>]
-<root/awale_en_bois.jpg, id=283, 1027.84pt x 685.56125pt>
+<root/awale_en_bois.jpg, id=303, 1027.84pt x 685.56125pt>
 File: root/awale_en_bois.jpg Graphic file (type jpg)
 <use root/awale_en_bois.jpg>
 Package pdftex.def Info: root/awale_en_bois.jpg  used on input line 52.
@@ -869,54 +895,25 @@ Overfull \hbox (60.95085pt too wide) in paragraph at lines 52--53
  [] 
  []
 
-[18 <./root/awale_en_bois.jpg>]) [19]
+[20 <./root/awale_en_bois.jpg>]) [21]
 \openout2 = `./sources/annexes/9_1_strategie_gagnante_hex.aux'.
 
 
 (sources/annexes/9_1_strategie_gagnante_hex.tex
-<root/strategie_gagnante.png, id=296, 636.87938pt x 386.19281pt>
+<root/strategie_gagnante.png, id=315, 636.87938pt x 386.19281pt>
 File: root/strategie_gagnante.png Graphic file (type png)
 <use root/strategie_gagnante.png>
 Package pdftex.def Info: root/strategie_gagnante.png  used on input line 14.
 (pdftex.def)             Requested size: 181.18439pt x 109.86572pt.
- [20
+ [22
 
 
 
- <./root/strategie_gagnante.png>]) [21]
-\openout2 = `./sources/annexes/9_3_diagrammes_uml.aux'.
-
- (sources/annexes/9_3_diagrammes_uml.tex
-<root/UML_hex.png, id=308, 4358.2825pt x 2640.86626pt>
-File: root/UML_hex.png Graphic file (type png)
-<use root/UML_hex.png>
-Package pdftex.def Info: root/UML_hex.png  used on input line 12.
-(pdftex.def)             Requested size: 362.37569pt x 219.57466pt.
-<root/UML_awale.png, id=309, 5041.83624pt x 1586.92876pt>
-File: root/UML_awale.png Graphic file (type png)
-<use root/UML_awale.png>
-Package pdftex.def Info: root/UML_awale.png  used on input line 17.
-(pdftex.def)             Requested size: 362.37569pt x 114.05054pt.
-<root/UML_app.png, id=310, 7340.42375pt x 2597.705pt>
-File: root/UML_app.png Graphic file (type png)
-<use root/UML_app.png>
-Package pdftex.def Info: root/UML_app.png  used on input line 34.
-(pdftex.def)             Requested size: 452.9679pt x 160.295pt.
-
-Overfull \hbox (6.79999pt too wide) in paragraph at lines 34--35
- [][] 
- []
-
-) [22
-
-
-
- <./root/UML_hex.png> <./root/UML_awale.png>] [23 <./root/UML_app.png>]
+ <./root/strategie_gagnante.png>]) [23]
 \openout2 = `./sources/annexes/9_4_diagramme_de_gantt.aux'.
 
-
-(sources/annexes/9_4_diagramme_de_gantt.tex
-<root/Diagramme-de-gantt.jpg, id=325, 511.9125pt x 280.04625pt>
+ (sources/annexes/9_4_diagramme_de_gantt.tex
+<root/Diagramme-de-gantt.jpg, id=327, 511.9125pt x 280.04625pt>
 File: root/Diagramme-de-gantt.jpg Graphic file (type jpg)
 <use root/Diagramme-de-gantt.jpg>
 Package pdftex.def Info: root/Diagramme-de-gantt.jpg  used on input line 10.
@@ -937,6 +934,8 @@ urces\2_technologies_utilisees.aux)
 (C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\rapport\output\so
 urces\3_developpements_logiciel.aux)
 (C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\rapport\output\so
+urces\annexes\9_3_diagrammes_uml.aux)
+(C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\rapport\output\so
 urces\4_algorithmes_et_analyse.aux)
 (C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\rapport\output\so
 urces\5_analyse_des_resultats.aux)
@@ -953,8 +952,6 @@ urces\annexes\9_0_cahier_des_charges.aux)
 (C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\rapport\output\so
 urces\annexes\9_1_strategie_gagnante_hex.aux)
 (C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\rapport\output\so
-urces\annexes\9_3_diagrammes_uml.aux)
-(C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\rapport\output\so
 urces\annexes\9_4_diagramme_de_gantt.aux))
  ***********
 LaTeX2e <2023-11-01> patch level 1
@@ -964,17 +961,14 @@ L3 programming layer <2024-01-22>
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-
-LaTeX Warning: There were undefined references.
-
 Package rerunfilecheck Info: File `modele_rapport_latex.out' has not changed.
-(rerunfilecheck)             Checksum: F1A31E9C8368F0B9FF461AAB686D93F1;8882.
+(rerunfilecheck)             Checksum: D39855E6B2E1088EB38BDECFA8793CD4;8882.
  ) 
 Here is how much of TeX's memory you used:
- 13899 strings out of 474542
- 242065 string characters out of 5744918
+ 13898 strings out of 474542
+ 242051 string characters out of 5744918
  1942978 words of memory out of 5000000
- 35696 multiletter control sequences out of 15000+600000
+ 35695 multiletter control sequences out of 15000+600000
  613697 words of font info for 64 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  80i,10n,82p,1182b,582s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -991,9 +985,9 @@ n/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss10.pfb><C:/Users/Ivan
 /AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/Ivan/
 AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb>
 Output written on C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\
-rapport\output\modele_rapport_latex.pdf (25 pages, 2259742 bytes).
+rapport\output\modele_rapport_latex.pdf (25 pages, 2259562 bytes).
 PDF statistics:
- 415 PDF objects out of 1000 (max. 8388607)
+ 416 PDF objects out of 1000 (max. 8388607)
  100 named destinations out of 1000 (max. 500000)
  76 words of extra memory for PDF output out of 10000 (max. 10000000)
 
