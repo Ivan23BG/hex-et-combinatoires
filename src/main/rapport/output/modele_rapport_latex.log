@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.2.13)  12 MAY 2024 21:40
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.2.13)  12 MAY 2024 21:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -631,7 +631,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.51 ....1}Cahier des charges}{20}{subsection.9.1}
+l.51 ....1}Cahier des charges}{21}{subsection.9.1}
                                                   % [1
 
 
@@ -805,30 +805,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 16--17
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 19--20
-[][][]$\T1/lmtt/m/n/10 https : / / gsurma . medium . com / hex-[]creating-[]int
-elligent \
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 19--20
-\T1/lmtt/m/n/10 protect \ penalty \ z @ -[]opponents-[]with-[]minimax-[]driven-
-[]ai \
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 20--21
-[][][]$\T1/lmtt/m/n/10 https : / / gsurma . medium . com / hex-[]creating-[]int
-elligent \
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 20--21
-\T1/lmtt/m/n/10 protect \ penalty \ z @ -[]adversaries-[]part-[]2-[]heuristics 
-\
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 21--22
 [][][]$\T1/lmtt/m/n/10 https : / / www . labri . fr / perso / renault / working
  / teaching /
@@ -852,16 +828,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 37--38
 cs / awale /
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 39--40
-[][][]$\T1/lmtt/m/n/10 https : / / medium . com / @mol02office /
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 39--40
-\T1/lmtt/m/n/10 implémentation-[]dune-[]ia-[]pour-[]l-[]awalé-[]partie-[]1 \
- []
-
 ) [20
 
 
@@ -874,7 +840,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 18--22
 
  []
 
-<root/hex_jeu_bleu.png, id=501, 660.066pt x 398.08725pt>
+<root/hex_jeu_bleu.png, id=486, 660.066pt x 398.08725pt>
 File: root/hex_jeu_bleu.png Graphic file (type png)
 <use root/hex_jeu_bleu.png>
 Package pdftex.def Info: root/hex_jeu_bleu.png  used on input line 25.
@@ -884,7 +850,7 @@ Package pdftex.def Info: root/hex_jeu_bleu.png  used on input line 25.
 
 
  <./root/hex_jeu_bleu.png>]
-<root/awale_en_bois.jpg, id=508, 1027.84pt x 685.56125pt>
+<root/awale_en_bois.jpg, id=493, 1027.84pt x 685.56125pt>
 File: root/awale_en_bois.jpg Graphic file (type jpg)
 <use root/awale_en_bois.jpg>
 Package pdftex.def Info: root/awale_en_bois.jpg  used on input line 52.
@@ -899,7 +865,7 @@ Overfull \hbox (60.95085pt too wide) in paragraph at lines 52--53
 
 
 (sources/annexes/9_1_strategie_gagnante_hex.tex
-<root/strategie_gagnante.png, id=518, 636.87938pt x 386.19281pt>
+<root/strategie_gagnante.png, id=503, 636.87938pt x 386.19281pt>
 File: root/strategie_gagnante.png Graphic file (type png)
 <use root/strategie_gagnante.png>
 Package pdftex.def Info: root/strategie_gagnante.png  used on input line 14.
@@ -912,7 +878,7 @@ Package pdftex.def Info: root/strategie_gagnante.png  used on input line 14.
 \openout2 = `./sources/annexes/9_4_diagramme_de_gantt.aux'.
 
  (sources/annexes/9_4_diagramme_de_gantt.tex
-<root/Diagramme-de-gantt.jpg, id=531, 511.9125pt x 280.04625pt>
+<root/Diagramme-de-gantt.jpg, id=516, 511.9125pt x 280.04625pt>
 File: root/Diagramme-de-gantt.jpg Graphic file (type jpg)
 <use root/Diagramme-de-gantt.jpg>
 Package pdftex.def Info: root/Diagramme-de-gantt.jpg  used on input line 10.
@@ -960,9 +926,6 @@ L3 programming layer <2024-01-22>
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package rerunfilecheck Info: File `modele_rapport_latex.out' has not changed.
 (rerunfilecheck)             Checksum: 0A12F9129A0714A418BFF93E30F23A2E;12033.
  ) 
@@ -987,9 +950,9 @@ n/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss10.pfb><C:/Users/Ivan
 /AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/Ivan/
 AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb>
 Output written on C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\
-rapport\output\modele_rapport_latex.pdf (27 pages, 2290329 bytes).
+rapport\output\modele_rapport_latex.pdf (27 pages, 2284578 bytes).
 PDF statistics:
- 621 PDF objects out of 1000 (max. 8388607)
+ 606 PDF objects out of 1000 (max. 8388607)
  105 named destinations out of 1000 (max. 500000)
  548 words of extra memory for PDF output out of 10000 (max. 10000000)
 
