@@ -10,23 +10,23 @@ leur valeur non seulement comme des défis ludiques, mais aussi comme des sujets
 passionnants pour explorer les intéractions stratégiques et algorithmiques entre les joueurs.
 
 Avant de poursuivre notre discussion sur notre motivation à étudier ces jeux, il est pertinent
-de clarifier ce que l'on entend par « jeu de stratégie combinatoire abstrait ». Ces jeux, généralement de société, sont des jeux:
+de clarifier ce que l'on entend par ``jeu de stratégie combinatoire abstrait''. Ces jeux, généralement de société, sont des jeux:
 \begin{itemize}
 	\item opposant généralement deux joueurs ou deux équipes (ou bien un joueur humain seul 
-	contre un ordinateur « intelligent »)
-	\item dans lequel les joueurs ou équipes jouent à tour de rôle.
-	\item dont tous les éléments sont connus (jeu à information complète).
+	contre un ordinateur `intelligent'),
+	\item dans lequel les joueurs ou équipes jouent à tour de rôle,
+	\item dont tous les éléments sont connus (jeu à information complète),
 	\item où le hasard n'intervient pas pendant le déroulement du jeu.
 \end{itemize}
-En d'autres termes, dans les jeux de stratégie combinatoire, la victoire dépend entièrement 
+En d'autres termes, dans les jeux de stratégie combinatoires, la victoire dépend entièrement 
 des actions des joueurs et de leur capacité à anticiper et à contrer les mouvements de l'adversaire. 
 
 
 % motiver l'intérêt du problème étudié par rapport à votre parcours d'études
 % et au monde de l'informatique
 L'étude de ces jeux nous motive à mieux comprendre les algorithmes de 
-recherche, d'optimisation, et à de nous familiariser avec les techniques de 
-programmation avancée. À l'avenir, ces résultats pourront être utilisés dans
+recherche, d'optimisation, et à nous familiariser avec des techniques de 
+programmation avancées. À l'avenir, ces résultats pourront être utilisés dans
 un cadre plus général pour la résolution de problèmes plus complexes, par exemple
 pour les échecs ou le go. 
 
@@ -45,8 +45,12 @@ Les principaux avantages de cet algorithme sont les suivants:
 \begin{itemize}
 	\item L'algorithme \emph{MinMax} avec élagage alpha-bêta est un algorithme de recherche
 	qui permet de trouver la meilleure stratégie pour un joueur dans un jeu à deux
-	joueurs. Cet algorithme est très efficace pour les jeux de stratégie combinatoire
-	comme le Hex. L'élagage alpha-bêta permet de reduire la complexité de cet algorithme.
+	joueurs.
+	\item Cet algorithme est optimal, c'est-à-dire qu'il trouve toujours la meilleure
+	stratégie pour un joueur dans un jeu à deux joueurs, donné un arbre de jeu `parfait'.
+	\item L'élagage alpha-bêta permet de réduire le nombre de nœuds explorés dans l'arbre
+	de jeu, ce qui permet de réduire le temps de calcul nécessaire pour trouver la meilleure
+	stratégie.
 \end{itemize}
 
 % donner le cahier des charges détaillé :
