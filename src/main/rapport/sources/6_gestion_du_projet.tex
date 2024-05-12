@@ -17,24 +17,24 @@ Un exemple de diagramme de Gantt est présenté en annexe~\ref{fig:diagramme_de_
 
 
 \subsection{Organisation}
-\paragraph{Cycle de travail}
+\subsubsection{Cycle de travail}
 Avec ce fonctionnement, nous avions chaque semaine de nouvelles tâches à accomplir. Celles-ci variaient de l'ajout d'une fonctionnalité, le débogage, l'ajout d'éléments graphiques, etc.
-Les plus grosses tâches étant l'ajout de nouveaux jeux. Pour celles-ci, nous avons procédé ainsi :
+Les plus grosses tâches étant l'ajout de nouveaux jeux. Pour celles-ci, nous avons procédé ainsi:
 Une première version du jeu était ajoutée avec sa classe Python. Cette première version contenait les fonctionnalités de base et était jouable dans le terminal dans le but de faire des tests simples. 
 L'étape suivante était de créer une page home du jeu, ainsi que de créer le plateau de jeu en HTML/CSS/JavaScript. La dernière étape considésrait à relier la classe 
 Python avec le site web en utilisant le module Flask.
 À ce stade, le jeu était jouable sur le site web. Ce cycle a duré 2 à 3 semaines pour les 2 jeux que nous avons implémentés. Ensuite, il fallait déboguer et ajouter les 
 diverses fonctionnalités comme la possibilité de jouer contre l'IA, ou encore d'améliorer l'interface graphique. En pratique, l'implémentation du jeu prennait beaucoup moins de temps que de l'optimiser, 
 le déboguer, et ajouter les moindres détails.
-Nous pouvons noter que grâce à l'architecture du projet, il est facile d'ajouter de nouveaux jeux : il suffit d'écrire une classe similaire à celle d'un autre jeu et d'ajouter une 
+Nous pouvons noter que grâce à l'architecture du projet, il est facile d'ajouter de nouveaux jeux: il suffit d'écrire une classe similaire à celle d'un autre jeu et d'ajouter une 
 page web correspondante. Ainsi, comme nous avions commencé par mettre en place le Hex, il a été plus facile d'impléenter l'Awalé.
-C'est aussi le cas pour certaines fonctionnalités comme le \emph{MinMax} : il suffisait de recopier l'algorithme dans la nouvelle classe (notez que ce n'est pas du 
+C'est aussi le cas pour certaines fonctionnalités comme le \emph{MinMax}: il suffisait de recopier l'algorithme dans la nouvelle classe (notez que ce n'est pas du 
 tout le cas pour les fonctions d'évaluation qui sont propres à chaque jeu).
 Nous avons construit le projet comme une plateforme pour les jeux combinatoires, pour y jouer et pour essayer les différents moteurs de jeux que nous pouvons implémenter.
 
-\paragraph{Répartition des tâches}
+\subsubsection{Répartition des tâches}
 Pour assurer une répartition équitable des tâches, nous utilisions Jira où chacun pouvait ajouter des tâches (une feature à ajouter ou un bug à corriger par exemple). 
-Ensuite, chacun s'assignait les tâches "ouvertes", créait une branche Git et commençait à travailler. Nous utilisions également un serveur Discord pour échanger 
+Ensuite, chacun s'assignait les tâches ``ouvertes'', créait une branche Git et commençait à travailler. Nous utilisions également un serveur Discord pour échanger 
 nos idées, demander de l'aide, des conseils et montrer notre travail. Enfin, nous avons utilisé GitHub pour partager notre travail et collaborer.
 
 
@@ -43,16 +43,16 @@ nos idées, demander de l'aide, des conseils et montrer notre travail. Enfin, no
 \subsection{Changements majeurs}
 
 Les réunions hebdomadaires avec notre encadrant étaient l'occasion de nous mettre d'accord sur
-les changements majeurs à apporter sur le projet pendant le developpement. Voici une liste non exhaustive de ces changements :
+les changements majeurs à apporter sur le projet pendant le developpement. Voici une liste non exhaustive de ces changements:
 
 \begin{itemize}
     \item Changement de la hiérarchie des classes: nous avons changé la hiérarchie des classes pour
     une homogénéisation du code et une meilleure compréhension.
-    \item Changement de l'organisation des fichiers : nous avons changé l'organisation des fichiers pour
+    \item Changement de l'organisation des fichiers: nous avons changé l'organisation des fichiers pour
     mieux organiser le code et faciliter la maintenance. Cela a initialement été fait pour le backend, puis
     pour le frontend. Beaucoup de problèmes ont été rencontrés lors de ces changements, mais ils ont permis
     d'améliorer la qualité du code.
-    \item Changement de la gestion des erreurs : nous avons changé la gestion des erreurs pour une meilleure
+    \item Changement de la gestion des erreurs: nous avons changé la gestion des erreurs pour une meilleure
     pilotage des exceptions et des erreurs. Cela nous a permis d'améliorer la robustesse du code.
     De plus,  la sécurité du code s'est vu renforcée sans nuire à la performance ou au debuggage.
 \end{itemize}
