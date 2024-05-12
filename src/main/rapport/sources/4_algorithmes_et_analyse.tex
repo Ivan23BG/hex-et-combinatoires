@@ -17,20 +17,20 @@ et l'algorithme du \emph{MinMax} avec élagage alpha-bêta:
 \subsection{La recherche arborescente Monte-Carlo}
 
 \paragraph{Présentation}
-La recherche arborescente Monte-Carlo ou Monte-Carlo Tree Search (MCTS) est un algorithme de recherche heuristique.
+La recherche arborescente \emph{Monte-Carlo} ou \emph{Monte-Carlo} (MCTS) est un algorithme de recherche heuristique.
 Il est principalement utilisé dans le cadre de mise en place d'intelligence artificielle pour des jeux tels que le go, mais pas uniquement.
 En effet, il peut aussi être utilisé pour les moteurs de jeux des échecs comme le moteur AlphaZero de Google qui est
 l'un des leaders en termes d'intelligence de jeux aux échecs. Cet algorithme peut même être implémenté dans des jeux où le hasard 
 apparaît par exemple au poker.
 
 \paragraph{MCTS --- Fonctionnement succinct}
-MCTS est un algorithme qui explore l'arbre des possibles. La racine est la configuration initiale du jeu.
-Chaque nœud est une configuration (une situation en jeu) et ses enfants sont les configurations suivantes. MCTS conserve en mémoire 
+\emph{MCTS} est un algorithme qui explore l'arbre des possibles. La racine est la configuration initiale du jeu.
+Chaque nœud est une configuration (une situation en jeu) et ses enfants sont les configurations suivantes.\ \emph{MCTS} conserve en mémoire 
 un arbre qui correspond aux nœuds déjà explorés. Une feuille de cet arbre est soit une configuration finale (donc un des joueurs a gagné),
 soit un nœud dont aucun enfant n'a encore été exploré. Dans chaque nœud, on stocke deux nombres: le nombre de simulations gagnantes, 
 et le nombre total de simulations. 
 
-À chaque itération MCTS va chercher la feuille la plus prometteuse, comprendre la suite de coups qui possède la meilleure heuristique, 
+À chaque itération \emph{MCTS} va chercher la feuille la plus prometteuse, comprendre la suite de coups qui possède la meilleure heuristique, 
 et ensuite, depuis cette feuille, créer grâce aux règles du jeu, une nouvelle feuille au hasard dont le but est d'atteindre une configuration finale.
 Dans le cas où on trouverait une configuration gagnante pour un joueur, on va incrémenter le nombre de simulations gagnantes, pour les nœuds
 correspondant au joueur et dans les parents de la feuille que l'on vient de créer.
@@ -43,15 +43,15 @@ gagnantes et le moins de simulations totales.
 \subsection{MinMax}
 
 \subsubsection{Présentation}
-L'algorithme MinMax, comme MCTS, est un algorithme décisionnel. Cependant, celui-ci s'applique sur des jeux à somme nulle: c'est-à-dire
+L'algorithme \emph{MinMax}, comme \emph{MCTS}, est un algorithme décisionnel. Cependant, celui-ci s'applique sur des jeux à somme nulle: c'est-à-dire
 un jeu où la somme des gains et des pertes de tous les joueurs est égale à 0. Ainsi, le gain de l'un constitue 
 obligatoirement une perte pour l'autre. L'algorithme va utiliser cette propriété dans sa recherche pour trouver le meilleur coup possible.
 En effet, l'ordinateur va passer en revue toutes les configurations possibles pour un nombre limité de coups (que l'on appellera profondeur), 
 et leur assigner une valeur qui prend en compte les bénéfices pour le joueur et pour son adversaire. Le meilleur coup est alors celui qui 
-minimise les pertes du joueur, tout en supposant que l'adversaire cherche au contraire à les maximiser (d'où le nom MinMax).
+minimise les pertes du joueur, tout en supposant que l'adversaire cherche au contraire à les maximiser (d'où le nom \emph{MinMax}).
 
 \subsubsection{MinMax --- Fonctionnement succinct}
-Comme le MCTS, le MinMax va explorer l'arbre des possibles où chaque nœud représente une configuration du jeu. 
+Comme le \emph{MCTS}, le \emph{MinMax} va explorer l'arbre des possibles où chaque nœud représente une configuration du jeu. 
 L'algorithme va explorer toutes les possibilités et associer à chaque feuille une valeur positive ou négative. Ces feuilles sont
 soit des nœuds terminaux (c'est-à-dire que l'un des deux joueurs a gagné), soit des nœuds à la profondeur de recherche maximale.
 Un nœud va se voir assigner une valeur positive si la position associée favorise l'ordinateur (le joueur maximisant) 
@@ -60,7 +60,7 @@ et négative dans le cas contraire.
 En ce qui concerne les nœuds feuilles non-terminaux, c'est-à-dire ceux représentant une configuration de jeu non gagnante, mais bloqués par la 
 profondeur de recherche, c'est une fonction d'évaluation qui va estimer leur valeur heuristique. La qualité de cette fonction va 
 déterminer « l'intelligence » de l'ordinateur. Cette estimation et la profondeur de recherche déterminent donc la qualité et la 
-précision du résultat final du MinMax.
+précision du résultat final du \emph{MinMax}.
 
 Les nœuds qui ne sont pas des feuilles vont hériter d'une des valeurs de leurs enfants en fonction de s'ils sont le minimisant, ou le maximisant.
 Si le rôle du nœud est de maximiser sa valeur, alors celui-ci va recevoir la plus grande valeur associée à ses fils. Sinon, son rôle est de 
@@ -79,7 +79,7 @@ la victoire, la défaite ou l'égalité pour le joueur maximisant.
 
 
 \subsubsection{Élagage alpha-bêta}
-L'algorithme MinMax effectue une exploration complète de l'arbre de recherche jusqu'à un niveau donné. L'élagage alpha-bêta permet d'optimiser 
+L'algorithme \emph{MinMax} effectue une exploration complète de l'arbre de recherche jusqu'à un niveau donné. L'élagage alpha-bêta permet d'optimiser 
 cet algorithme sans en modifier le résultat. Pour cela, il ne réalise qu'une exploration
 partielle de l'arbre. En effet, on observe qu'il n'est pas utile d'explorer les sous-arbres qui conduisent à des valeurs
 qui ne participeront pas au calcul de la valeur associée à la racine de l'arbre. Dit autrement, l'élagage alpha-bêta n'évalue pas des nœuds
@@ -89,7 +89,7 @@ dont on peut penser, si la fonction d'évaluation est à peu près correcte, que
     \begin{center}
         \includegraphics[width=0.5\textwidth]{root/minmax_alpha_beta.png}
     \end{center}
-    \caption{MinMax avec élagage $\alpha$-$\beta$.}\label{fig:min_max_alpha_beta}
+    \caption{\emph{MinMax} avec élagage $\alpha$-$\beta$.}\label{fig:min_max_alpha_beta}
 \end{figure}
 
 
@@ -105,14 +105,14 @@ Plusieurs coupures ont pu être réalisées. De gauche à droite:
 \end{enumerate}
 
 \subsubsection{Remarque}
-À l'aide de l'algorithme MinMax, il est possible de donner une preuve de l'existence d'une stratégie gagnante au jeu du Hex notamment. Nous détaillons
+À l'aide de l'algorithme \emph{MinMax}, il est possible de donner une preuve de l'existence d'une stratégie gagnante au jeu du Hex notamment. Nous détaillons
 cette preuve en annexe.
 
 \subsection{Autres algorithmes}
 \subsubsection{Dijkstra et BFS}
 Dans le projet, lorsqu'un joueur gagne au Hex, nous avons décidé de mettre en valeur son chemin gagnant.
 Dans un premier temps, nous devions détecter qu'un joueur ait remporté une partie. Pour cela nous avons implementé l'algorithme du parcours
-en largeur (\emph{BFS}). Nous avons alors interprété le tableau dans lequel les coups des joueurs sont sauvegardés comme une graphe. Le parcous en largeur
+en largeur (\emph{BFS}). Nous avons alors interprété le tableau dans lequel les coups des joueurs sont sauvegardés comme un graphe. Le parcous en largeur
 va générer un graphe couvrant depuis un bord. Ce graphe couvrant ne va passer que par les coups placés par un joueur. Si le graphe généré atteint le bord opposé,
 alors un chemin relie les deux bords, et donc le joueur a gagné. Nous appellons donc cet algorithme à chaque fois qu'un coup est placé. Sa complexité est $O(\lvert V \rvert + \lvert E \rvert)$.
 Notons ici que nous appelons l'algorithme seulement sur l'arbre correspondant aux coups joués par un joueur, donc en pratique, l'appel à cet algorithme
