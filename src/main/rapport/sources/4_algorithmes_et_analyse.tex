@@ -109,26 +109,28 @@ cette preuve en annexe.
 
 \subsection{Autres algorithmes}
 \subsubsection{Dijkstra et BFS}
-Dans le projet lorsque un joueur gagne au Hex le chemin le plus court entre ses deux bords du plateau est mis en valeur
-pour cela nous devions d'abord detecter qu'un joueur ait gagné. Pour cela nous avons implementé l'algorithme du parcours
-en largeur (BFS) en interpretant le tableau dans lequel les coups des joueurs est sauvegradé comme une graphe.Le parcous en profondeur
-va generer un graphe couvrant depuis un bord en ne passant que par des coups placés par un joueur, si le graphe generé attein le bord opposé
-alors le joueur a gagné. Nous appellons cet algorithme a chaque fois qu'un coup est placé et celui ci est de complexité O(|V|+|E|).
-Notons ici que nous appelons l'algo seulement sur l'arbre correspondant aux coups joué par un joueur, donc en pratique l'appel a cet algorithme
-est tres rapide.
+Dans le projet, lorsqu'un joueur gagne au Hex, nous avons décidé de mettre en valeur son chemin gagnant.
+Dans un premier temps, nous devions détecter qu'un joueur ait remporté une partie. Pour cela nous avons implementé l'algorithme du parcours
+en largeur (BFS). Nous avons alors interprété le tableau dans lequel les coups des joueurs sont sauvegardés comme une graphe. Le parcous en largeur
+va générer un graphe couvrant depuis un bord. Ce graphe couvrant ne va passer que par les coups placés par un joueur. Si le graphe généré atteint le bord opposé,
+alors un chemin relie les deux bords, et donc le joueur a gagné. Nous appellons donc cet algorithme à chaque fois qu'un coup est placé. Sa complexité est $O(\lvert V \rvert + \lvert E \rvert)$.
+Notons ici que nous appelons l'algorithme seulement sur l'arbre correspondant aux coups joués par un joueur, donc en pratique, l'appel à cet algorithme
+est très rapide.
 
-Ensuite nous voulions mettre en valeur le chemin le plus court qui relie les 2 bords du joueur qui a gagné. Pour cela,
-nous avons utilisé l'algorithme de dijkstra un peu modifié en effet le BFS nous assure qu'un chemin existe mais ne nous aide pas vraiment
-a trouver le plus court en effet il peut y avoir plusieurs points de departs (point sur le bord) et point d'arrivée (points sur le bord opposé)
-Nous avons opté pour une solution naive, nous appellons l'algorithme plusieurs fois (une pour chaque point de depart possible)
-puis nous comparons la taille des chemins trouvés. La complexité de dijkstra est a l'orgigine dans le pire des cas de O(|V|+|E|*log(|V|)) 
-mais notre implementation est plus complexe elle a une complexité dans le pire des cas de O(n*(|V|+|E|*log(|V|))) ou n est la taille de notre plateau
-a noter que ce cas arrive en pratique jamais et il n'est appelé qu'une fois a la fin de chaque partie. En pratique le chemin le plus court est trouvé
-instantanement.
+L'algorithme \emph{BFS} nous assure qu'un joueur a gagné, mais il peut exister plusieurs chemins distincts reliant les deux bords. En effet,
+il peut y avoir plusieurs points de départ (points sur l'un des bords du gagnant) et points d'arrivée (points sur le bord opposé).
+Afin d'afficher le plus court chemin, nous avons décidé d'intégrer une version modifiée de l'algorithme de Dijkstra.
+Nous avons opté pour une solution naïve. En effet, nous appellons l'algorithme plusieurs fois (une pour chaque point de départ possible).
+Ensuite nous comparons la taille des chemins trouvés. Nous obtenons alors le plus court chemin, que l'on a choisi de mettre de jaune 
+afin de faciliter sa visualisation.
+
+À l'origine, dans le pire des cas, la complexité de l'algorithme de Dijkstra est $O(\lvert V \rvert + \lvert E \rvert \times \log(\lvert V \rvert))$.
+Cependant, notre implémentation est plus complexe, notre algorithme possède alors une complexité de $O(n \times (\lvert V \rvert+ \lvert E \rvert\times \log(\lvert V \rvert)))$, avec n la taille de notre plateau.
+Notons que ce cas n'arrive en pratique jamais. En pratique le chemin le plus court est trouvé de façon instantanée.
 
 \begin{figure}[h]
     \begin{center}
         \includegraphics[width=0.5\textwidth]{root/chemin_gagnant.png}
     \end{center}
-    \caption{Ici bleu a gagné et le chemin le plus court est trouvé}\label{fig:chemin_gagnant}
+    \caption{Ici bleu a gagné, le chemin le plus court est trouvé}\label{fig:chemin_gagnant}
 \end{figure}
