@@ -121,8 +121,8 @@ Ensuite nous voulions mettre en valeur le chemin le plus court qui relie les 2 b
 nous avons utilisé l'algorithme de dijkstra un peu modifié en effet le BFS nous assure qu'un chemin existe mais ne nous aide pas vraiment
 a trouver le plus court en effet il peut y avoir plusieurs points de departs (point sur le bord) et point d'arrivée (points sur le bord opposé)
 Nous avons opté pour une solution naive, nous appellons l'algorithme plusieurs fois (une pour chaque point de depart possible)
-puis nous comparons la taille des chemins trouvés. La complexité de dijkstra est a l'orgigine dans le pire des cas de O(|V|+|E|*log(|V|)) 
-mais notre implementation est plus complexe elle a une complexité dans le pire des cas de O(n*(|V|+|E|*log(|V|))) ou n est la taille de notre plateau
+puis nous comparons la taille des chemins trouvés. La complexité de dijkstra est a l'orgigine dans le pire des cas de O((|V|+|E|)*log(|V|)) 
+mais notre implementation est plus complexe elle a une complexité dans le pire des cas de O(n*((|V|+|E|)*log(|V|))) ou n est la taille de notre plateau
 a noter que ce cas arrive en pratique jamais et il n'est appelé qu'une fois a la fin de chaque partie. En pratique le chemin le plus court est trouvé
 instantanement.
 
