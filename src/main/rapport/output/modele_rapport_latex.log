@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.2.13)  12 MAY 2024 14:57
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.2.13)  12 MAY 2024 15:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -503,11 +503,7 @@ urces\annexes\9_0_cahier_des_charges.aux)
 (C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\rapport\output\so
 urces\annexes\9_1_strategie_gagnante_hex.aux)
 (C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\rapport\output\so
-urces\annexes\9_3_diagrammes_uml.aux
-
-LaTeX Warning: Label `Fig:UML_hex' multiply defined.
-
-)
+urces\annexes\9_3_diagrammes_uml.aux)
 (C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\rapport\output\so
 urces\annexes\9_4_diagramme_de_gantt.aux))
 \openout1 = `modele_rapport_latex.aux'.
@@ -896,16 +892,12 @@ File: root/UML_hex.png Graphic file (type png)
 <use root/UML_hex.png>
 Package pdftex.def Info: root/UML_hex.png  used on input line 12.
 (pdftex.def)             Requested size: 362.37569pt x 219.57466pt.
-File: root/UML_hex.png Graphic file (type png)
-<use root/UML_hex.png>
-Package pdftex.def Info: root/UML_hex.png  used on input line 17.
-(pdftex.def)             Requested size: 362.37569pt x 219.57466pt.
- [22
-
-
-
- <./root/UML_hex.png>]
-<root/UML_app.png, id=316, 7340.42375pt x 2597.705pt>
+<root/UML_awale.png, id=309, 5041.83624pt x 1586.92876pt>
+File: root/UML_awale.png Graphic file (type png)
+<use root/UML_awale.png>
+Package pdftex.def Info: root/UML_awale.png  used on input line 17.
+(pdftex.def)             Requested size: 362.37569pt x 114.05054pt.
+<root/UML_app.png, id=310, 7340.42375pt x 2597.705pt>
 File: root/UML_app.png Graphic file (type png)
 <use root/UML_app.png>
 Package pdftex.def Info: root/UML_app.png  used on input line 34.
@@ -915,17 +907,21 @@ Overfull \hbox (6.79999pt too wide) in paragraph at lines 34--35
  [][] 
  []
 
-) [23 <./root/UML_app.png>]
+) [22
+
+
+
+ <./root/UML_hex.png> <./root/UML_awale.png>] [23 <./root/UML_app.png>]
 \openout2 = `./sources/annexes/9_4_diagramme_de_gantt.aux'.
 
- (sources/annexes/9_4_diagramme_de_gantt.tex
-<root/Diagramme-de-gantt.jpg, id=323, 511.9125pt x 280.04625pt>
+
+(sources/annexes/9_4_diagramme_de_gantt.tex
+<root/Diagramme-de-gantt.jpg, id=325, 511.9125pt x 280.04625pt>
 File: root/Diagramme-de-gantt.jpg Graphic file (type jpg)
 <use root/Diagramme-de-gantt.jpg>
 Package pdftex.def Info: root/Diagramme-de-gantt.jpg  used on input line 10.
 (pdftex.def)             Requested size: 181.18439pt x 99.11584pt.
-)
-[24
+) [24
 
 
 
@@ -971,17 +967,14 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: There were multiply-defined labels.
-
 Package rerunfilecheck Info: File `modele_rapport_latex.out' has not changed.
 (rerunfilecheck)             Checksum: F1A31E9C8368F0B9FF461AAB686D93F1;8882.
  ) 
 Here is how much of TeX's memory you used:
- 13891 strings out of 474542
- 241876 string characters out of 5744918
+ 13899 strings out of 474542
+ 242065 string characters out of 5744918
  1942978 words of memory out of 5000000
- 35688 multiletter control sequences out of 15000+600000
+ 35696 multiletter control sequences out of 15000+600000
  613697 words of font info for 64 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  80i,10n,82p,1182b,582s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -998,9 +991,9 @@ n/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss10.pfb><C:/Users/Ivan
 /AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/Ivan/
 AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb>
 Output written on C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\
-rapport\output\modele_rapport_latex.pdf (25 pages, 2102705 bytes).
+rapport\output\modele_rapport_latex.pdf (25 pages, 2259742 bytes).
 PDF statistics:
- 413 PDF objects out of 1000 (max. 8388607)
+ 415 PDF objects out of 1000 (max. 8388607)
  100 named destinations out of 1000 (max. 500000)
- 71 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 76 words of extra memory for PDF output out of 10000 (max. 10000000)
 
