@@ -111,11 +111,11 @@ cette preuve en annexe.
 \subsection{Autres algorithmes}
 \subsubsection{Dijkstra et BFS}
 Dans le projet, lorsqu'un joueur gagne au Hex, nous avons décidé de mettre en valeur son chemin gagnant.
-Dans un premier temps, nous devions détecter qu'un joueur ait remporté une partie. Pour cela nous avons implementé l'algorithme du parcours
+Dans un premier temps, nous devions détecter qu'un joueur ait remporté une partie. Nous avons donc dû créer la méthode \textit{check\_winner} dont nous avons déjà parlé. Pour cela nous avons implementé l'algorithme du parcours
 en largeur (\emph{BFS}). Nous avons alors interprété le tableau dans lequel les coups des joueurs sont sauvegardés comme un graphe. Le parcous en largeur
 va générer un graphe couvrant depuis un bord. Ce graphe couvrant ne va passer que par les coups placés par un joueur. Si le graphe généré atteint le bord opposé,
-alors un chemin relie les deux bords, et donc le joueur a gagné. Nous appellons donc cet algorithme à chaque fois qu'un coup est placé. Sa complexité est $O(\lvert V \rvert + \lvert E \rvert)$.
-Notons ici que nous appelons l'algorithme seulement sur l'arbre correspondant aux coups joués par un joueur, donc en pratique, l'appel à cet algorithme
+alors un chemin relie les deux bords, et donc le joueur a gagné. Nous appellons donc cette méthode à chaque fois qu'un coup est placé. Sa complexité est $O(\lvert V \rvert + \lvert E \rvert)$.
+Notons ici que nous appelons la méthode seulement sur l'arbre correspondant aux coups joués par un joueur, donc en pratique, l'appel à cet algorithme
 est très rapide.
 
 L'algorithme \emph{BFS} nous assure qu'un joueur a gagné, mais il peut exister plusieurs chemins distincts reliant les deux bords. En effet,
