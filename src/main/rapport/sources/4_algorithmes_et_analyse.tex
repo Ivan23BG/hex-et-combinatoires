@@ -112,7 +112,7 @@ cette preuve en annexe.
 \subsubsection{Dijkstra et BFS}
 Dans le projet, lorsqu'un joueur gagne au Hex, nous avons décidé de mettre en valeur son chemin gagnant.
 Dans un premier temps, nous devions détecter qu'un joueur ait remporté une partie. Pour cela nous avons implementé l'algorithme du parcours
-en largeur (\emph{BFS}). Nous avons alors interprété le tableau dans lequel les coups des joueurs sont sauvegardés comme une graphe. Le parcous en largeur
+en largeur (\emph{BFS}). Nous avons alors interprété le tableau dans lequel les coups des joueurs sont sauvegardés comme un graphe. Le parcous en largeur
 va générer un graphe couvrant depuis un bord. Ce graphe couvrant ne va passer que par les coups placés par un joueur. Si le graphe généré atteint le bord opposé,
 alors un chemin relie les deux bords, et donc le joueur a gagné. Nous appellons donc cet algorithme à chaque fois qu'un coup est placé. Sa complexité est $O(\lvert V \rvert + \lvert E \rvert)$.
 Notons ici que nous appelons l'algorithme seulement sur l'arbre correspondant aux coups joués par un joueur, donc en pratique, l'appel à cet algorithme
