@@ -18,12 +18,12 @@ composé de plusieurs modules, dont les principaux sont les suivants:
     \item \textbf{Module Awalé:} Ce module contient les classes et les fonctions nécessaires
     pour jouer au jeu de l'Awalé. Il contient la classe \texttt{AwaleBoard} qui représente le
     plateau de jeu et les joueurs du jeu de l'Awalé. Ce module contient également les fonctions
-    pour l'implémentation de l'algorithme de \emph{MinMax} pour la résolution du jeu de l'Awalé. (à noter que la fonction \emph{MinMax}
-    est la même pour les 2 jeux. Seule les fonctions d'évalutaions changent.)
+    pour l'implémentation de l'algorithme \emph{MinMax} pour la résolution du jeu de l'Awalé. (À noter que la fonction \emph{MinMax}
+    est la même pour les 2 jeux. Seule les fonctions d'évaluations changent.)
     
     \item \textbf{Module Interface Graphique:} Ce module contient les fichiers HTML, CSS et
     JavaScript nécessaires pour l'implémentation de l'interface graphique des jeux du Hex et
-    d'Awalé. Il contient notamment les fichiers \texttt{home.html}, \texttt{hex.html} et
+    de l'Awalé. Il contient notamment les fichiers \texttt{home.html}, \texttt{hex.html} et
     \texttt{awale.html} qui permettent à l'utilisateur de choisir le jeu auquel il veut jouer
     et les paramètres de la partie. Il contient également des fichiers JavaScript pour la
     gestion des événements et des intéractions avec l'utilisateur.
@@ -39,14 +39,14 @@ composé de plusieurs modules, dont les principaux sont les suivants:
 % logiciel dispose d'une interface graphique)
 \paragraph{Fonctionnalités de l'interface graphique}
 L'interface graphique de notre logiciel comprend une page d'accueil qui permet à l'utilisateur
-de choisir le jeu auquel il veut jouer (Hex ou Awalé), une page principale (home) pour chaque jeu.
-Cela permet à l'utilisateur de choisir les paramètres de la partie comme la taille du plateau ou le 
-mode de jeu. La page home permet aussi de consulter les règles du jeu que nous avons sélectionné.
+de choisir le jeu auquel il souhaite jouer (Hex ou Awalé) et une page principale (home) pour chacun des jeux.
+Cela permet à l'utilisateur de choisir les paramètres de la partie, comme la taille du plateau ou le 
+mode de jeu. La page home permet aussi de consulter les règles du jeu sélectionné.
 Lorsque l'on clique sur le bouton correspondant au mode de jeu choisi, nous sommes dirigés vers la page de
 jeu.
 Sur les deux jeux, le joueur à la possibilité de prévisualiser le prochain coup grâce à des fonctions de "hover" lorsqu'il survole avec 
 la souris certains éléments.
-Lors d'une partie de Hex, il est possible de changer le thème graphique de la page avec la touche "H". Cela modifie la page css chargée dans le navigateur.
+Lors d'une partie de Hex, il est possible de changer le thème graphique avec la touche "H". Cela modifie la page CSS chargée dans le navigateur.
 L'interface graphique est implémentée en HTML, CSS et JavaScript. Celle-ci communique avec les modules Hex et Awalé via des appels de fonctions JavaScript à des
 fonctions Python via des requêtes json et le module Flask.
 
@@ -73,8 +73,8 @@ fonctions Python via des requêtes json et le module Flask.
 Les principales structures de données définies dans le cadre de ce projet sont les classes
 \texttt{HexBoard} et \texttt{AwaleBoard}. Elles représentent respectivement les plateaux de jeu du Hex et de
 l'Awalé. Ces classes contiennent les attributs et les méthodes nécessaires
-pour représenter les plateaux de jeu et les joueurs, et pour effectuer les opérations de jeu
-(placement de pions, déplacement de pions, etc.) Les données sont fournies en entrée des programmes
+pour représenter les plateaux de jeu et les joueurs. Elles permettent aussi d'effectuer les opérations de jeu
+(placement de pions, déplacement de pions etc.) Les données sont fournies en entrée des programmes
 sous la forme de chaînes de caractères qui représentent les paramètres de la partie (taille du
 plateau, mode de jeu etc.) Les procédures de lecture et de validation
 des entrées sont effectuées par les fonctions des modules Hex et Awalé qui vérifient que les
@@ -102,14 +102,14 @@ backend pour les deux jeux.
 La sélection du jeu et des paramètres de la partie se fait dans le fichier \texttt{home\_hex.html} pour le Hex
 (respectivement \texttt{home\_awale.html} pour l'Awalé). Ces informations seront envoyées au fichier \texttt{app.py}
 lorsqu'un clic souris sera effectué sur l'un des boutons. Le bouton sélectionné appellera dans le fichier \texttt{app.py} la 
-fonction adéquate renvoyant la page html en prenant compte des choix effectués plus tôt. En parallèle, une instance du plateau de
+fonction adéquate renvoyant la page html en prenant compte les choix effectués plus tôt. En parallèle, une instance du plateau de
 jeu désiré sera créée dans le fichier \texttt{app.py}. 
 
 \paragraph{Déroulement d'une partie}
 Lorsqu'une partie est jouée, l'information des pièces placées au Hex, ou des graines déplacées sur l'Awalé est récupérée par
 le fichier JavaScript adapté: \texttt{game\_hexia.js} si la partie est une partie de Hex JcIA, ou encore 
 \texttt{game\_awale.js} si la partie est une partie d'Awalé JcJ. Cette information est gérée par le capteur d'événements
-hex.onclick pour le Hex et pit.onclick pour l'Awalé. Si un tel événement est entendu, le fichier JavaScript correspondant envoie une requête 
+\textsf{hex.onclick} pour le Hex et \textsf{pit.onclick} pour l'Awalé. Si un tel événement est entendu, le fichier JavaScript correspondant envoie une requête 
 json au fichier \texttt{app.py} afin de savoir si le coup est valide. La validité du coup est gérée par une fonction appelée dans la classe du
 plateau de jeu adéquat. Si le coup est valide, alors celui-ci est joué et rajouté à l'instance du plateau de jeu. Il est ensuite renvoyé au fichier 
 JavaScript qui va s'occuper du nouvel affichage graphique (En modifiant le CSS ou le html). Si une erreur est attrapée, elle est renvoyée
