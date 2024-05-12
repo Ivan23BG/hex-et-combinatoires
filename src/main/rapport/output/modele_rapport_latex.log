@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.2.13)  12 MAY 2024 14:33
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.2.13)  12 MAY 2024 14:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -715,17 +715,27 @@ Underfull \hbox (badness 10000) in paragraph at lines 16--17
  []
 
 
-Overfull \hbox (328.6721pt too wide) in paragraph at lines 19--20
+Underfull \hbox (badness 10000) in paragraph at lines 19--20
 [][][]$\T1/lmtt/m/n/10 https : / / gsurma . medium . com / hex-[]creating-[]int
-elligent-[]opponents-[]with-[]minimax-[]driven-[]ai-[]part-[]1-[]α-[]β-[]prun
-ing-[]cc1df850e5bd$[][] 
+elligent \
  []
 
 
-Overfull \hbox (305.67216pt too wide) in paragraph at lines 20--21
+Underfull \hbox (badness 10000) in paragraph at lines 19--20
+\T1/lmtt/m/n/10 protect \ penalty \ z @ -[]opponents-[]with-[]minimax-[]driven-
+[]ai \
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 20--21
 [][][]$\T1/lmtt/m/n/10 https : / / gsurma . medium . com / hex-[]creating-[]int
-elligent-[]adversaries-[]part-[]2-[]heuristics-[]dijkstras-[]algorithm-[]597e4d
-cacf93$[][] 
+elligent \
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 20--21
+\T1/lmtt/m/n/10 protect \ penalty \ z @ -[]adversaries-[]part-[]2-[]heuristics 
+\
  []
 
 
@@ -758,9 +768,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 39--40
  []
 
 
-Overfull \hbox (21.67299pt too wide) in paragraph at lines 39--40
-\T1/lmtt/m/n/10 implémentation-[]dune-[]ia-[]pour-[]l-[]awalé-[]partie-[]1-[]
-b298328d5e14$[][] 
+Underfull \hbox (badness 10000) in paragraph at lines 39--40
+\T1/lmtt/m/n/10 implémentation-[]dune-[]ia-[]pour-[]l-[]awalé-[]partie-[]1 \
  []
 
 ) [16
@@ -775,7 +784,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 18--22
 
  []
 
-<root/hex_jeu_bleu.png, id=373, 660.066pt x 398.08725pt>
+<root/hex_jeu_bleu.png, id=383, 660.066pt x 398.08725pt>
 File: root/hex_jeu_bleu.png Graphic file (type png)
 <use root/hex_jeu_bleu.png>
 Package pdftex.def Info: root/hex_jeu_bleu.png  used on input line 25.
@@ -785,7 +794,7 @@ Package pdftex.def Info: root/hex_jeu_bleu.png  used on input line 25.
 
 
  <./root/hex_jeu_bleu.png>]
-<root/awale_en_bois.jpg, id=380, 1027.84pt x 685.56125pt>
+<root/awale_en_bois.jpg, id=390, 1027.84pt x 685.56125pt>
 File: root/awale_en_bois.jpg Graphic file (type jpg)
 <use root/awale_en_bois.jpg>
 Package pdftex.def Info: root/awale_en_bois.jpg  used on input line 52.
@@ -800,7 +809,7 @@ Overfull \hbox (60.95085pt too wide) in paragraph at lines 52--53
 
 
 (sources/annexes/9_1_strategie_gagnante_hex.tex
-<root/strategie_gagnante.png, id=393, 636.87938pt x 386.19281pt>
+<root/strategie_gagnante.png, id=403, 636.87938pt x 386.19281pt>
 File: root/strategie_gagnante.png Graphic file (type png)
 <use root/strategie_gagnante.png>
 Package pdftex.def Info: root/strategie_gagnante.png  used on input line 14.
@@ -813,7 +822,7 @@ Package pdftex.def Info: root/strategie_gagnante.png  used on input line 14.
 \openout2 = `./sources/annexes/9_3_diagrammes_uml.aux'.
 
  (sources/annexes/9_3_diagrammes_uml.tex
-<root/UML_hex.png, id=405, 4358.2825pt x 2640.86626pt>
+<root/UML_hex.png, id=415, 4358.2825pt x 2640.86626pt>
 File: root/UML_hex.png Graphic file (type png)
 <use root/UML_hex.png>
 Package pdftex.def Info: root/UML_hex.png  used on input line 12.
@@ -827,7 +836,7 @@ Package pdftex.def Info: root/UML_hex.png  used on input line 17.
 
 
  <./root/UML_hex.png>]
-<root/UML_app.png, id=413, 7340.42375pt x 2597.705pt>
+<root/UML_app.png, id=423, 7340.42375pt x 2597.705pt>
 File: root/UML_app.png Graphic file (type png)
 <use root/UML_app.png>
 Package pdftex.def Info: root/UML_app.png  used on input line 34.
@@ -886,7 +895,7 @@ Package rerunfilecheck Info: File `modele_rapport_latex.out' has not changed.
 Here is how much of TeX's memory you used:
  13201 strings out of 474542
  231168 string characters out of 5744918
- 1940978 words of memory out of 5000000
+ 1942978 words of memory out of 5000000
  35024 multiletter control sequences out of 15000+600000
  613697 words of font info for 64 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -904,9 +913,9 @@ n/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss10.pfb><C:/Users/Ivan
 /AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/Ivan/
 AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb>
 Output written on C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\
-rapport\output\modele_rapport_latex.pdf (24 pages, 2055255 bytes).
+rapport\output\modele_rapport_latex.pdf (24 pages, 2058729 bytes).
 PDF statistics:
- 504 PDF objects out of 1000 (max. 8388607)
+ 514 PDF objects out of 1000 (max. 8388607)
  97 named destinations out of 1000 (max. 500000)
  370 words of extra memory for PDF output out of 10000 (max. 10000000)
 
