@@ -20,7 +20,7 @@ deux raisons principales : la faible profondeur, et la difficulté à trouver un
 
 \paragraph{Trop grande complexité} Le premier problème provient du nombre de coups possibles à chaque tour.
 En effet, sur un plateau classique de $13\times13$ le premier joueur a 169 coups possibles. Au coup suivant, il y en a 168 etc\dots Cela rend les calculs lents. 
-Si l'ordinateur joue en premier, et que la profondeur de calcul est de 6, celui doit calculer pas moins de $2.1298467e+13$ (soit $169\times168\times167\times166\times165\times164$)
+Si l'ordinateur joue en premier, et que la profondeur de calcul est de 6, celui-ci doit calculer pas moins de $2.1298467e+13$ (soit $169\times168\times167\times166\times165\times164$)
 fois la fonction d'évaluation. Cela n'est pas réalisable en temps réaliste. Dans notre implémentation, la taille des côtés du plateau varie entre
 une longueur de 5 cases et de 17. Nous avons remarqué que pour un plateau de dimension $11\times11$, et une profondeur demandée de 4, l'algorithme
 mettait déjà plusieurs secondes à calculer le meilleur coup. Notons que ces calculs ne prennent pas en compte l'élagage alpha-bêta
@@ -33,7 +33,7 @@ le voir, n'est pas assurée.
 Le MinMax n'arrivant pratiquement jamais à une feuille terminale, nous avons compris que la fonction
 d'évaluation du Hex devait être performante et peu coûteuse en temps. Cependant, faire comprendre à l'ordinateur si une position est gagnante
 ou non s'est révélé très difficile. En effet, le Hex est un jeu possédant de nombreuses stratégies, et relier toutes ces stratégies en une
-seule fonction d'évaluation n'est chose aisée. Ainsi, nous avons rapidement cherché à faire comprendre à l'ordinateur
+seule fonction d'évaluation n'est pas chose aisée. Ainsi, nous avons rapidement cherché à faire comprendre à l'ordinateur
 quelle stratégie adapter au fur et à mesure de la partie. Parmi elles, la stratégie de faire des ponts (voir la figure 3) nous a posé beaucoup de problèmes.
 Un pont permet au joueur de s'assurer de pouvoir connecter deux pièces lors d'un prochain coup. En effet, si le joueur adversaire cherche à bloquer
 l'une des deux cases, nous avons juste à ajouter notre jeton afin de créer un chemin entre ces deux pièces. Nous pouvons noter que lorsque la profondeur de
@@ -52,7 +52,7 @@ plateaux. Mais en général, lorsque le plateau est de grande dimension, la fonc
 
 
 
-\subsection{Awale : Bonnes performances}
+\subsection{Awalé : Bonnes performances}
 \paragraph{Une fonction d'évaluation efficace} 
 Le jeu de l'Awalé possède un avantage significatif par rapport au Hex, le nombre maximum de coups
 possible pour un joueur est de 6. Ainsi, l'arbre de recherche est bien plus petit que celui du Hex. L'algorithme MinMax est donc efficace en termes de
@@ -68,4 +68,4 @@ lui mettre une profondeur relativement grande afin d'explorer toutes les branche
 Cependant, lorsque le nombre de nœuds devient gigantesque, comme dans le Hex, l'algorithme ne devient plus très bon. Il est en effet très lent et peu performant.
 Dans la bibliographie est disponible un lien vers un papier scientifique cherchant une bonne fonction d'évaluation pour le Hex.
 Dans celui-ci, il est écrit que les ordinateurs battent les humains pour des petits plateaux, font jeu égal pour le plateau 9x9 mais
-est moins bon qu'un humain pour un plus grand plateau. On y voit aussi la difficulté de trouver une bonne fonction d'évaluation.
+sont moins bons qu'un humain pour un plus grand plateau. On y voit aussi la difficulté de trouver une bonne fonction d'évaluation.

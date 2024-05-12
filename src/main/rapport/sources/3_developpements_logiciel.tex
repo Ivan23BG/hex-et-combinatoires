@@ -114,7 +114,7 @@ json au fichier \texttt{app.py} afin de savoir si le coup est valide. La validit
 plateau de jeu adéquat. Si le coup est valide, alors celui-ci est joué et rajouté à l'instance du plateau de jeu. Il est ensuite renvoyé au fichier 
 JavaScript qui va s'occuper du nouvel affichage graphique (En modifiant le CSS ou le html). Si une erreur est attrapée, elle est renvoyée
 au fichier JavaScript qui va afficher une alerte sur l'écran du joueur, indiquant la non-validité du coup. Lors du placement de chaque
-hex (déplacement de graines pour l'Awalé), la fonction \textit{check\_winner} de la classe du plateau est appelée afin de vérifier si un joueur à 
+hex (déplacement de graines pour l'Awalé), la fonction \textit{check\_winner} de la classe du plateau est appelée afin de vérifier si un joueur a 
 gagné. Si c'est le cas, alors la fonction questionnée par la requête json renvoie la variable \textsf{game\_over} égale à \textbf{True}. 
 En récupérant cette variable, le fichier JavaScript va pouvoir procéder à une animation indiquant au(x) joueur(s) que la partie est terminée.
 

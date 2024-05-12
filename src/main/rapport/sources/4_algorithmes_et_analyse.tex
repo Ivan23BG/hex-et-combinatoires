@@ -11,7 +11,7 @@
 Implémenter un algorithme pour jouer à des jeux combinatoires contre l'ordinateur est l'un des objectifs principaux du projet
 Hex-Ta(c)tique, mais plusieurs questions naturelles ont alors vu le jour: quels sont les algorithmes qui permettent à un ordinateur
 de jouer à un jeu combinatoire abstrait ? Quels sont leurs points forts et faibles ? Dans cette section, nous allons
-présenter deux algorithmes principaux qui aident à répondre à ces questions: la recherche arborescente \emph{Monte-Carlo} (Monte-carlo Three Search) 
+présenter deux algorithmes principaux qui aident à répondre à ces questions: la recherche arborescente \emph{Monte-Carlo} (Monte-carlo Tree Search) 
 et l'algorithme du \emph{MinMax} avec élagage alpha-bêta:
 
 \subsection{La recherche arborescente Monte-Carlo}
@@ -34,7 +34,7 @@ et le nombre total de simulations.
 et ensuite, depuis cette feuille, créer grâce aux règles du jeu, une nouvelle feuille au hasard dont le but est d'atteindre une configuration finale.
 Dans le cas où on trouverait une configuration gagnante pour un joueur, on va incrémenter le nombre de simulations gagnantes, pour les nœuds
 correspondant au joueur et dans les parents de la feuille que l'on vient de créer.
-L'algorithme répète cette opération un certain nombre de fois avant de choisir un coup, ie: choisir le coup qui a le plus de simulations
+L'algorithme répète cette opération un certain nombre de fois avant de choisir un coup, i.e.: choisir le coup qui a le plus de simulations
 gagnantes et le moins de simulations totales.
 
 %exemple.\dots
@@ -57,15 +57,16 @@ soit des nœuds terminaux (c'est-à-dire que l'un des deux joueurs a gagné), so
 Un nœud va se voir assigner une valeur positive si la position associée favorise l'ordinateur (le joueur maximisant) 
 et négative dans le cas contraire.
 
-Les nœuds feuilles non-terminaux, c'est-à-dire ceux représentant une configuration de jeu non gagnante, mais bloqué par la profondeur de recherche,
-c'est une fonction d'évaluation qui va estimer leur valeur heuristique. La qualité de cette fonction va déterminer « l'intelligence » de 
-l'ordinateur. Cette estimation et la profondeur de recherche déterminent donc la qualité et la précision du résultat final du MinMax.
+En ce qui concerne les nœuds feuilles non-terminaux, c’est-à-dire ceux représentant une configuration de jeu non gagnante, mais bloqués par la 
+profondeur de recherche, c’est une fonction d’évaluation qui va estimer leur valeur heuristique. La qualité de cette fonction va 
+déterminer « l'intelligence » de l'ordinateur. Cette estimation et la profondeur de recherche déterminent donc la qualité et la 
+précision du résultat final du MinMax.
 
 Les nœuds qui ne sont pas des feuilles vont hériter d'une des valeurs de leurs enfants en fonction de s'ils sont le minimisant, ou le maximisant.
 Si le rôle du nœud est de maximiser sa valeur, alors celui-ci va recevoir la plus grande valeur associée à ses fils. Sinon, son rôle est de 
 minimiser sa valeur, et donc il va recevoir la plus petite valeur associée à ses fils.
 Ainsi, les nœuds conduisant à un résultat favorable, comme une victoire pour le joueur maximisant, ont des scores plus
-élevés que les nœuds plus favorables pour le joueur minimisant. Les valeurs des nœuds qui mennent à une victoire sont -inf ou + inf ou 0 en fonction de:
+élevés que les nœuds plus favorables pour le joueur minimisant. Les valeurs des nœuds qui mènent à une victoire sont -inf ou + inf ou 0 en fonction de:
 la victoire, la défaite ou l'égalité pour le joueur maximisant. 
 
 
@@ -103,7 +104,7 @@ Plusieurs coupures ont pu être réalisées. De gauche à droite :
     actuelle du nœud MAX précédent. Celui-ci cherchant la plus grande valeur possible, ne la choisira donc de toute façon pas.
 \end{enumerate}
 
-\subsubsection{Remarques:}
+\subsubsection{Remarque}
 À l'aide de l'algorithme MinMax, il est possible de donner une preuve de l'existence d'une stratégie gagnante au jeu du Hex notamment. Nous détaillons
 cette preuve en annexe.
 
