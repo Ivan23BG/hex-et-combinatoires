@@ -5,7 +5,7 @@
 Pour la gestion du projet, nous avons suivi un cycle de développement similaire à celui de la méthode Scrum. 
 Nous avons donc défini des sprints courts de quelques jours chaque semaine, avec une réunion hebdomadaire
 le mercredi pour faire le point sur l'avancement du projet. 
-Ces réunions étaient l'occasion de discuter des tâches effectuées, de celles à venir, et de résoudre les problèmes rencontrés.
+Ces réunions étaient l'occasion de discuter des tâches effectuées avec notre encadrant, de celles à venir, et de résoudre les problèmes rencontrés.
 Nous avons également utilisé le logiciel Jira pour gérer les tâches et les sprints, et pour suivre l'avancement du projet.
 
 \subsection{Diagramme de Gantt}
@@ -17,6 +17,7 @@ Un exemple de diagramme de Gantt est présenté en annexe \ref{fig:diagramme_de_
 
 
 \subsection{Organisation}
+\paragraph{Cycle de travail}
 Avec ce fonctionnement, chaque semaine nos avions de nouvelles tâches à accomplir, celles-ci pouvaient être par exemple ajouter une fonctionnalité ou le débogage, l'ajout d'éléments graphiques, etc...
 Les plus grosses tâches étant l'ajout de nouveaux jeux, pour celles-ci nous avons procédé comme ceci :
 Une première version du jeu est ajoutée avec sa classe Python. Cette première version contient les fonctionnalités de base et est jouable dans le terminal dans le but de faire des tests. 
@@ -26,8 +27,14 @@ Python avec le site web en utilisant Flask.
 fonctionnalités comme la possibilité de jouer contre l'IA ou améliorer l'interface graphique. En pratique, l'implémentation du jeu prend beaucoup moins de temps que de l'optimiser, 
 le déboguer, et ajouter toutes sortes de petites fonctionnalités.
 Nous pouvons noter que grâce à l'architecture du projet, il est facile d'ajouter de nouveaux jeux : il suffit d'écrire une classe similaire à celle d'un autre jeu et d'ajouter une 
-page web correspondante. C'est aussi le cas pour certaines fonctionnalités comme le MinMax : il suffit de recopier l'algorithme dans la nouvelle classe (notez que ce n'est pas du tout le cas pour les fonctions d'évaluation qui sont propres à chaque jeu).
+page web correspondante. C'est aussi le cas pour certaines fonctionnalités comme le MinMax : il suffit de recopier l'algorithme dans la nouvelle classe (notez que ce n'est pas du 
+tout le cas pour les fonctions d'évaluation qui sont propres à chaque jeu).
 Nous avons construit le projet comme une plateforme pour les jeux combinatoires, pour y jouer et pour essayer les différents moteurs de jeux que nous pouvons implémenter.
+
+\paragraph{Repartition des taches}
+Pour assurer une répartition équitable des tâches, nous utilisons Jira où chacun peut ajouter des tâches (une feature a ajouter ou un bug a coriger par exemple). 
+Ensuite, chacun peut s'assigner les tâches "ouvertes", créer une branche Git et commencer à travailler. Nous utilisons également un serveur Discord pour échanger 
+nos idées, demander de l'aide ou des conseils, et montrer notre travail. Enfin, nous avons utilisé GitHub pour partager notre travail et collaborer.
 
 
 
