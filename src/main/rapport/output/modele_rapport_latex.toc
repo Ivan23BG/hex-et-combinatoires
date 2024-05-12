@@ -1,17 +1,17 @@
 \babel@toc {french}{}\relax 
 \contentsline {section}{\numberline {1}Présentation du sujet}{2}{section.1}%
 \contentsline {section}{\numberline {2}Technologies utilisées}{3}{section.2}%
-\contentsline {section}{\numberline {3}Développements Logiciel: Conception, Modélisation, Implémentation}{4}{section.3}%
+\contentsline {section}{\numberline {3}Développements logiciel: Conception, Modélisation, Implémentation}{4}{section.3}%
 \contentsline {subsection}{\numberline {3.1}Description des modules utilisés}{4}{subsection.3.1}%
 \contentsline {paragraph}{Fonctionnalités de l'interface graphique}{4}{section*.2}%
 \contentsline {paragraph}{Structures de données}{4}{section*.3}%
 \contentsline {paragraph}{Statistiques}{4}{section*.4}%
-\contentsline {subsection}{\numberline {3.2}Intéraction entre fichiers}{5}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.2}Intéractions entre les fichiers}{5}{subsection.3.2}%
 \contentsline {paragraph}{Initialisation de la partie}{5}{section*.5}%
 \contentsline {paragraph}{Déroulement d'une partie}{5}{section*.6}%
 \contentsline {subsection}{\numberline {3.3}Fonctions asynchrones}{6}{subsection.3.3}%
 \contentsline {subsection}{\numberline {3.4}Diagrammes UML}{7}{subsection.3.4}%
-\contentsline {subsubsection}{\numberline {3.4.1}Diagramme du module Hex et Awalé}{7}{subsubsection.3.4.1}%
+\contentsline {subsubsection}{\numberline {3.4.1}Diagramme des modules Hex et Awalé}{7}{subsubsection.3.4.1}%
 \contentsline {subsubsection}{\numberline {3.4.2}Diagramme de fonctionnement de l'application}{7}{subsubsection.3.4.2}%
 \contentsline {section}{\numberline {4}Moteur de jeux combinatoires abstraits et algorithmes}{9}{section.4}%
 \contentsline {subsection}{\numberline {4.1}La recherche arborescente Monte-Carlo}{9}{subsection.4.1}%
@@ -41,15 +41,18 @@
 \contentsline {subsubsection}{\numberline {5.4.7}Conclusion}{15}{subsubsection.5.4.7}%
 \contentsline {section}{\numberline {6}Gestion du Projet}{16}{section.6}%
 \contentsline {subsection}{\numberline {6.1}Diagramme de Gantt}{16}{subsection.6.1}%
-\contentsline {subsection}{\numberline {6.2}Changements Majeurs}{16}{subsection.6.2}%
-\contentsline {section}{\numberline {7}Bilan et Conclusions}{17}{section.7}%
-\contentsline {section}{\numberline {8}Bibliographie}{18}{section.8}%
-\contentsline {section}{\numberline {9}Annexe}{19}{section.9}%
-\contentsline {subsection}{\numberline {9.1}Cahier des charges}{19}{subsection.9.1}%
-\contentsline {subsubsection}{\numberline {9.1.1}Objectifs du projet}{19}{subsubsection.9.1.1}%
-\contentsline {subsubsection}{\numberline {9.1.2}Description des jeux}{19}{subsubsection.9.1.2}%
-\contentsline {subsection}{\numberline {9.2}HexGame et stratégie gagnante}{22}{subsection.9.2}%
-\contentsline {subsubsection}{\numberline {9.2.1}Stratégies gagnantes et arbre du jeu}{22}{subsubsection.9.2.1}%
-\contentsline {subsubsection}{\numberline {9.2.2}Remarques}{22}{subsubsection.9.2.2}%
-\contentsline {subsubsection}{\numberline {9.2.3}Le premier joueur gagne à tous les coups}{22}{subsubsection.9.2.3}%
-\contentsline {subsection}{\numberline {9.3}Diagramme de Gantt}{24}{subsection.9.3}%
+\contentsline {subsection}{\numberline {6.2}Organisation}{16}{subsection.6.2}%
+\contentsline {paragraph}{Cycle de travail}{16}{section*.12}%
+\contentsline {paragraph}{Répartition des tâches}{16}{section*.13}%
+\contentsline {subsection}{\numberline {6.3}Changements majeurs}{16}{subsection.6.3}%
+\contentsline {section}{\numberline {7}Bilan et Conclusions}{18}{section.7}%
+\contentsline {section}{\numberline {8}Bibliographie}{19}{section.8}%
+\contentsline {section}{\numberline {9}Annexe}{20}{section.9}%
+\contentsline {subsection}{\numberline {9.1}Cahier des charges}{20}{subsection.9.1}%
+\contentsline {subsubsection}{\numberline {9.1.1}Objectifs du projet}{20}{subsubsection.9.1.1}%
+\contentsline {subsubsection}{\numberline {9.1.2}Description des jeux}{20}{subsubsection.9.1.2}%
+\contentsline {subsection}{\numberline {9.2}HexGame et stratégie gagnante}{23}{subsection.9.2}%
+\contentsline {subsubsection}{\numberline {9.2.1}Stratégies gagnantes et arbre du jeu}{23}{subsubsection.9.2.1}%
+\contentsline {subsubsection}{\numberline {9.2.2}Remarques}{23}{subsubsection.9.2.2}%
+\contentsline {subsubsection}{\numberline {9.2.3}Le premier joueur gagne à tous les coups}{23}{subsubsection.9.2.3}%
+\contentsline {subsection}{\numberline {9.3}Diagramme de Gantt}{25}{subsection.9.3}%
