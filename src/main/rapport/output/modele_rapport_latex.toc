@@ -52,3 +52,4 @@
 \contentsline {subsection}{\numberline {9.3}Diagrammes UML}{22}{subsection.9.3}%
 \contentsline {subsubsection}{\numberline {9.3.1}Diagramme du module Hex et Awalé}{22}{subsubsection.9.3.1}%
 \contentsline {subsubsection}{\numberline {9.3.2}Diagramme de fonctionnement de l'application}{23}{subsubsection.9.3.2}%
+\contentsline {subsection}{\numberline {9.4}Diagramme de Gantt}{24}{subsection.9.4}%
