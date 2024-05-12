@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.2.13)  12 MAY 2024 21:46
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.2.13)  12 MAY 2024 21:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -631,7 +631,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.51 ....1}Cahier des charges}{21}{subsection.9.1}
+l.51 ....1}Cahier des charges}{20}{subsection.9.1}
                                                   % [1
 
 
@@ -926,6 +926,9 @@ L3 programming layer <2024-01-22>
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package rerunfilecheck Info: File `modele_rapport_latex.out' has not changed.
 (rerunfilecheck)             Checksum: 0A12F9129A0714A418BFF93E30F23A2E;12033.
  ) 
@@ -950,7 +953,7 @@ n/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss10.pfb><C:/Users/Ivan
 /AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/Ivan/
 AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb>
 Output written on C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\
-rapport\output\modele_rapport_latex.pdf (27 pages, 2284578 bytes).
+rapport\output\modele_rapport_latex.pdf (27 pages, 2284581 bytes).
 PDF statistics:
  606 PDF objects out of 1000 (max. 8388607)
  105 named destinations out of 1000 (max. 500000)
