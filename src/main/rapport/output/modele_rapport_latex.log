@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.2.13)  12 MAY 2024 20:31
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.2.13)  12 MAY 2024 20:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -576,7 +576,7 @@ Package hyperref Info: Link coloring OFF on input line 12.
 
 
 (sources/0_frontpage.tex
-<root/UM1.png, id=203, 194.6472pt x 71.0655pt>
+<root/UM1.png, id=211, 194.6472pt x 71.0655pt>
 File: root/UM1.png Graphic file (type png)
 <use root/UM1.png>
 Package pdftex.def Info: root/UM1.png  used on input line 5.
@@ -667,17 +667,17 @@ LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 1
 (C:\Users\Ivan\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-<root/exemple_home.png, id=286, 1000.48781pt x 476.53032pt>
+<root/exemple_home.png, id=292, 1000.48781pt x 476.53032pt>
 File: root/exemple_home.png Graphic file (type png)
 <use root/exemple_home.png>
 Package pdftex.def Info: root/exemple_home.png  used on input line 57.
 (pdftex.def)             Requested size: 149.48022pt x 71.19289pt.
-<root/awale_board.png, id=287, 998.9822pt x 428.35031pt>
+<root/awale_board.png, id=293, 998.9822pt x 428.35031pt>
 File: root/awale_board.png Graphic file (type png)
 <use root/awale_board.png>
 Package pdftex.def Info: root/awale_board.png  used on input line 62.
 (pdftex.def)             Requested size: 149.48022pt x 64.0929pt.
-<root/exemple_partie_hex.png, id=288, 1002.74625pt x 468.24937pt>
+<root/exemple_partie_hex.png, id=294, 1002.74625pt x 468.24937pt>
 File: root/exemple_partie_hex.png Graphic file (type png)
 <use root/exemple_partie_hex.png>
 Package pdftex.def Info: root/exemple_partie_hex.png  used on input line 67.
@@ -698,17 +698,17 @@ File: t1lmss.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 \openout2 = `./sources/annexes/9_3_diagrammes_uml.aux'.
 
  (sources/annexes/9_3_diagrammes_uml.tex
-<root/UML_hex.png, id=312, 4358.2825pt x 2640.86626pt>
+<root/UML_hex.png, id=318, 4358.2825pt x 2640.86626pt>
 File: root/UML_hex.png Graphic file (type png)
 <use root/UML_hex.png>
 Package pdftex.def Info: root/UML_hex.png  used on input line 12.
 (pdftex.def)             Requested size: 362.37569pt x 219.57466pt.
-<root/UML_awale.png, id=313, 5041.83624pt x 1586.92876pt>
+<root/UML_awale.png, id=319, 5041.83624pt x 1586.92876pt>
 File: root/UML_awale.png Graphic file (type png)
 <use root/UML_awale.png>
 Package pdftex.def Info: root/UML_awale.png  used on input line 17.
 (pdftex.def)             Requested size: 362.37569pt x 114.05054pt.
-<root/UML_app.png, id=314, 7340.42375pt x 2597.705pt>
+<root/UML_app.png, id=320, 7340.42375pt x 2597.705pt>
 File: root/UML_app.png Graphic file (type png)
 <use root/UML_app.png>
 Package pdftex.def Info: root/UML_app.png  used on input line 34.
@@ -730,19 +730,19 @@ LaTeX Warning: Float too large for page by 27.34442pt on input line 36.
 
 
 ]
-<root/MinMax.jpeg, id=333, 733.74126pt x 362.35374pt>
+<root/MinMax.jpeg, id=339, 733.74126pt x 362.35374pt>
 File: root/MinMax.jpeg Graphic file (type jpg)
 <use root/MinMax.jpeg>
 Package pdftex.def Info: root/MinMax.jpeg  used on input line 75.
 (pdftex.def)             Requested size: 181.18439pt x 89.47687pt.
-<root/minmax_alpha_beta.png, id=334, 652.68843pt x 328.22626pt>
+<root/minmax_alpha_beta.png, id=340, 652.68843pt x 328.22626pt>
 File: root/minmax_alpha_beta.png Graphic file (type png)
 <use root/minmax_alpha_beta.png>
 Package pdftex.def Info: root/minmax_alpha_beta.png  used on input line 90.
 (pdftex.def)             Requested size: 226.48395pt x 113.89426pt.
  [11{C:/Users/Ivan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.e
 nc} <./root/MinMax.jpeg> <./root/minmax_alpha_beta.png>]
-<root/chemin_gagnant.png, id=345, 554.82281pt x 328.22626pt>
+<root/chemin_gagnant.png, id=351, 554.82281pt x 328.22626pt>
 File: root/chemin_gagnant.png Graphic file (type png)
 <use root/chemin_gagnant.png>
 Package pdftex.def Info: root/chemin_gagnant.png  used on input line 134.
@@ -754,7 +754,7 @@ Package pdftex.def Info: root/chemin_gagnant.png  used on input line 134.
 
 
 (sources/5_analyse_des_resultats.tex
-<root/pont.png, id=356, 161.85469pt x 163.3603pt>
+<root/pont.png, id=362, 161.85469pt x 163.3603pt>
 File: root/pont.png Graphic file (type png)
 <use root/pont.png>
 Package pdftex.def Info: root/pont.png  used on input line 46.
@@ -871,7 +871,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 18--22
 
  []
 
-<root/hex_jeu_bleu.png, id=465, 660.066pt x 398.08725pt>
+<root/hex_jeu_bleu.png, id=471, 660.066pt x 398.08725pt>
 File: root/hex_jeu_bleu.png Graphic file (type png)
 <use root/hex_jeu_bleu.png>
 Package pdftex.def Info: root/hex_jeu_bleu.png  used on input line 25.
@@ -881,7 +881,7 @@ Package pdftex.def Info: root/hex_jeu_bleu.png  used on input line 25.
 
 
  <./root/hex_jeu_bleu.png>]
-<root/awale_en_bois.jpg, id=472, 1027.84pt x 685.56125pt>
+<root/awale_en_bois.jpg, id=478, 1027.84pt x 685.56125pt>
 File: root/awale_en_bois.jpg Graphic file (type jpg)
 <use root/awale_en_bois.jpg>
 Package pdftex.def Info: root/awale_en_bois.jpg  used on input line 52.
@@ -896,7 +896,7 @@ Overfull \hbox (60.95085pt too wide) in paragraph at lines 52--53
 
 
 (sources/annexes/9_1_strategie_gagnante_hex.tex
-<root/strategie_gagnante.png, id=484, 636.87938pt x 386.19281pt>
+<root/strategie_gagnante.png, id=490, 636.87938pt x 386.19281pt>
 File: root/strategie_gagnante.png Graphic file (type png)
 <use root/strategie_gagnante.png>
 Package pdftex.def Info: root/strategie_gagnante.png  used on input line 14.
@@ -909,7 +909,7 @@ Package pdftex.def Info: root/strategie_gagnante.png  used on input line 14.
 \openout2 = `./sources/annexes/9_4_diagramme_de_gantt.aux'.
 
  (sources/annexes/9_4_diagramme_de_gantt.tex
-<root/Diagramme-de-gantt.jpg, id=497, 511.9125pt x 280.04625pt>
+<root/Diagramme-de-gantt.jpg, id=503, 511.9125pt x 280.04625pt>
 File: root/Diagramme-de-gantt.jpg Graphic file (type jpg)
 <use root/Diagramme-de-gantt.jpg>
 Package pdftex.def Info: root/Diagramme-de-gantt.jpg  used on input line 10.
@@ -961,10 +961,10 @@ Package rerunfilecheck Info: File `modele_rapport_latex.out' has not changed.
 (rerunfilecheck)             Checksum: 18AAC28E6C2ADE9200B6258EA7F2ECA4;10378.
  ) 
 Here is how much of TeX's memory you used:
- 13964 strings out of 474542
- 243298 string characters out of 5744918
+ 13966 strings out of 474542
+ 243340 string characters out of 5744918
  1942978 words of memory out of 5000000
- 35756 multiletter control sequences out of 15000+600000
+ 35758 multiletter control sequences out of 15000+600000
  613697 words of font info for 64 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  80i,10n,82p,1182b,682s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -981,9 +981,9 @@ n/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss10.pfb><C:/Users/Ivan
 /AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/Ivan/
 AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb>
 Output written on C:\Users\Ivan\Documents\Fac\L3\hex-et-combinatoires\src\main\
-rapport\output\modele_rapport_latex.pdf (27 pages, 2285033 bytes).
+rapport\output\modele_rapport_latex.pdf (27 pages, 2285755 bytes).
 PDF statistics:
- 587 PDF objects out of 1000 (max. 8388607)
+ 593 PDF objects out of 1000 (max. 8388607)
  105 named destinations out of 1000 (max. 500000)
- 476 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 492 words of extra memory for PDF output out of 10000 (max. 10000000)
 
