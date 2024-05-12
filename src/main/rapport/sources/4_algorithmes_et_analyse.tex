@@ -8,11 +8,11 @@
 
 % evaluer la complexité théorique en temps des algorithmes présentés.
 
-Implémenter un algorithme pour jouer à des jeux combinatoires contre l'ordinateur est l'un des objectifs principaux du projet, 
-mais plusieurs questions naturelles ont alors vu le jour: quels sont les algorithmes qui permettent à un ordinateur
-de jouer à un jeu combinatoire abstrait? Quels sont leurs points forts et faibles? Dans cette section, nous allons
+Implémenter un algorithme pour jouer à des jeux combinatoires contre l'ordinateur est l'un des objectifs principaux du projet. 
+Néanmoins, plusieurs questions naturelles ont alors vu le jour lors de notre travail: quels sont les algorithmes qui permettent à un ordinateur
+de jouer à un jeu combinatoire abstrait? Quels sont leurs points forts et points faibles? Dans cette section, nous allons
 présenter deux algorithmes principaux qui aident à répondre à ces questions: la recherche arborescente \emph{Monte-Carlo} (Monte-carlo Tree Search) 
-et l'algorithme du \emph{MinMax} avec élagage alpha-bêta.
+et l'algorithme \emph{MinMax} avec élagage alpha-bêta.
 
 \subsection{La recherche arborescente Monte-Carlo}
 
@@ -21,13 +21,13 @@ La recherche arborescente \emph{Monte-Carlo} ou \emph{Monte-Carlo} (MCTS) est un
 Il est principalement utilisé dans le cadre de mise en place d'intelligence artificielle pour des jeux tels que le go, mais pas uniquement.
 En effet, il peut aussi être utilisé pour les moteurs de jeux des échecs comme le moteur AlphaZero de Google qui est
 l'un des leaders en termes d'intelligence de jeux aux échecs. Cet algorithme peut même être implémenté dans des jeux où le hasard 
-apparaît par exemple au poker.
+apparaît comme le poker.
 
 \subsubsection{MCTS --- Fonctionnement succinct}
 \emph{MCTS} est un algorithme qui explore l'arbre des possibles. La racine est la configuration initiale du jeu.
 Chaque nœud est une configuration (une situation en jeu) et ses enfants sont les configurations suivantes.\ \emph{MCTS} conserve en mémoire 
 un arbre qui correspond aux nœuds déjà explorés. Une feuille de cet arbre est soit une configuration finale (donc un des joueurs a gagné),
-soit un nœud dont aucun enfant n'a encore été exploré. Dans chaque nœud, on stocke deux nombres: le nombre de simulations gagnantes, 
+soit un nœud dont aucun enfant n'a encore été exploré. Dans chaque nœud, on stocke deux nombres : le nombre de simulations gagnantes, 
 et le nombre total de simulations. 
 
 À chaque itération \emph{MCTS} va déterminer la `meilleure' feuille (celle qui a le plus de potentiel) à partir de la racine.
@@ -74,7 +74,7 @@ la victoire, la défaite ou l'égalité pour le joueur maximisant.
     \begin{center}
         \includegraphics[width=0.4\textwidth]{root/MinMax.jpeg}
     \end{center}
-    \caption{Ici, le joueur bleu cherche à maximiser ses gains avec une profondeur 4.}\label{fig:min_max}
+    \caption{Ici le joueur bleu cherche à maximiser ses gains avec une profondeur 4.}\label{fig:min_max}
 \end{figure}
 
 
@@ -111,11 +111,11 @@ cette preuve en annexe.
 \subsection{Autres algorithmes}
 \subsubsection{Dijkstra et BFS}
 Dans le projet, lorsqu'un joueur gagne au Hex, nous avons décidé de mettre en valeur son chemin gagnant.
-Dans un premier temps, nous devions détecter qu'un joueur ait remporté une partie. Pour cela nous avons implementé l'algorithme du parcours
+Dans un premier temps, nous devions détecter qu'un joueur ait remporté une partie. Nous avons donc dû créer la méthode \textit{check\_winner} dont nous avons déjà parlé. Pour cela nous avons implementé l'algorithme du parcours
 en largeur (\emph{BFS}). Nous avons alors interprété le tableau dans lequel les coups des joueurs sont sauvegardés comme un graphe. Le parcous en largeur
 va générer un graphe couvrant depuis un bord. Ce graphe couvrant ne va passer que par les coups placés par un joueur. Si le graphe généré atteint le bord opposé,
-alors un chemin relie les deux bords, et donc le joueur a gagné. Nous appellons donc cet algorithme à chaque fois qu'un coup est placé. Sa complexité est $O(\lvert V \rvert + \lvert E \rvert)$.
-Notons ici que nous appelons l'algorithme seulement sur l'arbre correspondant aux coups joués par un joueur, donc en pratique, l'appel à cet algorithme
+alors un chemin relie les deux bords, et donc le joueur a gagné. Nous appellons donc cette méthode à chaque fois qu'un coup est placé. Sa complexité est $O(\lvert V \rvert + \lvert E \rvert)$.
+Notons ici que nous appelons la méthode seulement sur l'arbre correspondant aux coups joués par un joueur, donc en pratique, l'appel à cet algorithme
 est très rapide.
 
 L'algorithme \emph{BFS} nous assure qu'un joueur a gagné, mais il peut exister plusieurs chemins distincts reliant les deux bords. En effet,
