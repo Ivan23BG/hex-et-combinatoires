@@ -42,7 +42,7 @@ gagnantes et le moins de simulations totales.
 
 \subsection{MinMax}
 
-\paragraph{Présentation}
+\subsubsection{Présentation}
 L'algorithme MinMax, comme MCTS, est un algorithme décisionnel. Cependant, celui-ci s'applique sur des jeux à somme nulle: c'est-à-dire
 un jeu où la somme des gains et des pertes de tous les joueurs est égale à 0. Ainsi, le gain de l'un constitue 
 obligatoirement une perte pour l'autre. L'algorithme va utiliser cette propriété dans sa recherche pour trouver le meilleur coup possible.
@@ -50,7 +50,7 @@ En effet, l'ordinateur va passer en revue toutes les configurations possibles po
 et leur assigner une valeur qui prend en compte les bénéfices pour le joueur et pour son adversaire. Le meilleur coup est alors celui qui 
 minimise les pertes du joueur, tout en supposant que l'adversaire cherche au contraire à les maximiser (d'où le nom MinMax).
 
-\paragraph{MinMax - Fonctionnement succinct}
+\subsubsection{MinMax - Fonctionnement succinct}
 Comme le MCTS, le MinMax va explorer l'arbre des possibles où chaque nœud représente une configuration du jeu. 
 L'algorithme va explorer toutes les possibilités et associer à chaque feuille une valeur positive ou négative. Ces feuilles sont
 soit des nœuds terminaux (c'est-à-dire que l'un des deux joueurs a gagné), soit des nœuds à la profondeur de recherche maximale.
@@ -77,7 +77,7 @@ la victoire, la défaite ou l'égalité pour le joueur maximisant.
 \end{figure}
 
 
-\paragraph{Élagage alpha-bêta}
+\subsubsection{Élagage alpha-bêta}
 L'algorithme MinMax effectue une exploration complète de l'arbre de recherche jusqu'à un niveau donné. L'élagage alpha-bêta permet d'optimiser 
 cet algorithme sans en modifier le résultat. Pour cela, il ne réalise qu'une exploration
 partielle de l'arbre. En effet, on observe qu'il n'est pas utile d'explorer les sous-arbres qui conduisent à des valeurs
@@ -103,12 +103,12 @@ Plusieurs coupures ont pu être réalisées. De gauche à droite :
     actuelle du nœud MAX précédent. Celui-ci cherchant la plus grande valeur possible, ne la choisira donc de toute façon pas.
 \end{enumerate}
 
-\paragraph{Remarques:}
+\subsubsection{Remarques:}
 À l'aide de l'algorithme MinMax, il est possible de donner une preuve de l'existence d'une stratégie gagnante au jeu du Hex notamment. Nous détaillons
 cette preuve en annexe.
 
-\subsection{autres algorithmes}
-\paragraph{dijkstra et BFS}
+\subsection{Autres algorithmes}
+\subsubsection{Dijkstra et BFS}
 Dans le projet lorsque un joueur gagne au Hex le chemin le plus court entre ses deux bords du plateau est mis en valeur
 pour cela nous devions d'abord detecter qu'un joueur ait gagné. Pour cela nous avons implementé l'algorithme du parcours
 en largeur (BFS) en interpretant le tableau dans lequel les coups des joueurs est sauvegradé comme une graphe.Le parcous en profondeur
