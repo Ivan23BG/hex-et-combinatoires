@@ -52,11 +52,11 @@ prioriser dans le choix du coup à jouer.
 On avait alors une fonction d'évaluation qui `visualisait' les chemins possibles pour chaque joueur et qui permettait
 de déterminer les coups les plus stratégiques à jouer. 
 Cependant, cette fonction d'évaluation était très complexe (en termes de temps de calcul) car elle nécessitait de parcourir
-une grande partie du plateau pour chaque coup. Cela a conduit à des temps de calcul très longs et à des performances
+une grande partie du plateau pour chaque coup. Cela nous a confronté à des temps de calcul très longs et à des performances
 globales de l'IA qui n'étaient pas satisfaisantes.
 
 \subsubsection{Le problème de la complexité}
-La dernière fonction d'évaluation implémentée, bien que plus efficace que les précédentes, souffrait toujours du problème
+La dernière fonction d'évaluation intérée, bien que plus efficace que les précédentes, souffrait toujours du problème
 de complexité. En effet, les fonctions d'évaluation étaient de plus en plus complexes et nécessitaient de plus en plus de
 calculs pour déterminer le score d'une position. Plusieurs choix se présentent alors pour résoudre ce problème:
 \begin{itemize}
@@ -69,12 +69,12 @@ de recherche pour améliorer les performances de l'IA.\@
 Cela a permis de réduire la complexité du programme et d'obtenir des résultats plus satisfaisants en termes de temps de 
 calcul et de performances globales de l'IA.\@
 Mais, comme pour tout problème de recherche, il n'y a pas de solution parfaite et il est important 
-de trouver un compromis entre la complexité des fonctions d'évaluation et les performances de l'IA:\@
+de trouver un compromis entre la complexité des fonctions d'évaluation, et les performances de l'IA:\@
 \begin{itemize}
     \item Réduire la complexité des fonctions d'évaluation peut entraîner une perte de précision dans l'évaluation des positions
     et une moins bonne performance de l'IA.\@
     \item Optimiser les fonctions d'évaluation peut permettre d'améliorer les performances de l'IA, mais cela nécessite
-    beaucoup de travail et atteint rapidement des limites: il est difficile d'optimiser une fonction d'évaluation
+    beaucoup de travail et atteint rapidement des limites : il est difficile d'optimiser une fonction d'évaluation
     complexe sans la simplifier.\@
     \item Implémenter des algorithmes de recherche plus efficaces peut permettre d'améliorer les performances de l'IA,
     mais cela nécessite également beaucoup de travail et de recherche pour trouver les algorithmes les plus adaptés
