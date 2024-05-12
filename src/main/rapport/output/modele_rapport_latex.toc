@@ -41,9 +41,6 @@
 \contentsline {subsection}{\numberline {6.2}Changements Majeurs}{14}{subsection.6.2}%
 \contentsline {section}{\numberline {7}Bilan et Conclusions}{15}{section.7}%
 \contentsline {section}{\numberline {8}Bibliographie}{16}{section.8}%
-\contentsline {paragraph}{Hex:}{16}{section*.17}%
-\contentsline {paragraph}{Stratégie gagnante:}{16}{section*.18}%
-\contentsline {paragraph}{Awale:}{16}{section*.19}%
 \contentsline {section}{\numberline {9}Annexe}{17}{section.9}%
 \contentsline {subsection}{\numberline {9.1}Cahier des charges}{17}{subsection.9.1}%
 \contentsline {subsubsection}{\numberline {9.1.1}Objectifs du projet}{17}{subsubsection.9.1.1}%
