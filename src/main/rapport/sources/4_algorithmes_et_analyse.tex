@@ -8,9 +8,9 @@
 
 % evaluer la complexité théorique en temps des algorithmes présentés.
 
-Implémenter un algorithme pour jouer à des jeux combinatoires contre l'ordinateur est l'un des objectifs principaux du projet
-Hex-Ta(c)tique, mais plusieurs questions naturelles ont alors vu le jour: quels sont les algorithmes qui permettent à un ordinateur
-de jouer à un jeu combinatoire abstrait ? Quels sont leurs points forts et faibles ? Dans cette section, nous allons
+Implémenter un algorithme pour jouer à des jeux combinatoires contre l'ordinateur est l'un des objectifs principaux du projet, 
+mais plusieurs questions naturelles ont alors vu le jour: quels sont les algorithmes qui permettent à un ordinateur
+de jouer à un jeu combinatoire abstrait? Quels sont leurs points forts et faibles? Dans cette section, nous allons
 présenter deux algorithmes principaux qui aident à répondre à ces questions: la recherche arborescente \emph{Monte-Carlo} (Monte-carlo Tree Search) 
 et l'algorithme du \emph{MinMax} avec élagage alpha-bêta:
 
@@ -23,18 +23,18 @@ En effet, il peut aussi être utilisé pour les moteurs de jeux des échecs comm
 l'un des leaders en termes d'intelligence de jeux aux échecs. Cet algorithme peut même être implémenté dans des jeux où le hasard 
 apparaît par exemple au poker.
 
-\paragraph{MCTS - Fonctionnement succinct}
+\paragraph{MCTS --- Fonctionnement succinct}
 MCTS est un algorithme qui explore l'arbre des possibles. La racine est la configuration initiale du jeu.
 Chaque nœud est une configuration (une situation en jeu) et ses enfants sont les configurations suivantes. MCTS conserve en mémoire 
 un arbre qui correspond aux nœuds déjà explorés. Une feuille de cet arbre est soit une configuration finale (donc un des joueurs a gagné),
-soit un nœud dont aucun enfant n'a encore été exploré. Dans chaque nœud, on stocke deux nombres : le nombre de simulations gagnantes, 
+soit un nœud dont aucun enfant n'a encore été exploré. Dans chaque nœud, on stocke deux nombres: le nombre de simulations gagnantes, 
 et le nombre total de simulations. 
 
 À chaque itération MCTS va chercher la feuille la plus prometteuse, comprendre la suite de coups qui possède la meilleure heuristique, 
 et ensuite, depuis cette feuille, créer grâce aux règles du jeu, une nouvelle feuille au hasard dont le but est d'atteindre une configuration finale.
 Dans le cas où on trouverait une configuration gagnante pour un joueur, on va incrémenter le nombre de simulations gagnantes, pour les nœuds
 correspondant au joueur et dans les parents de la feuille que l'on vient de créer.
-L'algorithme répète cette opération un certain nombre de fois avant de choisir un coup, i.e.: choisir le coup qui a le plus de simulations
+L'algorithme répète cette opération un certain nombre de fois avant de choisir un coup, i.e: choisir le coup qui a le plus de simulations
 gagnantes et le moins de simulations totales.
 
 %exemple.\dots
@@ -50,15 +50,15 @@ En effet, l'ordinateur va passer en revue toutes les configurations possibles po
 et leur assigner une valeur qui prend en compte les bénéfices pour le joueur et pour son adversaire. Le meilleur coup est alors celui qui 
 minimise les pertes du joueur, tout en supposant que l'adversaire cherche au contraire à les maximiser (d'où le nom MinMax).
 
-\subsubsection{MinMax - Fonctionnement succinct}
+\subsubsection{MinMax --- Fonctionnement succinct}
 Comme le MCTS, le MinMax va explorer l'arbre des possibles où chaque nœud représente une configuration du jeu. 
 L'algorithme va explorer toutes les possibilités et associer à chaque feuille une valeur positive ou négative. Ces feuilles sont
 soit des nœuds terminaux (c'est-à-dire que l'un des deux joueurs a gagné), soit des nœuds à la profondeur de recherche maximale.
 Un nœud va se voir assigner une valeur positive si la position associée favorise l'ordinateur (le joueur maximisant) 
 et négative dans le cas contraire.
 
-En ce qui concerne les nœuds feuilles non-terminaux, c’est-à-dire ceux représentant une configuration de jeu non gagnante, mais bloqués par la 
-profondeur de recherche, c’est une fonction d’évaluation qui va estimer leur valeur heuristique. La qualité de cette fonction va 
+En ce qui concerne les nœuds feuilles non-terminaux, c'est-à-dire ceux représentant une configuration de jeu non gagnante, mais bloqués par la 
+profondeur de recherche, c'est une fonction d'évaluation qui va estimer leur valeur heuristique. La qualité de cette fonction va 
 déterminer « l'intelligence » de l'ordinateur. Cette estimation et la profondeur de recherche déterminent donc la qualité et la 
 précision du résultat final du MinMax.
 
@@ -93,7 +93,7 @@ dont on peut penser, si la fonction d'évaluation est à peu près correcte, que
 \end{figure}
 
 
-Plusieurs coupures ont pu être réalisées. De gauche à droite :
+Plusieurs coupures ont pu être réalisées. De gauche à droite:
 \begin{enumerate}
     \item Le nœud MIN vient de mettre à jour sa valeur courante à 4. Celle-ci, qui ne peut que baisser, est déjà inférieure à $\alpha$=5, 
     la valeur actuelle du nœud MAX précédent. Celui-ci cherchant la plus grande valeur possible, ne la choisira donc de toute façon pas.

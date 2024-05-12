@@ -11,12 +11,12 @@
 
 \section{Observations de l'algorithme MinMax sur nos jeux}
 Une fois l'implémentation de l'algorithme MinMax faite sur nos deux
-jeux combinatoires, nous pouvons nous demander, est-ce que cet algorithme est adapté pour le jeu de Hex et l'Awale ?
+jeux combinatoires, nous pouvons nous demander, est-ce que cet algorithme est adapté pour le jeu de Hex et l'Awale?
 Nous observons que les performances du MinMax sont très différentes d'un jeu à l'autre. Dans cette section nous étudierons ces différences.
 
-\subsection{Hexgame : Performances décevantes}
+\subsection{Hexgame: Performances décevantes}
 L'algorithme MinMax développé sur le jeu du Hex n'arrive quasiment jamais à battre un humain, et cela, pour
-deux raisons principales : la faible profondeur, et la difficulté à trouver une fonction d'évaluation satisfaisante.
+deux raisons principales: la faible profondeur, et la difficulté à trouver une fonction d'évaluation satisfaisante.
 
 \paragraph{Trop grande complexité} Le premier problème provient du nombre de coups possibles à chaque tour.
 En effet, sur un plateau classique de $13\times13$ le premier joueur a 169 coups possibles. Au coup suivant, il y en a 168 etc\dots Cela rend les calculs lents. 
@@ -29,7 +29,7 @@ profondeur plus intéressante de 6 ou de 8 par exemple.
 On peut aussi noter que la performance de l'élagage alpha-bêta dépend de la qualité de la fonction d'évaluation, qui, comme nous allons
 le voir, n'est pas assurée.
 
-\paragraph{Fonction d'évaluation : Un vrai casse-tête}
+\paragraph{Fonction d'évaluation: Un vrai casse-tête}
 Le MinMax n'arrivant pratiquement jamais à une feuille terminale, nous avons compris que la fonction
 d'évaluation du Hex devait être performante et peu coûteuse en temps. Cependant, faire comprendre à l'ordinateur si une position est gagnante
 ou non s'est révélé très difficile. En effet, le Hex est un jeu possédant de nombreuses stratégies, et relier toutes ces stratégies en une
@@ -37,7 +37,7 @@ seule fonction d'évaluation n'est pas chose aisée. Ainsi, nous avons rapidemen
 quelle stratégie adapter au fur et à mesure de la partie. Parmi elles, la stratégie de faire des ponts (voir la figure 3) nous a posé beaucoup de problèmes.
 Un pont permet au joueur de s'assurer de pouvoir connecter deux pièces lors d'un prochain coup. En effet, si le joueur adversaire cherche à bloquer
 l'une des deux cases, nous avons juste à ajouter notre jeton afin de créer un chemin entre ces deux pièces. Nous pouvons noter que lorsque la profondeur de
-réflexion du MinMax est grande, il arrive parfois à remarquer que créer un pont est le meilleur coup. Mais nous revenons au problème n°1 : la complexité.
+réflexion du MinMax est grande, il arrive parfois à remarquer que créer un pont est le meilleur coup. Mais nous revenons au problème n°1: la complexité.
 Voir la section sur les fonctions d'évaluations pour voir quelles idées nous avons essayé. Notre fonction finale est capable de battre des humains sur de petits 
 plateaux. Mais en général, lorsque le plateau est de grande dimension, la fonction d'évaluation prend de nombreuses secondes, voire minutes avant de jouer.
 
@@ -52,7 +52,7 @@ plateaux. Mais en général, lorsque le plateau est de grande dimension, la fonc
 
 
 
-\subsection{Awalé : Bonnes performances}
+\subsection{Awalé: Bonnes performances}
 \paragraph{Une fonction d'évaluation efficace} 
 Le jeu de l'Awalé possède un avantage significatif par rapport au Hex, le nombre maximum de coups
 possible pour un joueur est de 6. Ainsi, l'arbre de recherche est bien plus petit que celui du Hex. L'algorithme MinMax est donc efficace en termes de
@@ -67,5 +67,5 @@ L'algorithme MinMax est donc capable d'être efficace lorsque le nombre de nœud
 lui mettre une profondeur relativement grande afin d'explorer toutes les branches de cet arbre.
 Cependant, lorsque le nombre de nœuds devient gigantesque, comme dans le Hex, l'algorithme ne devient plus très bon. Il est en effet très lent et peu performant.
 Dans la bibliographie est disponible un lien vers un papier scientifique cherchant une bonne fonction d'évaluation pour le Hex.
-Dans celui-ci, il est écrit que les ordinateurs battent les humains pour des petits plateaux, font jeu égal pour le plateau 9x9 mais
+Dans celui-ci, il est écrit que les ordinateurs battent les humains pour des petits plateaux, font jeu égal pour le plateau $9\times9$ mais
 sont moins bons qu'un humain pour un plus grand plateau. On y voit aussi la difficulté de trouver une bonne fonction d'évaluation.

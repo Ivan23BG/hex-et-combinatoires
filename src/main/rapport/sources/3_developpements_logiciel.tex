@@ -44,25 +44,22 @@ Cela permet à l'utilisateur de choisir les paramètres de la partie comme la ta
 mode de jeu. La page home permet aussi de consulter les règles du jeu que nous avons sélectionné.
 Lorsque l'on clique sur le bouton correspondant au mode de jeu choisi, nous sommes dirigés vers la page de
 jeu.
-Sur les deux jeux, le joueur à la possibilité de prévisualiser le prochain coup grâce à des fonctions de "hover" lorsqu'il survole avec 
+Sur les deux jeux, le joueur à la possibilité de prévisualiser le prochain coup grâce à des fonctions de ``hover'' lorsqu'il survole avec 
 la souris certains éléments.
-Lors d'une partie de Hex, il est possible de changer le thème graphique de la page avec la touche "H". Cela modifie la page css chargée dans le navigateur.
+Lors d'une partie de Hex, il est possible de changer le thème graphique de la page avec la touche `H'. Cela modifie la page css chargée dans le navigateur.
 L'interface graphique est implémentée en HTML, CSS et JavaScript. Celle-ci communique avec les modules Hex et Awalé via des appels de fonctions JavaScript à des
 fonctions Python via des requêtes json et le module Flask.
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=8cm]{root/exemple_home.png}
-    \caption{Page Home du Hex}
-    \label{fig:exemple_home.png}
+    \caption{Page Home du Hex}\label{fig:exemple_home.png}
 
     \includegraphics[width=8cm]{root/awale_board.png}
-    \caption{Page du jeu Awale}
-    \label{fig:awale_board.png}
+    \caption{Page du jeu Awale}\label{fig:awale_board.png}
 
     \includegraphics[width=8cm]{root/exemple_partie_hex.png}
-    \caption{Page du jeu Hex}
-    \label{fig:exemple_partie_hex.png}
+    \caption{Page du jeu Hex}\label{fig:exemple_partie_hex.png}
 \end{figure}
 
 % présenter les principales structures de données définies dans le cadre du
@@ -86,13 +83,13 @@ paramètres de la partie sont valides avant de commencer la partie.
 Voici quelques statistiques sur le logiciel développé dans le cadre de ce projet:
 \begin{itemize}
     \item Nombre de modules (sans les tests): 39
-    \item Nombre de classes : 11 (principalement dans les modules Hex et Awalé)
-    \item Nombre de fonctions : 68 (en Python) et 99 (en JavaScript) pour 167 en tout
-    \item Nombre de lignes de code : 1 405 (en Python), 2008 (en JavaScript), 553 (en HTML), 1 331 (en CSS)
+    \item Nombre de classes: 11 (principalement dans les modules Hex et Awalé)
+    \item Nombre de fonctions: 68 (en Python) et 99 (en JavaScript) pour 167 en tout
+    \item Nombre de lignes de code: 1 405 (en Python), 2008 (en JavaScript), 553 (en HTML), 1 331 (en CSS)
     et 480 (en \LaTeX) pour un total de 5 777 lignes de code
 \end{itemize}
 
-\subsection{Intéraction entre fichiers}
+\subsection{Intéractions entre les fichiers}
 % Explication de l'interaction entre les fichiers pendant une partie
 L'intéraction entre les fichiers de l'application est la même lors d'une partie de Hex ou 
 d'Awalé. Le fichier \texttt{app.py} héberge l'application flask et gère l'intéraction entre le frontend et le 
@@ -116,9 +113,7 @@ JavaScript qui va s'occuper du nouvel affichage graphique (En modifiant le CSS o
 au fichier JavaScript qui va afficher une alerte sur l'écran du joueur, indiquant la non-validité du coup. Lors du placement de chaque
 hex (déplacement de graines pour l'Awalé), la fonction \textit{check\_winner} de la classe du plateau est appelée afin de vérifier si un joueur a 
 gagné. Si c'est le cas, alors la fonction questionnée par la requête json renvoie la variable \textsf{game\_over} égale à \textbf{True}. 
-En récupérant cette variable, le fichier JavaScript va pouvoir procéder à une animation indiquant au(x) joueur(s) que la partie est terminée.
-
-
+En récupérant cette variable, le fichier JavaScript va pouvoir procéder à une animation indiquant que la partie est terminée.
 
 \subsection{Fonctions asynchrones}
 L'envoie des différentes requêtes des fichiers JavaScript à \texttt{app.py} se fait grâce aux différents appels à la fonction \textit{fetch}.
