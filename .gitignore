@@ -13,3 +13,5 @@
 *.synctex.gz
 *.fls
 *.fdb_latexmk
+.vscode/
+*/.vscode/
