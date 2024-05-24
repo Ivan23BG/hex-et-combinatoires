@@ -1,8 +1,11 @@
 body {
-    /* background-image: url("static/images/tabletop.jpg"); */
-    padding: 2px 0 3px;
     color: #394355;
     user-select: none;
+    margin-left: 0%;
+    margin-right: 0%;
+    padding-left: 0%;
+    padding-right: 0%;
+    
 }
 
 html {
@@ -17,9 +20,9 @@ html {
     display: flex;
 }
 
-.text {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 15px;
+.header {
+    margin: auto;
+    display: flex;
 }
 
 .hex {
@@ -96,8 +99,10 @@ html {
 }
 
 .titre {
-    margin: auto;
-    display: flex;
+    margin-left: 30%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    height: 15vh;
 }
 
 #spinner {
